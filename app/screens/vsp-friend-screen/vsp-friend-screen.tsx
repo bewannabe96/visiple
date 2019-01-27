@@ -56,7 +56,6 @@ export default class VSPFriendScreen extends React.Component<VSPScreenProps> {
             },
 
             friendsView: {
-                flex: 1,
                 paddingBottom: 2*VERTICAL_UNIT,
             },
         });
@@ -79,7 +78,7 @@ export default class VSPFriendScreen extends React.Component<VSPScreenProps> {
                         theme='brown'
                     />
                 </View>
-                <ScrollView style={this._fixed_style.friendsView}>
+                <ScrollView contentContainerStyle={this._fixed_style.friendsView}>
                     <FriendItem name='홍길동' email='testtest12@gmail.com'/>
                     <FriendItem name='김덕순' email='testtest12@gmail.com'/>
                     <FriendItem name='권홍순' email='testtest12@gmail.com'/>
