@@ -14,10 +14,13 @@ const moderateScale = (size: number, factor = 0.5) => size + ( horizontalScale(s
 
 export {horizontalScale, verticalScale, moderateScale};
 
-const VSP_EDGE_PADDING = horizontalScale(20);
-const VSP_HEADER_PADDING = 0.75*VSP_EDGE_PADDING;
-
 const HORIZONTAL_UNIT = horizontalScale(5);
 const VERTICAL_UNIT = verticalScale(5);
 
-export { VSP_EDGE_PADDING, VSP_HEADER_PADDING, HORIZONTAL_UNIT, VERTICAL_UNIT };
+export { HORIZONTAL_UNIT, VERTICAL_UNIT };
+
+const VSP_EDGE_PADDING = 4*HORIZONTAL_UNIT;
+const VSP_TOP_PADDING = 3*VERTICAL_UNIT;
+const VSP_HEADER_PADDING = 0.75*VSP_EDGE_PADDING;
+
+export { VSP_EDGE_PADDING, VSP_TOP_PADDING, VSP_HEADER_PADDING };
