@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView } from 'react-native';
-import { withNavigation, NavigationInjectedProps } from 'react-navigation';
+import { NavigationInjectedProps } from 'react-navigation';
 
 import { THEME_COLORS, addShadowProperties } from '../config/theme';
 import { VSP_HEADER_PADDING } from '../config/size';
@@ -81,7 +81,7 @@ interface VSPHeaderProps extends NavigationInjectedProps {
     headerTitle?: string | React.ReactElement<any>,
 
     /**
-     * Component to be diplayed in the left (by default 'menu')
+     * Component to be diplayed in the left
      */
     headerLeft?: React.ReactElement<any>,
 
@@ -130,16 +130,7 @@ class VSPHeader extends React.Component<VSPHeaderProps> {
                             }
                         }
                     >
-                        {
-                            !!this.props.headerLeft ?
-                            this.props.headerLeft :
-                            (
-                                <VSPHeaderButton
-                                    icon='menu'
-                                    onPress={()=>{this.props.navigation.openDrawer()}}
-                                />
-                            )
-                        }
+                        {this.props.headerLeft}
                     </View>
                     <View
                         style={
@@ -170,5 +161,5 @@ class VSPHeader extends React.Component<VSPHeaderProps> {
     }
 };
 
-export default withNavigation(VSPHeader);
+export default VSPHeader;
 export { VSPHeaderTitle, VSPHeaderButton }
