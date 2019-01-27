@@ -7,12 +7,12 @@ import { decodeVSPMarginProps, VSPMarginProps } from '../props/vsp-margin';
 
 interface VSPProfileProps extends VSPMarginProps {
     /**
-     * Size of the icon (by default 12VU)
+     * Size of the icon (by default ```12VU```)
      */
     size?: number;
 
     /**
-     * Casts shadow if true (by default true)
+     * Casts shadow if true (by default ```true```)
      */
     castShadow?: boolean;
 }
@@ -21,8 +21,8 @@ interface VSPProfileProps extends VSPMarginProps {
  * VSPProfile
  * 
  * @property
- * - ```size```: Size of the icon (by default 12HU)
- * - ```castShadow```: Casts shadow if true (by default true)
+ * - ```size```: Size of the icon (by default ```12HU```)
+ * - ```castShadow```: Casts shadow if true (by default ```true```)
  */
 export default class VSPProfile extends React.Component<VSPProfileProps> {
     private _fixed_style: StyleProp<any>;

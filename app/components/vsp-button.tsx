@@ -273,12 +273,12 @@ interface VSPButtonProps extends VSPMarginProps {
     icon?: IconNameType;
 
     /**
-     * Size of the text and the icon inside the button (by default THEME_FONTSIZE)
+     * Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
      */
     fontSize?: number;
 
     /**
-     * Theme color of the button (by default 'ocean-blue')
+     * Theme color of the button (by default ```ocean-blue```)
      */
     theme?: ThemeColorType;
 
@@ -295,7 +295,7 @@ interface VSPButtonProps extends VSPMarginProps {
  * - ```buttonStyle```: Style of the button (be default ```colored```)
  * - ```text```: Text inside the button
  * - ```icon```: Icon to be displayed in the button
- * - ```fontSize```: Size of the text and the icon inside the button (by default THEME_FONTSIZE)
+ * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
  * - ```onPress```: Callback function when button pressed
  * - ```theme```: Theme color of the button (by default ```ocean-blue```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft

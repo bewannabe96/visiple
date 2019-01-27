@@ -8,7 +8,7 @@ import VSPIcon from './vsp-icon';
 
 interface VSPCheckboxProps extends VSPMarginProps {
     /**
-     * Size of the checkbox (by default THEME_FONTSIZE)
+     * Size of the checkbox (by default ```THEME_FONTSIZE```)
      */
     size?: number;
 
@@ -22,7 +22,7 @@ interface VSPCheckboxProps extends VSPMarginProps {
  * VSPCheckbox
  * 
  * @property
- * - ```size```: Size of the checkbox (by default THEME_FONTSIZE)
+ * - ```size```: Size of the checkbox (by default ```THEME_FONTSIZE```)
  * - ```theme```: Theme color of the checkbox (by default ```ocean-blue```)
  */
 export default class VSPCheckbox extends React.Component<VSPCheckboxProps> {

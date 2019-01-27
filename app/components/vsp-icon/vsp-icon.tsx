@@ -13,7 +13,7 @@ interface VSPIconProps extends VSPMarginProps {
     iconName: IconNameType;
 
     /**
-     * Size of the icon (by default THEME_FONTSIZE)
+     * Size of the icon (by default ```THEME_FONTSIZE```)
      */
     size?: number;
 

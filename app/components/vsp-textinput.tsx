@@ -50,7 +50,7 @@ interface VSPTextInputProps extends VSPMarginProps {
     textContentType?: textContentType;
 
     /**
-     * Size of the font (by default THEME_FONTSIZE)
+     * Size of the font (by default ```THEME_FONTSIZE```)
      */
     fontSize?: number;
 
@@ -69,7 +69,7 @@ interface VSPTextInputProps extends VSPMarginProps {
     theme?: ThemeColorType;
 
     /**
-     * Display underline (by default true)
+     * Display underline (by default ```true```)
      */
     displayUnderline?: boolean;
 }
@@ -80,11 +80,11 @@ interface VSPTextInputProps extends VSPMarginProps {
  * @property
  * - ```placeholder```(required): Placeholder of the textinput
  * - ```textContentType```: Type of the text to be filled in (by default ```none```)
- * - ```fontSize```: Size of the font (by default THEME_FONTSIZE)
+ * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```frontIcon```: Icon to be diplayed in the front of the text input
  * - ```rearIcon```: Icon to be diplayed in the back of the text input
  * - ```theme```: Theme color of the text input (by default ```ocean-blue```)
- * - ```displayUnderline```: Display underline (by default true)
+ * - ```displayUnderline```: Display underline (by default ```true```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom

@@ -96,7 +96,7 @@ interface VSPHeaderProps extends NavigationInjectedProps {
  * 
  * @property
  * - ```headerTitle```: Title or component to be displayed in the center
- * - ```headerLeft```: Component to be diplayed in the left (by default ```menu```)
+ * - ```headerLeft```: Component to be diplayed in the left
  * - ```headerRight```: Component to be displayed in the right
  */
 class VSPHeader extends React.Component<VSPHeaderProps> {

@@ -13,7 +13,7 @@ interface VSPBadgeProps extends VSPMarginProps {
     value: number;
 
     /**
-     * Size of the badge (by default THEME_FONTSIZE)
+     * Size of the badge (by default ```THEME_FONTSIZE```)
      */
     size?: number;
 
@@ -28,7 +28,7 @@ interface VSPBadgeProps extends VSPMarginProps {
  * 
  * @property
  * - ```value```(required, variable): Value of the badge
- * - ```size```: Size of the badge (by default THEME_FONTSIZE)
+ * - ```size```: Size of the badge (by default ```THEME_FONTSIZE```)
  * - ```theme```: Theme color of the badge (by default ```ocean-blue```)
  */
 export default class VSPBadge extends React.Component<VSPBadgeProps> {
