@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView } from 'react-native';
-import { NavigationInjectedProps, NavigationScreenProp } from 'react-navigation';
+import { NavigationInjectedProps, NavigationScreenProp, withNavigation } from 'react-navigation';
 
 import { THEME_COLORS, addShadowProperties } from '../config/theme';
 import { VSP_HEADER_PADDING } from '../config/size';
@@ -171,5 +171,5 @@ class VSPHeader extends React.Component<VSPHeaderProps> {
     }
 };
 
-export default VSPHeader;
+export default withNavigation(VSPHeader);
 export { VSPHeaderTitle, VSPHeaderButton, VSPHeaderMenu }
