@@ -74,16 +74,6 @@ class VSPHeaderButton extends React.Component<VSPHeaderButtonProps> {
     }
 }
 
-/**
- * VSPHeaderMenu
- */
-const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
-    <VSPHeaderButton
-        icon='menu'
-        onPress={()=>{navigation.openDrawer()}}
-    />
-);
-
 interface VSPHeaderProps extends NavigationInjectedProps {
     /**
      * Title or component to be displayed in the center
@@ -172,4 +162,30 @@ class VSPHeader extends React.Component<VSPHeaderProps> {
 };
 
 export default withNavigation(VSPHeader);
-export { VSPHeaderTitle, VSPHeaderButton, VSPHeaderMenu }
+export { VSPHeaderTitle, VSPHeaderButton }
+
+/**
+ * VSPHeaderMenu
+ * 
+ * Opens side menu
+ */
+const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
+    <VSPHeaderButton
+        icon='menu'
+        onPress={()=>{navigation.openDrawer()}}
+    />
+);
+
+/**
+ * VSPHeaderBack
+ * 
+ * Returns to the previous page
+ */
+const VSPHeaderBack = (navigation: NavigationScreenProp<any>) => (
+    <VSPHeaderButton
+        icon='previous'
+        onPress={()=>{navigation.pop()}}
+    />
+)
+
+export { VSPHeaderMenu, VSPHeaderBack }
