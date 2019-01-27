@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, StyleProp, StyleSheet } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { THEME_COLORS, addShadowProperties } from '../../config/theme';
 import { VSP_EDGE_PADDING, VERTICAL_UNIT } from '../../config/size';
@@ -9,7 +10,7 @@ import FriendItem from './friend-item';
 import AddFriendModal from './addfriend-modal';
 
 import VSPContainer from '../../components/vsp-container';
-import VSPHeader, { VSPHeaderTitle } from '../../components/vsp-header';
+import VSPHeader, { VSPHeaderTitle, VSPHeaderMenu } from '../../components/vsp-header';
 import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
 import VSPBadge from '../../components/vsp-badge';
@@ -18,11 +19,12 @@ import VSPBottomBar from '../../components/vsp-bottombar';
 export default class VSPFriendScreen extends React.Component<VSPScreenProps> {
     private _fixed_style: StyleProp<any>;
 
-    static navigationOptions = () => {
+    static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
         return {
             header: (
                 <VSPHeader
                     headerTitle={ (<VSPHeaderTitle text='친구' />) }
+                    headerLeft={ VSPHeaderMenu(navigation) }
                 />
             ),
         };

@@ -1,14 +1,15 @@
 import React from 'react';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { VSPScreenProps } from '../props/vsp-screen';
 
 import VSPContainer from '../components/vsp-container';
-import VSPHeader from '../components/vsp-header';
+import VSPHeader, { VSPHeaderMenu } from '../components/vsp-header';
 import VSPTitleLogo from '../components/vsp-titlelogo';
-import VSPProfileScreen from './vsp-profile-screen.tsx';
+import VSPProfileScreen from './vsp-profile-screen';
 
 export default class VSPHomeScreen extends React.Component<VSPScreenProps> {
-    static navigationOptions = () => {
+    static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
         return {
             header: (
                 <VSPHeader
@@ -18,6 +19,7 @@ export default class VSPHomeScreen extends React.Component<VSPScreenProps> {
                             rescaleRatio='70%'
                         />
                     )}
+                    headerLeft={ VSPHeaderMenu(navigation) }
                 />
             ),
         };
