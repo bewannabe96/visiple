@@ -15,7 +15,7 @@ export type TicketHeaderColorType
 /**
  * Ticket Header Colors
  */
-const TICKET_HEADER_COLORS = {
+const TICKET_HEADER_COLORS: {[key: string]: string} = {
     'blue': '#6286FF',
     'red': '#FFB5B5',
     'orange': '#FFC87C',
