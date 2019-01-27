@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView } from 'react-native';
-import { NavigationInjectedProps } from 'react-navigation';
+import { NavigationInjectedProps, NavigationScreenProp } from 'react-navigation';
 
 import { THEME_COLORS, addShadowProperties } from '../config/theme';
 import { VSP_HEADER_PADDING } from '../config/size';
@@ -73,6 +73,16 @@ class VSPHeaderButton extends React.Component<VSPHeaderButtonProps> {
         );
     }
 }
+
+/**
+ * VSPHeaderMenu
+ */
+const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
+    <VSPHeaderButton
+        icon='menu'
+        onPress={()=>{navigation.openDrawer()}}
+    />
+);
 
 interface VSPHeaderProps extends NavigationInjectedProps {
     /**
@@ -162,4 +172,4 @@ class VSPHeader extends React.Component<VSPHeaderProps> {
 };
 
 export default VSPHeader;
-export { VSPHeaderTitle, VSPHeaderButton }
+export { VSPHeaderTitle, VSPHeaderButton, VSPHeaderMenu }
