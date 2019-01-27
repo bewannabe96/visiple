@@ -9,7 +9,9 @@ export type IconNameType
 | 'home'
 | 'cancel'
 | 'search'
-| 'plus';
+| 'plus'
+| 'calendar'
+| 'clock';
  
  const ICON_SOURCE = {
      'user': require('./user.png'),
@@ -23,6 +25,8 @@ export type IconNameType
      'cancel': require('./cancel.png'),
      'search': require('./search.png'),
      'plus': require('./plus.png'),
+     'calendar': require('./calendar.png'),
+     'clock': require('./clock.png'),
  };
 
  export default ICON_SOURCE;
