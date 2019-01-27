@@ -13,7 +13,7 @@ interface VSPCheckboxProps extends VSPMarginProps {
     size?: number;
 
     /**
-     * Theme color of the checkbox (by default 'ocean-blue')
+     * Theme color of the checkbox (by default ```ocean-blue```)
      */
     theme?: ThemeColorType;
 }
@@ -22,8 +22,8 @@ interface VSPCheckboxProps extends VSPMarginProps {
  * VSPCheckbox
  * 
  * @property
- * - 'size': Size of the checkbox (by default THEME_FONTSIZE)
- * - 'theme': Theme color of the checkbox (by default 'ocean-blue')
+ * - ```size```: Size of the checkbox (by default THEME_FONTSIZE)
+ * - ```theme```: Theme color of the checkbox (by default ```ocean-blue```)
  */
 export default class VSPCheckbox extends React.Component<VSPCheckboxProps> {
     private _style: StyleProp<any>;

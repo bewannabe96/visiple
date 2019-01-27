@@ -23,8 +23,8 @@ interface ProfileTabProps {
  * ProfileTab
  * 
  * Props
- * - 'name': Title of the item
- * - 'email': Email of the user
+ * - ```name```: Title of the item
+ * - ```email```: Email of the user
  */
 export default class ProfileTab extends React.Component<ProfileTabProps> {
     private _fixed_style: StyleProp<any>;

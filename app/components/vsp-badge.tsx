@@ -18,7 +18,7 @@ interface VSPBadgeProps extends VSPMarginProps {
     size?: number;
 
     /**
-     * Theme color of the badge (by default 'ocean-blue')
+     * Theme color of the badge (by default ```ocean-blue```)
      */
     theme?: ThemeColorType;
 }
@@ -27,9 +27,9 @@ interface VSPBadgeProps extends VSPMarginProps {
  * VSPBadge
  * 
  * @property
- * - 'value' (required, variable): Value of the badge
- * - 'size': Size of the badge (by default THEME_FONTSIZE)
- * - 'theme': Theme color of the badge (by default 'ocean-blue')
+ * - ```value```(required, variable): Value of the badge
+ * - ```size```: Size of the badge (by default THEME_FONTSIZE)
+ * - ```theme```: Theme color of the badge (by default ```ocean-blue```)
  */
 export default class VSPBadge extends React.Component<VSPBadgeProps> {
     private _fixed_style: StyleProp<any>

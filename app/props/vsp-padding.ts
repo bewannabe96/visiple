@@ -1,13 +1,13 @@
 /**
  * VSPPaddingProps
  * 
- * - 'padding': Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
- * - 'paddingX': Horizontal padding; including paddingRight and paddingLeft
- * - 'paddingY': Vertical padding; including paddingTop and paddingBottom
- * - 'paddingTop': Top padding
- * - 'paddingBottom': Bottom padding
- * - 'paddingRight': Rigth padding
- * - 'paddingLeft': Left padding
+ * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
+ * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
+ * - ```paddingY```: Vertical padding; including paddingTop and paddingBottom
+ * - ```paddingTop```: Top padding
+ * - ```paddingBottom```: Bottom padding
+ * - ```paddingRight```: Rigth padding
+ * - ```paddingLeft```: Left padding
  */
 export interface VSPPaddingProps {
     /**

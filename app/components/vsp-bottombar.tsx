@@ -5,12 +5,12 @@ import { RawColorType, ThemeColorType, THEME_COLORS } from '../config/theme';
 
 interface VSPBottomBarProps {
     /**
-     * Theme color of the bar (by default 'blue')
+     * Theme color of the bar (by default ```blue```)
      */
     theme?: ThemeColorType;
 
     /**
-     * Raw color of the bar (by default '#000000')
+     * Raw color of the bar (by default ```#000000```)
      */
     color?: RawColorType;
 }
@@ -19,8 +19,8 @@ interface VSPBottomBarProps {
  * VSPBottomBar
  * 
  * @property
- * - 'theme' (variable): Theme color of the icon (by default 'brown')
- * - 'color (variable)': Raw color of the icon
+ * - ```theme```(variable): Theme color of the icon (by default ```brown```)
+ * - ```color (variable)```: Raw color of the icon
  */
 export default class VSPBottomBar extends React.Component<VSPBottomBarProps> {
     render() {

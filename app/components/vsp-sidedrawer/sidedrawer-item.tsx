@@ -24,8 +24,8 @@ interface SideDrawerItemProps extends NavigationInjectedProps{
  * SideDrawerItem
  * 
  * Props
- * - 'title' (required): Title of the item
- * - 'desinationRouteName': Destination route name to which it navigate
+ * - ```title```(required): Title of the item
+ * - ```desinationRouteName```: Destination route name to which it navigate
  */
 class SideDrawerItem extends React.Component<SideDrawerItemProps> {
     private _fixed_style: StyleProp<any>;

@@ -21,8 +21,8 @@ interface VSPProfileProps extends VSPMarginProps {
  * VSPProfile
  * 
  * @property
- * - 'size': Size of the icon (by default 12HU)
- * - 'castShadow': Casts shadow if true (by default true)
+ * - ```size```: Size of the icon (by default 12HU)
+ * - ```castShadow```: Casts shadow if true (by default true)
  */
 export default class VSPProfile extends React.Component<VSPProfileProps> {
     private _fixed_style: StyleProp<any>;

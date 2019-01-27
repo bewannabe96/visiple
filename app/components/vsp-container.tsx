@@ -6,9 +6,9 @@ import { decodeVSPPaddingProps, VSPPaddingProps } from '../props/vsp-padding';
 
 interface VSPContainerProps extends VSPPaddingProps {
     /**
-     * Justify Content (by default 'flex-start')
+     * Justify Content (by default ```flex-start```)
      */
-    justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+    justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
     /**
      * Background color
@@ -20,15 +20,15 @@ interface VSPContainerProps extends VSPPaddingProps {
  * VSPContainer
  * 
  * @property
- * - 'justifyContent': Justify Content (by default 'flex-start')
- * - 'background': Background color (by default 'none')
- * - 'padding': Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
- * - 'paddingX': Horizontal padding; including paddingRight and paddingLeft
- * - 'paddingY': Vertical padding; including paddingTop and paddingBottom
- * - 'paddingTop': Top padding
- * - 'paddingBottom': Bottom padding
- * - 'paddingRight': Rigth padding
- * - 'paddingLeft': Left padding
+ * - ```justifyContent```: Justify Content (by default ```flex-start```)
+ * - ```background```: Background color (by default ```none```)
+ * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
+ * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
+ * - ```paddingY```: Vertical padding; including paddingTop and paddingBottom
+ * - ```paddingTop```: Top padding
+ * - ```paddingBottom```: Bottom padding
+ * - ```paddingRight```: Rigth padding
+ * - ```paddingLeft```: Left padding
  */
 export default class VSPContainer extends React.Component<VSPContainerProps> {
     private _fixed_style: StyleProp<any>;

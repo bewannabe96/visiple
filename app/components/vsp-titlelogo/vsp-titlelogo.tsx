@@ -12,13 +12,13 @@ interface VSPTitleLogoProps extends VSPMarginProps {
     /**
      * Direction to fit the title logo
      * 
-     * - 'X': Fit the title logo in horizontal direction
-     * - 'Y: Fit the title logo in vertical direction
+     * - ```X```: Fit the title logo in horizontal direction
+     * - ```Y```: Fit the title logo in vertical direction
      */
     fillDirection: 'X' | 'Y';
 
     /**
-     * Ratio by which will rescale the title logo abide (by default '100%')
+     * Ratio by which will rescale the title logo abide (by default ```100%```)
      */
     rescaleRatio?: string;
 }
@@ -27,8 +27,8 @@ interface VSPTitleLogoProps extends VSPMarginProps {
  * VSPTitleLogo
  * 
  * @property
- * - 'fillDirection' (required): Direction to fit the title logo
- * - 'rescaleRatio': Ratio by which will rescale the title logo abide (by default '100%')
+ * - ```fillDirection```(required): Direction to fit the title logo
+ * - ```rescaleRatio```: Ratio by which will rescale the title logo abide (by default ```100%```)
  */
 export default class VSPTitleLogo extends React.Component<VSPTitleLogoProps> {
     private _logosource: ImageSourcePropType;

@@ -18,12 +18,12 @@ interface VSPIconProps extends VSPMarginProps {
     size?: number;
 
     /**
-     * Theme color of the icon (by default 'black')
+     * Theme color of the icon (by default ```black```)
      */
     theme?: ThemeColorType;
 
     /**
-     * Raw color of the icon (by default '#000000')
+     * Raw color of the icon (by default ```#000000```)
      */
     color?: RawColorType;
 }
@@ -32,17 +32,17 @@ interface VSPIconProps extends VSPMarginProps {
  * VSPIcon
  * 
  * @property
- * - 'iconName'(required): Name of the icon
- * - 'size': Size of the icon (by default THEME_FONTSIZE)
- * - 'theme' (variable): Theme color of the icon (by default 'black')
- * - 'color (variable)': Raw color of the icon (by default '#000000')
- * - 'margin': Overall margin; including marginTop, marginBottom, marginRight and marginLeft
- * - 'marginX': Horizontal margin; including marginRight and marginLeft
- * - 'marginY': Vertical margin; including marginTop and marginBottom
- * - 'marginTop': Top margin
- * - 'marginBottom': Bottom margin
- * - 'marginRight': Rigth margin
- * - 'marginLeft': Left margin
+ * - ```iconName```(required): Name of the icon
+ * - ```size```: Size of the icon (by default THEME_FONTSIZE)
+ * - ```theme```(variable): Theme color of the icon (by default ```black```)
+ * - ```color (variable)```: Raw color of the icon (by default ```#000000```)
+ * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
+ * - ```marginX```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginTop```: Top margin
+ * - ```marginBottom```: Bottom margin
+ * - ```marginRight```: Rigth margin
+ * - ```marginLeft```: Left margin
  */
 export default class VSPIcon extends React.Component<VSPIconProps> {
     private _fixed_style: StyleProp<any>;

@@ -8,12 +8,12 @@ interface VSPImageProps {
     source: ImageSourcePropType,
 
     /**
-     * Height of the image (by default '100%')
+     * Height of the image (by default ```100%```)
      */
     height?: string | number
 
     /**
-     * Width of the image (by default '100%')
+     * Width of the image (by default ```100%```)
      */
     width?: string | number
 }
@@ -22,9 +22,9 @@ interface VSPImageProps {
  * VSPImage
  * 
  * @property
- * - 'source' (required): Source of the image
- * - 'height': Height of the image (by default '100%')
- * - 'width': Width of the image (by default '100%')
+ * - ```source```(required): Source of the image
+ * - ```height```: Height of the image (by default ```100%```)
+ * - ```width```: Width of the image (by default ```100%```)
  */
 export default class VSPImage extends React.Component<VSPImageProps> {
     private _fixed_style: StyleProp<any>;

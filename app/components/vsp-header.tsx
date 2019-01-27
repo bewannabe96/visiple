@@ -21,7 +21,7 @@ interface VSPHeaderTitleProps {
  * VSPHeaderTitle
  * 
  * @property
- * - 'text' (required): Title text
+ * - ```text```(required): Title text
  */
 class VSPHeaderTitle extends React.Component<VSPHeaderTitleProps> {
     render() {
@@ -57,8 +57,8 @@ interface VSPHeaderButtonProps {
  * VSPHeaderButton
  * 
  * @property
- * - 'icon' (required): Icon to be displayed
- * - 'onPress': Callback function when button pressed
+ * - ```icon```(required): Icon to be displayed
+ * - ```onPress```: Callback function when button pressed
  */
 class VSPHeaderButton extends React.Component<VSPHeaderButtonProps> {
     render() {
@@ -95,9 +95,9 @@ interface VSPHeaderProps extends NavigationInjectedProps {
  * VSPHeader
  * 
  * @property
- * - 'headerTitle': Title or component to be displayed in the center
- * - 'headerLeft': Component to be diplayed in the left (by default 'menu')
- * - 'headerRight': Component to be displayed in the right
+ * - ```headerTitle```: Title or component to be displayed in the center
+ * - ```headerLeft```: Component to be diplayed in the left (by default ```menu```)
+ * - ```headerRight```: Component to be displayed in the right
  */
 class VSPHeader extends React.Component<VSPHeaderProps> {
     render() {

@@ -5,7 +5,7 @@ import { THEME_FONT, THEME_FONTSIZE, THEME_COLORS } from '../config/theme';
 
 interface VSPTextProps {
     /**
-     * Style of the text (by default THEME_FONTSIZE, THEME_FONT, 'ocean-blue')
+     * Style of the text (by default THEME_FONTSIZE, THEME_FONT, ```ocean-blue```)
      */
     style?: StyleProp<any>;
 }
@@ -14,7 +14,7 @@ interface VSPTextProps {
  * VSPText
  * 
  * @property
- * - 'style': Style of the text (by default THEME_FONTSIZE, THEME_FONT, 'ocean-blue')
+ * - ```style```: Style of the text (by default THEME_FONTSIZE, THEME_FONT, ```ocean-blue```)
  */
 export default class VSPText extends React.Component<VSPTextProps> {
     render() {

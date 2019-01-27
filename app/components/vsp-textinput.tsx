@@ -11,32 +11,32 @@ import { IconNameType } from './vsp-icon/src';
  * Text content type
  */
 type textContentType
-    = "none"
-    | "URL"
-    | "addressCity"
-    | "addressCityAndState"
-    | "addressState"
-    | "countryName"
-    | "creditCardNumber"
-    | "emailAddress"
-    | "familyName"
-    | "fullStreetAddress"
-    | "givenName"
-    | "jobTitle"
-    | "location"
-    | "middleName"
-    | "name"
-    | "namePrefix"
-    | "nameSuffix"
-    | "nickname"
-    | "organizationName"
-    | "postalCode"
-    | "streetAddressLine1"
-    | "streetAddressLine2"
-    | "sublocality"
-    | "telephoneNumber"
-    | "username"
-    | "password";
+    = 'none'
+    | 'URL'
+    | 'addressCity'
+    | 'addressCityAndState'
+    | 'addressState'
+    | 'countryName'
+    | 'creditCardNumber'
+    | 'emailAddress'
+    | 'familyName'
+    | 'fullStreetAddress'
+    | 'givenName'
+    | 'jobTitle'
+    | 'location'
+    | 'middleName'
+    | 'name'
+    | 'namePrefix'
+    | 'nameSuffix'
+    | 'nickname'
+    | 'organizationName'
+    | 'postalCode'
+    | 'streetAddressLine1'
+    | 'streetAddressLine2'
+    | 'sublocality'
+    | 'telephoneNumber'
+    | 'username'
+    | 'password';
 
 interface VSPTextInputProps extends VSPMarginProps {
     /**
@@ -45,7 +45,7 @@ interface VSPTextInputProps extends VSPMarginProps {
     placeholder: string;
 
     /**
-     * Type of the text to be filled in (by default 'none')
+     * Type of the text to be filled in (by default ```none```)
      */
     textContentType?: textContentType;
 
@@ -64,7 +64,7 @@ interface VSPTextInputProps extends VSPMarginProps {
     rearIcon?: IconNameType;
 
     /**
-     * Theme color of the text input (by default 'ocean-blue')
+     * Theme color of the text input (by default ```ocean-blue```)
      */
     theme?: ThemeColorType;
 
@@ -78,20 +78,20 @@ interface VSPTextInputProps extends VSPMarginProps {
  * VSPTextInput
  * 
  * @property
- * - 'placeholder'(required): Placeholder of the textinput
- * - 'textContentType': Type of the text to be filled in (by default 'none')
- * - 'fontSize': Size of the font (by default THEME_FONTSIZE)
- * - 'frontIcon': Icon to be diplayed in the front of the text input
- * - 'rearIcon': Icon to be diplayed in the back of the text input
- * - 'theme': Theme color of the text input (by default 'ocean-blue')
- * - 'displayUnderline': Display underline (by default true)
- * - 'margin': Overall margin; including marginTop, marginBottom, marginRight and marginLeft
- * - 'marginX': Horizontal margin; including marginRight and marginLeft
- * - 'marginY': Vertical margin; including marginTop and marginBottom
- * - 'marginTop': Top margin
- * - 'marginBottom': Bottom margin
- * - 'marginRight': Rigth margin
- * - 'marginLeft': Left margin
+ * - ```placeholder```(required): Placeholder of the textinput
+ * - ```textContentType```: Type of the text to be filled in (by default ```none```)
+ * - ```fontSize```: Size of the font (by default THEME_FONTSIZE)
+ * - ```frontIcon```: Icon to be diplayed in the front of the text input
+ * - ```rearIcon```: Icon to be diplayed in the back of the text input
+ * - ```theme```: Theme color of the text input (by default ```ocean-blue```)
+ * - ```displayUnderline```: Display underline (by default true)
+ * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
+ * - ```marginX```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginTop```: Top margin
+ * - ```marginBottom```: Bottom margin
+ * - ```marginRight```: Rigth margin
+ * - ```marginLeft```: Left margin
  */
 export default class VSPTextInput extends React.Component<VSPTextInputProps> {
     private _fixed_tyle: StyleProp<any>

@@ -77,7 +77,7 @@ interface TicketItemProps {
     title: string,
 
     /**
-     * Color of the header (by default 'blue')
+     * Color of the header (by default ```blue```)
      */
     headercolor?: TicketHeaderColorType,
 }
@@ -86,10 +86,10 @@ interface TicketItemProps {
  * TicketItem
  * 
  * @property 
- * - 'startDate' (required): Date which it starts from
- * - 'endDate' (required): Date which it ends
- * - 'title' (required): Title of the ticket
- * - 'headercolor': Color of the header (by default 'blue')
+ * - ```startDate```(required): Date which it starts from
+ * - ```endDate```(required): Date which it ends
+ * - ```title```(required): Title of the ticket
+ * - ```headercolor```: Color of the header (by default ```blue```)
  */
 class TicketItem extends React.Component<TicketItemProps> {
     private _fixed_style: StyleProp<any>;

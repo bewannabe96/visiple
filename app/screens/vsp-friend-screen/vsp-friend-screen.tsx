@@ -114,8 +114,8 @@ interface FriendItemProps {
  * FriendItem
  * 
  * @property 
- * - 'name' (required): Name of the friend
- * - 'email' (required): Email of the friend
+ * - ```name```(required): Name of the friend
+ * - ```email```(required): Email of the friend
  */
 class FriendItem extends React.Component<FriendItemProps> {
     private _fixed_style: StyleProp<any>;

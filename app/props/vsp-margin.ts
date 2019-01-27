@@ -1,13 +1,13 @@
 /**
  * VSPMarginProps
  * 
- * - 'margin': Overall margin; including marginTop, marginBottom, marginRight and marginLeft
- * - 'marginX': Horizontal margin; including marginRight and marginLeft
- * - 'marginY': Vertical margin; including marginTop and marginBottom
- * - 'marginTop': Top margin
- * - 'marginBottom': Bottom margin
- * - 'marginRight': Rigth margin
- * - 'marginLeft': Left margin
+ * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
+ * - ```marginX```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginTop```: Top margin
+ * - ```marginBottom```: Bottom margin
+ * - ```marginRight```: Rigth margin
+ * - ```marginLeft```: Left margin
  */
 export interface VSPMarginProps {
     /**

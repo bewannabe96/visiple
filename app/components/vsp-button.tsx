@@ -38,11 +38,11 @@ interface ColoredButtonProps {
  * ColoredButton
  * 
  * @property
- * - 'text': Text inside the button
- * - 'icon': Icon to be displayed in the button
- * - 'fontSize' (required): Size of the text and the icon inside the button
- * - 'theme' (required): Theme color of the button
- * - 'onPress': Callback function when button pressed
+ * - ```fontSize```(required): Size of the text and the icon inside the button
+ * - ```theme```(required): Theme color of the button
+ * - ```text```: Text inside the button
+ * - ```icon```: Icon to be displayed in the button
+ * - ```onPress```: Callback function when button pressed
  */
 class ColoredButton extends React.Component<ColoredButtonProps> {
     private _fixed_style: StyleProp<any>
@@ -120,10 +120,10 @@ interface RoundIconButtonProps {
  * RoundIconButton
  * 
  * @property
- * - 'icon' (required): Icon to be displayed in the button
- * - 'fontSize' (required): Size of the text and the icon inside the button
- * - 'theme' (required): Theme color of the button
- * - 'onPress': Callback function when button pressed
+ * - ```icon```(required): Icon to be displayed in the button
+ * - ```fontSize```(required): Size of the text and the icon inside the button
+ * - ```theme```(required): Theme color of the button
+ * - ```onPress```: Callback function when button pressed
  */
 class RoundIconButton extends React.Component<RoundIconButtonProps> {
     private _fixed_style: StyleProp<any>
@@ -193,11 +193,11 @@ interface TextOnlyButtonProps {
  * TextOnlyButton
  * 
  * @property
- * - 'text': Text inside the button
- * - 'icon': Icon to be displayed in the button
- * - 'fontSize' (required): Size of the text and the icon inside the button
- * - 'theme' (required): Theme color of the button
- * - 'onPress': Callback function when button pressed
+ * - ```fontSize```(required): Size of the text and the icon inside the button
+ * - ```theme```(required): Theme color of the button
+ * - ```text```: Text inside the button
+ * - ```icon```: Icon to be displayed in the button
+ * - ```onPress```: Callback function when button pressed
  */
 class TextOnlyButton extends React.Component<TextOnlyButtonProps> {
     private _fixed_style: StyleProp<any>
@@ -256,9 +256,9 @@ interface VSPButtonProps extends VSPMarginProps {
     /**
      * Style of the button
      * 
-     * - 'colored': Block shaped button with rounded corner
-     * - 'round-icon': Circular shaped button with only icon
-     * - 'text-only: Text-only displayed button with underline under text
+     * - ```colored```: Block shaped button with rounded corner
+     * - ```round-icon```: Circular shaped button with only icon
+     * - ```text-only```: Text-only displayed button with underline under text
      */
     buttonStyle?: ButtonStyleType;
     
@@ -292,19 +292,19 @@ interface VSPButtonProps extends VSPMarginProps {
  * VSPButton
  * 
  * @property
- * - 'buttonStyle': Style of the button (be default 'colored')
- * - 'text': Text inside the button
- * - 'icon': Icon to be displayed in the button
- * - 'fontSize': Size of the text and the icon inside the button (by default THEME_FONTSIZE)
- * - 'onPress': Callback function when button pressed
- * - 'theme': Theme color of the button (by default 'ocean-blue')
- * - 'margin': Overall margin; including marginTop, marginBottom, marginRight and marginLeft
- * - 'marginX': Horizontal margin; including marginRight and marginLeft
- * - 'marginY': Vertical margin; including marginTop and marginBottom
- * - 'marginTop': Top margin
- * - 'marginBottom': Bottom margin
- * - 'marginRight': Rigth margin
- * - 'marginLeft': Left margin
+ * - ```buttonStyle```: Style of the button (be default ```colored```)
+ * - ```text```: Text inside the button
+ * - ```icon```: Icon to be displayed in the button
+ * - ```fontSize```: Size of the text and the icon inside the button (by default THEME_FONTSIZE)
+ * - ```onPress```: Callback function when button pressed
+ * - ```theme```: Theme color of the button (by default ```ocean-blue```)
+ * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
+ * - ```marginX```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginTop```: Top margin
+ * - ```marginBottom```: Bottom margin
+ * - ```marginRight```: Rigth margin
+ * - ```marginLeft```: Left margin
  */
 export default class VSPButton extends React.Component<VSPButtonProps> {
     private _fixed_style: StyleProp<any>;
