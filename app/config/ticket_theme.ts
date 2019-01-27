@@ -5,6 +5,10 @@ import { THEME_COLORS } from "./theme";
  */
 export type TicketHeaderColorType
     = 'blue'
+    | 'red'
+    | 'orange'
+    | 'sky-blue'
+    | 'lime'
     | 'purple'
     | 'green';
 
@@ -12,7 +16,11 @@ export type TicketHeaderColorType
  * Ticket Header Colors
  */
 const TICKET_HEADER_COLORS = {
-    'blue': '#73C0F4',
+    'blue': '#6286FF',
+    'red': '#FFB5B5',
+    'orange': '#FFC87C',
+    'sky-blue': '#73C0F4',
+    'lime': '#D2ED77',
     'purple': '#B09DFF',
     'green': '#AEEAB0',
 }

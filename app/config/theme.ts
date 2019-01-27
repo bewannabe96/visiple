@@ -23,6 +23,7 @@ export type RawColorType = string;
 export type ThemeColorType
     = 'none'
     | 'white'
+    | 'grey'
     | 'grey-white'
     | 'ocean-blue'
     | 'sky-blue'
@@ -36,6 +37,7 @@ export type ThemeColorType
 export const THEME_COLORS = {
     'none': 'transparent',
     'white': '#FFFFFF',
+    'grey': '#707070',
     'black': '#000000',
     'grey-white': '#FCFCFC',
     'ocean-blue': '#728CA3',
