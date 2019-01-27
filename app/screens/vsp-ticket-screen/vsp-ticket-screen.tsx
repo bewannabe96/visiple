@@ -5,7 +5,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import { VSPScreenProps } from '../../props/vsp-screen';
 import { TicketHeaderColorType, TICKET_COLORS, TICKET_TEXTS } from '../../config/ticket_theme';
 import { addShadowProperties, THEME_FONT } from '../../config/theme';
-import { VERTICAL_UNIT, VSP_HEADER_PADDING } from '../../config/size';
+import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../config/size';
 
 import VSPHeader, { VSPHeaderTitle, VSPHeaderButton, VSPHeaderMenu } from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
@@ -13,8 +13,6 @@ import VSPBottomBar from '../../components/vsp-bottombar';
 import VSPProfile from '../../components/vsp-profile';
 
 export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
-    private _fixed_style: StyleProp<any>;
-
     static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
         return {
             header: (
@@ -31,13 +29,6 @@ export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
             ),
         };
     };
-
-    constructor(props: any) {
-        super(props);
-
-        this._fixed_style = StyleSheet.create({
-        });
-    }
 
     render() {
         return (
@@ -99,8 +90,8 @@ class TicketItem extends React.Component<TicketItemProps> {
 
         this._fixed_style = StyleSheet.create({
             ticketView: {
-                marginTop: 4*VERTICAL_UNIT,
-                marginHorizontal: VSP_HEADER_PADDING,
+                marginTop: 5*VERTICAL_UNIT,
+                marginHorizontal: VSP_EDGE_PADDING,
                 ...addShadowProperties(),
             },
     
