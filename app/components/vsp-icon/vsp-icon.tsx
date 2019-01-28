@@ -23,7 +23,7 @@ interface VSPIconProps extends VSPMarginProps {
     theme?: ThemeColorType;
 
     /**
-     * Raw color of the icon (by default ```#000000```)
+     * Raw color of the icon
      */
     color?: RawColorType;
 }
@@ -35,7 +35,7 @@ interface VSPIconProps extends VSPMarginProps {
  * - ```iconName```(required): Name of the icon
  * - ```size```: Size of the icon (by default THEME_FONTSIZE)
  * - ```theme```(variable): Theme color of the icon (by default ```black```)
- * - ```color ```variable): Raw color of the icon (by default ```#000000```)
+ * - ```color ```(variable): Raw color of the icon
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom
@@ -46,7 +46,6 @@ interface VSPIconProps extends VSPMarginProps {
  */
 export default class VSPIcon extends React.Component<VSPIconProps> {
     private _fixed_style: StyleProp<any>;
-    private _variable_style: StyleProp<any>;
 
     public static defaultProps = {
         size: THEME_FONTSIZE,
@@ -67,15 +66,14 @@ export default class VSPIcon extends React.Component<VSPIconProps> {
     }
 
     render() {
-        this._variable_style = StyleSheet.create({
-            image: {
-                tintColor: (this.props.color ? this.props.color : THEME_COLORS[this.props.theme!]),
-            },
-        });
-        
         return (
             <Image
-                style={[this._fixed_style.image, this._variable_style.image]}
+                style={[
+                    this._fixed_style.image,
+                    {
+                        tintColor: (this.props.color ? this.props.color : THEME_COLORS[this.props.theme!]),
+                    }
+                ]}
                 source={ICON_SOURCE[this.props.iconName]}
             />
         );
