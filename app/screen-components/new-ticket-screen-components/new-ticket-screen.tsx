@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleProp, StyleSheet, ScrollView, View } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
 
 import { VSPScreenProps } from '../../props/vsp-screen';
 import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../config/size';
@@ -11,23 +10,12 @@ import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
 import VSPButton from '../../components/vsp-button';
 import VSPBottomBar from '../../components/vsp-bottombar';
-import VSPHeader, { VSPHeaderTitle, VSPHeaderBack } from '../../components/vsp-header';
 
-import { ThemeColorPicker } from '../../containers/new-ticket-containers'
+import { ThemeColorPicker } from '../../containers/new-ticket-containers';
+import { TICKET_COLORS } from '../../config/ticket_theme';
 
 export default class NewTicketScreen extends React.Component<VSPScreenProps> {
     private _fixed_style: StyleProp<any>;
-
-    static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
-        return {
-            header: (
-                <VSPHeader
-                    headerTitle={ (<VSPHeaderTitle text='새로운 티켓' />) }
-                    headerLeft={VSPHeaderBack(navigation)}
-                />
-            ),
-        };
-    };
 
     constructor(props: VSPScreenProps) {
         super(props);
@@ -90,7 +78,7 @@ export default class NewTicketScreen extends React.Component<VSPScreenProps> {
                     </View>
                     <View style={this._fixed_style.categoryView}>
                         <VSPText style={this._fixed_style.titleText}>테마 색상</VSPText>
-                        {/* <ThemeColorPicker /> */}
+                        <ThemeColorPicker />
                     </View>
                     <View style={this._fixed_style.categoryView}>
                         <View style={this._fixed_style.titleView}>
