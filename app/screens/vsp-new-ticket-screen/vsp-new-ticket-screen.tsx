@@ -3,19 +3,19 @@ import { StyleProp, StyleSheet, View, ScrollView, TouchableOpacity } from 'react
 import { NavigationScreenProp } from 'react-navigation';
 import Modal from 'react-native-modal';
 
-import { TICKET_COLORS } from '../config/ticket_theme';
-import { THEME_HEADER_FONTSIZE, THEME_COLORS, THEME_MINOR_FONTSIZE } from '../config/theme';
-import { VSP_EDGE_PADDING, VERTICAL_UNIT } from '../config/size';
-import { VSPScreenProps } from '../props/vsp-screen';
+import { TICKET_COLORS } from '../../config/ticket_theme';
+import { THEME_HEADER_FONTSIZE, THEME_COLORS, THEME_MINOR_FONTSIZE, RawColorType } from '../../config/theme';
+import { VSP_EDGE_PADDING, VERTICAL_UNIT } from '../../config/size';
+import { VSPScreenProps } from '../../props/vsp-screen';
 
-import VSPHeader, { VSPHeaderTitle, VSPHeaderBack } from '../components/vsp-header';
-import VSPContainer from '../components/vsp-container';
-import VSPButton from '../components/vsp-button';
-import VSPText from '../components/vsp-text';
-import VSPTextInput from '../components/vsp-textinput';
-import VSPProfile from '../components/vsp-profile';
-import VSPIcon from '../components/vsp-icon';
-import VSPBottomBar from '../components/vsp-bottombar';
+import VSPHeader, { VSPHeaderTitle, VSPHeaderBack } from '../../components/vsp-header';
+import VSPContainer from '../../components/vsp-container';
+import VSPButton from '../../components/vsp-button';
+import VSPText from '../../components/vsp-text';
+import VSPTextInput from '../../components/vsp-textinput';
+import VSPProfile from '../../components/vsp-profile';
+import VSPIcon from '../../components/vsp-icon';
+import VSPBottomBar from '../../components/vsp-bottombar';
 
 export default class VSPNewTicketScreen extends React.Component<VSPScreenProps> {
     private _fixed_style: StyleProp<any>;
@@ -135,7 +135,7 @@ export default class VSPNewTicketScreen extends React.Component<VSPScreenProps> 
  */
 class ThemeColorPicker extends React.Component {
     private _colors: string[] = Object.keys(TICKET_COLORS.HEADER);
-    private _colorview_style: (color: string, selected: boolean)=>{};
+    private _colorview_style: (color: RawColorType, selected: boolean)=>{};
 
     state = {
         selected: this._colors[0],
@@ -144,7 +144,7 @@ class ThemeColorPicker extends React.Component {
     constructor(props: VSPScreenProps) {
         super(props);
 
-        this._colorview_style = (color: string, selected: boolean) => ({
+        this._colorview_style = (color: RawColorType, selected: boolean) => ({
                 height: 10*VERTICAL_UNIT,
                 width: 10*VERTICAL_UNIT,
                 borderRadius: 5*VERTICAL_UNIT,
@@ -251,7 +251,9 @@ class DateTimePicker extends React.Component {
                 marginLeft: 4*VERTICAL_UNIT,
             },
 
-            timedateText: {
+            container: {
+                width: '90%',
+                alignSelf: 'center',
             },
         });
     }
@@ -266,14 +268,14 @@ class DateTimePicker extends React.Component {
                             iconName='calendar'
                             marginRight={VERTICAL_UNIT}
                         />
-                        <VSPText style={this._fixed_style.timedateText}>날짜</VSPText>
+                        <VSPText>날짜</VSPText>
                     </View>
                     <View style={this._fixed_style.timeInputView}>
                         <VSPIcon
                             iconName='clock'
                             marginRight={VERTICAL_UNIT}
                         />
-                        <VSPText style={this._fixed_style.timedateText}>시간</VSPText>
+                        <VSPText>시간</VSPText>
                     </View>
                 </View>
                 <View style={this._fixed_style.fromtoView}>
@@ -283,20 +285,20 @@ class DateTimePicker extends React.Component {
                             iconName='calendar'
                             marginRight={VERTICAL_UNIT}
                         />
-                        <VSPText style={this._fixed_style.timedateText}>날짜</VSPText>
+                        <VSPText>날짜</VSPText>
                     </View>
                     <View style={this._fixed_style.timeInputView}>
                         <VSPIcon
                             iconName='clock'
                             marginRight={VERTICAL_UNIT}
                         />
-                        <VSPText style={this._fixed_style.timedateText}>시간</VSPText>
+                        <VSPText>시간</VSPText>
                     </View>
                 </View>
                 <Modal
                     isVisible={true}
                 >
-                    <View>
+                    <View style={this._fixed_style.container}>
                     </View>
                 </Modal>
             </View>
