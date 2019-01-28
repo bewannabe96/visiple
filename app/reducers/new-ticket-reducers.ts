@@ -1,17 +1,16 @@
-import * as actions from '../actions/new-ticket-actions';
+import * as Actions from '../actions/new-ticket-actions';
+import { TICKET_HEADER_COLORS_KEYS } from '../config/ticket_theme';
 
-import { TICKET_COLORS } from '../config/ticket_theme';
+const initialState = {
+    themeColor: TICKET_HEADER_COLORS_KEYS[0],
+};
 
-import VSPNewTicket from '../models/vsp-new-ticket';
-
-const initialState = new VSPNewTicket;
-
-export default function newTicketReducer(state = initialState, action: any) {
+export default function NewTicketReducer(state = initialState, action: any) {
     switch(action.type) {
-        case actions.SET_THEME_COLOR:
-            return state.setThemeColor(action.colorName)
+        case Actions.SET_THEME_COLOR:
+            return {...state, themeColor: action.themeColor};
 
         default:
-            return state
+            return state;
     }
   }

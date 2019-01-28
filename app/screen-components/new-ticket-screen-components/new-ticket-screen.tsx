@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleProp, StyleSheet, ScrollView, View } from 'react-native';
 
-import { VSPScreenProps } from '../../props/vsp-screen';
 import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../config/size';
 import { THEME_HEADER_FONTSIZE } from '../../config/theme';
+import { VSPScreenProps } from '../../props/vsp-screen';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
@@ -12,12 +12,25 @@ import VSPButton from '../../components/vsp-button';
 import VSPBottomBar from '../../components/vsp-bottombar';
 
 import { ThemeColorPicker } from '../../containers/new-ticket-containers';
-import { TICKET_COLORS } from '../../config/ticket_theme';
+import { TICKET_COLORS, TicketHeaderColorType } from '../../config/ticket_theme';
 
-export default class NewTicketScreen extends React.Component<VSPScreenProps> {
+interface NewTicketScreenProps extends VSPScreenProps{
+    /**
+     * Theme color of the ticket
+     */
+    themeColor: TicketHeaderColorType,
+}
+
+/**
+ * NewTicketScreen
+ * 
+ * @property
+ * - ```themeColor```: Theme color of the ticket
+ */
+export default class NewTicketScreen extends React.Component<NewTicketScreenProps> {
     private _fixed_style: StyleProp<any>;
 
-    constructor(props: VSPScreenProps) {
+    constructor(props: NewTicketScreenProps) {
         super(props);
 
         this._fixed_style = StyleSheet.create({
@@ -109,7 +122,7 @@ export default class NewTicketScreen extends React.Component<VSPScreenProps> {
                         fontSize={THEME_HEADER_FONTSIZE}
                         margin={2*VERTICAL_UNIT}
                     />
-                    <VSPBottomBar />
+                    <VSPBottomBar color={TICKET_COLORS.HEADER[this.props.themeColor]} />
                 </View>
             </VSPContainer>
         );

@@ -35,7 +35,7 @@ interface VSPIconProps extends VSPMarginProps {
  * - ```iconName```(required): Name of the icon
  * - ```size```: Size of the icon (by default THEME_FONTSIZE)
  * - ```theme```(variable): Theme color of the icon (by default ```black```)
- * - ```color (variable)```: Raw color of the icon (by default ```#000000```)
+ * - ```color ```variable): Raw color of the icon (by default ```#000000```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom

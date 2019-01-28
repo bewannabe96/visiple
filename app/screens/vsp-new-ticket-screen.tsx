@@ -5,10 +5,10 @@ import { NavigationScreenProp } from 'react-navigation';
 
 import VSPHeader, { VSPHeaderTitle, VSPHeaderBack } from '../components/vsp-header';
 
-import newTicketReducer from "../reducers/new-ticket-reducers";
-import NewTicketScreen from '../screen-components/new-ticket-screen-components';
+import NewTicketReducer from "../reducers/new-ticket-reducers";
+import NewTicketScreen from '../containers/new-ticket-containers';
 
-const store = createStore(newTicketReducer)
+const store = createStore(NewTicketReducer)
 
 export default class VSPNewTicketScreen extends React.Component {
     static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
