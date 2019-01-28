@@ -10,6 +10,11 @@ export interface ThemeColorPickerProps {
      * Color that is selected
      */
     selectedColor?: RawColorType,
+
+    /**
+     * setThemeColor action creator
+     */
+    setThemeColor?: any,
 }
 
 /**
@@ -57,7 +62,7 @@ export default class ThemeColorPicker extends React.Component<ThemeColorPickerPr
                             key={color}
                             style={this._colorview_style(TICKET_COLORS.HEADER[color],
                                 this.props.selectedColor===color)}
-                            onPress={()=>{this.setState({selected: color})}}
+                            onPress={()=>{this.props.setThemeColor(color)}}
                         />
                     ))
                 }
