@@ -2,14 +2,14 @@ import React from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 
 import { RawColorType, THEME_COLORS } from "../../config/theme";
-import { TICKET_COLORS } from '../../config/ticket_theme';
+import { TICKET_COLORS, TICKET_HEADER_COLORS_KEYS } from '../../config/ticket_theme';
 import { VERTICAL_UNIT } from '../../config/size';
 
 export interface ThemeColorPickerProps {
     /**
      * Color that is selected
      */
-    selectedColor: RawColorType,
+    selectedColor?: RawColorType,
 }
 
 /**
@@ -19,8 +19,11 @@ export interface ThemeColorPickerProps {
  * ```selectedColor```: Color that is selected
  */
 export default class ThemeColorPicker extends React.Component<ThemeColorPickerProps> {
-    private _colors: string[] = Object.keys(TICKET_COLORS.HEADER);
     private _colorview_style: (color: RawColorType, selected: boolean)=>{};
+
+    public static defaultProps = {
+        selectedColor: TICKET_HEADER_COLORS_KEYS[0],
+    };
 
     constructor(props: ThemeColorPickerProps) {
         super(props);
@@ -49,7 +52,7 @@ export default class ThemeColorPicker extends React.Component<ThemeColorPickerPr
                 showsHorizontalScrollIndicator={false}
             >
                 {
-                    this._colors.map(color => (
+                    TICKET_HEADER_COLORS_KEYS.map(color => (
                         <TouchableOpacity
                             key={color}
                             style={this._colorview_style(TICKET_COLORS.HEADER[color],
