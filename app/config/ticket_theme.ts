@@ -26,6 +26,11 @@ const TICKET_HEADER_COLORS: {[key: string]: string} = {
 }
 
 /**
+ * Ticket Header Colors Keys
+ */
+export const TICKET_HEADER_COLORS_KEYS = Object.keys(TICKET_HEADER_COLORS);
+
+/**
  * Ticket Colors
  */
 export const TICKET_COLORS = {
