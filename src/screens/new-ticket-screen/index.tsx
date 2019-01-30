@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleProp, StyleSheet, ScrollView, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../config/size';
-import { THEME_HEADER_FONTSIZE } from '../../config/theme';
-import { TICKET_COLORS } from '../../config/ticket_theme';
+import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
+import { THEME_HEADER_FONTSIZE } from '../../types/config/theme';
+import { TICKET_COLORS } from '../../types/config/ticket_theme';
 import { VSPScreenProps } from '../../types/props/vsp-screen';
 
 import VSPHeader, { VSPHeaderTitle, VSPHeaderBack } from '../../components/vsp-header';

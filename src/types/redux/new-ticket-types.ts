@@ -1,4 +1,4 @@
-import { TicketHeaderColorType } from "../../config/ticket_theme";
+import { TicketHeaderColorType } from "../config/ticket_theme";
 
 /**
  * New Ticket Screen State Interface

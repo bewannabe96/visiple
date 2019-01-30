@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleProp, StyleSheet } from 'react-native';
 
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
-import { ThemeColorType, RawColorType, THEME_COLORS, THEME_FONTSIZE } from '../config/theme';
+import { ThemeColorType, RawColorType, THEME_COLORS, THEME_FONTSIZE } from '../types/config/theme';
 
 import ICON_SOURCE, { IconNameType } from '../assets/icons';
 

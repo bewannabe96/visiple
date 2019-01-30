@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { VERTICAL_UNIT } from '../../config/size';
-import { THEME_MINOR_FONTSIZE } from '../../config/theme';
+import { VERTICAL_UNIT } from '../../types/config/size';
+import { THEME_MINOR_FONTSIZE } from '../../types/config/theme';
 
 import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';

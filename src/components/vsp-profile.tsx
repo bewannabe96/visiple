@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleProp, StyleSheet } from 'react-native';
 
-import { THEME_COLORS, addShadowProperties } from '../config/theme';
-import { HORIZONTAL_UNIT } from '../config/size';
+import { THEME_COLORS, addShadowProperties } from '../types/config/theme';
+import { HORIZONTAL_UNIT } from '../types/config/size';
 import { decodeVSPMarginProps, VSPMarginProps } from '../types/props/vsp-margin';
 
 interface VSPProfileProps extends VSPMarginProps {

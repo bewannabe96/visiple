@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { VSPScreenProps } from '../props/vsp-screen';
+import { VSPScreenProps } from '../types/props/vsp-screen';
 
 import VSPContainer from '../components/vsp-container';
 import VSPHeader, { VSPHeaderMenu } from '../components/vsp-header';

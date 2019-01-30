@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleProp, StyleSheet, ScrollView } from 'react-native';
 
-import { THEME_COLORS, addShadowProperties, THEME_HEADER_FONTSIZE } from '../../config/theme';
-import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../config/size';
+import { THEME_COLORS, addShadowProperties, THEME_HEADER_FONTSIZE } from '../../types/config/theme';
+import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPImage from '../../components/vsp-image';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleProp, StyleSheet } from 'react-native';
 
-import { THEME_COLORS, addShadowProperties, ThemeColorType, THEME_FONTSIZE } from '../config/theme';
+import { THEME_COLORS, addShadowProperties, ThemeColorType, THEME_FONTSIZE } from '../types/config/theme';
 import { decodeVSPMarginProps, VSPMarginProps } from '../types/props/vsp-margin';
 
 import VSPText from './vsp-text';

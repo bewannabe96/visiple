@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleProp, StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { VERTICAL_UNIT } from '../../config/size';
-import { THEME_HEADER_FONTSIZE } from '../../config/theme';
+import { VERTICAL_UNIT } from '../../types/config/size';
+import { THEME_HEADER_FONTSIZE } from '../../types/config/theme';
 
 import VSPText from '../../components/vsp-text';
 import VSPIcon from '../../components/vsp-icon';

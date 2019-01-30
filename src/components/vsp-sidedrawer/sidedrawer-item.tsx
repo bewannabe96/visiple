@@ -2,8 +2,8 @@ import React from 'react';
 import { TouchableOpacity, StyleProp, StyleSheet } from 'react-native';
 import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 
-import { THEME_COLORS } from '../../config/theme';
-import { VSP_EDGE_PADDING } from '../../config/size';
+import { THEME_COLORS } from '../../types/config/theme';
+import { VSP_EDGE_PADDING } from '../../types/config/size';
 
 import VSPText from '../vsp-text';
 import VSPIcon from '../vsp-icon';

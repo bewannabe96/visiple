@@ -1,7 +1,7 @@
 import React from 'react';
 import { GestureResponderEvent, StyleProp, StyleSheet, TouchableOpacity } from "react-native";
 
-import { ThemeColorType, THEME_COLORS, RawColorType, THEME_FONTSIZE } from "../config/theme";
+import { ThemeColorType, THEME_COLORS, RawColorType, THEME_FONTSIZE } from "../types/config/theme";
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
 import VSPIcon from "./vsp-icon";

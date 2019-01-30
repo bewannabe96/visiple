@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleProp } from 'react-native';
 
-import { THEME_FONT, THEME_FONTSIZE, THEME_COLORS } from '../config/theme';
+import { THEME_FONT, THEME_FONTSIZE, THEME_COLORS } from '../types/config/theme';
 
 interface VSPTextProps {
     /**

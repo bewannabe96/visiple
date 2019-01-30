@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleProp, StyleSheet } from 'react-native';
 
-import { addShadowProperties } from '../config/theme';
-import { HORIZONTAL_UNIT, VERTICAL_UNIT } from '../config/size';
-import { VSPScreenProps } from '../props/vsp-screen';
+import { addShadowProperties } from '../types/config/theme';
+import { HORIZONTAL_UNIT, VERTICAL_UNIT } from '../types/config/size';
+import { VSPScreenProps } from '../types/props/vsp-screen';
 
 import VSPContainer from '../components/vsp-container';
 import VSPTextInput from '../components/vsp-textinput';

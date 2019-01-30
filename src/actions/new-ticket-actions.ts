@@ -1,5 +1,5 @@
 import { SET_TICKETCOLOR } from "../types/redux/new-ticket-types";
-import { TicketHeaderColorType } from "../config/ticket_theme";
+import { TicketHeaderColorType } from "../types/config/ticket_theme";
 
 /**
  * Ticket Data Action Creators

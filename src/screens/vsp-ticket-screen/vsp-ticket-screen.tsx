@@ -2,10 +2,10 @@ import React from 'react';
 import { ScrollView, StyleSheet, StyleProp, TouchableOpacity, View, Text, Image } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { VSPScreenProps } from '../../props/vsp-screen';
-import { TicketHeaderColorType, TICKET_COLORS, TICKET_TEXTS } from '../../config/ticket_theme';
-import { addShadowProperties, THEME_FONT } from '../../config/theme';
-import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../config/size';
+import { VSPScreenProps } from '../../types/props/vsp-screen';
+import { TicketHeaderColorType, TICKET_COLORS, TICKET_TEXTS } from '../../types/config/ticket_theme';
+import { addShadowProperties, THEME_FONT } from '../../types/config/theme';
+import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
 
 import VSPHeader, { VSPHeaderTitle, VSPHeaderButton, VSPHeaderMenu } from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';

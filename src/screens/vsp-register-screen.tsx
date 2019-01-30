@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, StyleProp, StyleSheet } from 'react-native';
 
-import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../config/size';
-import { VSPScreenProps } from '../props/vsp-screen';
+import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../types/config/size';
+import { VSPScreenProps } from '../types/props/vsp-screen';
 
 import VSPContainer from '../components/vsp-container';
 import VSPTitleLogo from '../components/vsp-titlelogo';
 import VSPText from '../components/vsp-text';
 import VSPTextInput from '../components/vsp-textinput';
 import VSPCheckbox from '../components/vsp-checkbox';
-import { THEME_COLORS } from '../config/theme';
+import { THEME_COLORS } from '../types/config/theme';
 import VSPTextButton from '../components/vsp-text-button';
 import VSPColoredButton from '../components/vsp-colored-button';
 

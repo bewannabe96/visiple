@@ -3,9 +3,9 @@ import { View, ScrollView, StyleProp, StyleSheet } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import Modal from "react-native-modal";
 
-import { THEME_COLORS, addShadowProperties, THEME_MINOR_FONTSIZE, THEME_HEADER_FONTSIZE } from '../../config/theme';
-import { VSP_EDGE_PADDING, VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../config/size';
-import { VSPScreenProps } from '../../props/vsp-screen';
+import { THEME_COLORS, addShadowProperties, THEME_MINOR_FONTSIZE, THEME_HEADER_FONTSIZE } from '../../types/config/theme';
+import { VSP_EDGE_PADDING, VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
+import { VSPScreenProps } from '../../types/props/vsp-screen';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPHeader, { VSPHeaderTitle, VSPHeaderMenu } from '../../components/vsp-header';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleProp, StyleSheet } from 'react-native';
 
-import { THEME_COLORS, THEME_MINOR_FONTSIZE } from '../../config/theme';
-import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../config/size';
+import { THEME_COLORS, THEME_MINOR_FONTSIZE } from '../../types/config/theme';
+import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/config/size';
 
 import VSPText from '../vsp-text';
 import VSPProfile from '../vsp-profile';

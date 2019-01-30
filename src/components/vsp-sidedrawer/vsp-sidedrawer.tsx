@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StyleProp, StyleSheet } from 'react-native';
 import { DrawerItemsProps } from "react-navigation";
 
-import { THEME_COLORS } from '../../config/theme';
-import { VSP_EDGE_PADDING } from '../../config/size';
+import { THEME_COLORS } from '../../types/config/theme';
+import { VSP_EDGE_PADDING } from '../../types/config/size';
 
 import SideDrawerItem from './sidedrawer-item';
 import ProfileTab from './profiletab';

@@ -2,8 +2,8 @@ import React from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { NavigationInjectedProps, NavigationScreenProp, withNavigation } from 'react-navigation';
 
-import { THEME_COLORS, addShadowProperties } from '../config/theme';
-import { VSP_HEADER_PADDING } from '../config/size';
+import { THEME_COLORS, addShadowProperties } from '../types/config/theme';
+import { VSP_HEADER_PADDING } from '../types/config/size';
 
 import VSPText from './vsp-text';
 

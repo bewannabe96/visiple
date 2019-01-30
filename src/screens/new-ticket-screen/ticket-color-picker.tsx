@@ -1,9 +1,9 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 
-import { THEME_COLORS } from "../../config/theme";
-import { TICKET_COLORS, TICKET_HEADER_COLORS_KEYS, TicketHeaderColorType } from '../../config/ticket_theme';
-import { VERTICAL_UNIT } from '../../config/size';
+import { THEME_COLORS } from "../../types/config/theme";
+import { TICKET_COLORS, TICKET_HEADER_COLORS_KEYS, TicketHeaderColorType } from '../../types/config/ticket_theme';
+import { VERTICAL_UNIT } from '../../types/config/size';
 
 interface TicketColorPickerProps {
     /**

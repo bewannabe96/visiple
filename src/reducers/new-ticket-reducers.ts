@@ -1,6 +1,6 @@
 import { TicketDataState, TicketDataActionType, SET_TICKETCOLOR } from "../types/redux/new-ticket-types";
 
-import { TICKET_HEADER_COLORS_KEYS } from "../config/ticket_theme";
+import { TICKET_HEADER_COLORS_KEYS } from "../types/config/ticket_theme";
 import { combineReducers } from "redux";
 
 /**
