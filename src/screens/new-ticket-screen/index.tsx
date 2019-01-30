@@ -16,7 +16,9 @@ import VSPTextButton from '../../components/vsp-text-button';
 import VSPColoredButton from '../../components/vsp-colored-button';
 
 import { TicketDataState } from '../../types/redux/new-ticket-types';
+
 import TicketColorPickerContainer from '../../containers/vsp-new-ticket-container/ticket-color-picker';
+import DateTimePickerContainer from '../../containers/vsp-new-ticket-container/date-time-picker';
 
 interface NewTicketScreenProps extends VSPScreenProps{
     /**
@@ -107,7 +109,7 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                             <VSPText style={this._fixed_style.titleText}>기간</VSPText>
                             <VSPText>{12} 박 {13} 일</VSPText>
                         </View>
-                        {/* <DateTimePicker /> */}
+                        <DateTimePickerContainer />
                     </View>
                     <View style={this._fixed_style.categoryView}>
                         <VSPText style={this._fixed_style.titleText}>테마 색상</VSPText>
