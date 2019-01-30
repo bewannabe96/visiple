@@ -102,6 +102,7 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                             placeholder='제목을 입력해 주세요.'
                             fontSize={THEME_HEADER_FONTSIZE}
                             marginTop={VERTICAL_UNIT}
+                            color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                         />
                     </View>
                     <View style={this._fixed_style.categoryView}>
