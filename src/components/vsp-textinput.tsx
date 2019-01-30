@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TextInput, StyleProp, StyleSheet } from 'react-native';
 
-import { THEME_COLORS, THEME_FONTSIZE, ThemeColorType, THEME_FONT } from '../types/config/theme';
+import { THEME_COLORS, THEME_FONTSIZE, ThemeColorType, THEME_FONT, RawColorType } from '../types/config/theme';
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
 import VSPIcon from './vsp-icon';
@@ -69,6 +69,11 @@ interface VSPTextInputProps extends VSPMarginProps {
     theme?: ThemeColorType;
 
     /**
+     * Raw color of the button
+     */
+    color?: RawColorType;
+
+    /**
      * Display underline (by default ```true```)
      */
     displayUnderline?: boolean;
@@ -83,7 +88,8 @@ interface VSPTextInputProps extends VSPMarginProps {
  * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```frontIcon```: Icon to be diplayed in the front of the text input
  * - ```rearIcon```: Icon to be diplayed in the back of the text input
- * - ```theme```: Theme color of the text input (by default ```ocean-blue```)
+ * - ```theme```(variable): Theme color of the text input (by default ```ocean-blue```)
+ * - ```color```(variable): Raw color of the button
  * - ```displayUnderline```: Display underline (by default ```true```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
@@ -94,7 +100,6 @@ interface VSPTextInputProps extends VSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPTextInput extends React.Component<VSPTextInputProps> {
-    private _fixed_tyle: StyleProp<any>
 
     public static defaultProps = {
         textContentType: 'none',
@@ -107,48 +112,48 @@ export default class VSPTextInput extends React.Component<VSPTextInputProps> {
         textValue: ''
     }
 
-    constructor(props: VSPTextInputProps) {
-        super(props);
-
-        this._fixed_tyle = StyleSheet.create({
+    render() {
+        let variable_style = StyleSheet.create({
             container: {
                 width: '100%',
                 flexDirection: 'row',
                 alignItems: 'center',
-                borderBottomWidth: props.displayUnderline ? 2 : 0,
-                borderBottomColor: THEME_COLORS[props.theme!],
-                paddingVertical: 0.3*props.fontSize!,
-                ...decodeVSPMarginProps(props),
+                borderBottomWidth: this.props.displayUnderline ? 2 : 0,
+                borderBottomColor: this.props.color ?
+                    this.props.color : THEME_COLORS[this.props.theme!],
+                paddingVertical: 0.3*this.props.fontSize!,
+                ...decodeVSPMarginProps(this.props),
             },
     
             textinput: {
                 flex: 1,
                 fontFamily: THEME_FONT, 
-                fontSize: props.fontSize!,
-                color: THEME_COLORS[props.theme!],
+                fontSize: this.props.fontSize!,
+                color: this.props.color ?
+                    this.props.color : THEME_COLORS[this.props.theme!],
                 padding: 0,
             },
         });
-    }
 
-    render() {
         return (
-            <View style={this._fixed_tyle.container}>
+            <View style={variable_style.container}>
                 {
                     !!this.props.frontIcon &&
                     <VSPIcon
                         iconName={this.props.frontIcon}
-                        color={THEME_COLORS[this.props.theme!]}
+                        color={this.props.color ?
+                            this.props.color : THEME_COLORS[this.props.theme!]}
                         size={this.props.fontSize!}
                         marginRight={0.7*this.props.fontSize!}
                     />
                 }
                 <TextInput
-                    style={this._fixed_tyle.textinput}
+                    style={variable_style.textinput}
                     placeholder={this.props.placeholder}
                     value={this.state.textValue}
                     textContentType={this.props.textContentType!}
-                    placeholderTextColor={THEME_COLORS[this.props.theme!]}
+                    placeholderTextColor={this.props.color ?
+                        this.props.color : THEME_COLORS[this.props.theme!]}
                     autoCapitalize='none'
                     autoCorrect={false}
                     onChangeText={(text: string) => { this.setState({ ...this.state, textValue: text })}}
