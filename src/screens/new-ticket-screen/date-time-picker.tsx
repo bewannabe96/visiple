@@ -18,6 +18,9 @@ interface DateTimePickerProps {
 
 /**
  * DateTimePicker
+ * 
+ * @property
+ * - ```ticketColor```(required): Color of the ticket
  */
 export default class DateTimePicker extends React.Component<DateTimePickerProps> {
     private _fixed_style: StyleProp<any>;
