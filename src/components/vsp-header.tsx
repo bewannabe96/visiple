@@ -182,7 +182,7 @@ const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
  */
 const VSPHeaderBack = (navigation: NavigationScreenProp<any>) => (
     <VSPHeaderButton
-        icon='previous'
+        icon='leftarrow'
         onPress={()=>{navigation.pop()}}
     />
 )
