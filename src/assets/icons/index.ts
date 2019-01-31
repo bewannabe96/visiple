@@ -11,9 +11,11 @@ export type IconNameType
 | 'search'
 | 'plus'
 | 'calendar'
-| 'clock';
+| 'clock'
+| 'leftarrow'
+| 'rightarrow';
  
- const ICON_SOURCE = {
+ const ICON_SOURCE: {[name in IconNameType]: any} = {
      'user': require('./user.png'),
      'menu': require('./menu.png'),
      'padlock': require('./padlock.png'),
@@ -27,6 +29,8 @@ export type IconNameType
      'plus': require('./plus.png'),
      'calendar': require('./calendar.png'),
      'clock': require('./clock.png'),
+     'leftarrow': require('./left-arrow.png'),
+     'rightarrow': require('./right-arrow.png'),
  };
 
  export default ICON_SOURCE;
