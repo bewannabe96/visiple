@@ -90,6 +90,7 @@ export default class VSPTextButton extends React.Component<VSPTextButtonProps> {
         return (
             <TouchableOpacity
                 style={this._fixed_style.touchableOpacity}
+                activeOpacity={0.6}
                 onPress={this.props.onPress}
             >
                 {

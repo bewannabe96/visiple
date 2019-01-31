@@ -86,6 +86,7 @@ export default class VSPRoundIconButton extends React.Component<VSPRoundIconButt
                             this.props.color : THEME_COLORS[this.props.theme!],
                     }
                 ]}
+                activeOpacity={0.6}
                 onPress={this.props.onPress}
             >
                 {

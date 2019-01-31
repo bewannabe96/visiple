@@ -98,6 +98,7 @@ export default class VSPColoredButton extends React.Component<VSPColoredButtonPr
                             this.props.color : THEME_COLORS[this.props.theme!],
                     }
                 ]}
+                activeOpacity={0.6}
                 onPress={this.props.onPress}
             >
                 {
