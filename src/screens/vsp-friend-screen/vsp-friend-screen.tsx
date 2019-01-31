@@ -178,7 +178,7 @@ class AddFriendModal extends React.Component {
     private _fixed_style: StyleProp<any>;
 
     state = {
-        visible: false,
+        modalVisible: false,
     }
 
     constructor(props: any) {
@@ -252,7 +252,7 @@ class AddFriendModal extends React.Component {
                     onPress={this._openModal}
                 />
                 <Modal
-                    isVisible={this.state.visible}
+                    isVisible={this.state.modalVisible}
                     avoidKeyboard={true}
                 >
                     <View style={this._fixed_style.container}>
@@ -264,7 +264,7 @@ class AddFriendModal extends React.Component {
                                 <VSPTextButton
                                     icon='cancel'
                                     marginRight={4*HORIZONTAL_UNIT}
-                                    onPress={()=>{this.setState({ visible: false });}}
+                                    onPress={()=>{this.setState({modalVisible: true})}}
                                 />
                             </View>
                         </View>
