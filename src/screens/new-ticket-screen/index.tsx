@@ -19,6 +19,7 @@ import { TicketDataState } from '../../types/redux/new-ticket-types';
 
 import TicketColorPickerContainer from '../../containers/vsp-new-ticket-container/ticket-color-picker';
 import DateTimePickerContainer from '../../containers/vsp-new-ticket-container/date-time-picker';
+import InvitedFriendsListContainer from '../../containers/vsp-new-ticket-container/invited-friends-list';
 
 interface NewTicketScreenProps extends VSPScreenProps{
     /**
@@ -79,11 +80,6 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                 fontWeight: 'bold',
             },
 
-            friendsScrollView: {
-                flexDirection: 'row',
-                marginTop: VERTICAL_UNIT,
-            },
-
             bottomView: {
                 position: 'absolute',
                 bottom: 0,
@@ -124,15 +120,7 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                 fontSize={THEME_HEADER_FONTSIZE}
                             />
                         </View>
-                        <ScrollView
-                            contentContainerStyle={this._fixed_style.friendsScrollView}
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                        >
-                            {/* <InvitedFriendItem />
-                            <InvitedFriendItem />
-                            <InvitedFriendItem /> */}
-                        </ScrollView>
+                        <InvitedFriendsListContainer />
                         <View style={this._fixed_style.footerView}>
                             <VSPText>총 {8}명</VSPText>
                         </View>
