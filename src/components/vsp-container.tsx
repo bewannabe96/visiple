@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, StyleProp, StyleSheet } from 'react-native';
+import { View, SafeAreaView, StyleSheet } from 'react-native';
 
 import { THEME_COLORS, ThemeColorType } from '../types/config/theme';
 import { decodeVSPPaddingProps, VSPPaddingProps } from '../types/props/vsp-padding';
@@ -31,36 +31,30 @@ interface VSPContainerProps extends VSPPaddingProps {
  * - ```paddingLeft```: Left padding
  */
 export default class VSPContainer extends React.Component<VSPContainerProps> {
-    private _fixed_style: StyleProp<any>;
-
     public static defaultProps = {
         justifyContent: 'flex-start',
         background: 'none',
     };
 
-    constructor(props: VSPContainerProps) {
-        super(props);
-
-        this._fixed_style = StyleSheet.create({
+    render() {
+        let style = StyleSheet.create({
             container: {
                 flex: 1,
-                backgroundColor: THEME_COLORS[props.background!],
+                backgroundColor: THEME_COLORS[this.props.background!],
             },
     
             innerView: {
                 flex: 1,
                 flexDirection: 'column',
-                justifyContent: props.justifyContent!,
+                justifyContent: this.props.justifyContent!,
                 alignItems: 'stretch',
-                ...decodeVSPPaddingProps(props),
+                ...decodeVSPPaddingProps(this.props),
             }
         });
-    }
 
-    render() {
         return (
-            <SafeAreaView style={this._fixed_style.container}>
-                <View style={this._fixed_style.innerView}>
+            <SafeAreaView style={style.container}>
+                <View style={style.innerView}>
                     {this.props.children}
                 </View>
             </SafeAreaView>

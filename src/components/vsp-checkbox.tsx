@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, StyleProp, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import { THEME_COLORS, ThemeColorType, THEME_FONTSIZE } from '../types/config/theme';
 import { VSPMarginProps } from '../types/props/vsp-margin';
@@ -26,8 +26,6 @@ interface VSPCheckboxProps extends VSPMarginProps {
  * - ```theme```: Theme color of the checkbox (by default ```ocean-blue```)
  */
 export default class VSPCheckbox extends React.Component<VSPCheckboxProps> {
-    private _style: StyleProp<any>;
-
     public static defaultProps = {
         size: THEME_FONTSIZE,
         theme: 'ocean-blue',
@@ -37,39 +35,25 @@ export default class VSPCheckbox extends React.Component<VSPCheckboxProps> {
         checked: false
     }
 
-    constructor(props: VSPCheckboxProps) {
-        super(props);
-
-        this._style = StyleSheet.create({
-            touchableopacity_normal: {
+    render() {
+        let style = StyleSheet.create({
+            touchableopacity: {
                 justifyContent: 'center',
                 alignItems: 'center',
-                borderRadius: 0.2*props.size!,
-                borderWidth: 0.1*props.size!,
-                borderColor: THEME_COLORS[props.theme!],
-                width: props.size!, 
-                height: props.size!,
-                marginRight: 0.7*props.size!,
-            },
-    
-            touchableopacity_checked: {
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 0.2*props.size!,
-                backgroundColor: THEME_COLORS[props.theme!],
-                width: props.size!, 
-                height: props.size!,
-                marginRight: 0.7*props.size!,
+                borderRadius: 0.2*this.props.size!,
+                borderWidth: this.state.checked ? 0.1*this.props.size! : 0,
+                borderColor: THEME_COLORS[this.props.theme!],
+                backgroundColor: THEME_COLORS[this.state.checked ? 'none' :this.props.theme!],
+                width: this.props.size!, 
+                height: this.props.size!,
+                marginRight: 0.7*this.props.size!,
             },
         });
-    }
 
-    render() {
         return (
             <TouchableOpacity
-                style={this.state.checked ?
-                    this._style.touchableopacity_checked: this._style.touchableopacity_normal}
-                onPress={()=>{this.setState({ ...this.state, checked: !this.state.checked })}}
+                style={style.touchableopacity}
+                onPress={()=>{this.setState({ checked: !this.state.checked })}}
             >
                 <VSPIcon
                     iconName='check'

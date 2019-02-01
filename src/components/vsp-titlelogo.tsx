@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, ImageSourcePropType, StyleProp, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
@@ -31,10 +31,6 @@ interface VSPTitleLogoProps extends VSPMarginProps {
  * - ```rescaleRatio```: Ratio by which will rescale the title logo abide (by default ```100%```)
  */
 export default class VSPTitleLogo extends React.Component<VSPTitleLogoProps> {
-    private _logosource: ImageSourcePropType;
-    private _fixed_style: StyleProp<any>;
-    private _variable_style: StyleProp<any>;
-
     public static defaultProps = {
         rescaleRatio: '100%',
     };
@@ -45,25 +41,18 @@ export default class VSPTitleLogo extends React.Component<VSPTitleLogoProps> {
         logoHeight: 0,
     }
 
-    constructor(props: VSPTitleLogoProps) {
-        super(props);
-        
-        this._logosource = require('../assets/logo/logo.png');
-
-        this._fixed_style = StyleSheet.create({
-            container: {
-                width: (props.fillDirection==='X' ? props.rescaleRatio! : 0),
-                height: (props.fillDirection==='Y' ? props.rescaleRatio! : 0),
-                ...decodeVSPMarginProps(props)
-            },
-        });
-    }
-
     render() {
-        this._variable_style = StyleSheet.create({
+        let logosource = require('../assets/logo/logo.png');
+
+        let style = StyleSheet.create({
             container: {
-                width: this.state.logoWidth,
-                height: this.state.logoHeight,
+                width: this.state.firstTrigger ?
+                    (this.props.fillDirection==='X' ? this.props.rescaleRatio! : 0)
+                    : this.state.logoWidth,
+                height: this.state.firstTrigger ?
+                    (this.props.fillDirection==='Y' ? this.props.rescaleRatio! : 0)
+                    : this.state.logoHeight,
+                ...decodeVSPMarginProps(this.props)
             },
 
             image: {
@@ -75,10 +64,7 @@ export default class VSPTitleLogo extends React.Component<VSPTitleLogoProps> {
 
         return (
             <View
-                style={[
-                    this._fixed_style.container,
-                    !this.state.firstTrigger ? this._variable_style.container : null,
-                ]}
+                style={style.container}
                 onLayout={event=>{
                     this.state.firstTrigger &&
                     this.setState({
@@ -93,8 +79,8 @@ export default class VSPTitleLogo extends React.Component<VSPTitleLogoProps> {
                 }}
             >
                 <Image
-                    style={this._variable_style.image}
-                    source={this._logosource}
+                    style={style.image}
+                    source={logosource}
                 />
             </View>
         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GestureResponderEvent, StyleProp, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { GestureResponderEvent, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 import { ThemeColorType, THEME_COLORS, THEME_FONT, RawColorType, THEME_FONTSIZE } from "../types/config/theme";
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
@@ -47,8 +47,8 @@ interface VSPColoredButtonProps extends VSPMarginProps {
  * - ```text```: Text inside the button
  * - ```icon```: Icon to be displayed in the button
  * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
- * - ```theme```(variable): Theme color of the button (by default ```ocean-blue```)
- * - ```color```(variable): Raw color of the button
+ * - ```theme```: Theme color of the button (by default ```ocean-blue```)
+ * - ```color```: Raw color of the button
  * - ```onPress```: Callback function when button pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
@@ -59,45 +59,35 @@ interface VSPColoredButtonProps extends VSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPColoredButton extends React.Component<VSPColoredButtonProps> {
-    private _fixed_style: StyleProp<any>
-
     public static defaultProps = {
         fontSize: THEME_FONTSIZE,
         theme: 'ocean-blue',
     };
 
-    constructor(props: VSPColoredButtonProps) {
-        super(props);
-
-        this._fixed_style = StyleSheet.create({
+    render() {
+        let style = StyleSheet.create({
             touchableOpacity: {
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                paddingVertical: 0.5*props.fontSize,
-                borderRadius: 0.3*props.fontSize,
-                ...decodeVSPMarginProps(props),
+                paddingVertical: 0.5*this.props.fontSize,
+                borderRadius: 0.3*this.props.fontSize,
+                backgroundColor: this.props.color ?
+                            this.props.color : THEME_COLORS[this.props.theme!],
+                ...decodeVSPMarginProps(this.props),
             },
     
             text: {
-                fontSize: props.fontSize,
+                fontSize: this.props.fontSize,
                 fontFamily: THEME_FONT,
                 color: THEME_COLORS['white'],
-                marginLeft: props.icon ? 0.5*props.fontSize : 0,
+                marginLeft: this.props.icon ? 0.5*this.props.fontSize : 0,
             },
         });
-    }
 
-    render() {
         return (
             <TouchableOpacity
-                style={[
-                    this._fixed_style.touchableOpacity,
-                    {
-                        backgroundColor: this.props.color ?
-                            this.props.color : THEME_COLORS[this.props.theme!],
-                    }
-                ]}
+                style={style.touchableOpacity}
                 activeOpacity={0.6}
                 onPress={this.props.onPress}
             >
@@ -111,7 +101,7 @@ export default class VSPColoredButton extends React.Component<VSPColoredButtonPr
                 }
                 {
                     !!this.props.text &&
-                    <Text style={this._fixed_style.text}>
+                    <Text style={style.text}>
                         {this.props.text}
                     </Text>
                 }

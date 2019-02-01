@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, StyleProp, ImageSourcePropType } from 'react-native';
+import { Image, StyleSheet, ImageSourcePropType } from 'react-native';
 
 interface VSPImageProps {
     /**
@@ -27,28 +27,23 @@ interface VSPImageProps {
  * - ```width```: Width of the image (by default ```100%```)
  */
 export default class VSPImage extends React.Component<VSPImageProps> {
-    private _fixed_style: StyleProp<any>;
-
     public static defaultProps = {
         height: '100%',
         width: '100%',
     };
 
-    constructor(props: VSPImageProps) {
-        super(props);
-
-        this._fixed_style = StyleSheet.create({
+    render() {
+        let style = StyleSheet.create({
             image: {
-                height: props.height!,
-                width: props.width!,
+                height: this.props.height!,
+                width: this.props.width!,
                 resizeMode: 'cover',
             }
-        })
-    }
-    render() {
+        });
+
         return (
             <Image
-                style={this._fixed_style.image}
+                style={style.image}
                 source={this.props.source}
             />
         );

@@ -19,8 +19,8 @@ interface VSPBottomBarProps {
  * VSPBottomBar
  * 
  * @property
- * - ```theme```(variable): Theme color of the icon (by default ```brown```)
- * - ```color (variable)```: Raw color of the icon
+ * - ```theme```: Theme color of the icon (by default ```brown```)
+ * - ```color```: Raw color of the icon
  */
 export default class VSPBottomBar extends React.Component<VSPBottomBarProps> {
     render() {

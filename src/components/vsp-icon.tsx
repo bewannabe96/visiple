@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleProp, StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 import { ThemeColorType, RawColorType, THEME_COLORS, THEME_FONTSIZE } from '../types/config/theme';
@@ -34,8 +34,8 @@ interface VSPIconProps extends VSPMarginProps {
  * @property
  * - ```iconName```(required): Name of the icon
  * - ```size```: Size of the icon (by default THEME_FONTSIZE)
- * - ```theme```(variable): Theme color of the icon (by default ```black```)
- * - ```color ```(variable): Raw color of the icon
+ * - ```theme```: Theme color of the icon (by default ```black```)
+ * - ```color ```: Raw color of the icon
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom
@@ -45,35 +45,25 @@ interface VSPIconProps extends VSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPIcon extends React.Component<VSPIconProps> {
-    private _fixed_style: StyleProp<any>;
-
     public static defaultProps = {
         size: THEME_FONTSIZE,
         theme: 'black',
     };
 
-    constructor(props: VSPIconProps) {
-        super(props);
-
-        this._fixed_style = StyleSheet.create({
+    render() {
+        let style = StyleSheet.create({
             image: {
-                height: props.size!,
-                width: props.size!,
+                height: this.props.size!,
+                width: this.props.size!,
                 resizeMode: 'contain',
-                ...decodeVSPMarginProps(props),
+                tintColor: (this.props.color ? this.props.color : THEME_COLORS[this.props.theme!]),
+                ...decodeVSPMarginProps(this.props),
             },
         });
-    }
 
-    render() {
         return (
             <Image
-                style={[
-                    this._fixed_style.image,
-                    {
-                        tintColor: (this.props.color ? this.props.color : THEME_COLORS[this.props.theme!]),
-                    }
-                ]}
+                style={style.image}
                 source={ICON_SOURCE[this.props.iconName]}
             />
         );

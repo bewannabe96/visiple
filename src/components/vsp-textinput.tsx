@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, StyleProp, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 
 import { THEME_COLORS, THEME_FONTSIZE, ThemeColorType, THEME_FONT, RawColorType } from '../types/config/theme';
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
@@ -88,8 +88,8 @@ interface VSPTextInputProps extends VSPMarginProps {
  * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```frontIcon```: Icon to be diplayed in the front of the text input
  * - ```rearIcon```: Icon to be diplayed in the back of the text input
- * - ```theme```(variable): Theme color of the text input (by default ```ocean-blue```)
- * - ```color```(variable): Raw color of the button
+ * - ```theme```: Theme color of the text input (by default ```ocean-blue```)
+ * - ```color```: Raw color of the button
  * - ```displayUnderline```: Display underline (by default ```true```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft

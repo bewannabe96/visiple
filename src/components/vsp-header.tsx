@@ -23,7 +23,7 @@ interface VSPHeaderTitleProps {
  * @property
  * - ```text```(required): Title text
  */
-class VSPHeaderTitle extends React.Component<VSPHeaderTitleProps> {
+export class VSPHeaderTitle extends React.Component<VSPHeaderTitleProps> {
     render() {
         return (
             <VSPText
@@ -60,7 +60,7 @@ interface VSPHeaderButtonProps {
  * - ```icon```(required): Icon to be displayed
  * - ```onPress```: Callback function when button pressed
  */
-class VSPHeaderButton extends React.Component<VSPHeaderButtonProps> {
+export class VSPHeaderButton extends React.Component<VSPHeaderButtonProps> {
     render() {
         return (
             <VSPTextButton
@@ -161,14 +161,13 @@ class VSPHeader extends React.Component<VSPHeaderProps> {
 };
 
 export default withNavigation(VSPHeader);
-export { VSPHeaderTitle, VSPHeaderButton }
 
 /**
  * VSPHeaderMenu
  * 
  * Opens side menu
  */
-const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
+export const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
     <VSPHeaderButton
         icon='menu'
         onPress={()=>{navigation.openDrawer()}}
@@ -180,11 +179,9 @@ const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
  * 
  * Returns to the previous page
  */
-const VSPHeaderBack = (navigation: NavigationScreenProp<any>) => (
+export const VSPHeaderBack = (navigation: NavigationScreenProp<any>) => (
     <VSPHeaderButton
         icon='leftarrow'
         onPress={()=>{navigation.pop()}}
     />
 )
-
-export { VSPHeaderMenu, VSPHeaderBack }
