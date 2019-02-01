@@ -3,7 +3,8 @@ import { HORIZONTAL_UNIT } from "./size";
 /**
  * Theme Font
  */
-export const THEME_FONT = 'Arial';
+export const THEME_FONT = 'arial';
+
 /**
  * Theme Font Size
  */
