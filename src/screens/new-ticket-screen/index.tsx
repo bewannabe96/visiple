@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, StyleSheet, ScrollView, View } from 'react-native';
+import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
 import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
@@ -20,6 +20,7 @@ import { TicketDataState } from '../../types/redux/new-ticket-types';
 import TicketColorPickerContainer from '../../containers/vsp-new-ticket-container/ticket-color-picker';
 import DateTimePickerContainer from '../../containers/vsp-new-ticket-container/date-time-picker';
 import InvitedFriendsListContainer from '../../containers/vsp-new-ticket-container/invited-friends-list';
+import VSPIcon from '../../components/vsp-icon';
 
 interface NewTicketScreenProps extends VSPScreenProps{
     // STATES
@@ -27,6 +28,8 @@ interface NewTicketScreenProps extends VSPScreenProps{
 
     // ACTION CREATORS
     setTicketColor: any,
+    openPeriodModal: any,
+    switchFromToTab: any,
 }
 
 /**
@@ -46,6 +49,16 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
             ),
         };
     };
+
+    _open_modal_with_fromtab = () => {
+        this.props.switchFromToTab('from-tab');
+        this.props.openPeriodModal();
+    }
+
+    _open_modal_with_totab = () => {
+        this.props.switchFromToTab('to-tab');
+        this.props.openPeriodModal();
+    }
 
     render() {
         let style = StyleSheet.create({
@@ -72,6 +85,32 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                 fontWeight: 'bold',
             },
 
+            fromtoView: {
+                flexDirection: 'row',
+                marginTop: 4*VERTICAL_UNIT,
+                marginLeft: 4*VERTICAL_UNIT,
+            },
+
+            dateInputView: {
+                flexDirection: 'row',
+                borderBottomWidth: 2,
+                marginLeft: 4*VERTICAL_UNIT,
+                flex: 3,
+                borderColor: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
+            },
+
+            timeInputView: {
+                flexDirection: 'row',
+                borderBottomWidth: 2,
+                marginLeft: 4*VERTICAL_UNIT,
+                flex: 2,
+                borderColor: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
+            },
+
+            inputText: {
+                color: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
+            },
+
             bottomView: {
                 position: 'absolute',
                 bottom: 0,
@@ -96,7 +135,60 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                             <VSPText style={style.titleText}>기간</VSPText>
                             <VSPText>{12} 박 {13} 일</VSPText>
                         </View>
-                        <DateTimePickerContainer />
+                        <View style={style.fromtoView}>
+                            <VSPText fontSize={THEME_HEADER_FONTSIZE}>시작</VSPText>
+                            <TouchableOpacity
+                                style={style.dateInputView}
+                                activeOpacity={0.6}
+                                onPress={this._open_modal_with_fromtab}
+                            >
+                                <VSPIcon
+                                    iconName='calendar'
+                                    marginRight={VERTICAL_UNIT}
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                />
+                                <VSPText style={style.inputText}>날짜</VSPText>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={style.timeInputView}
+                                activeOpacity={0.6}
+                                onPress={this._open_modal_with_fromtab}
+                            >
+                                <VSPIcon
+                                    iconName='clock'
+                                    marginRight={VERTICAL_UNIT}
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                />
+                                <VSPText style={style.inputText}>시간</VSPText>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={style.fromtoView}>
+                            <VSPText fontSize={THEME_HEADER_FONTSIZE}>종료</VSPText>
+                            <TouchableOpacity
+                                style={style.dateInputView}
+                                activeOpacity={0.6}
+                                onPress={this._open_modal_with_totab}
+                            >
+                                <VSPIcon
+                                    iconName='calendar'
+                                    marginRight={VERTICAL_UNIT}
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                />
+                                <VSPText style={style.inputText}>날짜</VSPText>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={style.timeInputView}
+                                activeOpacity={0.6}
+                                onPress={this._open_modal_with_totab}
+                            >
+                                <VSPIcon
+                                    iconName='clock'
+                                    marginRight={VERTICAL_UNIT}
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                />
+                                <VSPText style={style.inputText}>시간</VSPText>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                     <View style={style.categoryView}>
                         <VSPText style={style.titleText}>테마 색상</VSPText>
@@ -126,6 +218,8 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                     />
                     <VSPBottomBar color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]} />
                 </View>
+
+                <DateTimePickerContainer />
             </VSPContainer>
         );
     };

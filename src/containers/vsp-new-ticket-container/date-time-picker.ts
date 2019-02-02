@@ -2,13 +2,12 @@ import { connect } from "react-redux";
 
 import RootState from "../../types/redux";
 
+import DateTimePicker from "../../screens/new-ticket-screen/date-time-picker";
+
 import {
-    openPeriodModal,
     closePeriodModal,
     switchFromToTab
 } from '../../actions/new-ticket-actions'
-
-import DateTimePicker from "../../screens/new-ticket-screen/date-time-picker";
 
 const mapStateToProps = (state: RootState) => ({
     ticketColor: state.NewTicketScreen.TicketData.ticketColor,
@@ -17,9 +16,8 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = {
-    openPeriodModal,
-    closePeriodModal,
     switchFromToTab,
+    closePeriodModal,
 };
 
 const DateTimePickerContainer = connect(mapStateToProps, mapDispatchToProps)(DateTimePicker);

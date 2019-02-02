@@ -3,12 +3,11 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
 import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
-import { THEME_HEADER_FONTSIZE, THEME_COLORS, THEME_FONT, THEME_FONTSIZE } from '../../types/config/theme';
+import { THEME_COLORS, THEME_FONT, THEME_FONTSIZE } from '../../types/config/theme';
 import { TICKET_COLORS, TicketHeaderColorType } from '../../types/config/ticket_theme';
 import { TabType } from '../../types/redux/new-ticket-types';
 
 import VSPText from '../../components/vsp-text';
-import VSPIcon from '../../components/vsp-icon';
 import VSPModal from '../../components/vsp-modal';
 
 interface DateTimePickerProps {
@@ -18,53 +17,16 @@ interface DateTimePickerProps {
     fromtoTab: TabType,
 
     // ACTION CREATORS
-    openPeriodModal: any,
-    closePeriodModal: any,
     switchFromToTab: any,
+    closePeriodModal: any,
 }
 
 /**
  * DateTimePicker
  */
 export default class DateTimePicker extends React.Component<DateTimePickerProps> {
-    _open_modal_with_fromtab = () => {
-        this.props.switchFromToTab('from-tab');
-        this.props.openPeriodModal();
-    }
-
-    _open_modal_with_totab = () => {
-        this.props.switchFromToTab('to-tab');
-        this.props.openPeriodModal();
-    }
-
     render() {
         let style = StyleSheet.create({
-            fromtoView: {
-                flexDirection: 'row',
-                marginTop: 4*VERTICAL_UNIT,
-                marginLeft: 4*VERTICAL_UNIT,
-            },
-
-            dateInputView: {
-                flexDirection: 'row',
-                borderBottomWidth: 2,
-                marginLeft: 4*VERTICAL_UNIT,
-                flex: 3,
-                borderColor: TICKET_COLORS.HEADER[this.props.ticketColor],
-            },
-
-            timeInputView: {
-                flexDirection: 'row',
-                borderBottomWidth: 2,
-                marginLeft: 4*VERTICAL_UNIT,
-                flex: 2,
-                borderColor: TICKET_COLORS.HEADER[this.props.ticketColor],
-            },
-
-            inputText: {
-                color: TICKET_COLORS.HEADER[this.props.ticketColor],
-            },
-
             fromtoTabView: {
                 flexDirection: 'row'
             },
@@ -125,130 +87,74 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
         }
 
         return (
-            <View>
-                <View style={style.fromtoView}>
-                    <VSPText fontSize={THEME_HEADER_FONTSIZE}>시작</VSPText>
+            <VSPModal
+                titleText={'기간'}
+                isVisible={this.props.periodModalVisible}
+                closeAction={this.props.closePeriodModal}
+                paddingY={3*VERTICAL_UNIT}
+            >
+                <View style={style.fromtoTabView}>
                     <TouchableOpacity
-                        style={style.dateInputView}
+                        style={style.fromTab}
                         activeOpacity={0.6}
-                        onPress={this._open_modal_with_fromtab}
+                        onPress={()=>{this.props.switchFromToTab('from-tab')}}
                     >
-                        <VSPIcon
-                            iconName='calendar'
-                            marginRight={VERTICAL_UNIT}
-                            color={TICKET_COLORS.HEADER[this.props.ticketColor]}
-                        />
-                        <VSPText style={style.inputText}>날짜</VSPText>
+                        <VSPText style={style.fromtoText}>
+                            시작
+                        </VSPText>
+                        <VSPText style={style.dateText}>
+                            2019년 1월 3일 (목)
+                        </VSPText>
+                        <VSPText style={style.timeText}>
+                            오전 09시 30분
+                        </VSPText>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={style.timeInputView}
+                        style={style.toTab}
                         activeOpacity={0.6}
-                        onPress={this._open_modal_with_fromtab}
+                        onPress={()=>{this.props.switchFromToTab('to-tab')}}
                     >
-                        <VSPIcon
-                            iconName='clock'
-                            marginRight={VERTICAL_UNIT}
-                            color={TICKET_COLORS.HEADER[this.props.ticketColor]}
-                        />
-                        <VSPText style={style.inputText}>시간</VSPText>
-                    </TouchableOpacity>
-                </View>
-                <View style={style.fromtoView}>
-                    <VSPText fontSize={THEME_HEADER_FONTSIZE}>종료</VSPText>
-                    <TouchableOpacity
-                        style={style.dateInputView}
-                        activeOpacity={0.6}
-                        onPress={this._open_modal_with_totab}
-                    >
-                        <VSPIcon
-                            iconName='calendar'
-                            marginRight={VERTICAL_UNIT}
-                            color={TICKET_COLORS.HEADER[this.props.ticketColor]}
-                        />
-                        <VSPText style={style.inputText}>날짜</VSPText>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={style.timeInputView}
-                        activeOpacity={0.6}
-                        onPress={this._open_modal_with_totab}
-                    >
-                        <VSPIcon
-                            iconName='clock'
-                            marginRight={VERTICAL_UNIT}
-                            color={TICKET_COLORS.HEADER[this.props.ticketColor]}
-                        />
-                        <VSPText style={style.inputText}>시간</VSPText>
+                        <VSPText style={style.fromtoText}>
+                            종료
+                        </VSPText>
+                        <VSPText style={style.dateText}>
+                            2019년 1월 6일 (일)
+                        </VSPText>
+                        <VSPText style={style.timeText}>
+                            오후 5시 20분
+                        </VSPText>
                     </TouchableOpacity>
                 </View>
-                <VSPModal
-                    titleText={'기간'}
-                    isVisible={this.props.periodModalVisible}
-                    closeAction={this.props.closePeriodModal}
-                    paddingY={3*VERTICAL_UNIT}
-                >
-                    <View style={style.fromtoTabView}>
-                        <TouchableOpacity
-                            style={style.fromTab}
-                            activeOpacity={0.6}
-                            onPress={()=>{this.props.switchFromToTab('from-tab')}}
-                        >
-                            <VSPText style={style.fromtoText}>
-                                시작
-                            </VSPText>
-                            <VSPText style={style.dateText}>
-                                2019년 1월 3일 (목)
-                            </VSPText>
-                            <VSPText style={style.timeText}>
-                                오전 09시 30분
-                            </VSPText>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={style.toTab}
-                            activeOpacity={0.6}
-                            onPress={()=>{this.props.switchFromToTab('to-tab')}}
-                        >
-                            <VSPText style={style.fromtoText}>
-                                종료
-                            </VSPText>
-                            <VSPText style={style.dateText}>
-                                2019년 1월 6일 (일)
-                            </VSPText>
-                            <VSPText style={style.timeText}>
-                                오후 5시 20분
-                            </VSPText>
-                        </TouchableOpacity>
-                    </View>
-                    <Calendar
-                        style={style.calendar}
-                        theme={calendar_theme}
-                        current={'2019-01-03'}
-                        monthFormat={'MMM yyyy'}
-                        markingType={'period'}
-                        markedDates={
-                            {
-                                '2019-01-03': {
-                                    startingDay: true,
-                                    color: TICKET_COLORS.HEADER[this.props.ticketColor],
-                                    textColor: THEME_COLORS['white'],
-                                    disabled: true,
-                                },
-                                '2019-01-04': {
-                                    selected: true,
-                                    color: TICKET_COLORS.HEADER[this.props.ticketColor],
-                                    textColor: THEME_COLORS['white'],
-                                    disabled: true,
-                                },
-                                '2019-01-05': {
-                                    endingDay: true,
-                                    color: TICKET_COLORS.HEADER[this.props.ticketColor],
-                                    textColor: THEME_COLORS['white'],
-                                    disabled: true,
-                                },
-                            }
+                <Calendar
+                    style={style.calendar}
+                    theme={calendar_theme}
+                    current={'2019-01-03'}
+                    monthFormat={'MMM yyyy'}
+                    markingType={'period'}
+                    markedDates={
+                        {
+                            '2019-01-03': {
+                                startingDay: true,
+                                color: TICKET_COLORS.HEADER[this.props.ticketColor],
+                                textColor: THEME_COLORS['white'],
+                                disabled: true,
+                            },
+                            '2019-01-04': {
+                                selected: true,
+                                color: TICKET_COLORS.HEADER[this.props.ticketColor],
+                                textColor: THEME_COLORS['white'],
+                                disabled: true,
+                            },
+                            '2019-01-05': {
+                                endingDay: true,
+                                color: TICKET_COLORS.HEADER[this.props.ticketColor],
+                                textColor: THEME_COLORS['white'],
+                                disabled: true,
+                            },
                         }
-                    />
-                </VSPModal>
-            </View>
+                    }
+                />
+            </VSPModal>
         );
     }
 }
