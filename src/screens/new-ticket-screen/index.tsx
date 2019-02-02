@@ -22,14 +22,10 @@ import DateTimePickerContainer from '../../containers/vsp-new-ticket-container/d
 import InvitedFriendsListContainer from '../../containers/vsp-new-ticket-container/invited-friends-list';
 
 interface NewTicketScreenProps extends VSPScreenProps{
-    /**
-     * Ticket data
-     */
+    // STATES
     ticketData: TicketDataState,
 
-    /**
-     * Dispatch
-     */
+    // ACTION CREATORS
     setTicketColor: any,
 }
 
@@ -40,8 +36,6 @@ interface NewTicketScreenProps extends VSPScreenProps{
  * - ```ticketData```: Ticket data
  */
 export default class NewTicketScreen extends React.Component<NewTicketScreenProps> {
-    private _fixed_style: StyleProp<any>;
-
     static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
         return {
             header: (
@@ -53,10 +47,8 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
         };
     };
 
-    constructor(props: NewTicketScreenProps) {
-        super(props);
-
-        this._fixed_style = StyleSheet.create({
+    render() {
+        let style = StyleSheet.create({
             scrollView: {
                 paddingVertical: 4*VERTICAL_UNIT,
                 paddingHorizontal: VSP_EDGE_PADDING,
@@ -86,14 +78,12 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                 width: '100%',
             }
         });
-    }
 
-    render() {
         return (
             <VSPContainer>
-                <ScrollView contentContainerStyle={this._fixed_style.scrollView}>
-                    <View style={this._fixed_style.categoryView}>
-                        <VSPText style={this._fixed_style.titleText}>티켓 제목</VSPText>
+                <ScrollView contentContainerStyle={style.scrollView}>
+                    <View style={style.categoryView}>
+                        <VSPText style={style.titleText}>티켓 제목</VSPText>
                         <VSPTextInput
                             placeholder='제목을 입력해 주세요.'
                             fontSize={THEME_HEADER_FONTSIZE}
@@ -101,32 +91,33 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                             color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                         />
                     </View>
-                    <View style={this._fixed_style.categoryView}>
-                        <View style={this._fixed_style.titleView}>
-                            <VSPText style={this._fixed_style.titleText}>기간</VSPText>
+                    <View style={style.categoryView}>
+                        <View style={style.titleView}>
+                            <VSPText style={style.titleText}>기간</VSPText>
                             <VSPText>{12} 박 {13} 일</VSPText>
                         </View>
                         <DateTimePickerContainer />
                     </View>
-                    <View style={this._fixed_style.categoryView}>
-                        <VSPText style={this._fixed_style.titleText}>테마 색상</VSPText>
+                    <View style={style.categoryView}>
+                        <VSPText style={style.titleText}>테마 색상</VSPText>
                         <TicketColorPickerContainer />
                     </View>
-                    <View style={this._fixed_style.categoryView}>
-                        <View style={this._fixed_style.titleView}>
-                            <VSPText style={this._fixed_style.titleText}>친구</VSPText>
+                    <View style={style.categoryView}>
+                        <View style={style.titleView}>
+                            <VSPText style={style.titleText}>친구</VSPText>
                             <VSPTextButton
                                 icon='plus'
                                 fontSize={THEME_HEADER_FONTSIZE}
+                                color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                             />
                         </View>
                         <InvitedFriendsListContainer />
-                        <View style={this._fixed_style.footerView}>
+                        <View style={style.footerView}>
                             <VSPText>총 {8}명</VSPText>
                         </View>
                     </View>
                 </ScrollView>
-                <View style={this._fixed_style.bottomView}>
+                <View style={style.bottomView}>
                     <VSPColoredButton
                         text='완료'
                         fontSize={THEME_HEADER_FONTSIZE}

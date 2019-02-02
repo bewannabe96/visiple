@@ -6,23 +6,15 @@ import { TICKET_COLORS, TICKET_HEADER_COLORS_KEYS, TicketHeaderColorType } from 
 import { VERTICAL_UNIT } from '../../types/config/size';
 
 interface TicketColorPickerProps {
-    /**
-     * Color that is selected
-     */
-    selectedColor: TicketHeaderColorType,
+    // STATES
+    ticketColor: TicketHeaderColorType,
 
-    /**
-     * DISPATCHED ACTION CREATOR
-     */
+    // ACTION CREATORS
     setTicketColor: any,
 }
 
 /**
  * TicketColorPicker
- * 
- * @property
- * - ```selectedColor```(required): Color that is selected
- * - ```setTicketColor```(required): DISPATCHED ACTION CREATOR
  */
 export default class TicketColorPicker extends React.Component<TicketColorPickerProps> {
     render() {
@@ -49,7 +41,7 @@ export default class TicketColorPicker extends React.Component<TicketColorPicker
                                     marginHorizontal: VERTICAL_UNIT,
                                     backgroundColor: TICKET_COLORS.HEADER[colorName],
                                     borderColor: THEME_COLORS['grey'],
-                                    borderWidth: this.props.selectedColor===colorName ? 3 : 0,
+                                    borderWidth: this.props.ticketColor===colorName ? 3 : 0,
                                 }
                             }
                             onPress={()=>{this.props.setTicketColor(colorName)}}

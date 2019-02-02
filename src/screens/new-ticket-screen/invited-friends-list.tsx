@@ -10,9 +10,7 @@ import VSPText from '../../components/vsp-text';
 import VSPTextButton from '../../components/vsp-text-button';
 
 export interface InvitedFriendsListProps {
-    /**
-     * Color of the ticket
-     */
+    // STATES
     ticketColor: TicketHeaderColorType,
 }
 
@@ -47,13 +45,7 @@ export default class InvitedFriendsList extends React.Component<InvitedFriendsLi
                 }
             >
                 <VSPProfile />
-                <VSPText
-                    style={
-                        {
-                            marginVertical: VERTICAL_UNIT,
-                        }
-                    }
-                >
+                <VSPText marginY={VERTICAL_UNIT}>
                     김윤회
                 </VSPText>
                 <VSPTextButton
