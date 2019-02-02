@@ -238,10 +238,6 @@ class AddFriendModal extends React.Component {
         });
     }
 
-    _openModal = () => {
-        this.setState({ visible: true, });
-    }
-
     render() {
         return (
             <View style={this._fixed_style.overlayView}>
@@ -249,7 +245,7 @@ class AddFriendModal extends React.Component {
                     icon='plus'
                     fontSize={5*HORIZONTAL_UNIT}
                     theme='brown'
-                    onPress={this._openModal}
+                    onPress={()=>{this.setState({modalVisible: true})}}
                 />
                 <Modal
                     isVisible={this.state.modalVisible}
@@ -264,7 +260,7 @@ class AddFriendModal extends React.Component {
                                 <VSPTextButton
                                     icon='cancel'
                                     marginRight={4*HORIZONTAL_UNIT}
-                                    onPress={()=>{this.setState({modalVisible: true})}}
+                                    onPress={()=>{this.setState({modalVisible: false})}}
                                 />
                             </View>
                         </View>
