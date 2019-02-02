@@ -1,14 +1,27 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, GestureResponderEvent } from 'react-native';
 import Modal from "react-native-modal";
 
 import { HORIZONTAL_UNIT } from '../types/config/size';
 import { THEME_COLORS, addShadowProperties, THEME_HEADER_FONTSIZE } from '../types/config/theme';
+import { VSPPaddingProps, decodeVSPPaddingProps } from '../types/props/vsp-padding';
 
 import VSPText from './vsp-text';
 import VSPTextButton from './vsp-text-button';
 
-interface VSPModalProps {
+import { IconNameType } from '../assets/icons';
+
+interface VSPModalProps extends VSPPaddingProps{
+    /**
+     * Visible if true
+     */
+    isVisible: boolean,
+
+    /**
+     * Close action
+     */
+    closeAction: () => {}
+
     /**
      * Title text in the middle of the header
      */
@@ -17,14 +30,29 @@ interface VSPModalProps {
     /**
      * Button in the right side of the header
      */
-    rightButton?: React.ReactElement<any>,
+    rightButton?: IconNameType,
+
+    /**
+     * Callback function when right button pressed
+     */
+    rightButtonOnPress?: (event: GestureResponderEvent) => void;
 }
 
 /**
  * VSPModal
  * 
  * @property
- * - ```titleText```: Title text in the middle of the header
+ * - ```isVisible```(required): Visible if true
+ * - ```closeAction```(required): Close action
+ * - ```titleText```(required): Title text in the middle of the header
+ * - ```rightButton```: Button in the right side of the header
+ * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
+ * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
+ * - ```paddingY```: Vertical padding; including paddingTop and paddingBottom
+ * - ```paddingTop```: Top padding
+ * - ```paddingBottom```: Bottom padding
+ * - ```paddingRight```: Rigth padding
+ * - ```paddingLeft```: Left padding
  * =
  */
 export default class VSPModal extends React.Component<VSPModalProps> {
@@ -66,11 +94,10 @@ export default class VSPModal extends React.Component<VSPModalProps> {
             },
             
             bodyView: {
-                flex: 1,
-                padding: 4*HORIZONTAL_UNIT,
                 borderBottomLeftRadius: 2*HORIZONTAL_UNIT,
                 borderBottomRightRadius: 2*HORIZONTAL_UNIT,
                 backgroundColor: THEME_COLORS['white'],
+                ...decodeVSPPaddingProps(this.props)
             },
 
             resultView: {
@@ -80,7 +107,7 @@ export default class VSPModal extends React.Component<VSPModalProps> {
         
         return (
             <Modal
-                isVisible={true}
+                isVisible={this.props.isVisible}
                 avoidKeyboard={true}
             >
                 <View style={style.container}>
@@ -88,7 +115,8 @@ export default class VSPModal extends React.Component<VSPModalProps> {
                         <View style={style.headerLeftView}>
                             <VSPTextButton
                                 icon='previous'
-                                marginRight={4*HORIZONTAL_UNIT}
+                                marginLeft={4*HORIZONTAL_UNIT}
+                                onPress={this.props.closeAction}
                             />
                         </View>
                         <View style={style.headerTitleView}>
@@ -97,7 +125,14 @@ export default class VSPModal extends React.Component<VSPModalProps> {
                             </VSPText>
                         </View>
                         <View style={style.headerRightView}>
-                            {this.props.rightButton}
+                            {
+                                !!this.props.rightButton &&
+                                <VSPTextButton
+                                    icon={this.props.rightButton}
+                                    marginRight={4*HORIZONTAL_UNIT}
+                                    onPress={this.props.rightButtonOnPress}
+                                />
+                            }
                         </View>
                     </View>
                     <View style={style.bodyView}>
