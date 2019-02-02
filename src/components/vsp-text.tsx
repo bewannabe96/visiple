@@ -39,8 +39,8 @@ export default class VSPText extends React.Component<VSPTextProps> {
                         fontSize: this.props.fontSize ? this.props.fontSize : THEME_FONTSIZE,
                         fontFamily: THEME_FONT,
                         color: THEME_COLORS['ocean-blue'],
+                        ...decodeVSPMarginProps(this.props),
                         ...this.props.style,
-                        ...decodeVSPMarginProps(this.props)
                     }
                 }
             >
