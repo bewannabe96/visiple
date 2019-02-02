@@ -25,6 +25,7 @@ export type ThemeColorType
     = 'none'
     | 'white'
     | 'grey'
+    | 'black'
     | 'grey-white'
     | 'ocean-blue'
     | 'sky-blue'
@@ -35,7 +36,7 @@ export type ThemeColorType
 /**
  * Theme Colors
  */
-export const THEME_COLORS: {[key: string]: string}  = {
+export const THEME_COLORS: {[key in ThemeColorType]: string}  = {
     'none': 'transparent',
     'white': '#FFFFFF',
     'grey': '#707070',
