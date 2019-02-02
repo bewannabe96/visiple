@@ -5,7 +5,12 @@ import { THEME_FONT, THEME_FONTSIZE, THEME_COLORS } from '../types/config/theme'
 
 interface VSPTextProps {
     /**
-     * Style of the text (by default ```THEME_FONTSIZE```, ```THEME_FONT```, ```ocean-blue```)
+     * Size of the font (by default ```THEME_FONTSIZE```)
+     */
+    fontSize?: number;
+
+    /**
+     * Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
      */
     style?: StyleProp<any>;
 }
@@ -14,7 +19,8 @@ interface VSPTextProps {
  * VSPText
  * 
  * @property
- * - ```style```: Style of the text (by default ```THEME_FONTSIZE```, ```THEME_FONT```, ```ocean-blue```)
+ * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
+ * - ```style```: Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
  */
 export default class VSPText extends React.Component<VSPTextProps> {
     render() {
@@ -22,7 +28,7 @@ export default class VSPText extends React.Component<VSPTextProps> {
             <Text
                 style={
                     {
-                        fontSize: THEME_FONTSIZE,
+                        fontSize: this.props.fontSize ? this.props.fontSize : THEME_FONTSIZE,
                         fontFamily: THEME_FONT,
                         color: THEME_COLORS['ocean-blue'],
                         ...this.props.style,
