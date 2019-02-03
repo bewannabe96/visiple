@@ -1,5 +1,5 @@
 import { createDrawerNavigator } from "react-navigation";
-import { VSPSideDrawer } from "../components/vsp-sidedrawer";
+import VSPSideDrawer from "../components/vsp-sidedrawer";
 import VSPHomeStack from "./vsp-home-stack";
 import VSPFriendStack from "./vsp-friend-stack";
 import VSPTicketStack from "./vsp-ticket-stack";
