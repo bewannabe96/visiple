@@ -70,7 +70,7 @@ export default class VSPColoredButton extends React.Component<VSPColoredButtonPr
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                paddingVertical: 0.5*this.props.fontSize,
+                padding: 0.5*this.props.fontSize,
                 borderRadius: 0.3*this.props.fontSize,
                 backgroundColor: this.props.color ?
                             this.props.color : THEME_COLORS[this.props.theme!],
@@ -81,7 +81,7 @@ export default class VSPColoredButton extends React.Component<VSPColoredButtonPr
                 fontSize: this.props.fontSize,
                 fontFamily: THEME_FONT,
                 color: THEME_COLORS['white'],
-                marginLeft: this.props.icon ? 0.5*this.props.fontSize : 0,
+                marginLeft: this.props.icon ? 0.3*this.props.fontSize : 0,
             },
         });
 
