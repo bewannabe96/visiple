@@ -59,7 +59,7 @@ export default class VSPModal extends React.Component<VSPModalProps> {
     render() {
         let style = StyleSheet.create({
             container: {
-                width: '90%',
+                width: '95%',
                 alignSelf: 'center',
             },
 
