@@ -10,7 +10,9 @@ import VSPText from '../../components/vsp-text';
 import VSPTextButton from '../../components/vsp-text-button';
 
 export interface InvitedFriendsListProps {
-    // STATES
+    /**
+     * Color of the ticket
+     */
     ticketColor: TicketHeaderColorType,
 }
 

@@ -27,6 +27,7 @@ export type TabType = 'from-tab' | 'to-tab';
 export interface ScreenState {
     periodModalVisible: boolean,
     fromtoTab: TabType,
+    inviteModalVisible: boolean,
 }
 
 /**
@@ -42,6 +43,9 @@ export const OPEN_PERIOD_MODAL = 'visiple/new-ticket/OPEN_PERIOD_MODAL';
 export const CLOSE_PERIOD_MODAL = 'visiple/new-ticket/CLOSE_PERIOD_MODAL';
 
 export const SWITCH_FROMTO_TAB = 'visiple/new-ticket/SWITCH_FROMTO_TAB'
+
+export const OPEN_INVITE_MODAL = 'visiple/new-ticket/OPEN_INVITE_MODAL';
+export const CLOSE_INVITE_MODAL = 'visiple/new-ticket/CLOSE_INVITE_MODAL';
 
 /**
  * Ticket Data Action Creator Interfaces
@@ -73,6 +77,14 @@ interface SwitchFromToTabAction {
     tab: TabType
 }
 
+interface OpenInviteModalAction {
+    type: typeof OPEN_INVITE_MODAL
+}
+
+interface CloseInviteModalAction {
+    type: typeof CLOSE_INVITE_MODAL
+}
+
 /**
  * Ticket Data Action Types
  */
@@ -86,4 +98,6 @@ export type TicketDataActionType
 export type ScreenActionType
     = OpenPeriodModalAction
     | ClosePeriodModalAction
-    | SwitchFromToTabAction;
+    | SwitchFromToTabAction
+    | OpenInviteModalAction
+    | CloseInviteModalAction;

@@ -1,10 +1,12 @@
 import {
+    TabType,
     SET_TICKETCOLOR,
     OPEN_PERIOD_MODAL,
     CLOSE_PERIOD_MODAL,
     SWITCH_FROMTO_TAB,
     SET_PERIOD,
-    TabType,
+    OPEN_INVITE_MODAL,
+    CLOSE_INVITE_MODAL,
 } from "../types/redux/new-ticket-types";
 import { TicketHeaderColorType } from "../types/config/ticket_theme";
 
@@ -39,3 +41,7 @@ export const switchFromToTab = (tab: TabType) => (
         tab,
     }
 );
+
+export const openInviteModal = () => ({ type: OPEN_INVITE_MODAL });
+
+export const closeInviteModal = () => ({ type: CLOSE_INVITE_MODAL });

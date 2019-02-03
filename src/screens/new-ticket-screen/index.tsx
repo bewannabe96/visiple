@@ -20,8 +20,9 @@ import { TicketDataState } from '../../types/redux/new-ticket-types';
 
 import TicketColorPickerContainer from '../../containers/vsp-new-ticket-container/ticket-color-picker';
 import DateTimePickerContainer from '../../containers/vsp-new-ticket-container/date-time-picker';
-import InvitedFriendsListContainer from '../../containers/vsp-new-ticket-container/invited-friends-list';
 import VSPIcon from '../../components/vsp-icon';
+import InvitedFriendsList from './invited-friends-list';
+import FriendInviteModalContainer from '../../containers/vsp-new-ticket-container/friend-invite-modal';
 
 interface NewTicketScreenProps extends VSPScreenProps{
     // STATES
@@ -31,13 +32,11 @@ interface NewTicketScreenProps extends VSPScreenProps{
     setTicketColor: any,
     openPeriodModal: any,
     switchFromToTab: any,
+    openInviteModal: any,
 }
 
 /**
  * NewTicketScreen
- * 
- * @property
- * - ```ticketData```: Ticket data
  */
 export default class NewTicketScreen extends React.Component<NewTicketScreenProps> {
     static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
@@ -210,9 +209,12 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                 icon='plus'
                                 fontSize={THEME_HEADER_FONTSIZE}
                                 color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                onPress={()=>{this.props.openInviteModal()}}
                             />
                         </View>
-                        <InvitedFriendsListContainer />
+                        <InvitedFriendsList
+                            ticketColor={this.props.ticketData.ticketColor}
+                        />
                         <View style={style.footerView}>
                             <VSPText>총 {8}명</VSPText>
                         </View>
@@ -229,6 +231,7 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                 </View>
 
                 <DateTimePickerContainer />
+                <FriendInviteModalContainer />
             </VSPContainer>
         );
     };

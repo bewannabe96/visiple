@@ -7,7 +7,9 @@ import {
     OPEN_PERIOD_MODAL,
     CLOSE_PERIOD_MODAL,
     SWITCH_FROMTO_TAB,
-    SET_PERIOD
+    SET_PERIOD,
+    OPEN_INVITE_MODAL,
+    CLOSE_INVITE_MODAL
 } from "../types/redux/new-ticket-types";
 
 import { TICKET_HEADER_COLORS_KEYS } from "../types/config/ticket_theme";
@@ -52,6 +54,7 @@ function TicketDataReducer(state = ticketDataInitialState, action: TicketDataAct
 const screenInitialState: ScreenState = {
     periodModalVisible: false,
     fromtoTab: 'from-tab',
+    inviteModalVisible: false,
 }
 
 function ScreenReducer(state = screenInitialState, action: ScreenActionType) {
@@ -72,6 +75,18 @@ function ScreenReducer(state = screenInitialState, action: ScreenActionType) {
             return {
                 ...state,
                 fromtoTab: action.tab
+            };
+
+        case OPEN_INVITE_MODAL:
+            return {
+                ...state,
+                inviteModalVisible: true
+            };
+
+        case CLOSE_INVITE_MODAL:
+            return {
+                ...state,
+                inviteModalVisible: false
             };
 
         default:
