@@ -11,7 +11,7 @@ import { formatDateString, formatTimeString, formatISODate, generateDatesArrayFr
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
 
-interface DateTimePickerProps {
+interface SelectPeriodModalProps {
     // STATES
     ticketColor: TicketHeaderColorType,
     fromDate: Date,
@@ -26,9 +26,9 @@ interface DateTimePickerProps {
 }
 
 /**
- * DateTimePicker
+ * SelectPeriodModal
  */
-export default class DateTimePicker extends React.Component<DateTimePickerProps> {
+export default class SelectPeriodModal extends React.Component<SelectPeriodModalProps> {
     render() {
         let style = StyleSheet.create({
             fromtoTabView: {

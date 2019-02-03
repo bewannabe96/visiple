@@ -15,12 +15,12 @@ import VSPTextInput from '../../components/vsp-textinput';
 import VSPBottomBar from '../../components/vsp-bottombar';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPColoredButton from '../../components/vsp-colored-button';
+import VSPIcon from '../../components/vsp-icon';
 
 import { TicketDataState } from '../../types/redux/new-ticket-types';
 
 import TicketColorPickerContainer from '../../containers/vsp-new-ticket-container/ticket-color-picker';
-import DateTimePickerContainer from '../../containers/vsp-new-ticket-container/date-time-picker';
-import VSPIcon from '../../components/vsp-icon';
+import SelectPeriodModalContainer from '../../containers/vsp-new-ticket-container/select-period-modal';
 import InvitedFriendsList from './invited-friends-list';
 import FriendInviteModalContainer from '../../containers/vsp-new-ticket-container/friend-invite-modal';
 
@@ -248,7 +248,7 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                     <VSPBottomBar color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]} />
                 </View>
 
-                <DateTimePickerContainer />
+                <SelectPeriodModalContainer />
                 <FriendInviteModalContainer />
             </VSPContainer>
         );

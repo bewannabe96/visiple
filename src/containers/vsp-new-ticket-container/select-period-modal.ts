@@ -8,7 +8,7 @@ import {
     setPeriod,
 } from '../../actions/new-ticket-actions'
 
-import DateTimePicker from "../../screens/new-ticket-screen/date-time-picker";
+import SelectPeriodModal from "../../screens/new-ticket-screen/select-period-modal";
 
 const mapStateToProps = (state: RootState) => ({
     ticketColor: state.NewTicketScreen.TicketData.ticketColor,
@@ -24,6 +24,6 @@ const mapDispatchToProps = {
     setPeriod,
 };
 
-const DateTimePickerContainer = connect(mapStateToProps, mapDispatchToProps)(DateTimePicker);
+const SelectPeriodModalContainer = connect(mapStateToProps, mapDispatchToProps)(SelectPeriodModal);
 
-export default DateTimePickerContainer;
+export default SelectPeriodModalContainer;
