@@ -45,18 +45,16 @@ export default class VSPBadge extends React.Component<VSPBadgeProps> {
                 ...decodeVSPMarginProps(this.props),
                 ...addShadowProperties(1),
             },
-
-            text: {
-                fontSize: 0.8*this.props.size!,
-                marginVertical: 0.3*this.props.size!,
-                marginHorizontal: 0.6*this.props.size!,
-                color: THEME_COLORS['white'],
-            }
         });
 
         return (
             <View style={style.container}>
-                <VSPText style={style.text}>
+                <VSPText
+                    fontSize={ 0.8*this.props.size!}
+                    marginY={0.3*this.props.size!}
+                    marginX={0.6*this.props.size!}
+                    theme='white'
+                >
                     {this.props.value}
                 </VSPText>
             </View>

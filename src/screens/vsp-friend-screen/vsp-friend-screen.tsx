@@ -52,10 +52,6 @@ export default class VSPFriendScreen extends React.Component<VSPScreenProps> {
                 ...addShadowProperties(),
             },
 
-            friendLabelText: {
-                color: THEME_COLORS['white'],
-            },
-
             friendsView: {
                 paddingBottom: 2*VERTICAL_UNIT,
             },
@@ -73,7 +69,7 @@ export default class VSPFriendScreen extends React.Component<VSPScreenProps> {
                     />
                 </View>
                 <View style={this._fixed_style.friendLabelView}>
-                    <VSPText style={this._fixed_style.friendLabelText}>친구</VSPText>
+                    <VSPText theme='white'>친구</VSPText>
                     <VSPBadge
                         value={10}
                         theme='brown'

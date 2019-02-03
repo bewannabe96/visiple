@@ -1,10 +1,11 @@
 import React from 'react';
-import { GestureResponderEvent, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { GestureResponderEvent, StyleSheet, TouchableOpacity } from "react-native";
 
 import { ThemeColorType, THEME_COLORS, THEME_FONT, RawColorType, THEME_FONTSIZE } from "../types/config/theme";
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
 import VSPIcon from './vsp-icon';
+import VSPText from './vsp-text';
 
 import { IconNameType } from "../assets/icons";
 
@@ -70,18 +71,11 @@ export default class VSPColoredButton extends React.Component<VSPColoredButtonPr
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
-                padding: 0.5*this.props.fontSize,
-                borderRadius: 0.3*this.props.fontSize,
+                padding: 0.5*this.props.fontSize!,
+                borderRadius: 0.3*this.props.fontSize!,
                 backgroundColor: this.props.color ?
                             this.props.color : THEME_COLORS[this.props.theme!],
                 ...decodeVSPMarginProps(this.props),
-            },
-    
-            text: {
-                fontSize: this.props.fontSize,
-                fontFamily: THEME_FONT,
-                color: THEME_COLORS['white'],
-                marginLeft: this.props.icon ? 0.3*this.props.fontSize : 0,
             },
         });
 
@@ -101,9 +95,13 @@ export default class VSPColoredButton extends React.Component<VSPColoredButtonPr
                 }
                 {
                     !!this.props.text &&
-                    <Text style={style.text}>
+                    <VSPText
+                        fontSize={this.props.fontSize!}
+                        theme='white'
+                        marginLeft={this.props.icon ? 0.3*this.props.fontSize! : 0}
+                    >
                         {this.props.text}
-                    </Text>
+                    </VSPText>
                 }
             </TouchableOpacity>
         );

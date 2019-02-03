@@ -107,10 +107,6 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                 borderColor: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
             },
 
-            inputText: {
-                color: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
-            },
-
             valueText: {
                 color: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
                 fontSize: THEME_HEADER_FONTSIZE,
@@ -157,7 +153,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>
+                                <VSPText
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                >
                                     {formatDateString(this.props.ticketData.period.fromDate)}
                                 </VSPText>
                             </TouchableOpacity>
@@ -171,7 +169,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>
+                                <VSPText
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                >
                                     {formatTimeString(this.props.ticketData.period.fromDate)}
                                 </VSPText>
                             </TouchableOpacity>
@@ -188,7 +188,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>
+                                <VSPText
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                >
                                     {formatDateString(this.props.ticketData.period.toDate)}
                                 </VSPText>
                             </TouchableOpacity>
@@ -202,7 +204,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>
+                                <VSPText
+                                    color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
+                                >
                                     {formatTimeString(this.props.ticketData.period.toDate)}
                                 </VSPText>
                             </TouchableOpacity>

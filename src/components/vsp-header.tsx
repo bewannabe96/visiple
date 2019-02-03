@@ -27,13 +27,9 @@ export class VSPHeaderTitle extends React.Component<VSPHeaderTitleProps> {
     render() {
         return (
             <VSPText
-                style={
-                    {
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                        color: THEME_COLORS['brown'],
-                    }
-                }
+                fontSize={20}
+                fontWeight='bold'
+                theme='brown'
             >
                 {this.props.text}
             </VSPText>

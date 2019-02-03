@@ -78,11 +78,6 @@ export default class VSPModal extends React.Component<VSPModalProps> {
                 alignItems: 'center',
             },
 
-            headerTitleText: {
-                fontSize: THEME_HEADER_FONTSIZE,
-                color: THEME_COLORS['brown'],
-            },
-
             headerLeftView: {
                 flex: 2,
                 alignItems: 'flex-start',
@@ -120,7 +115,10 @@ export default class VSPModal extends React.Component<VSPModalProps> {
                             />
                         </View>
                         <View style={style.headerTitleView}>
-                            <VSPText style={style.headerTitleText}>
+                            <VSPText
+                                fontSize={THEME_HEADER_FONTSIZE}
+                                theme='brown'
+                            >
                                 {this.props.titleText}
                             </VSPText>
                         </View>

@@ -1,10 +1,11 @@
 import React from 'react';
-import { GestureResponderEvent, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { GestureResponderEvent, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { ThemeColorType, THEME_FONT, THEME_COLORS, THEME_FONTSIZE, RawColorType } from '../types/config/theme';
+import { ThemeColorType, THEME_COLORS, THEME_FONTSIZE, RawColorType } from '../types/config/theme';
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
 import VSPIcon from './vsp-icon';
+import VSPText from './vsp-text';
 
 import { IconNameType } from "../assets/icons";
 
@@ -75,7 +76,6 @@ export default class VSPTextButton extends React.Component<VSPTextButtonProps> {
     
             text: {
                 fontSize: this.props.fontSize!,
-                fontFamily: THEME_FONT,
                 marginLeft: this.props.icon ? 0.7*this.props.fontSize! : 0,
                 textDecorationLine: 'underline',
                 color: this.props.color ? this.props.color : THEME_COLORS[this.props.theme!],
@@ -98,7 +98,7 @@ export default class VSPTextButton extends React.Component<VSPTextButtonProps> {
                 }
                 {
                     !!this.props.text &&
-                    <Text style={style.text}>{this.props.text}</Text>
+                    <VSPText style={style.text}>{this.props.text}</VSPText>
                 }
             </TouchableOpacity>
         );

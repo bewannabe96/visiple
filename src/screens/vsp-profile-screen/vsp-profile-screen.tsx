@@ -30,16 +30,6 @@ export default class VSPProfileScreen extends React.Component {
                 paddingBottom: 7*VERTICAL_UNIT,
             },
 
-            profileNameText: {
-                fontSize: THEME_HEADER_FONTSIZE,
-                color: THEME_COLORS['white'],
-                marginBottom: VERTICAL_UNIT,
-            },
-
-            profileEmailText: {
-                color: THEME_COLORS['white'],
-            },
-
             profileBodyCap: {
                 height: 10*VERTICAL_UNIT,
                 width: '100%',
@@ -102,10 +92,14 @@ export default class VSPProfileScreen extends React.Component {
                             marginRight={2*HORIZONTAL_UNIT}
                         />
                         <View style={this._fixed_style.profileTitleInfoView}>
-                            <VSPText style={this._fixed_style.profileNameText}>
+                            <VSPText
+                                fontSize={THEME_HEADER_FONTSIZE}
+                                theme='white'
+                                marginBottom={VERTICAL_UNIT}
+                            >
                                 홍길동
                             </VSPText>
-                            <VSPText style={this._fixed_style.profileEmailText}>
+                            <VSPText theme='white'>
                                 testuser@gmail.com
                             </VSPText>
                         </View>

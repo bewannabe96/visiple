@@ -57,10 +57,6 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
                 borderColor: TICKET_COLORS.HEADER[this.props.ticketColor],
             },
 
-            fromtoText: {
-                fontWeight: 'bold',
-            },
-
             dateText: {
                 alignSelf: 'flex-end',
                 color: TICKET_COLORS.HEADER[this.props.ticketColor],
@@ -125,7 +121,7 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
                         activeOpacity={0.6}
                         onPress={()=>{this.props.switchFromToTab('from-tab')}}
                     >
-                        <VSPText style={style.fromtoText}>
+                        <VSPText fontWeight={'bold'}>
                             시작
                         </VSPText>
                         <VSPText style={style.dateText}>
@@ -140,7 +136,7 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
                         activeOpacity={0.6}
                         onPress={()=>{this.props.switchFromToTab('to-tab')}}
                     >
-                        <VSPText style={style.fromtoText}>
+                        <VSPText fontWeight={'bold'}>
                             종료
                         </VSPText>
                         <VSPText style={style.dateText}>

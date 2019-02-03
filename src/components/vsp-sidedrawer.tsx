@@ -64,15 +64,6 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
                 justifyContent: 'center',
                 paddingLeft: 2*HORIZONTAL_UNIT,
             },
-
-            nameText: {
-                fontWeight: 'bold',
-                marginBottom: HORIZONTAL_UNIT,
-            },
-
-            emailText: {
-                fontSize: THEME_MINOR_FONTSIZE,
-            },
         });
 
         return (
@@ -107,10 +98,13 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
                     <View style={style.profileTab}>
                         <VSPProfile />
                         <View style={style.infoView}>
-                            <VSPText style={style.nameText}>
+                            <VSPText
+                                fontWeight={'bold'}
+                                marginBottom={HORIZONTAL_UNIT}
+                            >
                                 {'홍길동'}
                             </VSPText>
-                            <VSPText style={style.emailText}>
+                            <VSPText fontSize={THEME_MINOR_FONTSIZE}>
                                 {'testuser@gmail.com'}
                             </VSPText>
                         </View>

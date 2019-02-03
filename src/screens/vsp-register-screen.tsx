@@ -32,10 +32,6 @@ export default class VSPRegisterScreen extends React.Component<VSPScreenProps> {
                 color: THEME_COLORS['sky-blue'],
             },
 
-            titleText: {
-                fontWeight: 'bold',
-            },
-
             groupView: {
                 marginVertical: 4*VERTICAL_UNIT,
             },
@@ -74,7 +70,7 @@ export default class VSPRegisterScreen extends React.Component<VSPScreenProps> {
                     </VSPText>
                 </View>
                 <View style={this._fixed_style.groupView}>
-                    <VSPText style={this._fixed_style.titleText}>회원정보</VSPText>
+                    <VSPText fontWeight='bold'>회원정보</VSPText>
                     <VSPTextInput
                         placeholder='이름(실명)'
                         textContentType='name'
@@ -97,7 +93,7 @@ export default class VSPRegisterScreen extends React.Component<VSPScreenProps> {
                     />
                 </View>
                 <View style={this._fixed_style.groupView}>
-                    <VSPText style={this._fixed_style.titleText}>이용약관</VSPText>
+                    <VSPText fontWeight='bold'>이용약관</VSPText>
                     <View style={this._fixed_style.checkboxItem}>
                         <VSPCheckbox
                             size={5*VERTICAL_UNIT}
