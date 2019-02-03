@@ -2,8 +2,9 @@ import {
     SET_TICKETCOLOR,
     OPEN_PERIOD_MODAL,
     CLOSE_PERIOD_MODAL,
+    SWITCH_FROMTO_TAB,
+    SET_PERIOD,
     TabType,
-    SWITCH_FROMTO_TAB
 } from "../types/redux/new-ticket-types";
 import { TicketHeaderColorType } from "../types/config/ticket_theme";
 
@@ -16,6 +17,14 @@ export const setTicketColor = (ticketColor: TicketHeaderColorType) => (
         ticketColor
     }
 );
+
+export const setPeriod = (tab: TabType, date: Date) => (
+    {
+        type: SET_PERIOD,
+        tab,
+        date
+    }
+)
 
 /**
  * Screen Action Creators

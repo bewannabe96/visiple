@@ -6,7 +6,8 @@ import {
     SET_TICKETCOLOR,
     OPEN_PERIOD_MODAL,
     CLOSE_PERIOD_MODAL,
-    SWITCH_FROMTO_TAB
+    SWITCH_FROMTO_TAB,
+    SET_PERIOD
 } from "../types/redux/new-ticket-types";
 
 import { TICKET_HEADER_COLORS_KEYS } from "../types/config/ticket_theme";
@@ -17,6 +18,10 @@ import { combineReducers } from "redux";
  */
 const ticketDataInitialState: TicketDataState = {
     ticketColor: TICKET_HEADER_COLORS_KEYS[0],
+    period: {
+        fromDate: new Date(),
+        toDate: new Date(),
+    }
 };
 
 function TicketDataReducer(state = ticketDataInitialState, action: TicketDataActionType) {
@@ -26,6 +31,15 @@ function TicketDataReducer(state = ticketDataInitialState, action: TicketDataAct
                 ...state,
                 ticketColor: action.ticketColor
             };
+
+        case SET_PERIOD:
+            return {
+                ...state,
+                period: {
+                    fromDate: action.tab==='from-tab' ? action.date : state.period.fromDate,
+                    toDate: action.tab==='to-tab' ? action.date : state.period.toDate
+                }
+            }
 
         default:
             return state;

@@ -6,6 +6,7 @@ import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
 import { THEME_HEADER_FONTSIZE } from '../../types/config/theme';
 import { TICKET_COLORS } from '../../types/config/ticket_theme';
 import { VSPScreenProps } from '../../types/props/vsp-screen';
+import { formatDateString, formatTimeString } from '../../types/lib/vsp-date';
 
 import VSPHeader, { VSPHeaderTitle, VSPHeaderBack } from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
@@ -147,7 +148,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>날짜</VSPText>
+                                <VSPText style={style.inputText}>
+                                    {formatDateString(this.props.ticketData.period.fromDate)}
+                                </VSPText>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={style.timeInputView}
@@ -159,7 +162,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>시간</VSPText>
+                                <VSPText style={style.inputText}>
+                                    {formatTimeString(this.props.ticketData.period.fromDate)}
+                                </VSPText>
                             </TouchableOpacity>
                         </View>
                         <View style={style.fromtoView}>
@@ -174,7 +179,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>날짜</VSPText>
+                                <VSPText style={style.inputText}>
+                                    {formatDateString(this.props.ticketData.period.toDate)}
+                                </VSPText>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={style.timeInputView}
@@ -186,7 +193,9 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                                     marginRight={VERTICAL_UNIT}
                                     color={TICKET_COLORS.HEADER[this.props.ticketData.ticketColor]}
                                 />
-                                <VSPText style={style.inputText}>시간</VSPText>
+                                <VSPText style={style.inputText}>
+                                    {formatTimeString(this.props.ticketData.period.toDate)}
+                                </VSPText>
                             </TouchableOpacity>
                         </View>
                     </View>

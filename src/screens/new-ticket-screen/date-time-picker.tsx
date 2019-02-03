@@ -6,6 +6,7 @@ import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
 import { THEME_COLORS, THEME_FONT, THEME_FONTSIZE } from '../../types/config/theme';
 import { TICKET_COLORS, TicketHeaderColorType } from '../../types/config/ticket_theme';
 import { TabType } from '../../types/redux/new-ticket-types';
+import { formatDateString, formatTimeString, formatISODate, generateDatesArrayFromPeriod } from '../../types/lib/vsp-date';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
@@ -13,12 +14,15 @@ import VSPModal from '../../components/vsp-modal';
 interface DateTimePickerProps {
     // STATES
     ticketColor: TicketHeaderColorType,
+    fromDate: Date,
+    toDate: Date,
     periodModalVisible: boolean,
     fromtoTab: TabType,
 
     // ACTION CREATORS
     switchFromToTab: any,
     closePeriodModal: any,
+    setPeriod: any,
 }
 
 /**
@@ -33,8 +37,9 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
 
             fromTab: {
                 flex: 1,
-                paddingVertical: 2*VERTICAL_UNIT,
                 paddingHorizontal: 2*HORIZONTAL_UNIT,
+                paddingTop: this.props.fromtoTab==='from-tab' ? VERTICAL_UNIT : 2*VERTICAL_UNIT,
+                paddingBottom: 2*VERTICAL_UNIT,
                 borderTopWidth: this.props.fromtoTab==='from-tab' ? VERTICAL_UNIT : 0,
                 borderRightWidth: this.props.fromtoTab==='from-tab' ? 1 : 0,
                 borderBottomWidth: this.props.fromtoTab==='from-tab' ? 0 : 1,
@@ -43,8 +48,9 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
 
             toTab: {
                 flex: 1,
-                paddingVertical: 2*VERTICAL_UNIT,
                 paddingHorizontal: 2*HORIZONTAL_UNIT,
+                paddingTop: this.props.fromtoTab==='to-tab' ? VERTICAL_UNIT : 2*VERTICAL_UNIT,
+                paddingBottom: 2*VERTICAL_UNIT,
                 borderTopWidth: this.props.fromtoTab==='to-tab' ? VERTICAL_UNIT : 0,
                 borderLeftWidth: this.props.fromtoTab==='to-tab' ? 1 : 0,
                 borderBottomWidth: this.props.fromtoTab==='to-tab' ? 0 : 1,
@@ -86,6 +92,26 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
             textMonthFontSize: THEME_FONTSIZE,
         }
 
+        let calendar_markeddays = (start: Date, end: Date) => {
+            let keys = generateDatesArrayFromPeriod(start, end);
+            let rtn_obj: {[key: string]: any} = {};
+            keys.map(key => {
+                rtn_obj[key] = {
+                    color: TICKET_COLORS.HEADER[this.props.ticketColor],
+                    textColor: THEME_COLORS['white'],
+                }
+            });
+            rtn_obj[formatISODate(start)] = {
+                ...rtn_obj[formatISODate(start)],
+                startingDay: true,
+            }
+            rtn_obj[formatISODate(end)] = {
+                ...rtn_obj[formatISODate(end)],
+                endingDay: true,
+            }
+            return rtn_obj;
+        }
+
         return (
             <VSPModal
                 titleText={'기간'}
@@ -103,10 +129,10 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
                             시작
                         </VSPText>
                         <VSPText style={style.dateText}>
-                            2019년 1월 3일 (목)
+                            {formatDateString(this.props.fromDate)}
                         </VSPText>
                         <VSPText style={style.timeText}>
-                            오전 09시 30분
+                            {formatTimeString(this.props.fromDate)}
                         </VSPText>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -118,41 +144,36 @@ export default class DateTimePicker extends React.Component<DateTimePickerProps>
                             종료
                         </VSPText>
                         <VSPText style={style.dateText}>
-                            2019년 1월 6일 (일)
+                            {formatDateString(this.props.toDate)}
                         </VSPText>
                         <VSPText style={style.timeText}>
-                            오후 5시 20분
+                            {formatTimeString(this.props.fromDate)}
                         </VSPText>
                     </TouchableOpacity>
                 </View>
                 <Calendar
                     style={style.calendar}
                     theme={calendar_theme}
-                    current={'2019-01-03'}
-                    monthFormat={'MMM yyyy'}
-                    markingType={'period'}
-                    markedDates={
-                        {
-                            '2019-01-03': {
-                                startingDay: true,
-                                color: TICKET_COLORS.HEADER[this.props.ticketColor],
-                                textColor: THEME_COLORS['white'],
-                                disabled: true,
-                            },
-                            '2019-01-04': {
-                                selected: true,
-                                color: TICKET_COLORS.HEADER[this.props.ticketColor],
-                                textColor: THEME_COLORS['white'],
-                                disabled: true,
-                            },
-                            '2019-01-05': {
-                                endingDay: true,
-                                color: TICKET_COLORS.HEADER[this.props.ticketColor],
-                                textColor: THEME_COLORS['white'],
-                                disabled: true,
-                            },
-                        }
+                    current={
+                        formatISODate(
+                            this.props.fromtoTab==='from-tab' ?
+                            this.props.fromDate : this.props.toDate
+                        )
                     }
+                    monthFormat={'MMM yyyy'}
+                    hideExtraDays={true}
+                    markingType={'period'}
+                    markedDates={calendar_markeddays(this.props.fromDate, this.props.toDate)}
+                    onDayPress={(day) => {
+                        let date = this.props.fromtoTab==='from-tab' ?
+                            this.props.fromDate : this.props.toDate;
+                        date.setFullYear(day.year, day.month-1, day.day);
+                        // Do error handling
+                        this.props.setPeriod(
+                            this.props.fromtoTab,
+                            new Date(date)
+                        )
+                    }}
                 />
             </VSPModal>
         );

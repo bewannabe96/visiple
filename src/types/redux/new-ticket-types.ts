@@ -13,6 +13,10 @@ export interface NewTicketScreenState {
  */
 export interface TicketDataState {
     ticketColor: TicketHeaderColorType,
+    period: {
+        fromDate: Date,
+        toDate: Date
+    }
 }
 
 /**
@@ -29,6 +33,7 @@ export interface ScreenState {
  * Ticket Data Action Constants
  */
 export const SET_TICKETCOLOR = 'visiple/new-ticket/SET_TICKETCOLOR';
+export const SET_PERIOD = 'visiple/new-ticket/SET_PERIOD';
 
 /**
  * Screen Action Constants
@@ -44,6 +49,12 @@ export const SWITCH_FROMTO_TAB = 'visiple/new-ticket/SWITCH_FROMTO_TAB'
 interface SetTicketColorAction {
     type: typeof SET_TICKETCOLOR
     ticketColor: TicketHeaderColorType
+}
+
+interface SetPeriodAction {
+    type: typeof SET_PERIOD
+    tab: TabType
+    date: Date
 }
 
 /**
@@ -65,7 +76,9 @@ interface SwitchFromToTabAction {
 /**
  * Ticket Data Action Types
  */
-export type TicketDataActionType = SetTicketColorAction;
+export type TicketDataActionType
+    = SetTicketColorAction
+    | SetPeriodAction;
 
 /**
  * Screen Action Types

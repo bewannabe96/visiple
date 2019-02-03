@@ -6,11 +6,14 @@ import DateTimePicker from "../../screens/new-ticket-screen/date-time-picker";
 
 import {
     closePeriodModal,
-    switchFromToTab
+    switchFromToTab,
+    setPeriod,
 } from '../../actions/new-ticket-actions'
 
 const mapStateToProps = (state: RootState) => ({
     ticketColor: state.NewTicketScreen.TicketData.ticketColor,
+    fromDate: state.NewTicketScreen.TicketData.period.fromDate,
+    toDate: state.NewTicketScreen.TicketData.period.toDate,
     periodModalVisible: state.NewTicketScreen.Screen.periodModalVisible,
     fromtoTab: state.NewTicketScreen.Screen.fromtoTab,
 });
@@ -18,6 +21,7 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = {
     switchFromToTab,
     closePeriodModal,
+    setPeriod,
 };
 
 const DateTimePickerContainer = connect(mapStateToProps, mapDispatchToProps)(DateTimePicker);
