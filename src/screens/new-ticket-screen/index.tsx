@@ -111,6 +111,11 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                 color: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
             },
 
+            valueText: {
+                color: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
+                fontSize: THEME_HEADER_FONTSIZE,
+            },
+
             bottomView: {
                 position: 'absolute',
                 bottom: 0,
@@ -133,7 +138,12 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                     <View style={style.categoryView}>
                         <View style={style.titleView}>
                             <VSPText style={style.titleText}>기간</VSPText>
-                            <VSPText>{12} 박 {13} 일</VSPText>
+                            <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+                                <VSPText style={style.valueText}>{12}</VSPText>
+                                <VSPText> 박 </VSPText>
+                                <VSPText style={style.valueText}>{13}</VSPText>
+                                <VSPText> 일</VSPText>
+                            </View>
                         </View>
                         <View style={style.fromtoView}>
                             <VSPText fontSize={THEME_HEADER_FONTSIZE}>시작</VSPText>
@@ -216,7 +226,11 @@ export default class NewTicketScreen extends React.Component<NewTicketScreenProp
                             ticketColor={this.props.ticketData.ticketColor}
                         />
                         <View style={style.footerView}>
-                            <VSPText>총 {8}명</VSPText>
+                            <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+                                <VSPText>총 </VSPText>
+                                <VSPText style={style.valueText}>{13}</VSPText>
+                                <VSPText> 명</VSPText>
+                            </View>
                         </View>
                     </View>
                 </ScrollView>
