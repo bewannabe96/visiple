@@ -47,24 +47,24 @@ export interface VSPPaddingProps {
 }
 
 interface PaddingStyleProps {
-    paddingTop: number;
-    paddingBottom: number;
-    paddingRight: number;
-    paddingLeft: number;
+    paddingTop?: number;
+    paddingBottom?: number;
+    paddingRight?: number;
+    paddingLeft?: number;
 }
 
 export const decodeVSPPaddingProps = (props: VSPPaddingProps): PaddingStyleProps => (
     {
         paddingTop: props.paddingTop ? props.paddingTop : (
-            props.paddingY ? props.paddingY : (props.padding ? props.padding : 0)),
+            props.paddingY ? props.paddingY : (props.padding ? props.padding : undefined)),
 
         paddingBottom: props.paddingBottom ? props.paddingBottom : (
-            props.paddingY ? props.paddingY : (props.padding ? props.padding : 0)),
+            props.paddingY ? props.paddingY : (props.padding ? props.padding : undefined)),
 
         paddingRight: props.paddingRight ? props.paddingRight : (
-            props.paddingX ? props.paddingX : (props.padding ? props.padding : 0)),
+            props.paddingX ? props.paddingX : (props.padding ? props.padding : undefined)),
 
         paddingLeft: props.paddingLeft ? props.paddingLeft : (
-            props.paddingX ? props.paddingX : (props.padding ? props.padding : 0)),
+            props.paddingX ? props.paddingX : (props.padding ? props.padding : undefined)),
     }
 );

@@ -47,24 +47,24 @@ export interface VSPMarginProps {
 }
 
 interface MarginStyleProps {
-    marginTop: number;
-    marginBottom: number;
-    marginRight: number;
-    marginLeft: number;
+    marginTop?: number;
+    marginBottom?: number;
+    marginRight?: number;
+    marginLeft?: number;
 }
 
 export const decodeVSPMarginProps = (props: VSPMarginProps): MarginStyleProps => (
     {
         marginTop: props.marginTop ? props.marginTop : (
-            props.marginY ? props.marginY : (props.margin ? props.margin : 0)),
+            props.marginY ? props.marginY : (props.margin ? props.margin : undefined)),
 
         marginBottom: props.marginBottom ? props.marginBottom : (
-            props.marginY ? props.marginY : (props.margin ? props.margin : 0)),
+            props.marginY ? props.marginY : (props.margin ? props.margin : undefined)),
 
         marginRight: props.marginRight ? props.marginRight : (
-            props.marginX ? props.marginX : (props.margin ? props.margin : 0)),
+            props.marginX ? props.marginX : (props.margin ? props.margin : undefined)),
 
         marginLeft: props.marginLeft ? props.marginLeft : (
-            props.marginX ? props.marginX : (props.margin ? props.margin : 0))
+            props.marginX ? props.marginX : (props.margin ? props.margin : undefined))
     }
 );
