@@ -30,6 +30,10 @@ export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
         };
     };
 
+    _on_ticket_press() {
+        this.props.navigation.navigate('TicketViewScreen')
+    }
+
     render() {
         return (
             <VSPContainer>
@@ -38,11 +42,13 @@ export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
                         startDate={new Date('2020-01-15')}
                         endDate={new Date('2020-02-02')}
                         title='여자친구와 함께하는 신나는 이별여행'
+                        onPress={()=>{this._on_ticket_press()}}
                     />
                     <TicketItem
                         startDate={new Date('2020-01-15')}
                         endDate={new Date('2020-02-02')}
                         title='여자친구와 함께하는 신나는 이별여행'
+                        onPress={()=>{this._on_ticket_press()}}
                     />
                 </ScrollView>
                 <VSPBottomBar />
@@ -71,6 +77,11 @@ interface TicketItemProps {
      * Color of the header (by default ```blue```)
      */
     headercolor?: TicketHeaderColorType,
+
+    /**
+     * Callback function when ticket pressed
+     */
+    onPress?: () => void;
 }
 
 /**
@@ -81,6 +92,7 @@ interface TicketItemProps {
  * - ```endDate```(required): Date which it ends
  * - ```title```(required): Title of the ticket
  * - ```headercolor```: Color of the header (by default ```blue```)
+ * - ```onPress```: Callback function when ticket pressed
  */
 class TicketItem extends React.Component<TicketItemProps> {
     private _fixed_style: StyleProp<any>;
@@ -198,7 +210,10 @@ class TicketItem extends React.Component<TicketItemProps> {
     }
     render() {
         return (
-            <TouchableOpacity style={this._fixed_style.ticketView}>
+            <TouchableOpacity
+                style={this._fixed_style.ticketView}
+                onPress={this.props.onPress}
+            >
                 <View style={this._fixed_style.headerView}>
                     <Text style={this._fixed_style.topleftText}>
                         {TICKET_TEXTS.TOPLEFT}
