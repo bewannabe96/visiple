@@ -39,17 +39,23 @@ export default class VSPContainer extends React.Component<VSPContainerProps> {
         let style = StyleSheet.create({
             container: {
                 flex: 1,
+                backgroundColor: this.props.background,
+            },
+
+            innerView: {
+                flex: 1,
                 flexDirection: 'column',
                 justifyContent: this.props.justifyContent!,
                 alignItems: 'stretch',
-                backgroundColor: this.props.background,
                 ...decodeVSPPaddingProps(this.props),
             }
         });
 
         return (
             <SafeAreaView style={style.container}>
-                {this.props.children}
+                <View style={style.innerView}>
+                    {this.props.children}
+                </View>
             </SafeAreaView>
         );
     }
