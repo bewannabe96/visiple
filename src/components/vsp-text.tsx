@@ -52,6 +52,7 @@ export default class VSPText extends React.Component<VSPTextProps> {
     public static defaultProps = {
         fontSize: THEME_FONTSIZE,
         theme: 'ocean-blue',
+        fontWeight: 'normal',
     };
 
     render() {
@@ -61,6 +62,7 @@ export default class VSPText extends React.Component<VSPTextProps> {
                     {
                         fontSize: this.props.fontSize!,
                         fontFamily: THEME_FONT,
+                        fontWeight: this.props.fontWeight!,
                         color: this.props.color ?
                             this.props.color : THEME_COLORS[this.props.theme!],
                         ...decodeVSPMarginProps(this.props),
