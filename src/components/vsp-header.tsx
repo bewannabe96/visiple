@@ -84,6 +84,11 @@ interface VSPHeaderProps extends NavigationInjectedProps {
      * Component to be displayed in the right
      */
     headerRight?: React.ReactElement<any>,
+
+    /**
+     * Transparent if true (by default ```false```)
+     */
+    transparent?: boolean
 }
 
 /**
@@ -93,15 +98,24 @@ interface VSPHeaderProps extends NavigationInjectedProps {
  * - ```headerTitle```: Title or component to be displayed in the center
  * - ```headerLeft```: Component to be diplayed in the left
  * - ```headerRight```: Component to be displayed in the right
+ * - ```transparent```: Transparent if true (by default ```false```)
  */
 class VSPHeader extends React.Component<VSPHeaderProps> {
+    public static defaultProps = {
+        transparent: false,
+    };
+
     render() {
         return (
             <SafeAreaView
                 style={
                     {
-                        backgroundColor: THEME_COLORS['grey-white'],
+                        backgroundColor:  
+                            THEME_COLORS[this.props.transparent! ? 'none' : 'grey-white'],
                         zIndex: 1,
+                        position: this.props.transparent! ? 'absolute' : 'relative',
+                        top: 0,
+                        width: '100%',
                         ...addShadowProperties(),
                     }
                 }
