@@ -14,7 +14,8 @@ export type IconNameType
 | 'clock'
 | 'leftarrow'
 | 'rightarrow'
-| 'trash';
+| 'trash'
+| 'more';
  
  const ICON_SOURCE: {[name in IconNameType]: any} = {
      'user': require('./user.png'),
@@ -33,6 +34,7 @@ export type IconNameType
      'leftarrow': require('./left-arrow.png'),
      'rightarrow': require('./right-arrow.png'),
      'trash': require('./trash.png'),
+     'more': require('./more.png'),
  };
 
  export default ICON_SOURCE;
