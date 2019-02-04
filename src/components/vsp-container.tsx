@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, SafeAreaView, StyleSheet } from 'react-native';
 
-import { THEME_COLORS, ThemeColorType } from '../types/config/theme';
+import { THEME_COLORS } from '../types/config/theme';
 import { decodeVSPPaddingProps, VSPPaddingProps } from '../types/props/vsp-padding';
 
 interface VSPContainerProps extends VSPPaddingProps {
@@ -13,7 +13,7 @@ interface VSPContainerProps extends VSPPaddingProps {
     /**
      * Background color
      */
-    background?: ThemeColorType;
+    background?: string;
 }
 
 /**
@@ -21,7 +21,7 @@ interface VSPContainerProps extends VSPPaddingProps {
  * 
  * @property
  * - ```justifyContent```: Justify Content (by default ```flex-start```)
- * - ```background```: Background color (by default ```none```)
+ * - ```background```: Background color
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
  * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
  * - ```paddingY```: Vertical padding; including paddingTop and paddingBottom
@@ -33,30 +33,23 @@ interface VSPContainerProps extends VSPPaddingProps {
 export default class VSPContainer extends React.Component<VSPContainerProps> {
     public static defaultProps = {
         justifyContent: 'flex-start',
-        background: 'none',
     };
 
     render() {
         let style = StyleSheet.create({
             container: {
                 flex: 1,
-                backgroundColor: THEME_COLORS[this.props.background!],
-            },
-    
-            innerView: {
-                flex: 1,
                 flexDirection: 'column',
                 justifyContent: this.props.justifyContent!,
                 alignItems: 'stretch',
+                backgroundColor: this.props.background,
                 ...decodeVSPPaddingProps(this.props),
             }
         });
 
         return (
             <SafeAreaView style={style.container}>
-                <View style={style.innerView}>
-                    {this.props.children}
-                </View>
+                {this.props.children}
             </SafeAreaView>
         );
     }
