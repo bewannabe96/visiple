@@ -26,7 +26,7 @@ interface VSPTextProps extends VSPMarginProps {
     color?: RawColorType;
 
     /**
-     * Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
+     * Style of the text
      */
     style?: StyleProp<any>;
 }
@@ -39,7 +39,7 @@ interface VSPTextProps extends VSPMarginProps {
  * - ```fontWeight```: Weight of the font (by default ```normal```)
  * - ```theme```: Theme color of the button (by default ```ocean-blue```)
  * - ```color```: Raw color of the button
- * - ```style```: Style of the text (by default ```THEME_FONT```)
+ * - ```style```: Style of the text
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom
