@@ -71,7 +71,6 @@ export default class SelectPeriodModal extends React.Component<SelectPeriodModal
             calendar: {
                 marginHorizontal: 2*HORIZONTAL_UNIT,
                 marginVertical: 2*VERTICAL_UNIT,
-                height: 75*VERTICAL_UNIT,
             }
         });
 
@@ -156,6 +155,7 @@ export default class SelectPeriodModal extends React.Component<SelectPeriodModal
                             this.props.fromDate : this.props.toDate
                         )
                     }
+                    minDate={formatISODate(new Date())}
                     monthFormat={'MMM yyyy'}
                     hideExtraDays={true}
                     markingType={'period'}
