@@ -3,11 +3,17 @@ import { StyleSheet, ScrollView, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
 import { VSPScreenProps } from '../../types/props/vsp-screen';
-import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
-import { addShadowProperties } from '../../types/config/theme';
+import { VERTICAL_UNIT, VSP_EDGE_PADDING, HORIZONTAL_UNIT, VSP_HEADER_PADDING } from '../../types/config/size';
+import { addShadowProperties, THEME_COLORS, THEME_HEADER_FONTSIZE } from '../../types/config/theme';
 
-import VSPHeader, { VSPHeaderTitle, VSPHeaderBack, VSPHeaderButton } from '../../components/vsp-header';
+import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
+import { TICKET_COLORS } from '../../types/config/ticket_theme';
+import VSPTextButton from '../../components/vsp-text-button';
+import VSPProfile from '../../components/vsp-profile';
+import VSPText from '../../components/vsp-text';
+
+const DEV_TICKET_COLOR = TICKET_COLORS.HEADER['blue'];
 
 interface TicketViewScreenProps extends VSPScreenProps {
 }
@@ -20,11 +26,20 @@ export default class TicketViewScreen extends React.Component<TicketViewScreenPr
         return {
             header: (
                 <VSPHeader
-                    headerTitle={ (<VSPHeaderTitle text='나혼자 여행갈꼬얌' />) }
-                    headerLeft={VSPHeaderBack(navigation)}
+                    transparent={true}
+                    headerLeft={(
+                        <VSPTextButton
+                            icon='leftarrow'
+                            theme='white'
+                            fontSize={28}
+                            onPress={()=>{navigation.pop()}}
+                        />
+                    )}
                     headerRight={(
-                        <VSPHeaderButton
-                            icon='trash'
+                        <VSPTextButton
+                            icon='more'
+                            theme='white'
+                            fontSize={28}
                         />
                     )}
                 />
@@ -34,25 +49,82 @@ export default class TicketViewScreen extends React.Component<TicketViewScreenPr
 
     render() {
         let style = StyleSheet.create({
-            categoryView: {
-                marginTop: 5*VERTICAL_UNIT,
+            headerView: {
+                height: 30*VERTICAL_UNIT,
+                backgroundColor: DEV_TICKET_COLOR,
+            },
+
+            bottomView: {
+                position: 'absolute',
+                bottom: 0,
+                width: '100%',
+            },
+
+            profilesView: {
+                flexDirection: 'row',
                 marginHorizontal: VSP_EDGE_PADDING,
-                backgroundColor: 'blue',
+                marginBottom: VERTICAL_UNIT,
+                zIndex: 1,
+            },
+
+            stackedProfile: {
+                left: -3*1*HORIZONTAL_UNIT,
+                zIndex: 1,
+            },
+
+            bodyCapView: {
+                position: 'absolute',
+                bottom: 0,
+                height: 5*HORIZONTAL_UNIT,
+                width: '100%',
+                backgroundColor: THEME_COLORS['white'],
+            },
+
+            bodyView: {
+                flex: 1,
+                backgroundColor: THEME_COLORS['white'],
+                paddingTop: VSP_HEADER_PADDING,
+            },
+
+            categoryView: {
+                marginVertical: 2*VERTICAL_UNIT,
+                backgroundColor: THEME_COLORS['grey-white'],
+                borderRadius: 2*VERTICAL_UNIT,
+                marginHorizontal: VSP_EDGE_PADDING,
                 ...addShadowProperties(),
-                height:40,
+                height:400,
             }
         });
 
         return (
             <VSPContainer>
-                <ScrollView>
-                    <View style={style.categoryView}>
+                <View style={style.headerView}>
+                    <View style={style.bottomView}>
+                        <View style={style.profilesView}>
+                            <VSPProfile />
+                            <VSPProfile style={style.stackedProfile}/>
+                        </View>
+                        <View style={style.bodyCapView} />
                     </View>
-                    <View style={style.categoryView}>
-                    </View>
-                    <View style={style.categoryView}>
-                    </View>
-                </ScrollView>
+                </View>
+                <View style={style.bodyView}>
+                <VSPText
+                        fontSize={THEME_HEADER_FONTSIZE}
+                        color={DEV_TICKET_COLOR}
+                        fontWeight='bold'
+                        marginX={VSP_EDGE_PADDING}
+                        marginBottom={2*VERTICAL_UNIT}
+                    >
+                        {'나혼자 여행갈꼬얌'}
+                    </VSPText>
+                    <ScrollView>
+                        <View style={style.categoryView}>
+
+                        </View>
+                        <View style={style.categoryView}>
+                        </View>
+                    </ScrollView>
+                </View>
             </VSPContainer>
         );
     };
