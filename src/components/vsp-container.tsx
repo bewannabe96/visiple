@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView, StyleSheet } from 'react-native';
 
-import { THEME_COLORS } from '../types/config/theme';
 import { decodeVSPPaddingProps, VSPPaddingProps } from '../types/props/vsp-padding';
 
 interface VSPContainerProps extends VSPPaddingProps {
