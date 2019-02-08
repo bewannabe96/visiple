@@ -26,7 +26,7 @@ interface VSPColoredButtonProps extends VSPMarginProps {
     fontSize: number;
 
     /**
-     * Theme color of the button
+     * Theme color of the button (by default ```ocean-blue```)
      */
     theme?: ThemeColorType;
 
