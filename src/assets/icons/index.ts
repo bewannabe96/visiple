@@ -17,7 +17,8 @@ export type IconNameType
 | 'trash'
 | 'more'
 | 'planning'
-| 'backpack';
+| 'backpack'
+| 'down-arrow';
  
  const ICON_SOURCE: {[name in IconNameType]: any} = {
      'user': require('./user.png'),
@@ -39,6 +40,7 @@ export type IconNameType
      'more': require('./more.png'),
      'planning': require('./planning.png'),
      'backpack': require('./backpack.png'),
+     'down-arrow': require('./down-arrow.png'),
  };
 
  export default ICON_SOURCE;
