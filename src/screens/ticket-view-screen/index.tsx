@@ -5,15 +5,36 @@ import { NavigationScreenProp } from 'react-navigation';
 import { VSPScreenProps } from '../../types/props/vsp-screen';
 import { VERTICAL_UNIT, VSP_EDGE_PADDING, HORIZONTAL_UNIT, VSP_HEADER_PADDING } from '../../types/config/size';
 import { addShadowProperties, THEME_COLORS, THEME_HEADER_FONTSIZE } from '../../types/config/theme';
+import { TICKET_COLORS } from '../../types/config/ticket_theme';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
-import { TICKET_COLORS } from '../../types/config/ticket_theme';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
+import VSPIcon from '../../components/vsp-icon';
+import VSPExpandable from '../../components/vsp-expandable';
+import VSPCheckbox from '../../components/vsp-checkbox';
+import PlanTimeline from './plan-timeline';
 
 const DEV_TICKET_COLOR = TICKET_COLORS.HEADER['blue'];
+const DEV_PLANS = [
+    {
+        date: new Date('2020-03-14')
+    },
+    {
+        date: new Date('2020-03-15')
+    },
+    {
+        date: new Date('2020-03-16')
+    },
+    {
+        date: new Date('2020-03-17')
+    },
+    {
+        date: new Date('2020-03-18')
+    }
+]
 
 interface TicketViewScreenProps extends VSPScreenProps {
 }
@@ -90,10 +111,21 @@ export default class TicketViewScreen extends React.Component<TicketViewScreenPr
                 marginVertical: 2*VERTICAL_UNIT,
                 backgroundColor: THEME_COLORS['grey-white'],
                 borderRadius: 2*VERTICAL_UNIT,
+                padding: 4*HORIZONTAL_UNIT,
                 marginHorizontal: VSP_EDGE_PADDING,
                 ...addShadowProperties(),
-                height:400,
-            }
+            },
+
+            categoryTitleView: {
+                flexDirection: 'row',
+            },
+            
+            packingItem: {
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingLeft: VSP_EDGE_PADDING,
+                marginTop: 2*VERTICAL_UNIT,
+            },
         });
 
         return (
@@ -108,7 +140,7 @@ export default class TicketViewScreen extends React.Component<TicketViewScreenPr
                     </View>
                 </View>
                 <View style={style.bodyView}>
-                <VSPText
+                    <VSPText
                         fontSize={THEME_HEADER_FONTSIZE}
                         color={DEV_TICKET_COLOR}
                         fontWeight='bold'
@@ -119,10 +151,60 @@ export default class TicketViewScreen extends React.Component<TicketViewScreenPr
                     </VSPText>
                     <ScrollView>
                         <View style={style.categoryView}>
-
+                            <View style={style.categoryTitleView}>
+                                <VSPIcon
+                                    iconName='backpack'
+                                    size={THEME_HEADER_FONTSIZE}
+                                    theme='ocean-blue'
+                                />
+                                <VSPText
+                                    fontSize={THEME_HEADER_FONTSIZE}
+                                    marginLeft={2*HORIZONTAL_UNIT}
+                                >
+                                    준비물
+                                </VSPText>
+                            </View>
+                            <VSPExpandable
+                                header={
+                                    <View style={{flexDirection: 'row',}}>
+                                        <VSPIcon
+                                            iconName='teamwork'
+                                            size={THEME_HEADER_FONTSIZE}
+                                            marginRight={HORIZONTAL_UNIT}
+                                            color={DEV_TICKET_COLOR}
+                                        />
+                                        <VSPText
+                                            color={DEV_TICKET_COLOR}
+                                            fontSize={THEME_HEADER_FONTSIZE}
+                                        >
+                                            공통
+                                        </VSPText>
+                                    </View>
+                                }
+                                body={
+                                    <View>
+                                        <View style={style.packingItem}>
+                                            <VSPCheckbox marginRight={2*HORIZONTAL_UNIT} />
+                                            <VSPText>커피포트</VSPText>
+                                        </View>
+                                        <View style={style.packingItem}>
+                                            <VSPCheckbox marginRight={2*HORIZONTAL_UNIT} />
+                                            <VSPText>요가메트</VSPText>
+                                        </View>
+                                        <View style={style.packingItem}>
+                                            <VSPCheckbox marginRight={2*HORIZONTAL_UNIT} />
+                                            <VSPText>헬멧</VSPText>
+                                        </View>
+                                    </View>
+                                }
+                                color={DEV_TICKET_COLOR}
+                                marginY={2*VERTICAL_UNIT}
+                            />
                         </View>
-                        <View style={style.categoryView}>
-                        </View>
+                        <PlanTimeline
+                            plans={DEV_PLANS}
+                            ticketColor={DEV_TICKET_COLOR}
+                        />
                     </ScrollView>
                 </View>
             </VSPContainer>
