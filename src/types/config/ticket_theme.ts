@@ -3,7 +3,7 @@ import { THEME_COLORS } from "./theme";
 /**
  * Ticket Header Color Type
  */
-export type TicketHeaderColorType
+export type TicketHeaderColor
     = 'blue'
     | 'red'
     | 'orange'
@@ -15,7 +15,7 @@ export type TicketHeaderColorType
 /**
  * Ticket Header Colors
  */
-const TICKET_HEADER_COLORS: {[key in TicketHeaderColorType]: string} = {
+const TICKET_HEADER_COLORS: {[key in TicketHeaderColor]: string} = {
     'blue': '#6286FF',
     'red': '#FFB5B5',
     'orange': '#FFC87C',
@@ -28,8 +28,8 @@ const TICKET_HEADER_COLORS: {[key in TicketHeaderColorType]: string} = {
 /**
  * Ticket Header Colors Keys
  */
-export const TICKET_HEADER_COLORS_KEYS: TicketHeaderColorType[]
-     = Object.keys(TICKET_HEADER_COLORS) as Array<TicketHeaderColorType>;
+export const TICKET_HEADER_COLORS_KEYS: TicketHeaderColor[]
+        = Object.keys(TICKET_HEADER_COLORS) as Array<TicketHeaderColor>;
 
 /**
  * Ticket Colors
