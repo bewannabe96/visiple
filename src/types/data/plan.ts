@@ -67,10 +67,23 @@ interface SightseeingPlan {
 	information: string;
 }
 
-type Plans = (
+type DayPlans = (
 	| MealPlan
 	| RestPlan
 	| MeetPlan
 	| TravelPlan
 	| ActivityPlan
 	| SightseeingPlan)[];
+
+export type Plans = {
+	date: Date;
+	dayPlans: DayPlans;
+}
+
+
+// {
+	// 	id: 'ticket1'
+	// 	owner: 'user1'
+	// 	participants: ['user1', 'user2']
+	// 	plans: Plans
+// }
