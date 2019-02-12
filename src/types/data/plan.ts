@@ -3,7 +3,7 @@ type Place = string;
 type Currency = 'won' | 'dollar' | 'yen' | 'yuan';
 
 interface Cost {
-  value: number;
+	value: number;
 	currency: Currency;
 }
 
