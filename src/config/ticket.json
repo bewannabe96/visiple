@@ -1,0 +1,25 @@
+{
+	"ticketFixedTexts": {
+		"topLeft": "VISIPLE AIRLINE",
+		"topRight": {
+			"primary": "Boarding Pass",
+			"secondary": "First Class"
+		},
+		"from": "From",
+		"tom": "To",
+		"passenger": "Passenger"
+	},
+	"ticketFixedColors": {
+		"footer":	"#EFEFEF",
+		"text":		"#555555"
+	},
+    "themeColors": {
+		"blue":     "#6286FF",
+		"red":      "#FFB5B5",
+		"orange":   "#FFC87C",
+		"skyblue":  "#73C0F4",
+		"lime":     "#D2ED77",
+		"purple":   "#B09DFF",
+		"green":    "#AEEAB0"
+	}
+}

@@ -1,38 +1,45 @@
 /** @format */
 
-import { TicketHeaderColor } from '../../data/ticket/ticket_theme';
-
 /**
  * Data State Interface
  */
-type FromTo = 'from' | 'to';
-
 export interface DataState {
-	ticketColor: TicketHeaderColor;
-	period: { [key in FromTo]: Date };
+	ticketColor: string;
+	period: {
+		from: Date;
+		to: Date;
+	};
 }
 
 /**
  * Data Action Constants
  */
 declare const SET_TICKETCOLOR = 'visiple/new-ticket/SET_TICKETCOLOR';
-declare const SET_PERIOD = 'visiple/new-ticket/SET_PERIOD';
+declare const SET_FROMDATE = 'visiple/new-ticket/SET_FROMDATE';
+declare const SET_TODATE = 'visiple/new-ticket/SET_TODATE';
 
 /**
  * Data Action Creator Interfaces
  */
 interface SetTicketColorAction {
 	type: typeof SET_TICKETCOLOR;
-	ticketColor: TicketHeaderColor;
+	ticketColor: string;
 }
 
-interface SetPeriodAction {
-	type: typeof SET_PERIOD;
-	fromto: FromTo;
+interface SetFromDateAction {
+	type: typeof SET_FROMDATE;
+	date: Date;
+}
+
+interface SetToDateACtion {
+	type: typeof SET_TODATE;
 	date: Date;
 }
 
 /**
  * Data Action Types
  */
-export type DataActions = SetTicketColorAction | SetPeriodAction;
+export type DataActions =
+	| SetTicketColorAction
+	| SetFromDateAction
+	| SetToDateACtion;
