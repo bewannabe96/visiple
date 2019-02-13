@@ -4,7 +4,7 @@ import { UIState } from './ui';
 /**
  * New Ticket Root State Interface
  */
-export interface NewTicketScreenState {
+export default interface NewTicketScreenState {
 	TicketData: DataState;
 	Screen: UIState;
 }
