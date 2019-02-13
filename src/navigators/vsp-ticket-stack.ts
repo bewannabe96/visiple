@@ -3,8 +3,8 @@
 import { createStackNavigator } from 'react-navigation';
 
 import VSPTicketScreen from '../screens/vsp-ticket-screen';
-import VSPNewTicketContainer from '../containers/vsp-new-ticket-container';
-import VSPTicketViewContainer from '../containers/vsp-ticket-view-container';
+import NewTicketContainer from '../containers/new-ticket-screen';
+import TicketViewContainer from '../containers/ticket-view-screen';
 
 const VSPTicketStack = createStackNavigator(
 	{
@@ -13,11 +13,11 @@ const VSPTicketStack = createStackNavigator(
 		},
 
 		NewTicketScreen: {
-			screen: VSPNewTicketContainer,
+			screen: NewTicketContainer,
 		},
 
 		TicketViewScreen: {
-			screen: VSPTicketViewContainer,
+			screen: TicketViewContainer,
 		},
 	},
 	{

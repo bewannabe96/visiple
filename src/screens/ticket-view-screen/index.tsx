@@ -12,7 +12,7 @@ import {../../types/data/ticket/ticket_theme
 	VSP_HEADER_PADDING,
 } from '../../types/config/size';
 import { THEME_COLORS, THEME_HEADER_FONTSIZE } from '../../types/config/theme';
-import { TICKET_COLORS } from '../../types/data/ticket/ticket_theme';
+import { TICKET_COLORS } from '../../types/data/ticket/theme';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
