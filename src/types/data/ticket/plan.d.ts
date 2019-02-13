@@ -78,12 +78,4 @@ type DayPlans = (
 export type Plans = {
 	date: Date;
 	dayPlans: DayPlans;
-}
-
-
-// {
-	// 	id: 'ticket1'
-	// 	owner: 'user1'
-	// 	participants: ['user1', 'user2']
-	// 	plans: Plans
-// }
+}[];
