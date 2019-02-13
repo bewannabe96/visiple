@@ -3,7 +3,6 @@
 import React from 'react';
 import { StyleSheet, FlatList, View } from 'react-native';
 
-import { TICKET_COLORS } from '../../types/data/ticket/theme';
 import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
 import { THEME_COLORS } from '../../types/config/theme';
 
@@ -89,9 +88,7 @@ export default class FriendInviteModal extends React.Component<
 								text='초대'
 								icon='plus'
 								fontSize={2 * HORIZONTAL_UNIT}
-								color={
-									TICKET_COLORS.HEADER[this.props.ticketColor]
-								}
+								color={this.props.ticketColor}
 							/>
 						</View>
 					)}

@@ -13,11 +13,11 @@ import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
 import SelectPeriodModal from '../../screens/new-ticket-screen/select-period-modal';
 
 const mapStateToProps = (state: RootState) => ({
-	ticketColor: state.NewTicketScreen.TicketData.ticketColor,
-	fromDate: state.NewTicketScreen.TicketData.period.from,
-	toDate: state.NewTicketScreen.TicketData.period.to,
-	periodModalVisible: state.NewTicketScreen.Screen.periodModalVisible,
-	fromtoTab: state.NewTicketScreen.Screen.fromtoTab,
+	ticketColor: state.NewTicketScreen.Data.ticketColor,
+	fromDate: state.NewTicketScreen.Data.period.from,
+	toDate: state.NewTicketScreen.Data.period.to,
+	periodModalVisible: state.NewTicketScreen.UI.periodModalVisible,
+	fromtoTab: state.NewTicketScreen.UI.fromtoTab,
 });
 
 const mapDispatchToProps = {

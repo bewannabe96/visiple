@@ -10,7 +10,6 @@ import {
 	THEME_FONT,
 	THEME_FONTSIZE,
 } from '../../types/config/theme';
-import { TICKET_COLORS } from '../../types/data/ticket/theme';
 import { TabType } from '../../types/redux/new-ticket-types';
 import {
 	formatDateString,
