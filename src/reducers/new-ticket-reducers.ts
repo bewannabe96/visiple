@@ -14,7 +14,7 @@ import {
 	CLOSE_INVITE_MODAL,
 } from '../types/redux/new-ticket-types';
 
-import { TICKET_HEADER_COLORS_KEYS } from '../types/config/ticket_theme';
+import { TICKET_HEADER_COLORS_KEYS } from '../types/data/ticket/ticket_theme';
 import { combineReducers } from 'redux';
 
 /**

@@ -6,7 +6,7 @@ import { StyleSheet, FlatList, View } from 'react-native';
 import {
 	TicketHeaderColorType,
 	TICKET_COLORS,
-} from '../../types/config/ticket_theme';
+} from '../../types/data/ticket/ticket_theme';
 import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
 import { THEME_COLORS } from '../../types/config/theme';
 

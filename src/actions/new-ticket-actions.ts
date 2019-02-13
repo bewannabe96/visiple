@@ -10,7 +10,7 @@ import {
 	OPEN_INVITE_MODAL,
 	CLOSE_INVITE_MODAL,
 } from '../types/redux/new-ticket-types';
-import { TicketHeaderColorType } from '../types/config/ticket_theme';
+import { TicketHeaderColorType } from '../types/data/ticket/ticket_theme';
 
 /**
  * Ticket Data Action Creators

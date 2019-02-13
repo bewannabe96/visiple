@@ -1,6 +1,6 @@
 /** @format */
 
-import { TicketHeaderColor } from '../../config/ticket_theme';
+import { TicketHeaderColor } from '../../data/ticket/ticket_theme';
 
 /**
  * Data State Interface

@@ -8,7 +8,7 @@ import { THEME_MINOR_FONTSIZE } from '../../types/config/theme';
 import {
 	TicketHeaderColorType,
 	TICKET_COLORS,
-} from '../../types/config/ticket_theme';
+} from '../../types/data/ticket/ticket_theme';
 
 import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';

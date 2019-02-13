@@ -3,7 +3,7 @@
 import React from 'react';
 import {
 	ScrollView,
-	StyleSheet,
+	StyleSheet,../../types/data/ticket/ticket_theme
 	StyleProp,
 	TouchableOpacity,
 	View,
@@ -17,7 +17,7 @@ import {
 	TicketHeaderColorType,
 	TICKET_COLORS,
 	TICKET_TEXTS,
-} from '../../types/config/ticket_theme';
+} from '../../types/data/ticket/ticket_theme';
 import { addShadowProperties, THEME_FONT } from '../../types/config/theme';
 import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
 

@@ -6,7 +6,7 @@ import { NavigationScreenProp } from 'react-navigation';
 
 import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
 import { THEME_HEADER_FONTSIZE } from '../../types/config/theme';
-import { TICKET_COLORS } from '../../types/config/ticket_theme';
+import { TICKET_COLORS } from '../../types/data/ticket/ticket_theme';
 import { VSPScreenProps } from '../../types/props/vsp-screen';
 import { formatDateString, formatTimeString } from '../../types/lib/vsp-date';
 

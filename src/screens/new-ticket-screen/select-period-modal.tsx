@@ -13,7 +13,7 @@ import {
 import {
 	TICKET_COLORS,
 	TicketHeaderColorType,
-} from '../../types/config/ticket_theme';
+} from '../../types/data/ticket/ticket_theme';
 import { TabType } from '../../types/redux/new-ticket-types';
 import {
 	formatDateString,

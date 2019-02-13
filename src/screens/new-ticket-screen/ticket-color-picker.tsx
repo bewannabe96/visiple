@@ -8,7 +8,7 @@ import {
 	TICKET_COLORS,
 	TICKET_HEADER_COLORS_KEYS,
 	TicketHeaderColorType,
-} from '../../types/config/ticket_theme';
+} from '../../types/data/ticket/ticket_theme';
 import { VERTICAL_UNIT } from '../../types/config/size';
 
 interface TicketColorPickerProps {
