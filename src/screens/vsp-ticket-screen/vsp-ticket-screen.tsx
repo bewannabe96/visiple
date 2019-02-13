@@ -1,37 +1,25 @@
 /** @format */
 
 import React from 'react';
-import {
-	ScrollView,
-	StyleSheet,../../types/data/ticket/theme
-	StyleProp,
-	TouchableOpacity,
-	View,
-	Text,
-	Image,
-} from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
 import { VSPScreenProps } from '../../types/props/vsp-screen';
-import {
-	TicketHeaderColorType,
-	TICKET_COLORS,
-	TICKET_TEXTS,
-} from '../../types/data/ticket/theme';
+import { TICKET_COLORS, TICKET_TEXTS } from '../../types/data/ticket/theme';
 import { addShadowProperties, THEME_FONT } from '../../types/config/theme';
 import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
 
-import VSPHeader, {
-	VSPHeaderTitle,
-	VSPHeaderButton,
-	VSPHeaderMenu,
-} from '../../components/vsp-header';
+import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPBottomBar from '../../components/vsp-bottombar';
 import VSPProfile from '../../components/vsp-profile';
+import VSPHeaderTitle from '../../components/vsp-header-title';
+import VSPHeaderButton, {
+	VSPHeaderMenu,
+} from '../../components/vsp-header-button';
 
 export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
-	static navigationOptions = ({
+	public static navigationOptions = ({
 		navigation,
 	}: {
 		navigation: NavigationScreenProp<any>;
@@ -54,11 +42,11 @@ export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
 		};
 	};
 
-	_on_ticket_press() {
+	private _onTicketPress() {
 		this.props.navigation.navigate('TicketViewScreen');
 	}
 
-	render() {
+	public render() {
 		return (
 			<VSPContainer>
 				<ScrollView>
@@ -67,7 +55,7 @@ export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
 						endDate={new Date('2020-02-02')}
 						title='여자친구와 함께하는 신나는 이별여행'
 						onPress={() => {
-							this._on_ticket_press();
+							this._onTicketPress();
 						}}
 					/>
 					<TicketItem
@@ -75,7 +63,7 @@ export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
 						endDate={new Date('2020-02-02')}
 						title='여자친구와 함께하는 신나는 이별여행'
 						onPress={() => {
-							this._on_ticket_press();
+							this._onTicketPress();
 						}}
 					/>
 				</ScrollView>
@@ -85,7 +73,7 @@ export default class VSPTicketScreen extends React.Component<VSPScreenProps> {
 	}
 }
 
-interface TicketItemProps {
+interface ITicketItemProps {
 	/**
 	 * Date which it starts from
 	 */
@@ -102,9 +90,9 @@ interface TicketItemProps {
 	title: string;
 
 	/**
-	 * Color of the header (by default ```blue```)
+	 * Color of the header
 	 */
-	headercolor?: TicketHeaderColorType;
+	headercolor: string;
 
 	/**
 	 * Callback function when ticket pressed
@@ -122,7 +110,7 @@ interface TicketItemProps {
  * - ```headercolor```: Color of the header (by default ```blue```)
  * - ```onPress```: Callback function when ticket pressed
  */
-class TicketItem extends React.Component<TicketItemProps> {
+class TicketItem extends React.Component<ITicketItemProps> {
 	private _fixed_style: StyleProp<any>;
 
 	constructor(props: TicketItemProps) {
