@@ -10,10 +10,7 @@ import {
 	THEME_FONT,
 	THEME_FONTSIZE,
 } from '../../types/config/theme';
-import {
-	TICKET_COLORS,
-	TicketHeaderColorType,
-} from '../../types/data/ticket/ticket_theme';
+import { TICKET_COLORS } from '../../types/data/ticket/theme';
 import { TabType } from '../../types/redux/new-ticket-types';
 import {
 	formatDateString,
@@ -25,9 +22,9 @@ import {
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
 
-interface SelectPeriodModalProps {
+interface ISelectPeriodModalProps {
 	// STATES
-	ticketColor: TicketHeaderColorType;
+	ticketColor: string;
 	fromDate: Date;
 	toDate: Date;
 	periodModalVisible: boolean;
@@ -36,17 +33,18 @@ interface SelectPeriodModalProps {
 	// ACTION CREATORS
 	switchFromToTab: any;
 	closePeriodModal: any;
-	setPeriod: any;
+	setFromDate: any;
+	setToDate: any;
 }
 
 /**
  * SelectPeriodModal
  */
 export default class SelectPeriodModal extends React.Component<
-	SelectPeriodModalProps
+	ISelectPeriodModalProps
 > {
-	render() {
-		let style = StyleSheet.create({
+	public render() {
+		const style = StyleSheet.create({
 			fromtoTabView: {
 				flexDirection: 'row',
 			},
@@ -63,7 +61,7 @@ export default class SelectPeriodModal extends React.Component<
 					this.props.fromtoTab === 'from-tab' ? VERTICAL_UNIT : 0,
 				borderRightWidth: this.props.fromtoTab === 'from-tab' ? 1 : 0,
 				borderBottomWidth: this.props.fromtoTab === 'from-tab' ? 0 : 1,
-				borderColor: TICKET_COLORS.HEADER[this.props.ticketColor],
+				borderColor: this.props.ticketColor,
 			},
 
 			toTab: {
@@ -78,18 +76,18 @@ export default class SelectPeriodModal extends React.Component<
 					this.props.fromtoTab === 'to-tab' ? VERTICAL_UNIT : 0,
 				borderLeftWidth: this.props.fromtoTab === 'to-tab' ? 1 : 0,
 				borderBottomWidth: this.props.fromtoTab === 'to-tab' ? 0 : 1,
-				borderColor: TICKET_COLORS.HEADER[this.props.ticketColor],
+				borderColor: this.props.ticketColor,
 			},
 
 			dateText: {
 				alignSelf: 'flex-end',
-				color: TICKET_COLORS.HEADER[this.props.ticketColor],
+				color: this.props.ticketColor,
 				fontWeight: 'bold',
 			},
 
 			timeText: {
 				alignSelf: 'flex-end',
-				color: TICKET_COLORS.HEADER[this.props.ticketColor],
+				color: this.props.ticketColor,
 			},
 
 			calendar: {
@@ -98,8 +96,8 @@ export default class SelectPeriodModal extends React.Component<
 			},
 		});
 
-		let calendar_theme = {
-			arrowColor: TICKET_COLORS.HEADER[this.props.ticketColor],
+		const calendarTheme = {
+			arrowColor: this.props.ticketColor,
 			dayTextColor: THEME_COLORS['ocean-blue'],
 			monthTextColor: THEME_COLORS['ocean-blue'],
 			textDayFontFamily: THEME_FONT,
@@ -111,24 +109,24 @@ export default class SelectPeriodModal extends React.Component<
 			textMonthFontSize: THEME_FONTSIZE,
 		};
 
-		let calendar_markeddays = (start: Date, end: Date) => {
-			let keys = generateDatesArrayFromPeriod(start, end);
-			let rtn_obj: { [key: string]: any } = {};
+		const calendarMarkeddays = (start: Date, end: Date) => {
+			const keys = generateDatesArrayFromPeriod(start, end);
+			const rtnObj: { [key: string]: any } = {};
 			keys.map(key => {
-				rtn_obj[key] = {
-					color: TICKET_COLORS.HEADER[this.props.ticketColor],
-					textColor: THEME_COLORS['white'],
+				rtnObj[key] = {
+					color: this.props.ticketColor,
+					textColor: THEME_COLORS.white,
 				};
 			});
-			rtn_obj[formatISODate(start)] = {
-				...rtn_obj[formatISODate(start)],
+			rtnObj[formatISODate(start)] = {
+				...rtnObj[formatISODate(start)],
 				startingDay: true,
 			};
-			rtn_obj[formatISODate(end)] = {
-				...rtn_obj[formatISODate(end)],
+			rtnObj[formatISODate(end)] = {
+				...rtnObj[formatISODate(end)],
 				endingDay: true,
 			};
-			return rtn_obj;
+			return rtnObj;
 		};
 
 		return (
@@ -172,7 +170,7 @@ export default class SelectPeriodModal extends React.Component<
 				</View>
 				<Calendar
 					style={style.calendar}
-					theme={calendar_theme}
+					theme={calendarTheme}
 					current={formatISODate(
 						this.props.fromtoTab === 'from-tab'
 							? this.props.fromDate
@@ -182,21 +180,22 @@ export default class SelectPeriodModal extends React.Component<
 					monthFormat={'MMM yyyy'}
 					hideExtraDays={true}
 					markingType={'period'}
-					markedDates={calendar_markeddays(
+					markedDates={calendarMarkeddays(
 						this.props.fromDate,
 						this.props.toDate,
 					)}
 					onDayPress={day => {
-						let date =
+						const date =
 							this.props.fromtoTab === 'from-tab'
 								? this.props.fromDate
 								: this.props.toDate;
 						date.setFullYear(day.year, day.month - 1, day.day);
 						// Do error handling
-						this.props.setPeriod(
-							this.props.fromtoTab,
-							new Date(date),
-						);
+						if (this.props.fromtoTab === 'from-tab') {
+							this.props.setFromDate(new Date(date));
+						} else {
+							this.props.setToDate(new Date(date));
+						}
 					}}
 				/>
 			</VSPModal>

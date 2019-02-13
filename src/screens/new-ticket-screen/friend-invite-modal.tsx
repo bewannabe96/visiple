@@ -3,10 +3,7 @@
 import React from 'react';
 import { StyleSheet, FlatList, View } from 'react-native';
 
-import {
-	TicketHeaderColorType,
-	TICKET_COLORS,
-} from '../../types/data/ticket/ticket_theme';
+import { TICKET_COLORS } from '../../types/data/ticket/theme';
 import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
 import { THEME_COLORS } from '../../types/config/theme';
 
@@ -16,9 +13,9 @@ import VSPProfile from '../../components/vsp-profile';
 import VSPColoredButton from '../../components/vsp-colored-button';
 import VSPText from '../../components/vsp-text';
 
-interface FriendInviteModalProps {
+interface IFriendInviteModalProps {
 	// STATES
-	ticketColor: TicketHeaderColorType;
+	ticketColor: string;
 	inviteModalVisible: boolean;
 
 	// ACTION CREATORS
@@ -29,10 +26,10 @@ interface FriendInviteModalProps {
  * FriendInviteModal
  */
 export default class FriendInviteModal extends React.Component<
-	FriendInviteModalProps
+	IFriendInviteModalProps
 > {
-	render() {
-		let style = StyleSheet.create({
+	public render() {
+		const style = StyleSheet.create({
 			friendsList: {
 				height: '70%',
 			},

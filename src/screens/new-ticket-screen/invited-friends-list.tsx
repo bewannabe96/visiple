@@ -1,14 +1,10 @@
 /** @format */
 
 import React from 'react';
-import { View, ScrollView, StyleProp, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 
 import { VERTICAL_UNIT } from '../../types/config/size';
 import { THEME_MINOR_FONTSIZE } from '../../types/config/theme';
-import {
-	TicketHeaderColorType,
-	TICKET_COLORS,
-} from '../../types/data/ticket/ticket_theme';
 
 import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
@@ -18,7 +14,7 @@ export interface InvitedFriendsListProps {
 	/**
 	 * Color of the ticket
 	 */
-	ticketColor: TicketHeaderColorType;
+	ticketColor: string;
 }
 
 /**
@@ -30,19 +26,7 @@ export interface InvitedFriendsListProps {
 export default class InvitedFriendsList extends React.Component<
 	InvitedFriendsListProps
 > {
-	private _fixed_style: StyleProp<any>;
-
-	constructor(props: InvitedFriendsListProps) {
-		super(props);
-
-		this._fixed_style = StyleSheet.create({
-			friendsScrollView: {
-				flexDirection: 'row',
-			},
-		});
-	}
-
-	_render_item() {
+	private _renderItem() {
 		return (
 			<View
 				style={{
@@ -56,20 +40,26 @@ export default class InvitedFriendsList extends React.Component<
 				<VSPTextButton
 					icon='cancel'
 					fontSize={THEME_MINOR_FONTSIZE}
-					color={TICKET_COLORS.HEADER[this.props.ticketColor]}
+					color={this.props.ticketColor}
 				/>
 			</View>
 		);
 	}
 
-	render() {
+	public render() {
+		const style = StyleSheet.create({
+			friendsScrollView: {
+				flexDirection: 'row',
+			},
+		});
+
 		return (
 			<ScrollView
-				contentContainerStyle={this._fixed_style.friendsScrollView}
+				contentContainerStyle={style.friendsScrollView}
 				horizontal={true}
 				showsHorizontalScrollIndicator={false}
 			>
-				{this._render_item()}
+				{this._renderItem()}
 			</ScrollView>
 		);
 	}

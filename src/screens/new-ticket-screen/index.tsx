@@ -5,15 +5,11 @@ import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
 import { VERTICAL_UNIT, VSP_EDGE_PADDING } from '../../types/config/size';
-import { THEME_HEADER_FONTSIZE } from '../../types/config/theme';
-import { TICKET_COLORS } from '../../types/data/ticket/ticket_theme';
+import { THEME_HEADER_FONTSIZE } from '../../types/config/theme';\
 import { VSPScreenProps } from '../../types/props/vsp-screen';
 import { formatDateString, formatTimeString } from '../../types/lib/vsp-date';
 
-import VSPHeader, {
-	VSPHeaderTitle,
-	VSPHeaderBack,
-} from '../../components/vsp-header';
+import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
@@ -21,20 +17,20 @@ import VSPBottomBar from '../../components/vsp-bottombar';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPColoredButton from '../../components/vsp-colored-button';
 import VSPIcon from '../../components/vsp-icon';
+import VSPHeaderTitle from '../../components/vsp-header-title';
+import { VSPHeaderBack } from '../../components/vsp-header-button';
 
-import { TicketDataState } from '../../types/redux/new-ticket-types';
-
-import TicketColorPickerContainer from '../../containers/vsp-new-ticket-container/ticket-color-picker';
-import SelectPeriodModalContainer from '../../containers/vsp-new-ticket-container/select-period-modal';
 import InvitedFriendsList from './invited-friends-list';
-import FriendInviteModalContainer from '../../containers/vsp-new-ticket-container/friend-invite-modal';
+import { DataState } from '../../types/redux/new-ticket-screen/data';
+import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';
+import SelectPeriodModalContainer from '../../containers/new-ticket-screen/select-period-modal';
+import FriendInviteModalContainer from '../../containers/new-ticket-screen/friend-invite-modal';
 
-interface NewTicketScreenProps extends VSPScreenProps {
+interface INewTicketScreenProps extends VSPScreenProps {
 	// STATES
-	ticketData: TicketDataState;
+	ticketData: DataState;
 
 	// ACTION CREATORS
-	setTicketColor: any;
 	openPeriodModal: any;
 	switchFromToTab: any;
 	openInviteModal: any;
@@ -44,9 +40,9 @@ interface NewTicketScreenProps extends VSPScreenProps {
  * NewTicketScreen
  */
 export default class NewTicketScreen extends React.Component<
-	NewTicketScreenProps
+	INewTicketScreenProps
 > {
-	static navigationOptions = ({
+	public static navigationOptions = ({
 		navigation,
 	}: {
 		navigation: NavigationScreenProp<any>;
@@ -61,18 +57,18 @@ export default class NewTicketScreen extends React.Component<
 		};
 	};
 
-	_open_modal_with_fromtab = () => {
+	private _openModalWithFromtab = () => {
 		this.props.switchFromToTab('from-tab');
 		this.props.openPeriodModal();
 	};
 
-	_open_modal_with_totab = () => {
+	private _openModalWithTotab = () => {
 		this.props.switchFromToTab('to-tab');
 		this.props.openPeriodModal();
 	};
 
-	render() {
-		let style = StyleSheet.create({
+	public render() {
+		const style = StyleSheet.create({
 			scrollView: {
 				paddingVertical: 4 * VERTICAL_UNIT,
 				paddingHorizontal: VSP_EDGE_PADDING,
@@ -107,8 +103,7 @@ export default class NewTicketScreen extends React.Component<
 				borderBottomWidth: 2,
 				marginLeft: 4 * VERTICAL_UNIT,
 				flex: 3,
-				borderColor:
-					TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
+				borderColor: this.props.ticketData.ticketColor,
 			},
 
 			timeInputView: {
@@ -116,12 +111,11 @@ export default class NewTicketScreen extends React.Component<
 				borderBottomWidth: 2,
 				marginLeft: 4 * VERTICAL_UNIT,
 				flex: 2,
-				borderColor:
-					TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
+				borderColor: this.props.ticketData.ticketColor,
 			},
 
 			valueText: {
-				color: TICKET_COLORS.HEADER[this.props.ticketData.ticketColor],
+				color: this.props.ticketData.ticketColor,
 				fontSize: THEME_HEADER_FONTSIZE,
 			},
 
@@ -141,11 +135,7 @@ export default class NewTicketScreen extends React.Component<
 							placeholder='제목을 입력해 주세요.'
 							fontSize={THEME_HEADER_FONTSIZE}
 							marginTop={VERTICAL_UNIT}
-							color={
-								TICKET_COLORS.HEADER[
-									this.props.ticketData.ticketColor
-								]
-							}
+							color={this.props.ticketData.ticketColor}
 						/>
 					</View>
 					<View style={style.categoryView}>
@@ -170,52 +160,36 @@ export default class NewTicketScreen extends React.Component<
 							<TouchableOpacity
 								style={style.dateInputView}
 								activeOpacity={0.6}
-								onPress={this._open_modal_with_fromtab}
+								onPress={this._openModalWithFromtab}
 							>
 								<VSPIcon
 									iconName='calendar'
 									marginRight={VERTICAL_UNIT}
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								/>
 								<VSPText
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								>
 									{formatDateString(
-										this.props.ticketData.period.fromDate,
+										this.props.ticketData.period.from,
 									)}
 								</VSPText>
 							</TouchableOpacity>
 							<TouchableOpacity
 								style={style.timeInputView}
 								activeOpacity={0.6}
-								onPress={this._open_modal_with_fromtab}
+								onPress={this._openModalWithFromtab}
 							>
 								<VSPIcon
 									iconName='clock'
 									marginRight={VERTICAL_UNIT}
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								/>
 								<VSPText
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								>
 									{formatTimeString(
-										this.props.ticketData.period.fromDate,
+										this.props.ticketData.period.from,
 									)}
 								</VSPText>
 							</TouchableOpacity>
@@ -227,52 +201,36 @@ export default class NewTicketScreen extends React.Component<
 							<TouchableOpacity
 								style={style.dateInputView}
 								activeOpacity={0.6}
-								onPress={this._open_modal_with_totab}
+								onPress={this._openModalWithTotab}
 							>
 								<VSPIcon
 									iconName='calendar'
 									marginRight={VERTICAL_UNIT}
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								/>
 								<VSPText
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								>
 									{formatDateString(
-										this.props.ticketData.period.toDate,
+										this.props.ticketData.period.to,
 									)}
 								</VSPText>
 							</TouchableOpacity>
 							<TouchableOpacity
 								style={style.timeInputView}
 								activeOpacity={0.6}
-								onPress={this._open_modal_with_totab}
+								onPress={this._openModalWithTotab}
 							>
 								<VSPIcon
 									iconName='clock'
 									marginRight={VERTICAL_UNIT}
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								/>
 								<VSPText
-									color={
-										TICKET_COLORS.HEADER[
-											this.props.ticketData.ticketColor
-										]
-									}
+									color={this.props.ticketData.ticketColor}
 								>
 									{formatTimeString(
-										this.props.ticketData.period.toDate,
+										this.props.ticketData.period.to,
 									)}
 								</VSPText>
 							</TouchableOpacity>
@@ -288,11 +246,7 @@ export default class NewTicketScreen extends React.Component<
 							<VSPTextButton
 								icon='plus'
 								fontSize={THEME_HEADER_FONTSIZE}
-								color={
-									TICKET_COLORS.HEADER[
-										this.props.ticketData.ticketColor
-									]
-								}
+								color={this.props.ticketData.ticketColor}
 								onPress={() => {
 									this.props.openInviteModal();
 								}}
@@ -320,19 +274,9 @@ export default class NewTicketScreen extends React.Component<
 						text='완료'
 						fontSize={THEME_HEADER_FONTSIZE}
 						margin={2 * VERTICAL_UNIT}
-						color={
-							TICKET_COLORS.HEADER[
-								this.props.ticketData.ticketColor
-							]
-						}
+						color={this.props.ticketData.ticketColor}
 					/>
-					<VSPBottomBar
-						color={
-							TICKET_COLORS.HEADER[
-								this.props.ticketData.ticketColor
-							]
-						}
-					/>
+					<VSPBottomBar color={this.props.ticketData.ticketColor} />
 				</View>
 
 				<SelectPeriodModalContainer />

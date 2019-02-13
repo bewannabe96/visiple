@@ -2,7 +2,7 @@
 
 import { combineReducers } from 'redux';
 
-import NewTicketScreenReducer from './new-ticket-reducers';
+import NewTicketScreenReducer from './new-ticket-screen';
 
 /**
  * App Root Reducer

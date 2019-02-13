@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import RootState from '../../types/redux';
 
-import { setTicketColor } from '../../actions/new-ticket-actions';
+import { setTicketColor } from '../../actions/new-ticket-screen/data';
 
 import TicketColorPicker from '../../screens/new-ticket-screen/ticket-color-picker';
 

@@ -14,9 +14,9 @@ export interface DataState {
 /**
  * Data Action Constants
  */
-declare const SET_TICKETCOLOR = 'visiple/new-ticket/SET_TICKETCOLOR';
-declare const SET_FROMDATE = 'visiple/new-ticket/SET_FROMDATE';
-declare const SET_TODATE = 'visiple/new-ticket/SET_TODATE';
+export const SET_TICKETCOLOR = 'visiple/new-ticket/SET_TICKETCOLOR';
+export const SET_FROM_DATE = 'visiple/new-ticket/SET_FROMDATE';
+export const SET_TO_DATE = 'visiple/new-ticket/SET_TODATE';
 
 /**
  * Data Action Creator Interfaces
@@ -27,12 +27,12 @@ interface SetTicketColorAction {
 }
 
 interface SetFromDateAction {
-	type: typeof SET_FROMDATE;
+	type: typeof SET_FROM_DATE;
 	date: Date;
 }
 
 interface SetToDateACtion {
-	type: typeof SET_TODATE;
+	type: typeof SET_TO_DATE;
 	date: Date;
 }
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import RootState from '../../types/redux';
 
-import { closeInviteModal } from '../../actions/new-ticket-actions';
+import { closeInviteModal } from '../../actions/new-ticket-screen/ui';
 
 import FriendInviteModal from '../../screens/new-ticket-screen/friend-invite-modal';
 

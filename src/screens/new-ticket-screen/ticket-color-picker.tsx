@@ -7,13 +7,12 @@ import { THEME_COLORS } from '../../types/config/theme';
 import {
 	TICKET_COLORS,
 	TICKET_HEADER_COLORS_KEYS,
-	TicketHeaderColorType,
-} from '../../types/data/ticket/ticket_theme';
+} from '../../types/data/ticket/theme';
 import { VERTICAL_UNIT } from '../../types/config/size';
 
-interface TicketColorPickerProps {
+interface ITicketColorPickerProps {
 	// STATES
-	ticketColor: TicketHeaderColorType;
+	ticketColor: string;
 
 	// ACTION CREATORS
 	setTicketColor: any;
@@ -23,7 +22,7 @@ interface TicketColorPickerProps {
  * TicketColorPicker
  */
 export default class TicketColorPicker extends React.Component<
-	TicketColorPickerProps
+	ITicketColorPickerProps
 > {
 	render() {
 		return (
@@ -37,19 +36,21 @@ export default class TicketColorPicker extends React.Component<
 			>
 				{TICKET_HEADER_COLORS_KEYS.map(colorName => (
 					<TouchableOpacity
-						key={colorName}
+						key={TICKET_COLORS.THEME[colorName]}
 						style={{
 							height: 10 * VERTICAL_UNIT,
 							width: 10 * VERTICAL_UNIT,
 							borderRadius: 5 * VERTICAL_UNIT,
 							marginHorizontal: VERTICAL_UNIT,
-							backgroundColor: TICKET_COLORS.HEADER[colorName],
-							borderColor: THEME_COLORS['grey'],
+							backgroundColor: TICKET_COLORS.THEME[colorName],
+							borderColor: THEME_COLORS.grey,
 							borderWidth:
 								this.props.ticketColor === colorName ? 3 : 0,
 						}}
 						onPress={() => {
-							this.props.setTicketColor(colorName);
+							this.props.setTicketColor(
+								TICKET_COLORS.THEME[colorName],
+							);
 						}}
 					/>
 				))}

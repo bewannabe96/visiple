@@ -15,13 +15,13 @@ export interface UIState {
 /**
  * UI Action Constants
  */
-declare const OPEN_PERIOD_MODAL = 'visiple/new-ticket/OPEN_PERIOD_MODAL';
-declare const CLOSE_PERIOD_MODAL = 'visiple/new-ticket/CLOSE_PERIOD_MODAL';
+export const OPEN_PERIOD_MODAL = 'visiple/new-ticket/OPEN_PERIOD_MODAL';
+export const CLOSE_PERIOD_MODAL = 'visiple/new-ticket/CLOSE_PERIOD_MODAL';
 
-declare const SWITCH_FROMTO_TAB = 'visiple/new-ticket/SWITCH_FROMTO_TAB';
+export const SWITCH_FROMTO_TAB = 'visiple/new-ticket/SWITCH_FROMTO_TAB';
 
-declare const OPEN_INVITE_MODAL = 'visiple/new-ticket/OPEN_INVITE_MODAL';
-declare const CLOSE_INVITE_MODAL = 'visiple/new-ticket/CLOSE_INVITE_MODAL';
+export const OPEN_INVITE_MODAL = 'visiple/new-ticket/OPEN_INVITE_MODAL';
+export const CLOSE_INVITE_MODAL = 'visiple/new-ticket/CLOSE_INVITE_MODAL';
 
 /**
  * UI Action Creator Interfaces
