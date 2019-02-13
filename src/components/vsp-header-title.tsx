@@ -17,7 +17,9 @@ interface IVSPHeaderTitleProps {
  * @property
  * - ```text```(required): Title text
  */
-export class VSPHeaderTitle extends React.Component<IVSPHeaderTitleProps> {
+export default class VSPHeaderTitle extends React.Component<
+	IVSPHeaderTitleProps
+> {
 	public render() {
 		return (
 			<VSPText fontSize={20} fontWeight='bold' theme='brown'>
