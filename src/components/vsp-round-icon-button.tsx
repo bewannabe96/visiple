@@ -4,15 +4,15 @@ import { GestureResponderEvent, StyleSheet, TouchableOpacity } from "react-nativ
 import { ThemeColorType, THEME_COLORS, RawColorType, THEME_FONTSIZE } from "../types/config/theme";
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
+import { IconName } from "../assets/icons";
+
 import VSPIcon from "./vsp-icon";
 
-import { IconNameType } from "../assets/icons";
-
-interface VSPRoundIconButtonProps extends VSPMarginProps {
+interface IVSPRoundIconButtonProps extends VSPMarginProps {
     /**
      * Icon to be displayed in the button
      */
-    icon: IconNameType;
+    icon: IconName;
 
     /**
      * Outline button style if true (by default ```false```)
@@ -58,17 +58,17 @@ interface VSPRoundIconButtonProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPRoundIconButton extends React.Component<VSPRoundIconButtonProps> {
+export default class VSPRoundIconButton extends React.Component<IVSPRoundIconButtonProps> {
     public static defaultProps = {
         outline: false,
         fontSize: THEME_FONTSIZE,
         theme: 'ocean-blue',
     };
 
-    render() {
-        let color = this.props.color ?
+    public render() {
+        const color = this.props.color ?
             this.props.color : THEME_COLORS[this.props.theme!]
-        let style = StyleSheet.create({
+        const style = StyleSheet.create({
             touchableOpacity: {
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -76,8 +76,8 @@ export default class VSPRoundIconButton extends React.Component<VSPRoundIconButt
                 height: 2*this.props.fontSize!,
                 width: 2*this.props.fontSize!,
                 borderRadius: this.props.fontSize!,
-                backgroundColor: this.props.outline! ? THEME_COLORS['none'] : color,
-                borderColor: this.props.outline! ? color : THEME_COLORS['none'],
+                backgroundColor: this.props.outline! ? THEME_COLORS.none : color,
+                borderColor: this.props.outline! ? color : THEME_COLORS.none,
                 borderWidth: this.props.outline! ? 1 : 0,
                 ...decodeVSPMarginProps(this.props),
             },
@@ -91,7 +91,7 @@ export default class VSPRoundIconButton extends React.Component<VSPRoundIconButt
             >
                 <VSPIcon
                     iconName={this.props.icon}
-                    color={this.props.outline! ? color : THEME_COLORS['white']}
+                    color={this.props.outline! ? color : THEME_COLORS.white}
                     size={this.props.fontSize}
                 />
             </TouchableOpacity>

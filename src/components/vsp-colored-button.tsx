@@ -7,9 +7,9 @@ import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin'
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 
-import { IconNameType } from "../assets/icons";
+import { IconName } from "../assets/icons";
 
-interface VSPColoredButtonProps extends VSPMarginProps {
+interface IVSPColoredButtonProps extends VSPMarginProps {
     /**
      * Text inside the button
      */
@@ -18,7 +18,7 @@ interface VSPColoredButtonProps extends VSPMarginProps {
     /**
      * Icon to be displayed in the button
      */
-    icon?: IconNameType;
+    icon?: IconName;
 
     /**
      * Size of the text and the icon inside the button
@@ -59,14 +59,14 @@ interface VSPColoredButtonProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPColoredButton extends React.Component<VSPColoredButtonProps> {
+export default class VSPColoredButton extends React.Component<IVSPColoredButtonProps> {
     public static defaultProps = {
         fontSize: THEME_FONTSIZE,
         theme: 'ocean-blue',
     };
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             touchableOpacity: {
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -89,7 +89,7 @@ export default class VSPColoredButton extends React.Component<VSPColoredButtonPr
                     !!this.props.icon &&
                     <VSPIcon
                         iconName={this.props.icon}
-                        color={THEME_COLORS['white']}
+                        color={THEME_COLORS.white}
                         size={this.props.fontSize}
                     />
                 }

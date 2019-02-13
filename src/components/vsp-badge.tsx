@@ -6,7 +6,7 @@ import { decodeVSPMarginProps, VSPMarginProps } from '../types/props/vsp-margin'
 
 import VSPText from './vsp-text';
 
-interface VSPBadgeProps extends VSPMarginProps {
+interface IVSPBadgeProps extends VSPMarginProps {
     /**
      * Value of the badge
      */
@@ -31,14 +31,14 @@ interface VSPBadgeProps extends VSPMarginProps {
  * - ```size```: Size of the badge (by default ```THEME_FONTSIZE```)
  * - ```theme```: Theme color of the badge (by default ```ocean-blue```)
  */
-export default class VSPBadge extends React.Component<VSPBadgeProps> {
+export default class VSPBadge extends React.Component<IVSPBadgeProps> {
     public static defaultProps = {
         size: THEME_FONTSIZE,
         theme: 'ocean-blue',
     };
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             container: {
                 borderRadius: this.props.size!,
                 backgroundColor: THEME_COLORS[this.props.theme!],

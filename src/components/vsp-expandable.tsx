@@ -6,7 +6,7 @@ import { decodeVSPMarginProps, VSPMarginProps } from '../types/props/vsp-margin'
 
 import VSPRoundIconButton from './vsp-round-icon-button';
 
-interface VSPExpandableProps extends VSPMarginProps {
+interface IVSPExpandableProps extends VSPMarginProps {
     /**
      * Header component of the expandable
      */
@@ -44,21 +44,21 @@ interface VSPExpandableProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPExpandable extends React.Component<VSPExpandableProps> {
+export default class VSPExpandable extends React.Component<IVSPExpandableProps> {
     public static defaultProps = {
         theme: 'ocean-blue',
     };
 
-    state = {
+    public state = {
         expanded: false,
     }
 
-    _toggle_expand = () => {
+    private _toggleExpand = () => {
         this.setState({expanded: !this.state.expanded});
     }
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             container: {
                 ...decodeVSPMarginProps(this.props),
             },
@@ -87,7 +87,7 @@ export default class VSPExpandable extends React.Component<VSPExpandableProps> {
                         outline={this.state.expanded}
                         icon={this.state.expanded ? 'down-arrow' : 'plus'}
                         fontSize={THEME_MINOR_FONTSIZE}
-                        onPress={this._toggle_expand}
+                        onPress={this._toggleExpand}
                         color={this.props.color ?
                             this.props.color : THEME_COLORS[this.props.theme!]}
                     />

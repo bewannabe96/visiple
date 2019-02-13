@@ -4,8 +4,9 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import { THEME_COLORS, THEME_FONTSIZE, ThemeColorType, THEME_FONT, RawColorType } from '../types/config/theme';
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
+import { IconName } from '../assets/icons';
+
 import VSPIcon from './vsp-icon';
-import { IconNameType } from '../assets/icons';
 
 /**
  * Text content type
@@ -38,7 +39,7 @@ type textContentType
     | 'username'
     | 'password';
 
-interface VSPTextInputProps extends VSPMarginProps {
+interface IVSPTextInputProps extends VSPMarginProps {
     /**
      * Placeholder of the textinput
      */
@@ -57,11 +58,11 @@ interface VSPTextInputProps extends VSPMarginProps {
     /**
      * Icon to be diplayed in the front of the text input
      */
-    frontIcon?: IconNameType;
+    frontIcon?: IconName;
     /**
      * Icon to be diplayed in the back of the text input
      */
-    rearIcon?: IconNameType;
+    rearIcon?: IconName;
 
     /**
      * Theme color of the text input (by default ```ocean-blue```)
@@ -99,8 +100,7 @@ interface VSPTextInputProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPTextInput extends React.Component<VSPTextInputProps> {
-
+export default class VSPTextInput extends React.Component<IVSPTextInputProps> {
     public static defaultProps = {
         textContentType: 'none',
         fontSize: THEME_FONTSIZE,
@@ -108,12 +108,12 @@ export default class VSPTextInput extends React.Component<VSPTextInputProps> {
         displayUnderline: true,
     };
 
-    state = {
+    public state = {
         textValue: ''
     }
 
-    render() {
-        let variable_style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             container: {
                 width: '100%',
                 flexDirection: 'row',
@@ -136,7 +136,7 @@ export default class VSPTextInput extends React.Component<VSPTextInputProps> {
         });
 
         return (
-            <View style={variable_style.container}>
+            <View style={style.container}>
                 {
                     !!this.props.frontIcon &&
                     <VSPIcon
@@ -148,7 +148,7 @@ export default class VSPTextInput extends React.Component<VSPTextInputProps> {
                     />
                 }
                 <TextInput
-                    style={variable_style.textinput}
+                    style={style.textinput}
                     placeholder={this.props.placeholder}
                     value={this.state.textValue}
                     textContentType={this.props.textContentType!}

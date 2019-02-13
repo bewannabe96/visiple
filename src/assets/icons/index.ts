@@ -1,4 +1,4 @@
-export type IconNameType
+export type IconName
 = 'user'
 | 'menu'
 | 'padlock'
@@ -21,7 +21,7 @@ export type IconNameType
 | 'down-arrow'
 | 'teamwork';
  
- const ICON_SOURCE: {[name in IconNameType]: any} = {
+ const ICON_SOURCE: {[name in IconName]: any} = {
      'user': require('./user.png'),
      'menu': require('./menu.png'),
      'padlock': require('./padlock.png'),

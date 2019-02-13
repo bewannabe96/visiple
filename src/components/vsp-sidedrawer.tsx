@@ -16,14 +16,14 @@ import VSPProfile from './vsp-profile';
  * VSPSideDrawer
  */
 export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
-    _render_item(title: string, desinationRouteName: string) {
+    private _renderItem(title: string, desinationRouteName: string) {
         return (
             <TouchableOpacity
                 style={
                     {
                         flexDirection: 'row',
                         justifyContent: 'space-between',
-                        backgroundColor: THEME_COLORS['white'],
+                        backgroundColor: THEME_COLORS.white,
                         padding: VSP_EDGE_PADDING,
                         marginBottom: 1,
                     }
@@ -42,8 +42,8 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
         );
     }
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             headerLeftButtonsView: {
                 flexDirection: 'row',
             },
@@ -109,9 +109,9 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
                             </VSPText>
                         </View>
                     </View>
-                    {this._render_item('친구', 'FriendStack')}
-                    {this._render_item('여행 티켓', 'TicketStack')}
-                    {this._render_item('새로운 여행 기록', 'TicketStack')}
+                    {this._renderItem('친구', 'FriendStack')}
+                    {this._renderItem('여행 티켓', 'TicketStack')}
+                    {this._renderItem('새로운 여행 기록', 'TicketStack')}
                 </View>
             </VSPContainer>
         );

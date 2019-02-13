@@ -6,12 +6,12 @@ import { HORIZONTAL_UNIT } from '../types/config/size';
 import { THEME_COLORS, addShadowProperties, THEME_HEADER_FONTSIZE } from '../types/config/theme';
 import { VSPPaddingProps, decodeVSPPaddingProps } from '../types/props/vsp-padding';
 
+import { IconName } from '../assets/icons';
+
 import VSPText from './vsp-text';
 import VSPTextButton from './vsp-text-button';
 
-import { IconNameType } from '../assets/icons';
-
-interface VSPModalProps extends VSPPaddingProps{
+interface IVSPModalProps extends VSPPaddingProps{
     /**
      * Visible if true
      */
@@ -30,7 +30,7 @@ interface VSPModalProps extends VSPPaddingProps{
     /**
      * Button in the right side of the header
      */
-    rightButton?: IconNameType,
+    rightButton?: IconName,
 
     /**
      * Callback function when right button pressed
@@ -55,9 +55,9 @@ interface VSPModalProps extends VSPPaddingProps{
  * - ```paddingLeft```: Left padding
  * =
  */
-export default class VSPModal extends React.Component<VSPModalProps> {
-    render() {
-        let style = StyleSheet.create({
+export default class VSPModal extends React.Component<IVSPModalProps> {
+    public render() {
+        const style = StyleSheet.create({
             container: {
                 width: '95%',
                 alignSelf: 'center',

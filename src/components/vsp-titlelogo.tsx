@@ -8,7 +8,7 @@ import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin'
  */
 const IMAGE_RATIO = 8 / 5;
 
-interface VSPTitleLogoProps extends VSPMarginProps {
+interface IVSPTitleLogoProps extends VSPMarginProps {
     /**
      * Direction to fit the title logo
      * 
@@ -30,21 +30,21 @@ interface VSPTitleLogoProps extends VSPMarginProps {
  * - ```fillDirection```(required): Direction to fit the title logo
  * - ```rescaleRatio```: Ratio by which will rescale the title logo abide (by default ```100%```)
  */
-export default class VSPTitleLogo extends React.Component<VSPTitleLogoProps> {
+export default class VSPTitleLogo extends React.Component<IVSPTitleLogoProps> {
     public static defaultProps = {
         rescaleRatio: '100%',
     };
 
-    state = {
+    public state = {
         firstTrigger: true,
         logoWidth: 0,
         logoHeight: 0,
     }
 
-    render() {
-        let logosource = require('../assets/logo/logo.png');
+    public render() {
+        const logosource = require('../assets/logo/logo.png');
 
-        let style = StyleSheet.create({
+        const style = StyleSheet.create({
             container: {
                 width: this.state.firstTrigger ?
                     (this.props.fillDirection==='X' ? this.props.rescaleRatio! : 0)

@@ -6,7 +6,7 @@ import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin'
 
 import VSPIcon from './vsp-icon';
 
-interface VSPCheckboxProps extends VSPMarginProps {
+interface IVSPCheckboxProps extends VSPMarginProps {
     /**
      * Size of the checkbox (by default ```THEME_FONTSIZE```)
      */
@@ -32,18 +32,18 @@ interface VSPCheckboxProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPCheckbox extends React.Component<VSPCheckboxProps> {
+export default class VSPCheckbox extends React.Component<IVSPCheckboxProps> {
     public static defaultProps = {
         size: THEME_FONTSIZE,
         theme: 'ocean-blue',
     };
 
-    state = {
+    public state = {
         checked: false
     }
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             touchableopacity: {
                 justifyContent: 'center',
                 alignItems: 'center',

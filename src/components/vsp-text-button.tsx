@@ -4,12 +4,12 @@ import { GestureResponderEvent, StyleSheet, TouchableOpacity } from 'react-nativ
 import { ThemeColorType, THEME_COLORS, THEME_FONTSIZE, RawColorType } from '../types/config/theme';
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
+import { IconName } from "../assets/icons";
+
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 
-import { IconNameType } from "../assets/icons";
-
-interface VSPTextButtonProps extends VSPMarginProps {
+interface IVSPTextButtonProps extends VSPMarginProps {
     /**
      * Text inside the button
      */
@@ -18,7 +18,7 @@ interface VSPTextButtonProps extends VSPMarginProps {
     /**
      * Icon to be displayed in the button
      */
-    icon?: IconNameType;
+    icon?: IconName;
 
     /**
      * Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
@@ -59,14 +59,14 @@ interface VSPTextButtonProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPTextButton extends React.Component<VSPTextButtonProps> {
+export default class VSPTextButton extends React.Component<IVSPTextButtonProps> {
     public static defaultProps = {
         fontSize: THEME_FONTSIZE,
         theme: 'ocean-blue',
     };
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             touchableOpacity: {
                 flexDirection: 'row',
                 justifyContent: 'center',

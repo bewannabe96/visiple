@@ -5,7 +5,7 @@ import { THEME_COLORS, addShadowProperties } from '../types/config/theme';
 import { HORIZONTAL_UNIT } from '../types/config/size';
 import { decodeVSPMarginProps, VSPMarginProps } from '../types/props/vsp-margin';
 
-interface VSPProfileProps extends VSPMarginProps {
+interface IVSPProfileProps extends VSPMarginProps {
     /**
      * Size of the icon (by default ```12VU```)
      */
@@ -30,16 +30,16 @@ interface VSPProfileProps extends VSPMarginProps {
  * - ```castShadow```: Casts shadow if true (by default ```true```)
  * - ```style```: Style of the text
  */
-export default class VSPProfile extends React.Component<VSPProfileProps> {
+export default class VSPProfile extends React.Component<IVSPProfileProps> {
     public static defaultProps = {
         size: 12*HORIZONTAL_UNIT,
         castShadow: true,
     };
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             container: {
-                backgroundColor: THEME_COLORS['white'],
+                backgroundColor: THEME_COLORS.white,
                 height: this.props.size!,
                 width: this.props.size!,
                 borderRadius: 0.5*this.props.size!,

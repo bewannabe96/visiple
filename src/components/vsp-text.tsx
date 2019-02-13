@@ -4,7 +4,7 @@ import { Text, StyleProp } from 'react-native';
 import { THEME_FONT, THEME_FONTSIZE, THEME_COLORS, ThemeColorType, RawColorType } from '../types/config/theme';
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 
-interface VSPTextProps extends VSPMarginProps {
+interface IVSPTextProps extends VSPMarginProps {
     /**
      * Size of the font (by default ```THEME_FONTSIZE```)
      */
@@ -48,14 +48,14 @@ interface VSPTextProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPText extends React.Component<VSPTextProps> {
+export default class VSPText extends React.Component<IVSPTextProps> {
     public static defaultProps = {
         fontSize: THEME_FONTSIZE,
         theme: 'ocean-blue',
         fontWeight: 'normal',
     };
 
-    render() {
+    public render() {
         return (
             <Text
                 style={

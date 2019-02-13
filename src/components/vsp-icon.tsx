@@ -4,13 +4,13 @@ import { Image, StyleSheet } from 'react-native';
 import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
 import { ThemeColorType, RawColorType, THEME_COLORS, THEME_FONTSIZE } from '../types/config/theme';
 
-import ICON_SOURCE, { IconNameType } from '../assets/icons';
+import ICON_SOURCE, { IconName } from '../assets/icons';
 
-interface VSPIconProps extends VSPMarginProps {
+interface IVSPIconProps extends VSPMarginProps {
     /**
      * Name of the icon
      */
-    iconName: IconNameType;
+    iconName: IconName;
 
     /**
      * Size of the icon (by default ```THEME_FONTSIZE```)
@@ -44,14 +44,14 @@ interface VSPIconProps extends VSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPIcon extends React.Component<VSPIconProps> {
+export default class VSPIcon extends React.Component<IVSPIconProps> {
     public static defaultProps = {
         size: THEME_FONTSIZE,
         theme: 'black',
     };
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             image: {
                 height: this.props.size!,
                 width: this.props.size!,

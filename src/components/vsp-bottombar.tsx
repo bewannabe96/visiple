@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import { RawColorType, ThemeColorType, THEME_COLORS } from '../types/config/theme';
 
-interface VSPBottomBarProps {
+interface IVSPBottomBarProps {
     /**
      * Theme color of the bar (by default ```blue```)
      */
@@ -22,8 +22,8 @@ interface VSPBottomBarProps {
  * - ```theme```: Theme color of the icon (by default ```brown```)
  * - ```color```: Raw color of the icon
  */
-export default class VSPBottomBar extends React.Component<VSPBottomBarProps> {
-    render() {
+export default class VSPBottomBar extends React.Component<IVSPBottomBarProps> {
+    public render() {
         return (
             <View style=
                 {

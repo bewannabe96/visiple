@@ -3,7 +3,7 @@ import { View, SafeAreaView, StyleSheet } from 'react-native';
 
 import { decodeVSPPaddingProps, VSPPaddingProps } from '../types/props/vsp-padding';
 
-interface VSPContainerProps extends VSPPaddingProps {
+interface IVSPContainerProps extends VSPPaddingProps {
     /**
      * Justify Content (by default ```flex-start```)
      */
@@ -29,13 +29,13 @@ interface VSPContainerProps extends VSPPaddingProps {
  * - ```paddingRight```: Rigth padding
  * - ```paddingLeft```: Left padding
  */
-export default class VSPContainer extends React.Component<VSPContainerProps> {
+export default class VSPContainer extends React.Component<IVSPContainerProps> {
     public static defaultProps = {
         justifyContent: 'flex-start',
     };
 
-    render() {
-        let style = StyleSheet.create({
+    public render() {
+        const style = StyleSheet.create({
             container: {
                 flex: 1,
                 backgroundColor: this.props.background,
