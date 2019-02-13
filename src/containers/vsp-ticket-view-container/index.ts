@@ -1,14 +1,17 @@
-import { connect } from "react-redux";
+/** @format */
 
-import RootState from "../../types/redux";
-import TicketViewScreen from "../../screens/ticket-view-screen";
+import { connect } from 'react-redux';
 
-const mapStateToProps = (state: RootState) => ({
-});
+import RootState from '../../types/redux';
+import TicketViewScreen from '../../screens/ticket-view-screen';
 
-const mapDispatchToProps = {
-};
+const mapStateToProps = (state: RootState) => ({});
 
-const VSPTicketViewContainer = connect(mapStateToProps, mapDispatchToProps)(TicketViewScreen);
+const mapDispatchToProps = {};
+
+const VSPTicketViewContainer = connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(TicketViewScreen);
 
 export default VSPTicketViewContainer;

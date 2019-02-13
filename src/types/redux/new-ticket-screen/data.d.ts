@@ -1,4 +1,6 @@
-import { TicketHeaderColorType } from '../../config/ticket_theme';
+/** @format */
+
+import { TicketHeaderColor } from '../../config/ticket_theme';
 
 /**
  * Data State Interface
@@ -6,7 +8,7 @@ import { TicketHeaderColorType } from '../../config/ticket_theme';
 type FromTo = 'from' | 'to';
 
 export interface DataState {
-	ticketColor: TicketHeaderColorType;
+	ticketColor: TicketHeaderColor;
 	period: { [key in FromTo]: Date };
 }
 
@@ -21,7 +23,7 @@ declare const SET_PERIOD = 'visiple/new-ticket/SET_PERIOD';
  */
 interface SetTicketColorAction {
 	type: typeof SET_TICKETCOLOR;
-	ticketColor: TicketHeaderColorType;
+	ticketColor: TicketHeaderColor;
 }
 
 interface SetPeriodAction {

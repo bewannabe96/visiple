@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react';
 import { NavigationScreenProp } from 'react-navigation';
 
@@ -9,27 +11,28 @@ import VSPTitleLogo from '../components/vsp-titlelogo';
 import VSPProfileScreen from './vsp-profile-screen';
 
 export default class VSPHomeScreen extends React.Component<VSPScreenProps> {
-    static navigationOptions = ({ navigation }: { navigation: NavigationScreenProp<any> }) => {
-        return {
-            header: (
-                <VSPHeader
-                    headerTitle={(
-                        <VSPTitleLogo
-                            fillDirection='Y'
-                            rescaleRatio='70%'
-                        />
-                    )}
-                    headerLeft={ VSPHeaderMenu(navigation) }
-                />
-            ),
-        };
-    };
+	static navigationOptions = ({
+		navigation,
+	}: {
+		navigation: NavigationScreenProp<any>;
+	}) => {
+		return {
+			header: (
+				<VSPHeader
+					headerTitle={
+						<VSPTitleLogo fillDirection='Y' rescaleRatio='70%' />
+					}
+					headerLeft={VSPHeaderMenu(navigation)}
+				/>
+			),
+		};
+	};
 
-    render() {
-        return (
-            <VSPContainer>
-                <VSPProfileScreen />
-            </VSPContainer>
-        );
-    };
+	render() {
+		return (
+			<VSPContainer>
+				<VSPProfileScreen />
+			</VSPContainer>
+		);
+	}
 }

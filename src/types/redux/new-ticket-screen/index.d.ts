@@ -1,3 +1,5 @@
+/** @format */
+
 import { DataState } from './data';
 import { UIState } from './ui';
 

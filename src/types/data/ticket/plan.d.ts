@@ -1,3 +1,5 @@
+/** @format */
+
 type Place = string;
 
 type Currency = 'won' | 'dollar' | 'yen' | 'yuan';

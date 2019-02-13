@@ -1,39 +1,50 @@
+/** @format */
+
 import React from 'react';
 import { Text, StyleProp } from 'react-native';
 
-import { THEME_FONT, THEME_FONTSIZE, THEME_COLORS, ThemeColorType, RawColorType } from '../types/config/theme';
-import { VSPMarginProps, decodeVSPMarginProps } from '../types/props/vsp-margin';
+import {
+	THEME_FONT,
+	THEME_FONTSIZE,
+	THEME_COLORS,
+	ThemeColorType,
+	RawColorType,
+} from '../types/config/theme';
+import {
+	VSPMarginProps,
+	decodeVSPMarginProps,
+} from '../types/props/vsp-margin';
 
 interface IVSPTextProps extends VSPMarginProps {
-    /**
-     * Size of the font (by default ```THEME_FONTSIZE```)
-     */
-    fontSize?: number;
+	/**
+	 * Size of the font (by default ```THEME_FONTSIZE```)
+	 */
+	fontSize?: number;
 
-    /**
-     * Weight of the font (by default ```normal```)
-     */
-    fontWeight?: 'normal' | 'bold';
+	/**
+	 * Weight of the font (by default ```normal```)
+	 */
+	fontWeight?: 'normal' | 'bold';
 
-    /**
-     * Theme color of the text
-     */
-    theme?: ThemeColorType;
+	/**
+	 * Theme color of the text
+	 */
+	theme?: ThemeColorType;
 
-    /**
-     * Raw color of the text
-     */
-    color?: RawColorType;
+	/**
+	 * Raw color of the text
+	 */
+	color?: RawColorType;
 
-    /**
-     * Style of the text
-     */
-    style?: StyleProp<any>;
+	/**
+	 * Style of the text
+	 */
+	style?: StyleProp<any>;
 }
 
 /**
  * VSPText
- * 
+ *
  * @property
  * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```fontWeight```: Weight of the font (by default ```normal```)
@@ -49,29 +60,28 @@ interface IVSPTextProps extends VSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPText extends React.Component<IVSPTextProps> {
-    public static defaultProps = {
-        fontSize: THEME_FONTSIZE,
-        theme: 'ocean-blue',
-        fontWeight: 'normal',
-    };
+	public static defaultProps = {
+		fontSize: THEME_FONTSIZE,
+		theme: 'ocean-blue',
+		fontWeight: 'normal',
+	};
 
-    public render() {
-        return (
-            <Text
-                style={
-                    {
-                        fontSize: this.props.fontSize!,
-                        fontFamily: THEME_FONT,
-                        fontWeight: this.props.fontWeight!,
-                        color: this.props.color ?
-                            this.props.color : THEME_COLORS[this.props.theme!],
-                        ...decodeVSPMarginProps(this.props),
-                        ...this.props.style,
-                    }
-                }
-            >
-                {this.props.children}
-            </Text>
-        );
-    }
+	public render() {
+		return (
+			<Text
+				style={{
+					fontSize: this.props.fontSize!,
+					fontFamily: THEME_FONT,
+					fontWeight: this.props.fontWeight!,
+					color: this.props.color
+						? this.props.color
+						: THEME_COLORS[this.props.theme!],
+					...decodeVSPMarginProps(this.props),
+					...this.props.style,
+				}}
+			>
+				{this.props.children}
+			</Text>
+		);
+	}
 }

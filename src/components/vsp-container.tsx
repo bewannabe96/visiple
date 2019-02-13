@@ -1,23 +1,34 @@
+/** @format */
+
 import React from 'react';
 import { View, SafeAreaView, StyleSheet } from 'react-native';
 
-import { decodeVSPPaddingProps, VSPPaddingProps } from '../types/props/vsp-padding';
+import {
+	decodeVSPPaddingProps,
+	VSPPaddingProps,
+} from '../types/props/vsp-padding';
 
 interface IVSPContainerProps extends VSPPaddingProps {
-    /**
-     * Justify Content (by default ```flex-start```)
-     */
-    justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+	/**
+	 * Justify Content (by default ```flex-start```)
+	 */
+	justifyContent?:
+		| 'flex-start'
+		| 'flex-end'
+		| 'center'
+		| 'space-between'
+		| 'space-around'
+		| 'space-evenly';
 
-    /**
-     * Background color
-     */
-    background?: string;
+	/**
+	 * Background color
+	 */
+	background?: string;
 }
 
 /**
  * VSPContainer
- * 
+ *
  * @property
  * - ```justifyContent```: Justify Content (by default ```flex-start```)
  * - ```background```: Background color
@@ -30,32 +41,30 @@ interface IVSPContainerProps extends VSPPaddingProps {
  * - ```paddingLeft```: Left padding
  */
 export default class VSPContainer extends React.Component<IVSPContainerProps> {
-    public static defaultProps = {
-        justifyContent: 'flex-start',
-    };
+	public static defaultProps = {
+		justifyContent: 'flex-start',
+	};
 
-    public render() {
-        const style = StyleSheet.create({
-            container: {
-                flex: 1,
-                backgroundColor: this.props.background,
-            },
+	public render() {
+		const style = StyleSheet.create({
+			container: {
+				flex: 1,
+				backgroundColor: this.props.background,
+			},
 
-            innerView: {
-                flex: 1,
-                flexDirection: 'column',
-                justifyContent: this.props.justifyContent!,
-                alignItems: 'stretch',
-                ...decodeVSPPaddingProps(this.props),
-            }
-        });
+			innerView: {
+				flex: 1,
+				flexDirection: 'column',
+				justifyContent: this.props.justifyContent!,
+				alignItems: 'stretch',
+				...decodeVSPPaddingProps(this.props),
+			},
+		});
 
-        return (
-            <SafeAreaView style={style.container}>
-                <View style={style.innerView}>
-                    {this.props.children}
-                </View>
-            </SafeAreaView>
-        );
-    }
+		return (
+			<SafeAreaView style={style.container}>
+				<View style={style.innerView}>{this.props.children}</View>
+			</SafeAreaView>
+		);
+	}
 }

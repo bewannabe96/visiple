@@ -1,3 +1,5 @@
+/** @format */
+
 // {
 // 	id: 'ticket1'
 // 	owner: 'user1'

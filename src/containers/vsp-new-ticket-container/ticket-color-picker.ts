@@ -1,19 +1,24 @@
-import { connect } from "react-redux";
+/** @format */
 
-import RootState from "../../types/redux";
+import { connect } from 'react-redux';
 
-import { setTicketColor } from '../../actions/new-ticket-actions'
+import RootState from '../../types/redux';
 
-import TicketColorPicker from "../../screens/new-ticket-screen/ticket-color-picker";
+import { setTicketColor } from '../../actions/new-ticket-actions';
+
+import TicketColorPicker from '../../screens/new-ticket-screen/ticket-color-picker';
 
 const mapStateToProps = (state: RootState) => ({
-    ticketColor: state.NewTicketScreen.TicketData.ticketColor,
+	ticketColor: state.NewTicketScreen.TicketData.ticketColor,
 });
 
 const mapDispatchToProps = {
-    setTicketColor,
+	setTicketColor,
 };
 
-const TicketColorPickerContainer = connect(mapStateToProps, mapDispatchToProps)(TicketColorPicker);
+const TicketColorPickerContainer = connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(TicketColorPicker);
 
 export default TicketColorPickerContainer;

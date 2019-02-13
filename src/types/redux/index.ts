@@ -1,4 +1,6 @@
-import { NewTicketScreenState } from './new-ticket-screen';
+/** @format */
+
+import NewTicketScreenState from './new-ticket-screen';
 
 /**
  * Root State Interface
