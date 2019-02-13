@@ -5,6 +5,6 @@ import NewTicketScreenState from './new-ticket-screen';
 /**
  * Root State Interface
  */
-export default interface RootState {
+export default interface IRootState {
 	NewTicketScreen: NewTicketScreenState;
 }
