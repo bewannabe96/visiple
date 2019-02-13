@@ -28,10 +28,10 @@ export type ThemeColorType =
 	| 'white'
 	| 'grey'
 	| 'black'
-	| 'grey-white'
-	| 'ocean-blue'
-	| 'sky-blue'
-	| 'cottoncandy-blue'
+	| 'greyWhite'
+	| 'oceanBlue'
+	| 'skyBlue'
+	| 'cottoncandyBlue'
 	| 'beige'
 	| 'brown';
 
@@ -43,10 +43,10 @@ export const THEME_COLORS: { [key in ThemeColorType]: string } = {
 	white: '#FFFFFF',
 	grey: '#707070',
 	black: '#000000',
-	'grey-white': '#FCFCFC',
-	'ocean-blue': '#728CA3',
-	'sky-blue': '#73C0F4',
-	'cottoncandy-blue': '#E6EFF3',
+	greyWhite: '#FCFCFC',
+	oceanBlue: '#728CA3',
+	skyBlue: '#73C0F4',
+	cottoncandyBlue: '#E6EFF3',
 	beige: '#F3E4C6',
 	brown: '#8F4F06',
 };
