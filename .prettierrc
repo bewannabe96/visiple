@@ -2,7 +2,6 @@
   "arrowParens": "avoid",
   "bracketSpacing": true,
   "htmlWhitespaceSensitivity": "css",
-  "insertPragma": true,
   "jsxBracketSameLine": false,
   "jsxSingleQuote": true,
   "parser": "typescript",
