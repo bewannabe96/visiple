@@ -8,11 +8,9 @@
  * - ```paddingBottom```: Bottom padding
  * - ```paddingRight```: Rigth padding
  * - ```paddingLeft```: Left padding
- *
- * @format
  */
 
-export interface VSPPaddingProps {
+export interface IVSPPaddingProps {
 	/**
 	 * Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
 	 */
@@ -49,7 +47,7 @@ export interface VSPPaddingProps {
 	paddingLeft?: number;
 }
 
-interface PaddingStyleProps {
+interface IPaddingStyleProps {
 	paddingTop?: number;
 	paddingBottom?: number;
 	paddingRight?: number;
@@ -57,8 +55,8 @@ interface PaddingStyleProps {
 }
 
 export const decodeVSPPaddingProps = (
-	props: VSPPaddingProps,
-): PaddingStyleProps => ({
+	props: IVSPPaddingProps,
+): IPaddingStyleProps => ({
 	paddingTop: props.paddingTop
 		? props.paddingTop
 		: props.paddingY

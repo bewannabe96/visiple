@@ -1,5 +1,3 @@
-/** @format */
-
 import { THEME_COLORS } from '../../../config/theme';
 
 import * as Config from '../../../config/ticket.json';

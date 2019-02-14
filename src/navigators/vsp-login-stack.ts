@@ -1,5 +1,3 @@
-/** @format */
-
 import { createStackNavigator } from 'react-navigation';
 import VSPLoginScreen from '../screens/vsp-login-screen';
 import VSPRegisterScreen from '../screens/vsp-register-screen';

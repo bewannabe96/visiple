@@ -1,5 +1,3 @@
-/** @format */
-
 /**
  * Data State Interface
  */

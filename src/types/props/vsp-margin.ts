@@ -8,11 +8,9 @@
  * - ```marginBottom```: Bottom margin
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
- *
- * @format
  */
 
-export interface VSPMarginProps {
+export interface IVSPMarginProps {
 	/**
 	 * Overall margin; including marginTop, marginBottom, marginRight and marginLeft
 	 */
@@ -49,7 +47,7 @@ export interface VSPMarginProps {
 	marginLeft?: number;
 }
 
-interface MarginStyleProps {
+interface IMarginStyleProps {
 	marginTop?: number;
 	marginBottom?: number;
 	marginRight?: number;
@@ -57,8 +55,8 @@ interface MarginStyleProps {
 }
 
 export const decodeVSPMarginProps = (
-	props: VSPMarginProps,
-): MarginStyleProps => ({
+	props: IVSPMarginProps,
+): IMarginStyleProps => ({
 	marginTop: props.marginTop
 		? props.marginTop
 		: props.marginY

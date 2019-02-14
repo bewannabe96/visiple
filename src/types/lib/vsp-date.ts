@@ -1,5 +1,3 @@
-/** @format */
-
 import dateFormat from 'dateformat';
 
 export function formatISODate(date: Date) {
@@ -15,11 +13,11 @@ export function formatTimeString(date: Date) {
 }
 
 export function generateDatesArrayFromPeriod(start: Date, end: Date) {
-	let rtn_arr = [];
-	let pointer = new Date(start);
+	const rtnArr = [];
+	const pointer = new Date(start);
 	while (pointer <= end) {
-		rtn_arr.push(formatISODate(pointer));
+		rtnArr.push(formatISODate(pointer));
 		pointer.setDate(pointer.getDate() + 1);
 	}
-	return rtn_arr;
+	return rtnArr;
 }

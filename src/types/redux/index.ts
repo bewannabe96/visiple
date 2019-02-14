@@ -1,5 +1,3 @@
-/** @format */
-
 import NewTicketScreenState from './new-ticket-screen';
 
 /**

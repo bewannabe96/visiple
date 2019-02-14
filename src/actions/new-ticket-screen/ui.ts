@@ -1,5 +1,3 @@
-/** @format */
-
 import {
 	FromToTab,
 	OPEN_PERIOD_MODAL,

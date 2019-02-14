@@ -1,5 +1,3 @@
-/** @format */
-
 import { createStackNavigator } from 'react-navigation';
 import VSPHomeScreen from '../screens/vsp-home-screen';
 

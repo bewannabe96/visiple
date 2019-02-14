@@ -1,5 +1,3 @@
-/** @format */
-
 import {
 	SET_TICKETCOLOR,
 	SET_FROM_DATE,

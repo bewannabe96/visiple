@@ -1,5 +1,3 @@
-/** @format */
-
 import { combineReducers } from 'redux';
 
 import NewTicketScreenReducer from './new-ticket-screen';

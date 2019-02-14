@@ -1,5 +1,3 @@
-/** @format */
-
 import { connect } from 'react-redux';
 
 import RootState from '../../types/redux';

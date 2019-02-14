@@ -1,5 +1,3 @@
-/** @format */
-
 import { createDrawerNavigator } from 'react-navigation';
 import VSPSideDrawer from '../components/vsp-sidedrawer';
 import VSPHomeStack from './vsp-home-stack';

@@ -1,9 +1,6 @@
 /**
  * UI State Interface
- *
- * @format
  */
-
 type FromToTab = 'from-tab' | 'to-tab';
 
 export interface UIState {

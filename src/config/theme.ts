@@ -1,5 +1,3 @@
-/** @format */
-
 import { HORIZONTAL_UNIT } from './size';
 
 /**

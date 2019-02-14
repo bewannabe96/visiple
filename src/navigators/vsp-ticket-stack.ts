@@ -1,5 +1,3 @@
-/** @format */
-
 import { createStackNavigator } from 'react-navigation';
 
 import VSPTicketScreen from '../screens/vsp-ticket-screen';

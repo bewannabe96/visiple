@@ -1,5 +1,3 @@
-/** @format */
-
 import {
 	TICKET_HEADER_COLORS_KEYS,
 	TICKET_HEADER_COLORS,

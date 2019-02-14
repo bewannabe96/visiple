@@ -1,5 +1,3 @@
-/** @format */
-
 import React from 'react';
 import { View, ScrollView, StyleProp, StyleSheet } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';

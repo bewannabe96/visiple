@@ -1,5 +1,3 @@
-/** @format */
-
 import { createSwitchNavigator } from 'react-navigation';
 import VSPLoginStack from './vsp-login-stack';
 import VSPAppDrawer from './vsp-app-drawer';

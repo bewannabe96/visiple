@@ -1,5 +1,3 @@
-/** @format */
-
 import React from 'react';
 import { View, StyleProp, StyleSheet } from 'react-native';
 

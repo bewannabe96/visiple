@@ -1,5 +1,3 @@
-/** @format */
-
 import React from 'react';
 import { StyleSheet, View, GestureResponderEvent } from 'react-native';
 import Modal from 'react-native-modal';

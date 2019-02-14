@@ -1,5 +1,3 @@
-/** @format */
-
 import { UserID } from '../user';
 import { Plans } from './plan';
 
