@@ -1,20 +1,16 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import {
-	ThemeColorType,
-	RawColorType,
-	THEME_COLORS,
-	THEME_MINOR_FONTSIZE,
-} from '../types/config/theme';
+import { ThemeColorType, RawColorType, THEME_COLORS } from '../types/lib/theme';
+import { THEME_MINOR_FONTSIZE } from '../types/lib/size';
 import {
 	decodeVSPMarginProps,
-	VSPMarginProps,
+	IVSPMarginProps,
 } from '../types/props/vsp-margin';
 
 import VSPRoundIconButton from './vsp-round-icon-button';
 
-interface IVSPExpandableProps extends VSPMarginProps {
+interface IVSPExpandableProps extends IVSPMarginProps {
 	/**
 	 * Header component of the expandable
 	 */
@@ -91,7 +87,7 @@ export default class VSPExpandable extends React.Component<
 					<View style={style.header}>{this.props.header}</View>
 					<VSPRoundIconButton
 						outline={this.state.expanded}
-						icon={this.state.expanded ? 'down-arrow' : 'plus'}
+						icon={this.state.expanded ? 'downarrow' : 'plus'}
 						fontSize={THEME_MINOR_FONTSIZE}
 						onPress={this._toggleExpand}
 						color={

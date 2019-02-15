@@ -2,23 +2,18 @@ import React from 'react';
 import { StyleSheet, View, GestureResponderEvent } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { HORIZONTAL_UNIT } from '../types/config/size';
+import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../types/lib/size';
+import { THEME_COLORS, addShadowProperties } from '../types/lib/theme';
 import {
-	THEME_COLORS,
-	addShadowProperties,
-	THEME_HEADER_FONTSIZE,
-} from '../types/config/theme';
-import {
-	VSPPaddingProps,
+	IVSPPaddingProps,
 	decodeVSPPaddingProps,
 } from '../types/props/vsp-padding';
-
-import { IconName } from '../assets/icons';
+import { IconName } from '../types/lib/icon';
 
 import VSPText from './vsp-text';
 import VSPTextButton from './vsp-text-button';
 
-interface IVSPModalProps extends VSPPaddingProps {
+interface IVSPModalProps extends IVSPPaddingProps {
 	/**
 	 * Visible if true
 	 */
@@ -73,10 +68,10 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 			headerView: {
 				flexDirection: 'row',
 				alignItems: 'center',
-				height: 12 * HORIZONTAL_UNIT,
-				borderTopLeftRadius: 2 * HORIZONTAL_UNIT,
-				borderTopRightRadius: 2 * HORIZONTAL_UNIT,
-				backgroundColor: THEME_COLORS['grey-white'],
+				height: HORIZONTAL_UNIT(12),
+				borderTopLeftRadius: HORIZONTAL_UNIT(2),
+				borderTopRightRadius: HORIZONTAL_UNIT(2),
+				backgroundColor: THEME_COLORS.greyWhite,
 				...addShadowProperties(),
 			},
 
@@ -96,9 +91,9 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 			},
 
 			bodyView: {
-				borderBottomLeftRadius: 2 * HORIZONTAL_UNIT,
-				borderBottomRightRadius: 2 * HORIZONTAL_UNIT,
-				backgroundColor: THEME_COLORS['white'],
+				borderBottomLeftRadius: HORIZONTAL_UNIT(2),
+				borderBottomRightRadius: HORIZONTAL_UNIT(2),
+				backgroundColor: THEME_COLORS.white,
 				...decodeVSPPaddingProps(this.props),
 			},
 
@@ -114,7 +109,7 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 						<View style={style.headerLeftView}>
 							<VSPTextButton
 								icon='previous'
-								marginLeft={4 * HORIZONTAL_UNIT}
+								marginLeft={HORIZONTAL_UNIT(4)}
 								onPress={this.props.closeAction}
 							/>
 						</View>
@@ -130,7 +125,7 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 							{!!this.props.rightButton && (
 								<VSPTextButton
 									icon={this.props.rightButton}
-									marginRight={4 * HORIZONTAL_UNIT}
+									marginRight={HORIZONTAL_UNIT(4)}
 									onPress={this.props.rightButtonOnPress}
 								/>
 							)}

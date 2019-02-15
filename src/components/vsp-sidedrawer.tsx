@@ -2,8 +2,12 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { DrawerItemsProps } from 'react-navigation';
 
-import { THEME_COLORS, THEME_MINOR_FONTSIZE } from '../types/config/theme';
-import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../types/config/size';
+import { THEME_COLORS } from '../types/lib/theme';
+import {
+	VSP_EDGE_PADDING,
+	HORIZONTAL_UNIT,
+	THEME_MINOR_FONTSIZE,
+} from '../types/lib/size';
 
 import VSPContainer from './vsp-container';
 import VSPHeader from './vsp-header';
@@ -32,7 +36,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 				}}
 			>
 				<VSPText>{title}</VSPText>
-				<VSPIcon iconName='next' theme='ocean-blue' />
+				<VSPIcon iconName='next' theme='oceanBlue' />
 			</TouchableOpacity>
 		);
 	}
@@ -44,12 +48,12 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 			},
 
 			bodyView: {
-				backgroundColor: THEME_COLORS['cottoncandy-blue'],
+				backgroundColor: THEME_COLORS.cottoncandyBlue,
 			},
 
 			profileTab: {
 				flexDirection: 'row',
-				backgroundColor: THEME_COLORS['grey-white'],
+				backgroundColor: THEME_COLORS.greyWhite,
 				padding: VSP_EDGE_PADDING,
 				marginBottom: 1,
 			},
@@ -57,7 +61,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 			infoView: {
 				flex: 1,
 				justifyContent: 'center',
-				paddingLeft: 2 * HORIZONTAL_UNIT,
+				paddingLeft: HORIZONTAL_UNIT(2),
 			},
 		});
 
@@ -99,7 +103,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 						<View style={style.infoView}>
 							<VSPText
 								fontWeight={'bold'}
-								marginBottom={HORIZONTAL_UNIT}
+								marginBottom={HORIZONTAL_UNIT()}
 							>
 								{'홍길동'}
 							</VSPText>

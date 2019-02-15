@@ -5,23 +5,18 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
+import { ThemeColorType, THEME_COLORS, RawColorType } from '../types/lib/theme';
+import { IconName } from '../types/lib/icon';
+import { THEME_FONTSIZE } from '../types/lib/size';
 import {
-	ThemeColorType,
-	THEME_COLORS,
-	RawColorType,
-	THEME_FONTSIZE,
-} from '../types/config/theme';
-import {
-	VSPMarginProps,
+	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
 
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 
-import { IconName } from '../assets/icons';
-
-interface IVSPColoredButtonProps extends VSPMarginProps {
+interface IVSPColoredButtonProps extends IVSPMarginProps {
 	/**
 	 * Text inside the button
 	 */
@@ -85,8 +80,8 @@ export default class VSPColoredButton extends React.Component<
 				flexDirection: 'row',
 				justifyContent: 'center',
 				alignItems: 'center',
-				padding: 0.5 * this.props.fontSize!,
-				borderRadius: 0.3 * this.props.fontSize!,
+				padding: 0.5 * this.props.fontSize,
+				borderRadius: 0.3 * this.props.fontSize,
 				backgroundColor: this.props.color
 					? this.props.color
 					: THEME_COLORS[this.props.theme!],
@@ -109,10 +104,10 @@ export default class VSPColoredButton extends React.Component<
 				)}
 				{!!this.props.text && (
 					<VSPText
-						fontSize={this.props.fontSize!}
+						fontSize={this.props.fontSize}
 						theme='white'
 						marginLeft={
-							this.props.icon ? 0.3 * this.props.fontSize! : 0
+							this.props.icon ? 0.3 * this.props.fontSize : 0
 						}
 					>
 						{this.props.text}

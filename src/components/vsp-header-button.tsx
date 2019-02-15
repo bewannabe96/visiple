@@ -1,6 +1,7 @@
 import React from 'react';
+import { NavigationScreenProp } from 'react-navigation';
 
-import { IconName } from '../assets/icons';
+import { IconName } from '../types/lib/icon';
 
 import VSPTextButton from './vsp-text-button';
 

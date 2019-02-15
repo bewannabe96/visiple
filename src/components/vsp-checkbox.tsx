@@ -1,19 +1,16 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
+import { THEME_COLORS, ThemeColorType } from '../types/lib/theme';
+import { THEME_FONTSIZE } from '../types/lib/size';
 import {
-	THEME_COLORS,
-	ThemeColorType,
-	THEME_FONTSIZE,
-} from '../types/config/theme';
-import {
-	VSPMarginProps,
+	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
 
 import VSPIcon from './vsp-icon';
 
-interface IVSPCheckboxProps extends VSPMarginProps {
+interface IVSPCheckboxProps extends IVSPMarginProps {
 	/**
 	 * Size of the checkbox (by default ```THEME_FONTSIZE```)
 	 */

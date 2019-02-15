@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
 import {
-	VSPMarginProps,
+	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
 
@@ -11,7 +11,7 @@ import {
  */
 const IMAGE_RATIO = 8 / 5;
 
-interface IVSPTitleLogoProps extends VSPMarginProps {
+interface IVSPTitleLogoProps extends IVSPMarginProps {
 	/**
 	 * Direction to fit the title logo
 	 *

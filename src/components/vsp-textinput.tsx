@@ -3,17 +3,16 @@ import { View, TextInput, StyleSheet } from 'react-native';
 
 import {
 	THEME_COLORS,
-	THEME_FONTSIZE,
 	ThemeColorType,
 	THEME_FONT,
 	RawColorType,
-} from '../types/config/theme';
+} from '../types/lib/theme';
 import {
-	VSPMarginProps,
+	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
-
-import { IconName } from '../assets/icons';
+import { IconName } from '../types/lib/icon';
+import { THEME_FONTSIZE } from '../types/lib/size';
 
 import VSPIcon from './vsp-icon';
 
@@ -48,7 +47,7 @@ type textContentType =
 	| 'username'
 	| 'password';
 
-interface IVSPTextInputProps extends VSPMarginProps {
+interface IVSPTextInputProps extends IVSPMarginProps {
 	/**
 	 * Placeholder of the textinput
 	 */

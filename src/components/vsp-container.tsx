@@ -3,10 +3,10 @@ import { View, SafeAreaView, StyleSheet } from 'react-native';
 
 import {
 	decodeVSPPaddingProps,
-	VSPPaddingProps,
+	IVSPPaddingProps,
 } from '../types/props/vsp-padding';
 
-interface IVSPContainerProps extends VSPPaddingProps {
+interface IVSPContainerProps extends IVSPPaddingProps {
 	/**
 	 * Justify Content (by default ```flex-start```)
 	 */

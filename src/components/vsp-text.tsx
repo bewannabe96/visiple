@@ -3,17 +3,17 @@ import { Text, StyleProp } from 'react-native';
 
 import {
 	THEME_FONT,
-	THEME_FONTSIZE,
 	THEME_COLORS,
 	ThemeColorType,
 	RawColorType,
-} from '../types/config/theme';
+} from '../types/lib/theme';
 import {
-	VSPMarginProps,
+	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
+import { THEME_FONTSIZE } from '../types/lib/size';
 
-interface IVSPTextProps extends VSPMarginProps {
+interface IVSPTextProps extends IVSPMarginProps {
 	/**
 	 * Size of the font (by default ```THEME_FONTSIZE```)
 	 */

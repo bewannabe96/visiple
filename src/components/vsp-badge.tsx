@@ -5,16 +5,16 @@ import {
 	THEME_COLORS,
 	addShadowProperties,
 	ThemeColorType,
-	THEME_FONTSIZE,
-} from '../types/config/theme';
+} from '../types/lib/theme';
 import {
 	decodeVSPMarginProps,
-	VSPMarginProps,
+	IVSPMarginProps,
 } from '../types/props/vsp-margin';
+import { THEME_FONTSIZE } from '../types/lib/size';
 
 import VSPText from './vsp-text';
 
-interface IVSPBadgeProps extends VSPMarginProps {
+interface IVSPBadgeProps extends IVSPMarginProps {
 	/**
 	 * Value of the badge
 	 */
@@ -42,7 +42,7 @@ interface IVSPBadgeProps extends VSPMarginProps {
 export default class VSPBadge extends React.Component<IVSPBadgeProps> {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
-		theme: 'ocean-blue',
+		theme: 'oceanblue',
 	};
 
 	public render() {

@@ -5,23 +5,18 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
+import { ThemeColorType, THEME_COLORS, RawColorType } from '../types/lib/theme';
 import {
-	ThemeColorType,
-	THEME_COLORS,
-	THEME_FONTSIZE,
-	RawColorType,
-} from '../types/config/theme';
-import {
-	VSPMarginProps,
+	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
 
-import { IconName } from '../assets/icons';
-
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
+import { IconName } from '../types/lib/icon';
+import { THEME_FONTSIZE } from '../types/lib/size';
 
-interface IVSPTextButtonProps extends VSPMarginProps {
+interface IVSPTextButtonProps extends IVSPMarginProps {
 	/**
 	 * Text inside the button
 	 */

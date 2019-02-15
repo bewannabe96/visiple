@@ -2,8 +2,8 @@ import React from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 
-import { THEME_COLORS, addShadowProperties } from '../types/config/theme';
-import { VSP_HEADER_PADDING } from '../types/config/size';
+import { THEME_COLORS, addShadowProperties } from '../types/lib/theme';
+import { VSP_TOP_PADDING } from '../types/lib/size';
 
 interface IVSPHeaderProps extends NavigationInjectedProps {
 	/**
@@ -45,10 +45,9 @@ class VSPHeader extends React.Component<IVSPHeaderProps> {
 		return (
 			<SafeAreaView
 				style={{
-					backgroundColor:
-						THEME_COLORS[
-							this.props.transparent! ? 'none' : 'grey-white'
-						],
+					backgroundColor: this.props.transparent!
+						? THEME_COLORS.none
+						: THEME_COLORS.greyWhite,
 					zIndex: 1,
 					position: this.props.transparent! ? 'absolute' : 'relative',
 					top: 0,
@@ -68,7 +67,7 @@ class VSPHeader extends React.Component<IVSPHeaderProps> {
 							flex: 1,
 							justifyContent: 'center',
 							alignItems: 'flex-start',
-							paddingLeft: VSP_HEADER_PADDING,
+							paddingLeft: VSP_TOP_PADDING,
 						}}
 					>
 						{this.props.headerLeft}
@@ -87,7 +86,7 @@ class VSPHeader extends React.Component<IVSPHeaderProps> {
 							flex: 1,
 							justifyContent: 'center',
 							alignItems: 'flex-end',
-							paddingRight: VSP_HEADER_PADDING,
+							paddingRight: VSP_TOP_PADDING,
 						}}
 					>
 						{this.props.headerRight}

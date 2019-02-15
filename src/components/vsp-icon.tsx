@@ -2,19 +2,14 @@ import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
 import {
-	VSPMarginProps,
+	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
-import {
-	ThemeColorType,
-	RawColorType,
-	THEME_COLORS,
-	THEME_FONTSIZE,
-} from '../types/config/theme';
+import { ThemeColorType, RawColorType, THEME_COLORS } from '../types/lib/theme';
+import ICON_SOURCE, { IconName } from '../types/lib/icon';
+import { THEME_FONTSIZE } from '../types/lib/size';
 
-import ICON_SOURCE, { IconName } from '../assets/icons';
-
-interface IVSPIconProps extends VSPMarginProps {
+interface IVSPIconProps extends IVSPMarginProps {
 	/**
 	 * Name of the icon
 	 */
