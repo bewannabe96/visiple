@@ -1,4 +1,4 @@
-import { HORIZONTAL_UNIT } from './size';
+import { HORIZONTAL_UNIT } from './vsp-size';
 
 /**
  * Theme Font
