@@ -11,9 +11,9 @@ const guidelineBaseHeight = 812;
 /**
  * Size Constants
  */
-export const HORIZONTAL_UNIT = (size: number) =>
+export const HORIZONTAL_UNIT = (size: number = 1) =>
 	(width / guidelineBaseWidth) * Config.sizeOffset * size;
-export const VERTICAL_UNIT = (size: number) =>
+export const VERTICAL_UNIT = (size: number = 1) =>
 	(height / guidelineBaseHeight) * Config.sizeOffset * size;
 
 export const VSP_EDGE_PADDING = HORIZONTAL_UNIT(Config.padding.edge);
