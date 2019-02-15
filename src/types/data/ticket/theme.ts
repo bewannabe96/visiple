@@ -1,6 +1,6 @@
-import { THEME_COLORS } from '../../../config/theme';
-
 import * as Config from '../../../config/ticket.json';
+
+import { THEME_COLORS } from '../../lib/theme.js';
 
 /**
  * Theme colors of the ticket
