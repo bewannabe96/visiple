@@ -1,0 +1,13 @@
+{
+    "sizeOffset": 5,
+    "fontFamily": "arial",
+    "fontSize": {
+        "minor": 2.5,
+        "regular": 3,
+        "header": 4
+    },
+    "padding": {
+        "edge": 4,
+        "top": 3
+    }
+}

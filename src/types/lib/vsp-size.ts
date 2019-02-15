@@ -1,26 +1,27 @@
 import { Dimensions } from 'react-native';
 
+import * as Config from '../../config/theme.json';
+
 const { width, height } = Dimensions.get('window');
 
 // Guideline sizes are based on IPhone X
 const guidelineBaseWidth = 375;
 const guidelineBaseHeight = 812;
 
-const horizontalScale = (size: number) => (width / guidelineBaseWidth) * size;
+/**
+ * Size Constants
+ */
+export const HORIZONTAL_UNIT = (size: number) =>
+	(width / guidelineBaseWidth) * Config.sizeOffset * size;
+export const VERTICAL_UNIT = (size: number) =>
+	(height / guidelineBaseHeight) * Config.sizeOffset * size;
 
-const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
+export const VSP_EDGE_PADDING = HORIZONTAL_UNIT(Config.padding.edge);
+export const VSP_TOP_PADDING = HORIZONTAL_UNIT(Config.padding.top);
 
-const moderateScale = (size: number, factor = 0.5) =>
-	size + (horizontalScale(size) - size) * factor;
-
-export { horizontalScale, verticalScale, moderateScale };
-
-const HORIZONTAL_UNIT = horizontalScale(5);
-const VERTICAL_UNIT = verticalScale(5);
-
-export { HORIZONTAL_UNIT, VERTICAL_UNIT };
-
-const VSP_EDGE_PADDING = 4 * HORIZONTAL_UNIT;
-const VSP_HEADER_PADDING = 0.75 * VSP_EDGE_PADDING;
-
-export { VSP_EDGE_PADDING, VSP_HEADER_PADDING };
+/**
+ * Font Sizes
+ */
+export const THEME_FONTSIZE = HORIZONTAL_UNIT(Config.fontSize.regular);
+export const THEME_HEADER_FONTSIZE = HORIZONTAL_UNIT(Config.fontSize.header);
+export const THEME_MINOR_FONTSIZE = HORIZONTAL_UNIT(Config.fontSize.minor);

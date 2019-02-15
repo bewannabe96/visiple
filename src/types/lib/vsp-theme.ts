@@ -1,17 +1,9 @@
-import { HORIZONTAL_UNIT } from './vsp-size';
+import * as Config from '../../config/theme.json';
 
 /**
  * Theme Font
  */
-export const THEME_FONT = 'arial';
-
-/**
- * Theme Font Size
- */
-
-export const THEME_FONTSIZE = 3 * HORIZONTAL_UNIT;
-export const THEME_HEADER_FONTSIZE = 4 * HORIZONTAL_UNIT;
-export const THEME_MINOR_FONTSIZE = 2.5 * HORIZONTAL_UNIT;
+export const THEME_FONT = Config.fontFamily;
 
 /**
  * Raw Color Type
@@ -57,7 +49,7 @@ export const addShadowProperties = (
 	opacity?: number,
 	color?: RawColorType,
 ) => ({
-	shadowColor: color ? color : THEME_COLORS['black'],
+	shadowColor: color ? color : THEME_COLORS.black,
 	shadowOffset: { width: 0, height: offset ? offset : 2 },
 	shadowOpacity: opacity ? opacity : 0.3,
 	elevation: offset ? offset * 1.5 : 3,
