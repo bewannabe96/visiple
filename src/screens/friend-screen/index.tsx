@@ -26,13 +26,13 @@ import AddFriendModal from './add-friend-modal';
 
 const DEV_FRIENDS = [
 	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest23@nate.com' },
+	{ name: '홍길동', email: 'testtest2323@nate.com' },
+	{ name: '홍길동', email: 'testtest263@nate.com' },
+	{ name: '홍길동', email: 'testtest2353@nate.com' },
+	{ name: '홍길동', email: 'testtest213@nate.com' },
+	{ name: '홍길동', email: 'testtest223@nate.com' },
+	{ name: '홍길동', email: 'testtest233@nate.com' },
+	{ name: '홍길동', email: 'testtest243@nate.com' },
 ];
 
 export default class FriendScreen extends React.Component<IVSPScreenProps> {
@@ -86,7 +86,7 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 		return (
 			<ScrollView contentContainerStyle={style.friendsView}>
 				{DEV_FRIENDS.map(friend => (
-					<View style={style.itemView}>
+					<View key={friend.email} style={style.itemView}>
 						<VSPProfile marginRight={HORIZONTAL_UNIT(4)} />
 						<View style={style.infoView}>
 							<VSPText style={style.nameText}>
@@ -139,6 +139,7 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 					<VSPText theme='white'>친구</VSPText>
 					<VSPBadge value={10} theme='brown' />
 				</View>
+				{this._renderFriendsList()}
 				<VSPBottomBar />
 				<AddFriendModal />
 			</VSPContainer>
