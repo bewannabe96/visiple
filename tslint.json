@@ -14,5 +14,10 @@
         "jsx-no-lambda": false,
         "jsx-boolean-value": false
     },
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "src/types",
+        ]
+    }
 }

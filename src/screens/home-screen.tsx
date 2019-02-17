@@ -1,15 +1,17 @@
 import React from 'react';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { VSPScreenProps } from '../types/props/vsp-screen';
+import { IVSPScreenProps } from '../types/props/vsp-screen';
 
 import VSPContainer from '../components/vsp-container';
-import VSPHeader, { VSPHeaderMenu } from '../components/vsp-header';
+import VSPHeader from '../components/vsp-header';
 import VSPTitleLogo from '../components/vsp-titlelogo';
-import VSPProfileScreen from './vsp-profile-screen';
+import { VSPHeaderMenu } from '../components/vsp-header-button';
 
-export default class VSPHomeScreen extends React.Component<VSPScreenProps> {
-	static navigationOptions = ({
+import ProfileScreen from './profile-screen';
+
+export default class HomeScreen extends React.Component<IVSPScreenProps> {
+	public static navigationOptions = ({
 		navigation,
 	}: {
 		navigation: NavigationScreenProp<any>;
@@ -26,10 +28,10 @@ export default class VSPHomeScreen extends React.Component<VSPScreenProps> {
 		};
 	};
 
-	render() {
+	public render() {
 		return (
 			<VSPContainer>
-				<VSPProfileScreen />
+				<ProfileScreen />
 			</VSPContainer>
 		);
 	}

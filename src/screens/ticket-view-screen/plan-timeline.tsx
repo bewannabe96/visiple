@@ -1,36 +1,43 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import {
-	THEME_HEADER_FONTSIZE,
-	THEME_COLORS,
-	addShadowProperties,
-} from '../../types/config/theme';
+import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
 import {
 	HORIZONTAL_UNIT,
-	VERTICAL_UNIT,
 	VSP_EDGE_PADDING,
-} from '../../types/config/size';
-import { formatDateString } from '../../types/lib/vsp-date';
+	THEME_HEADER_FONTSIZE,
+} from '../../types/lib/size';
+import { formatDateString, formatISODate } from '../../types/lib/date';
+import { Plans, Plan } from '../../types/data/ticket/plan';
 
 import VSPIcon from '../../components/vsp-icon';
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';
 
-interface PlanTimelineProps {
-	// STATES
-	plans: {}[];
-	ticketColor: any;
+interface IPlanTimelineProps {
+	/**
+	 * Theme color of the ticket
+	 */
+	ticketColor: string;
+
+	/**
+	 * Plans of the ticket
+	 */
+	plans: Plans;
 }
 
 /**
  * PlanTimeline
+ *
+ * @property
+ * - ```ticketColor```(required): Theme color of the ticket
+ * - ```plans```(required): Plans of the ticket
  */
-export default class PlanTimeline extends React.Component<PlanTimelineProps> {
-	_render_plans() {
-		let style = StyleSheet.create({
+export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
+	private _renderPlans() {
+		const style = StyleSheet.create({
 			container: {
-				marginTop: 4 * HORIZONTAL_UNIT,
+				marginTop: HORIZONTAL_UNIT(4),
 			},
 
 			itemContainer: {
@@ -40,47 +47,47 @@ export default class PlanTimeline extends React.Component<PlanTimelineProps> {
 
 			bulletLine: {
 				height: '100%',
-				width: 2 * HORIZONTAL_UNIT,
+				width: HORIZONTAL_UNIT(2),
 				position: 'absolute',
-				left: 2 * HORIZONTAL_UNIT,
+				left: HORIZONTAL_UNIT(2),
 				bottom: -HORIZONTAL_UNIT,
 				backgroundColor: this.props.ticketColor,
 			},
 
 			bottomCap: {
-				height: 2 * HORIZONTAL_UNIT,
-				width: 2 * HORIZONTAL_UNIT,
-				borderBottomRightRadius: HORIZONTAL_UNIT,
-				borderBottomLeftRadius: HORIZONTAL_UNIT,
-				marginLeft: 2 * HORIZONTAL_UNIT,
+				height: HORIZONTAL_UNIT(2),
+				width: HORIZONTAL_UNIT(2),
+				borderBottomRightRadius: HORIZONTAL_UNIT(),
+				borderBottomLeftRadius: HORIZONTAL_UNIT(),
+				marginLeft: HORIZONTAL_UNIT(2),
 				backgroundColor: this.props.ticketColor,
 			},
 
 			bulletDot: {
-				height: 6 * HORIZONTAL_UNIT,
-				width: 6 * HORIZONTAL_UNIT,
-				borderRadius: 3 * HORIZONTAL_UNIT,
-				marginRight: 2 * HORIZONTAL_UNIT,
+				height: HORIZONTAL_UNIT(6),
+				width: HORIZONTAL_UNIT(6),
+				borderRadius: HORIZONTAL_UNIT(3),
+				marginRight: HORIZONTAL_UNIT(2),
 				backgroundColor: this.props.ticketColor,
 			},
 
 			bulletDash: {
-				height: HORIZONTAL_UNIT,
-				width: 3 * HORIZONTAL_UNIT,
-				borderRadius: HORIZONTAL_UNIT,
-				marginLeft: 3 * HORIZONTAL_UNIT,
-				marginRight: 2 * HORIZONTAL_UNIT,
+				height: HORIZONTAL_UNIT(),
+				width: HORIZONTAL_UNIT(3),
+				borderRadius: HORIZONTAL_UNIT(),
+				marginLeft: HORIZONTAL_UNIT(3),
+				marginRight: HORIZONTAL_UNIT(2),
 				backgroundColor: this.props.ticketColor,
 			},
 		});
 
 		return (
 			<View style={style.container}>
-				{this.props.plans.map((plan: any, index: number) => (
-					<View key={plan.date}>
+				{this.props.plans.map((plan: Plan, index: number) => (
+					<View key={formatISODate(plan.date)}>
 						<View style={style.bulletLine} />
 						<VSPExpandable
-							marginTop={index === 0 ? 0 : 4 * HORIZONTAL_UNIT}
+							marginTop={index === 0 ? 0 : HORIZONTAL_UNIT(4)}
 							header={
 								<View style={style.itemContainer}>
 									<View style={style.bulletDot} />
@@ -93,13 +100,13 @@ export default class PlanTimeline extends React.Component<PlanTimelineProps> {
 								<View>
 									<View style={style.itemContainer}>
 										<View style={style.bulletDash} />
-										<VSPText marginY={2 * HORIZONTAL_UNIT}>
+										<VSPText marginY={HORIZONTAL_UNIT(2)}>
 											여행
 										</VSPText>
 									</View>
 									<View style={style.itemContainer}>
 										<View style={style.bulletDash} />
-										<VSPText marginY={2 * HORIZONTAL_UNIT}>
+										<VSPText marginY={HORIZONTAL_UNIT(2)}>
 											여행
 										</VSPText>
 									</View>
@@ -114,13 +121,13 @@ export default class PlanTimeline extends React.Component<PlanTimelineProps> {
 		);
 	}
 
-	render() {
-		let style = StyleSheet.create({
+	public render() {
+		const style = StyleSheet.create({
 			categoryView: {
-				marginVertical: 2 * VERTICAL_UNIT,
-				backgroundColor: THEME_COLORS['grey-white'],
-				borderRadius: 2 * VERTICAL_UNIT,
-				padding: 4 * HORIZONTAL_UNIT,
+				marginVertical: HORIZONTAL_UNIT(2),
+				backgroundColor: THEME_COLORS.greyWhite,
+				borderRadius: HORIZONTAL_UNIT(2),
+				padding: HORIZONTAL_UNIT(4),
 				marginHorizontal: VSP_EDGE_PADDING,
 				...addShadowProperties(),
 			},
@@ -136,16 +143,16 @@ export default class PlanTimeline extends React.Component<PlanTimelineProps> {
 					<VSPIcon
 						iconName='planning'
 						size={THEME_HEADER_FONTSIZE}
-						theme='ocean-blue'
+						theme='oceanBlue'
 					/>
 					<VSPText
 						fontSize={THEME_HEADER_FONTSIZE}
-						marginLeft={2 * HORIZONTAL_UNIT}
+						marginLeft={HORIZONTAL_UNIT(2)}
 					>
 						일정
 					</VSPText>
 				</View>
-				{this._render_plans()}
+				{this._renderPlans()}
 			</View>
 		);
 	}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, FlatList, View } from 'react-native';
 
-import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
-import { THEME_COLORS } from '../../types/config/theme';
+import { HORIZONTAL_UNIT } from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPModal from '../../components/vsp-modal';
 import VSPTextInput from '../../components/vsp-textinput';
@@ -11,8 +11,14 @@ import VSPColoredButton from '../../components/vsp-colored-button';
 import VSPText from '../../components/vsp-text';
 
 interface IFriendInviteModalProps {
-	// STATES
+	/**
+	 * Theme color of the ticket
+	 */
 	ticketColor: string;
+
+	/**
+	 * The modal is visible if true
+	 */
 	inviteModalVisible: boolean;
 
 	// ACTION CREATORS
@@ -21,6 +27,10 @@ interface IFriendInviteModalProps {
 
 /**
  * FriendInviteModal
+ *
+ * @property
+ * - ```ticketColor```(required): Theme color of the ticket
+ * - ```inviteModalVisible```(required): The modal is visible if true
  */
 export default class FriendInviteModal extends React.Component<
 	IFriendInviteModalProps
@@ -37,12 +47,12 @@ export default class FriendInviteModal extends React.Component<
 				titleText={'친구 초대'}
 				isVisible={this.props.inviteModalVisible}
 				closeAction={this.props.closeInviteModal}
-				padding={4 * VERTICAL_UNIT}
+				padding={HORIZONTAL_UNIT(4)}
 			>
 				<VSPTextInput
 					placeholder='이름 또는 이메일을 입력하세요'
 					rearIcon='search'
-					marginBottom={3 * VERTICAL_UNIT}
+					marginBottom={HORIZONTAL_UNIT(3)}
 				/>
 				<FlatList
 					style={style.friendsList}
@@ -59,33 +69,33 @@ export default class FriendInviteModal extends React.Component<
 								flexDirection: 'row',
 								alignItems: 'center',
 								borderWidth: 1,
-								borderColor: THEME_COLORS['ocean-blue'],
-								borderRadius: VERTICAL_UNIT,
-								padding: 2 * VERTICAL_UNIT,
-								marginVertical: VERTICAL_UNIT,
+								borderColor: THEME_COLORS.oceanBlue,
+								borderRadius: HORIZONTAL_UNIT(),
+								padding: HORIZONTAL_UNIT(2),
+								marginVertical: HORIZONTAL_UNIT(),
 							}}
 						>
-							<VSPProfile size={10 * HORIZONTAL_UNIT} />
+							<VSPProfile size={HORIZONTAL_UNIT(10)} />
 							<View
 								style={{
 									flex: 1,
-									paddingHorizontal: 2 * HORIZONTAL_UNIT,
+									paddingHorizontal: HORIZONTAL_UNIT(2),
 								}}
 							>
 								<VSPText
-									fontSize={2.2 * HORIZONTAL_UNIT}
-									marginBottom={HORIZONTAL_UNIT}
+									fontSize={HORIZONTAL_UNIT(2)}
+									marginBottom={HORIZONTAL_UNIT()}
 								>
 									{'가씨성'}
 								</VSPText>
-								<VSPText fontSize={2.3 * HORIZONTAL_UNIT}>
+								<VSPText fontSize={HORIZONTAL_UNIT(2)}>
 									{'familynamega@gmail.com'}
 								</VSPText>
 							</View>
 							<VSPColoredButton
 								text='초대'
 								icon='plus'
-								fontSize={2 * HORIZONTAL_UNIT}
+								fontSize={HORIZONTAL_UNIT(2)}
 								color={this.props.ticketColor}
 							/>
 						</View>

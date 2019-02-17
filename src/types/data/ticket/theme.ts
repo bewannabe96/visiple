@@ -1,6 +1,6 @@
 import * as Config from '../../../config/ticket.json';
 
-import { THEME_COLORS } from '../../lib/theme.js';
+import { THEME_COLORS } from '../../lib/theme';
 
 /**
  * Theme colors of the ticket
@@ -23,7 +23,7 @@ export const TICKET_COLORS = {
 	BODY: THEME_COLORS.greyWhite,
 	FOOTER: Config.ticketFixedColors.footer,
 	TEXT: Config.ticketFixedColors.text,
-	TITLE: THEME_COLORS,
+	TITLE: THEME_COLORS.brown,
 	DATE: THEME_COLORS.oceanBlue,
 };
 

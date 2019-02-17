@@ -1,38 +1,39 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
 import {
-	THEME_HEADER_FONTSIZE,
-	THEME_COLORS,
-	addShadowProperties,
-} from '../../types/config/theme';
-import {
-	VERTICAL_UNIT,
 	HORIZONTAL_UNIT,
 	VSP_EDGE_PADDING,
-} from '../../types/config/size';
+	THEME_HEADER_FONTSIZE,
+} from '../../types/lib/size';
 
 import VSPIcon from '../../components/vsp-icon';
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';
 import VSPCheckbox from '../../components/vsp-checkbox';
 
-interface PackingListProps {
-	// STATES
-	ticketColor: any;
+interface IPackingListProps {
+	/**
+	 * Theme color of the ticket
+	 */
+	ticketColor: string;
 }
 
 /**
  * PackingList
+ *
+ * @property
+ * - ```ticketColor```(required): Theme color of the ticket
  */
-export default class PackingList extends React.Component<PackingListProps> {
-	_render_packing_list() {
-		let style = StyleSheet.create({
+export default class PackingList extends React.Component<IPackingListProps> {
+	private _renderPackingList() {
+		const style = StyleSheet.create({
 			packingItem: {
 				flexDirection: 'row',
 				alignItems: 'center',
 				paddingLeft: VSP_EDGE_PADDING,
-				marginTop: 2 * VERTICAL_UNIT,
+				marginTop: HORIZONTAL_UNIT(2),
 			},
 		});
 
@@ -43,7 +44,7 @@ export default class PackingList extends React.Component<PackingListProps> {
 						<VSPIcon
 							iconName='teamwork'
 							size={THEME_HEADER_FONTSIZE}
-							marginRight={HORIZONTAL_UNIT}
+							marginRight={HORIZONTAL_UNIT()}
 							color={this.props.ticketColor}
 						/>
 						<VSPText
@@ -57,32 +58,32 @@ export default class PackingList extends React.Component<PackingListProps> {
 				body={
 					<View>
 						<View style={style.packingItem}>
-							<VSPCheckbox marginRight={2 * HORIZONTAL_UNIT} />
+							<VSPCheckbox marginRight={HORIZONTAL_UNIT(2)} />
 							<VSPText>커피포트</VSPText>
 						</View>
 						<View style={style.packingItem}>
-							<VSPCheckbox marginRight={2 * HORIZONTAL_UNIT} />
+							<VSPCheckbox marginRight={HORIZONTAL_UNIT(2)} />
 							<VSPText>요가메트</VSPText>
 						</View>
 						<View style={style.packingItem}>
-							<VSPCheckbox marginRight={2 * HORIZONTAL_UNIT} />
+							<VSPCheckbox marginRight={HORIZONTAL_UNIT(2)} />
 							<VSPText>헬멧</VSPText>
 						</View>
 					</View>
 				}
 				color={this.props.ticketColor}
-				marginTop={4 * VERTICAL_UNIT}
+				marginTop={HORIZONTAL_UNIT(4)}
 			/>
 		);
 	}
 
-	render() {
-		let style = StyleSheet.create({
+	public render() {
+		const style = StyleSheet.create({
 			categoryView: {
-				marginVertical: 2 * VERTICAL_UNIT,
-				backgroundColor: THEME_COLORS['grey-white'],
-				borderRadius: 2 * VERTICAL_UNIT,
-				padding: 4 * HORIZONTAL_UNIT,
+				marginVertical: HORIZONTAL_UNIT(2),
+				backgroundColor: THEME_COLORS.greyWhite,
+				borderRadius: HORIZONTAL_UNIT(2),
+				padding: HORIZONTAL_UNIT(4),
 				marginHorizontal: VSP_EDGE_PADDING,
 				...addShadowProperties(),
 			},
@@ -98,16 +99,16 @@ export default class PackingList extends React.Component<PackingListProps> {
 					<VSPIcon
 						iconName='backpack'
 						size={THEME_HEADER_FONTSIZE}
-						theme='ocean-blue'
+						theme='oceanBlue'
 					/>
 					<VSPText
 						fontSize={THEME_HEADER_FONTSIZE}
-						marginLeft={2 * HORIZONTAL_UNIT}
+						marginLeft={HORIZONTAL_UNIT(2)}
 					>
 						준비물품
 					</VSPText>
 				</View>
-				{this._render_packing_list()}
+				{this._renderPackingList()}
 			</View>
 		);
 	}

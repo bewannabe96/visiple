@@ -1,11 +1,12 @@
 import { createSwitchNavigator } from 'react-navigation';
-import VSPLoginStack from './vsp-login-stack';
-import VSPAppDrawer from './vsp-app-drawer';
+
+import _LoginStack from './login-stack';
+import _AppDrawer from './app-drawer';
 
 const AuthSwitch = createSwitchNavigator(
 	{
-		LoginStack: VSPLoginStack,
-		App: VSPAppDrawer,
+		LoginStack: _LoginStack,
+		App: _AppDrawer,
 	},
 	{
 		initialRouteName: 'LoginStack',

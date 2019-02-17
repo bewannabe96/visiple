@@ -2,30 +2,44 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
-import { VERTICAL_UNIT, HORIZONTAL_UNIT } from '../../types/config/size';
-import {
-	THEME_COLORS,
-	THEME_FONT,
-	THEME_FONTSIZE,
-} from '../../types/config/theme';
-import { TabType } from '../../types/redux/new-ticket-types';
+import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
+import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
 import {
 	formatDateString,
 	formatTimeString,
 	formatISODate,
 	generateDatesArrayFromPeriod,
-} from '../../types/lib/vsp-date';
+} from '../../types/lib/date';
+import { FromToTab } from '../../types/redux/new-ticket-screen/ui';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
 
 interface ISelectPeriodModalProps {
-	// STATES
+	/**
+	 * Theme color of the ticket
+	 */
 	ticketColor: string;
+
+	/**
+	 * Date the event starts from
+	 */
 	fromDate: Date;
+
+	/**
+	 * Date the event ends
+	 */
 	toDate: Date;
+
+	/**
+	 * The modal is visible if true
+	 */
 	periodModalVisible: boolean;
-	fromtoTab: TabType;
+
+	/**
+	 * Focused from/to tab
+	 */
+	fromtoTab: FromToTab;
 
 	// ACTION CREATORS
 	switchFromToTab: any;
@@ -36,6 +50,13 @@ interface ISelectPeriodModalProps {
 
 /**
  * SelectPeriodModal
+ *
+ * @property
+ * - ```ticketColor```(required): Theme color of the ticket
+ * - ```fromDate```(required): Date the event starts from
+ * - ```toDate```(required): Date the event ends
+ * - ```periodModalVisible```(required): The modal is visible if true
+ * - ```fromtoTab```(required): Focused from/to tab
  */
 export default class SelectPeriodModal extends React.Component<
 	ISelectPeriodModalProps
@@ -48,14 +69,14 @@ export default class SelectPeriodModal extends React.Component<
 
 			fromTab: {
 				flex: 1,
-				paddingHorizontal: 2 * HORIZONTAL_UNIT,
+				paddingHorizontal: HORIZONTAL_UNIT(2),
 				paddingTop:
 					this.props.fromtoTab === 'from-tab'
-						? VERTICAL_UNIT
-						: 2 * VERTICAL_UNIT,
-				paddingBottom: 2 * VERTICAL_UNIT,
+						? HORIZONTAL_UNIT()
+						: HORIZONTAL_UNIT(2),
+				paddingBottom: HORIZONTAL_UNIT(2),
 				borderTopWidth:
-					this.props.fromtoTab === 'from-tab' ? VERTICAL_UNIT : 0,
+					this.props.fromtoTab === 'from-tab' ? HORIZONTAL_UNIT() : 0,
 				borderRightWidth: this.props.fromtoTab === 'from-tab' ? 1 : 0,
 				borderBottomWidth: this.props.fromtoTab === 'from-tab' ? 0 : 1,
 				borderColor: this.props.ticketColor,
@@ -63,14 +84,14 @@ export default class SelectPeriodModal extends React.Component<
 
 			toTab: {
 				flex: 1,
-				paddingHorizontal: 2 * HORIZONTAL_UNIT,
+				paddingHorizontal: HORIZONTAL_UNIT(),
 				paddingTop:
 					this.props.fromtoTab === 'to-tab'
-						? VERTICAL_UNIT
-						: 2 * VERTICAL_UNIT,
-				paddingBottom: 2 * VERTICAL_UNIT,
+						? HORIZONTAL_UNIT()
+						: HORIZONTAL_UNIT(2),
+				paddingBottom: HORIZONTAL_UNIT(2),
 				borderTopWidth:
-					this.props.fromtoTab === 'to-tab' ? VERTICAL_UNIT : 0,
+					this.props.fromtoTab === 'to-tab' ? HORIZONTAL_UNIT() : 0,
 				borderLeftWidth: this.props.fromtoTab === 'to-tab' ? 1 : 0,
 				borderBottomWidth: this.props.fromtoTab === 'to-tab' ? 0 : 1,
 				borderColor: this.props.ticketColor,
@@ -88,15 +109,15 @@ export default class SelectPeriodModal extends React.Component<
 			},
 
 			calendar: {
-				marginHorizontal: 2 * HORIZONTAL_UNIT,
-				marginVertical: 2 * VERTICAL_UNIT,
+				marginHorizontal: HORIZONTAL_UNIT(2),
+				marginVertical: HORIZONTAL_UNIT(2),
 			},
 		});
 
 		const calendarTheme = {
 			arrowColor: this.props.ticketColor,
-			dayTextColor: THEME_COLORS['ocean-blue'],
-			monthTextColor: THEME_COLORS['ocean-blue'],
+			dayTextColor: THEME_COLORS.oceanBlue,
+			monthTextColor: THEME_COLORS.oceanBlue,
 			textDayFontFamily: THEME_FONT,
 			textDayFontSize: THEME_FONTSIZE,
 			textDayHeaderFontFamily: THEME_FONT,
@@ -131,7 +152,7 @@ export default class SelectPeriodModal extends React.Component<
 				titleText={'기간'}
 				isVisible={this.props.periodModalVisible}
 				closeAction={this.props.closePeriodModal}
-				paddingY={3 * VERTICAL_UNIT}
+				paddingY={HORIZONTAL_UNIT(3)}
 			>
 				<View style={style.fromtoTabView}>
 					<TouchableOpacity

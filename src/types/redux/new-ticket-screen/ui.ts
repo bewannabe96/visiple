@@ -1,7 +1,7 @@
 /**
  * UI State Interface
  */
-type FromToTab = 'from-tab' | 'to-tab';
+export type FromToTab = 'from-tab' | 'to-tab';
 
 export interface UIState {
 	periodModalVisible: boolean;

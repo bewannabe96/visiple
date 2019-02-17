@@ -6,7 +6,7 @@
 			"secondary": "First Class"
 		},
 		"from": "From",
-		"tom": "To",
+		"to": "To",
 		"passenger": "Passenger"
 	},
 	"ticketFixedColors": {

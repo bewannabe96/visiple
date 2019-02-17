@@ -22,7 +22,7 @@ export type IconName =
 	| 'teamwork';
 
 const ICON_SOURCE: { [name in IconName]: any } = {
-	user: require('.../../assets/icons/user.png'),
+	user: require('../../assets/icons/user.png'),
 	menu: require('../../assets/icons/menu.png'),
 	padlock: require('../../assets/icons/padlock.png'),
 	check: require('../../assets/icons/check.png'),

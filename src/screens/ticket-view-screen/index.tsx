@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { VSPScreenProps } from '../../types/props/vsp-screen';
-import {../../types/data/ticket/ticket_theme
-	VERTICAL_UNIT,
+import { IVSPScreenProps } from '../../types/props/vsp-screen';
+import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
-	VSP_HEADER_PADDING,
-} from '../../types/config/size';
-import { THEME_COLORS, THEME_HEADER_FONTSIZE } from '../../types/config/theme';
+	VSP_TOP_PADDING,
+	THEME_HEADER_FONTSIZE,
+} from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 import { TICKET_COLORS } from '../../types/data/ticket/theme';
 
 import VSPHeader from '../../components/vsp-header';
@@ -21,34 +21,39 @@ import VSPText from '../../components/vsp-text';
 import PlanTimeline from './plan-timeline';
 import PackingList from './packing-list';
 
-const DEV_TICKET_COLOR = TICKET_COLORS.HEADER['blue'];
+const DEV_TICKET_COLOR = TICKET_COLORS.THEME.blue;
 const DEV_PLANS = [
 	{
 		date: new Date('2020-03-14'),
+		dayPlans: [],
 	},
 	{
 		date: new Date('2020-03-15'),
+		dayPlans: [],
 	},
 	{
 		date: new Date('2020-03-16'),
+		dayPlans: [],
 	},
 	{
 		date: new Date('2020-03-17'),
+		dayPlans: [],
 	},
 	{
 		date: new Date('2020-03-18'),
+		dayPlans: [],
 	},
 ];
 
-interface TicketViewScreenProps extends VSPScreenProps {}
+interface ITicketViewScreenProps extends IVSPScreenProps {}
 
 /**
  * TicketViewScreen
  */
 export default class TicketViewScreen extends React.Component<
-	TicketViewScreenProps
+	ITicketViewScreenProps
 > {
-	static navigationOptions = ({
+	public static navigationOptions = ({
 		navigation,
 	}: {
 		navigation: NavigationScreenProp<any>;
@@ -79,10 +84,10 @@ export default class TicketViewScreen extends React.Component<
 		};
 	};
 
-	render() {
-		let style = StyleSheet.create({
+	public render() {
+		const style = StyleSheet.create({
 			headerView: {
-				height: 30 * VERTICAL_UNIT,
+				height: HORIZONTAL_UNIT(40),
 				backgroundColor: DEV_TICKET_COLOR,
 			},
 
@@ -95,27 +100,27 @@ export default class TicketViewScreen extends React.Component<
 			profilesView: {
 				flexDirection: 'row',
 				marginHorizontal: VSP_EDGE_PADDING,
-				marginBottom: VERTICAL_UNIT,
+				marginBottom: HORIZONTAL_UNIT(),
 				zIndex: 1,
 			},
 
 			stackedProfile: {
-				left: -3 * 1 * HORIZONTAL_UNIT,
+				left: HORIZONTAL_UNIT(-3 * 1),
 				zIndex: 1,
 			},
 
 			bodyCapView: {
 				position: 'absolute',
 				bottom: 0,
-				height: 5 * HORIZONTAL_UNIT,
+				height: HORIZONTAL_UNIT(5),
 				width: '100%',
-				backgroundColor: THEME_COLORS['white'],
+				backgroundColor: THEME_COLORS.white,
 			},
 
 			bodyView: {
 				flex: 1,
-				backgroundColor: THEME_COLORS['white'],
-				paddingTop: VSP_HEADER_PADDING,
+				backgroundColor: THEME_COLORS.white,
+				paddingTop: VSP_TOP_PADDING,
 			},
 		});
 
@@ -136,7 +141,7 @@ export default class TicketViewScreen extends React.Component<
 						color={DEV_TICKET_COLOR}
 						fontWeight='bold'
 						marginX={VSP_EDGE_PADDING}
-						marginBottom={2 * VERTICAL_UNIT}
+						marginBottom={HORIZONTAL_UNIT(2)}
 					>
 						{'나혼자 여행갈꼬얌'}
 					</VSPText>

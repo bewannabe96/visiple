@@ -1,15 +1,17 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 
-import { THEME_COLORS } from '../../types/config/theme';
+import { THEME_COLORS } from '../../types/lib/theme';
 import {
 	TICKET_COLORS,
 	TICKET_HEADER_COLORS_KEYS,
 } from '../../types/data/ticket/theme';
-import { VERTICAL_UNIT } from '../../types/config/size';
+import { HORIZONTAL_UNIT } from '../../types/lib/size';
 
 interface ITicketColorPickerProps {
-	// STATES
+	/**
+	 * Theme color of the ticket
+	 */
 	ticketColor: string;
 
 	// ACTION CREATORS
@@ -18,16 +20,19 @@ interface ITicketColorPickerProps {
 
 /**
  * TicketColorPicker
+ *
+ * @property
+ * - ```ticketColor```(required): Theme color of the ticket
  */
 export default class TicketColorPicker extends React.Component<
 	ITicketColorPickerProps
 > {
-	render() {
+	public render() {
 		return (
 			<ScrollView
 				contentContainerStyle={{
 					flexDirection: 'row',
-					marginTop: VERTICAL_UNIT,
+					marginTop: HORIZONTAL_UNIT(),
 				}}
 				horizontal={true}
 				showsHorizontalScrollIndicator={false}
@@ -36,10 +41,10 @@ export default class TicketColorPicker extends React.Component<
 					<TouchableOpacity
 						key={TICKET_COLORS.THEME[colorName]}
 						style={{
-							height: 10 * VERTICAL_UNIT,
-							width: 10 * VERTICAL_UNIT,
-							borderRadius: 5 * VERTICAL_UNIT,
-							marginHorizontal: VERTICAL_UNIT,
+							height: HORIZONTAL_UNIT(10),
+							width: HORIZONTAL_UNIT(10),
+							borderRadius: HORIZONTAL_UNIT(5),
+							marginHorizontal: HORIZONTAL_UNIT(),
 							backgroundColor: TICKET_COLORS.THEME[colorName],
 							borderColor: THEME_COLORS.grey,
 							borderWidth:

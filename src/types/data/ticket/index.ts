@@ -1,8 +1,9 @@
 import { UserID } from '../user';
 import { Plans } from './plan';
 
-interface Ticket {
-	id: string;
+export default interface Ticket {
+	id: number;
+	title: string;
 	owner: UserID;
 	participants: UserID[];
 	period: {

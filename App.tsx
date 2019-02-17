@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 
-import AuthSwitch from './src/navigators/vsp-auth-switch';
+import AuthSwitch from './src/navigators/auth-switch';
 import RootReducer from './src/reducers';
 
 const navigationPersistenceKey = __DEV__ ? 'NavigationStateDEV' : null;

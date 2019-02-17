@@ -67,15 +67,13 @@ interface SightseeingPlan {
 	information: string;
 }
 
-type DayPlans = (
-	| MealPlan
-	| RestPlan
-	| MeetPlan
-	| TravelPlan
-	| ActivityPlan
-	| SightseeingPlan)[];
+type DayPlans = Array<
+	MealPlan | RestPlan | MeetPlan | TravelPlan | ActivityPlan | SightseeingPlan
+>;
 
-export type Plans = {
+export interface Plan {
 	date: Date;
 	dayPlans: DayPlans;
-}[];
+}
+
+export type Plans = Plan[];
