@@ -5,12 +5,12 @@ import { RawColorType, ThemeColorType, THEME_COLORS } from '../types/lib/theme';
 
 interface IVSPBottomBarProps {
 	/**
-	 * Theme color of the bar (by default ```blue```)
+	 * Theme color of the bar
 	 */
 	theme?: ThemeColorType;
 
 	/**
-	 * Raw color of the bar (by default ```#000000```)
+	 * Raw color of the bar
 	 */
 	color?: RawColorType;
 }

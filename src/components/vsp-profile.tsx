@@ -10,17 +10,17 @@ import {
 
 interface IVSPProfileProps extends IVSPMarginProps {
 	/**
-	 * Size of the icon (by default ```12VU```)
+	 * Size of the icon
 	 */
 	size?: number;
 
 	/**
-	 * Casts shadow if true (by default ```true```)
+	 * Casts shadow if true
 	 */
 	castShadow?: boolean;
 
 	/**
-	 * Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
+	 * Style of the text
 	 */
 	style?: StyleProp<any>;
 }
@@ -31,7 +31,7 @@ interface IVSPProfileProps extends IVSPMarginProps {
  * @property
  * - ```size```: Size of the icon (by default ```12HU```)
  * - ```castShadow```: Casts shadow if true (by default ```true```)
- * - ```style```: Style of the text
+ * - ```style```: Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
  */
 export default class VSPProfile extends React.Component<IVSPProfileProps> {
 	public static defaultProps = {

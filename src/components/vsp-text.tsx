@@ -15,12 +15,12 @@ import { THEME_FONTSIZE } from '../types/lib/size';
 
 interface IVSPTextProps extends IVSPMarginProps {
 	/**
-	 * Size of the font (by default ```THEME_FONTSIZE```)
+	 * Size of the font
 	 */
 	fontSize?: number;
 
 	/**
-	 * Weight of the font (by default ```normal```)
+	 * Weight of the font
 	 */
 	fontWeight?: 'normal' | 'bold';
 
@@ -46,7 +46,7 @@ interface IVSPTextProps extends IVSPMarginProps {
  * @property
  * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```fontWeight```: Weight of the font (by default ```normal```)
- * - ```theme```: Theme color of the button (by default ```ocean-blue```)
+ * - ```theme```: Theme color of the button (by default ```oceanBlue```)
  * - ```color```: Raw color of the button
  * - ```style```: Style of the text
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
@@ -60,7 +60,7 @@ interface IVSPTextProps extends IVSPMarginProps {
 export default class VSPText extends React.Component<IVSPTextProps> {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
-		theme: 'ocean-blue',
+		theme: 'oceanBlue',
 		fontWeight: 'normal',
 	};
 

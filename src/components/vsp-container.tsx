@@ -8,7 +8,7 @@ import {
 
 interface IVSPContainerProps extends IVSPPaddingProps {
 	/**
-	 * Justify Content (by default ```flex-start```)
+	 * Justify Content
 	 */
 	justifyContent?:
 		| 'flex-start'

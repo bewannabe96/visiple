@@ -22,7 +22,7 @@ interface IVSPExpandableProps extends IVSPMarginProps {
 	body: React.ReactElement<any>;
 
 	/**
-	 * Theme color of the toggle button (by default ```ocean-blue```)
+	 * Theme color of the toggle button
 	 */
 	theme?: ThemeColorType;
 
@@ -38,7 +38,7 @@ interface IVSPExpandableProps extends IVSPMarginProps {
  * @property
  * - ```header```(required): Header component of the expandable
  * - ```body```(required): Body of the expandable
- * - ```theme```: Theme color of the toggle button (by default ```ocean-blue```)
+ * - ```theme```: Theme color of the toggle button
  * - ```color```: Raw color of the toggle button
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
@@ -52,7 +52,7 @@ export default class VSPExpandable extends React.Component<
 	IVSPExpandableProps
 > {
 	public static defaultProps = {
-		theme: 'ocean-blue',
+		theme: 'oceanBlue',
 	};
 
 	public state = {

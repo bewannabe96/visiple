@@ -8,12 +8,12 @@ interface IVSPImageProps {
 	source: ImageSourcePropType;
 
 	/**
-	 * Height of the image (by default ```100%```)
+	 * Height of the image
 	 */
 	height?: string | number;
 
 	/**
-	 * Width of the image (by default ```100%```)
+	 * Width of the image
 	 */
 	width?: string | number;
 }

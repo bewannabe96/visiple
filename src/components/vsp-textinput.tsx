@@ -54,12 +54,12 @@ interface IVSPTextInputProps extends IVSPMarginProps {
 	placeholder: string;
 
 	/**
-	 * Type of the text to be filled in (by default ```none```)
+	 * Type of the text to be filled in
 	 */
 	textContentType?: textContentType;
 
 	/**
-	 * Size of the font (by default ```THEME_FONTSIZE```)
+	 * Size of the font
 	 */
 	fontSize?: number;
 
@@ -73,7 +73,7 @@ interface IVSPTextInputProps extends IVSPMarginProps {
 	rearIcon?: IconName;
 
 	/**
-	 * Theme color of the text input (by default ```ocean-blue```)
+	 * Theme color of the text input
 	 */
 	theme?: ThemeColorType;
 
@@ -83,7 +83,7 @@ interface IVSPTextInputProps extends IVSPMarginProps {
 	color?: RawColorType;
 
 	/**
-	 * Display underline (by default ```true```)
+	 * Display underline
 	 */
 	displayUnderline?: boolean;
 }
@@ -97,7 +97,7 @@ interface IVSPTextInputProps extends IVSPMarginProps {
  * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```frontIcon```: Icon to be diplayed in the front of the text input
  * - ```rearIcon```: Icon to be diplayed in the back of the text input
- * - ```theme```: Theme color of the text input (by default ```ocean-blue```)
+ * - ```theme```: Theme color of the text input (by default ```oceanBlue```)
  * - ```color```: Raw color of the button
  * - ```displayUnderline```: Display underline (by default ```true```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
@@ -112,7 +112,7 @@ export default class VSPTextInput extends React.Component<IVSPTextInputProps> {
 	public static defaultProps = {
 		textContentType: 'none',
 		fontSize: THEME_FONTSIZE,
-		theme: 'ocean-blue',
+		theme: 'oceanBlue',
 		displayUnderline: true,
 	};
 

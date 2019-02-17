@@ -33,7 +33,7 @@ interface IVSPColoredButtonProps extends IVSPMarginProps {
 	fontSize: number;
 
 	/**
-	 * Theme color of the button (by default ```ocean-blue```)
+	 * Theme color of the button
 	 */
 	theme?: ThemeColorType;
 
@@ -55,7 +55,7 @@ interface IVSPColoredButtonProps extends IVSPMarginProps {
  * - ```text```: Text inside the button
  * - ```icon```: Icon to be displayed in the button
  * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
- * - ```theme```: Theme color of the button (by default ```ocean-blue```)
+ * - ```theme```: Theme color of the button (by default ```oceanBlue```)
  * - ```color```: Raw color of the button
  * - ```onPress```: Callback function when button pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
@@ -71,7 +71,7 @@ export default class VSPColoredButton extends React.Component<
 > {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
-		theme: 'ocean-blue',
+		theme: 'oceanBlue',
 	};
 
 	public render() {

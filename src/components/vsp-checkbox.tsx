@@ -12,12 +12,12 @@ import VSPIcon from './vsp-icon';
 
 interface IVSPCheckboxProps extends IVSPMarginProps {
 	/**
-	 * Size of the checkbox (by default ```THEME_FONTSIZE```)
+	 * Size of the checkbox
 	 */
 	size?: number;
 
 	/**
-	 * Theme color of the checkbox (by default ```ocean-blue```)
+	 * Theme color of the checkbox
 	 */
 	theme?: ThemeColorType;
 }
@@ -27,7 +27,7 @@ interface IVSPCheckboxProps extends IVSPMarginProps {
  *
  * @property
  * - ```size```: Size of the checkbox (by default ```THEME_FONTSIZE```)
- * - ```theme```: Theme color of the checkbox (by default ```ocean-blue```)
+ * - ```theme```: Theme color of the checkbox (by default ```oceanBlue```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom
@@ -39,7 +39,7 @@ interface IVSPCheckboxProps extends IVSPMarginProps {
 export default class VSPCheckbox extends React.Component<IVSPCheckboxProps> {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
-		theme: 'ocean-blue',
+		theme: 'oceanBlue',
 	};
 
 	public state = {

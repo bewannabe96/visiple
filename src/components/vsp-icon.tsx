@@ -16,12 +16,12 @@ interface IVSPIconProps extends IVSPMarginProps {
 	iconName: IconName;
 
 	/**
-	 * Size of the icon (by default ```THEME_FONTSIZE```)
+	 * Size of the icon
 	 */
 	size?: number;
 
 	/**
-	 * Theme color of the icon (by default ```black```)
+	 * Theme color of the icon
 	 */
 	theme?: ThemeColorType;
 

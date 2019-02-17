@@ -21,12 +21,12 @@ interface IVSPBadgeProps extends IVSPMarginProps {
 	value: number;
 
 	/**
-	 * Size of the badge (by default ```THEME_FONTSIZE```)
+	 * Size of the badge
 	 */
 	size?: number;
 
 	/**
-	 * Theme color of the badge (by default ```ocean-blue```)
+	 * Theme color of the badge
 	 */
 	theme?: ThemeColorType;
 }
@@ -37,12 +37,12 @@ interface IVSPBadgeProps extends IVSPMarginProps {
  * @property
  * - ```value```(required): Value of the badge
  * - ```size```: Size of the badge (by default ```THEME_FONTSIZE```)
- * - ```theme```: Theme color of the badge (by default ```ocean-blue```)
+ * - ```theme```: Theme color of the badge (by default ```oceanBlue```)
  */
 export default class VSPBadge extends React.Component<IVSPBadgeProps> {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
-		theme: 'oceanblue',
+		theme: 'oceanBlue',
 	};
 
 	public render() {

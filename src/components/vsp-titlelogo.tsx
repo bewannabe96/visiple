@@ -21,7 +21,7 @@ interface IVSPTitleLogoProps extends IVSPMarginProps {
 	fillDirection: 'X' | 'Y';
 
 	/**
-	 * Ratio by which will rescale the title logo abide (by default ```100%```)
+	 * Ratio by which will rescale the title logo abide
 	 */
 	rescaleRatio?: string;
 }
