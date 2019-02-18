@@ -29,7 +29,9 @@ export type IconName =
 	| 'taxi'
 	| 'campingtent'
 	| 'egyptpyramid'
-	| 'smartphone';
+	| 'smartphone'
+	| 'information'
+	| 'placeholder';
 
 const ICON_SOURCE: { [name in IconName]: any } = {
 	user: require('../../assets/icons/user.png'),
@@ -63,6 +65,8 @@ const ICON_SOURCE: { [name in IconName]: any } = {
 	campingtent: require('../../assets/icons/camping-tent.png'),
 	egyptpyramid: require('../../assets/icons/egypt-pyramid.png'),
 	smartphone: require('../../assets/icons/smartphone.png'),
+	information: require('../../assets/icons/information.png'),
+	placeholder: require('../../assets/icons/placeholder.png'),
 };
 
 export default ICON_SOURCE;
