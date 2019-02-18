@@ -45,6 +45,7 @@ export const PLAN_TYPES = {
 
 interface MealPlan {
 	type: typeof PLAN_TYPES.MEAL;
+	title: string;
 	category: MealCategory;
 	fromPlace: Place;
 	toPlace: Place;
@@ -52,18 +53,21 @@ interface MealPlan {
 
 interface RestPlan {
 	type: typeof PLAN_TYPES.REST;
+	title: string;
 	category: RestCategory;
 	atPlace: Place;
 }
 
 interface MeetPlan {
 	type: typeof PLAN_TYPES.MEET;
+	title: string;
 	people: string[];
 	atPlace: Place;
 }
 
 interface TravelPlan {
 	type: typeof PLAN_TYPES.TRAVEL;
+	title: string;
 	mean: Transportation;
 	fromPlace: Place;
 	toPlace: Place;
