@@ -29,31 +29,48 @@ type MealCategory =
 	| 'cafe'
 	| 'bar';
 
+type RestCategory = 'wake' | 'retire' | 'nap';
+
+/**
+ * Plan types constant
+ */
+export const PLAN_TYPES = {
+	MEAL: 'MEAL',
+	REST: 'REST',
+	MEET: 'MEET',
+	TRAVEL: 'TRAVEL',
+	ACTIVITY: 'ACTIVITY',
+	SIGHTSEEING: 'SIGHTSEEING',
+};
+
 interface MealPlan {
+	type: typeof PLAN_TYPES.MEAL;
 	category: MealCategory;
 	fromPlace: Place;
 	toPlace: Place;
 }
 
-type RestCategory = 'wake' | 'retire' | 'nap';
-
 interface RestPlan {
+	type: typeof PLAN_TYPES.REST;
 	category: RestCategory;
 	atPlace: Place;
 }
 
 interface MeetPlan {
+	type: typeof PLAN_TYPES.MEET;
 	people: string[];
 	atPlace: Place;
 }
 
 interface TravelPlan {
+	type: typeof PLAN_TYPES.TRAVEL;
 	mean: Transportation;
 	fromPlace: Place;
 	toPlace: Place;
 }
 
 interface ActivityPlan {
+	type: typeof PLAN_TYPES.ACTIVITY;
 	title: string;
 	atPlace: Place;
 	cost: Cost;
@@ -61,6 +78,7 @@ interface ActivityPlan {
 }
 
 interface SightseeingPlan {
+	type: typeof PLAN_TYPES.SIGHTSEEING;
 	title: string;
 	atPlace: Place;
 	cost: Cost;
