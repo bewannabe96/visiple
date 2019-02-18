@@ -47,22 +47,24 @@ interface MealPlan {
 	type: typeof DAYPLAN_TYPES.MEAL;
 	title: string;
 	category: MealCategory;
-	fromPlace: Place;
-	toPlace: Place;
+	atPlace?: Place;
+	note?: string[];
 }
 
 interface RestPlan {
 	type: typeof DAYPLAN_TYPES.REST;
 	title: string;
 	category: RestCategory;
-	atPlace: Place;
+	atPlace?: Place;
+	note?: string[];
 }
 
 interface MeetPlan {
 	type: typeof DAYPLAN_TYPES.MEET;
 	title: string;
 	people: string[];
-	atPlace: Place;
+	atPlace?: Place;
+	note?: string[];
 }
 
 interface TravelPlan {
@@ -71,22 +73,23 @@ interface TravelPlan {
 	mean: Transportation;
 	fromPlace: Place;
 	toPlace: Place;
+	note?: string[];
 }
 
 interface ActivityPlan {
 	type: typeof DAYPLAN_TYPES.ACTIVITY;
 	title: string;
-	atPlace: Place;
-	cost: Cost;
-	information: string;
+	atPlace?: Place;
+	cost?: Cost;
+	note?: string[];
 }
 
 interface SightseeingPlan {
 	type: typeof DAYPLAN_TYPES.SIGHTSEEING;
 	title: string;
-	atPlace: Place;
-	cost: Cost;
-	information: string;
+	atPlace?: Place;
+	cost?: Cost;
+	note?: string[];
 }
 
 export type DayPlan =
