@@ -19,7 +19,17 @@ export type IconName =
 	| 'planning'
 	| 'backpack'
 	| 'downarrow'
-	| 'teamwork';
+	| 'teamwork'
+	| 'dinner'
+	| 'bed'
+	| 'bus'
+	| 'photocamera'
+	| 'bicycle'
+	| 'plane'
+	| 'taxi'
+	| 'campingtent'
+	| 'egyptpyramid'
+	| 'smartphone';
 
 const ICON_SOURCE: { [name in IconName]: any } = {
 	user: require('../../assets/icons/user.png'),
@@ -43,6 +53,16 @@ const ICON_SOURCE: { [name in IconName]: any } = {
 	backpack: require('../../assets/icons/backpack.png'),
 	downarrow: require('../../assets/icons/down-arrow.png'),
 	teamwork: require('../../assets/icons/teamwork.png'),
+	dinner: require('../../assets/icons/dinner.png'),
+	bed: require('../../assets/icons/bed.png'),
+	bus: require('../../assets/icons/bus.png'),
+	photocamera: require('../../assets/icons/photo-camera.png'),
+	bicycle: require('../../assets/icons/bicycle.png'),
+	plane: require('../../assets/icons/plane.png'),
+	taxi: require('../../assets/icons/taxi.png'),
+	campingtent: require('../../assets/icons/camping-tent.png'),
+	egyptpyramid: require('../../assets/icons/egypt-pyramid.png'),
+	smartphone: require('../../assets/icons/smartphone.png'),
 };
 
 export default ICON_SOURCE;
