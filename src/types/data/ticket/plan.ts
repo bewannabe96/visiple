@@ -67,9 +67,15 @@ interface SightseeingPlan {
 	information: string;
 }
 
-type DayPlans = Array<
-	MealPlan | RestPlan | MeetPlan | TravelPlan | ActivityPlan | SightseeingPlan
->;
+export type DayPlan =
+	| MealPlan
+	| RestPlan
+	| MeetPlan
+	| TravelPlan
+	| ActivityPlan
+	| SightseeingPlan;
+
+type DayPlans = DayPlan[];
 
 export interface Plan {
 	date: Date;
