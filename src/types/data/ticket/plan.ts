@@ -46,50 +46,50 @@ export const DAYPLAN_TYPES = {
 interface MealPlan {
 	type: typeof DAYPLAN_TYPES.MEAL;
 	title: string;
+	note?: string[];
 	category: MealCategory;
 	atPlace?: Place;
-	note?: string[];
 }
 
 interface RestPlan {
 	type: typeof DAYPLAN_TYPES.REST;
 	title: string;
+	note?: string[];
 	category: RestCategory;
 	atPlace?: Place;
-	note?: string[];
 }
 
 interface MeetPlan {
 	type: typeof DAYPLAN_TYPES.MEET;
 	title: string;
+	note?: string[];
 	people: string[];
 	atPlace?: Place;
-	note?: string[];
 }
 
 interface TravelPlan {
 	type: typeof DAYPLAN_TYPES.TRAVEL;
 	title: string;
+	note?: string[];
 	mean: Transportation;
 	fromPlace: Place;
 	toPlace: Place;
-	note?: string[];
 }
 
 interface ActivityPlan {
 	type: typeof DAYPLAN_TYPES.ACTIVITY;
 	title: string;
+	note?: string[];
 	atPlace?: Place;
 	cost?: Cost;
-	note?: string[];
 }
 
 interface SightseeingPlan {
 	type: typeof DAYPLAN_TYPES.SIGHTSEEING;
 	title: string;
+	note?: string[];
 	atPlace?: Place;
 	cost?: Cost;
-	note?: string[];
 }
 
 export type DayPlan =
