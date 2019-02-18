@@ -31,5 +31,12 @@ export const TICKET_COLORS = {
  * Fixed texts of the ticket
  */
 export const TICKET_TEXTS: {
-	[key: string]: string | { [key: string]: string };
+	topLeft: string;
+	topRight: {
+		primary: string;
+		secondary: string;
+	};
+	from: string;
+	to: string;
+	passenger: string;
 } = Config.ticketFixedTexts;

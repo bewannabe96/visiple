@@ -158,7 +158,7 @@ class TicketsList extends React.Component<ITicketsListProps> {
 							<View style={style.fromtoView}>
 								<View style={style.fromtoInnerView}>
 									<Text style={style.fromtoText}>
-										{TICKET_TEXTS.FROM}
+										{TICKET_TEXTS.from}
 									</Text>
 									<Text style={style.dateText}>
 										{ticket.period.from.toLocaleDateString()}
@@ -166,7 +166,7 @@ class TicketsList extends React.Component<ITicketsListProps> {
 								</View>
 								<View style={style.fromtoInnerView}>
 									<Text style={style.fromtoText}>
-										{TICKET_TEXTS.TO}
+										{TICKET_TEXTS.to}
 									</Text>
 									<Text style={style.dateText}>
 										{ticket.period.to.toLocaleDateString()}
@@ -182,7 +182,7 @@ class TicketsList extends React.Component<ITicketsListProps> {
 							/>
 							<View style={style.passengerView}>
 								<Text style={style.passengerText}>
-									{TICKET_TEXTS.PASSENGER}
+									{TICKET_TEXTS.passenger}
 								</Text>
 								<VSPProfile
 									size={HORIZONTAL_UNIT(5)}
