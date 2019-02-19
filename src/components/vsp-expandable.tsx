@@ -87,7 +87,7 @@ export default class VSPExpandable extends React.Component<
 					<View style={style.header}>{this.props.header}</View>
 					<VSPRoundIconButton
 						outline={this.state.expanded}
-						icon={this.state.expanded ? 'downarrow' : 'plus'}
+						icon={this.state.expanded ? 'downarrowhead' : 'plus'}
 						fontSize={THEME_MINOR_FONTSIZE}
 						onPress={this._toggleExpand}
 						color={

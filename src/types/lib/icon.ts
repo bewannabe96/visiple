@@ -4,6 +4,7 @@ export type IconName =
 	| 'cancel'
 	| 'check'
 	| 'clock'
+	| 'downarrowhead'
 	| 'downarrow'
 	| 'home'
 	| 'information'
@@ -51,6 +52,7 @@ const ICON_SOURCE: { [name in IconName]: any } = {
 	check: require('../../assets/icons/ui/check.png'),
 	clock: require('../../assets/icons/ui/clock.png'),
 	downarrow: require('../../assets/icons/ui/down-arrow.png'),
+	downarrowhead: require('../../assets/icons/ui/down-arrow-head.png'),
 	home: require('../../assets/icons/ui/home.png'),
 	information: require('../../assets/icons/ui/information.png'),
 	leftarrow: require('../../assets/icons/ui/left-arrow.png'),
