@@ -1,6 +1,6 @@
 type Place = string;
 
-type Currency = 'won' | 'dollar' | 'yen' | 'yuan';
+type Currency = 'won' | 'dollar' | 'yen' | 'yuan' | string;
 
 interface Cost {
 	value: number;
