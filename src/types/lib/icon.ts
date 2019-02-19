@@ -33,9 +33,15 @@ export type IconName =
 	| 'dinner'
 	// TRANSPORTATION
 	| 'bicycle'
+	| 'boat'
 	| 'bus'
+	| 'car'
+	| 'motorbike'
 	| 'plane'
-	| 'taxi';
+	| 'subway'
+	| 'taxi'
+	| 'train'
+	| 'tram';
 
 const ICON_SOURCE: { [name in IconName]: any } = {
 	// UI
@@ -72,9 +78,15 @@ const ICON_SOURCE: { [name in IconName]: any } = {
 	dinner: require('../../assets/icons/meal/dinner.png'),
 	// TRANSPORTATION
 	bicycle: require('../../assets/icons/transportation/bicycle.png'),
+	boat: require('../../assets/icons/transportation/boat.png'),
 	bus: require('../../assets/icons/transportation/bus.png'),
+	car: require('../../assets/icons/transportation/car.png'),
+	motorbike: require('../../assets/icons/transportation/motorbike.png'),
 	plane: require('../../assets/icons/transportation/plane.png'),
+	subway: require('../../assets/icons/transportation/subway.png'),
 	taxi: require('../../assets/icons/transportation/taxi.png'),
+	train: require('../../assets/icons/transportation/train.png'),
+	tram: require('../../assets/icons/transportation/tram.png'),
 };
 
 export default ICON_SOURCE;
