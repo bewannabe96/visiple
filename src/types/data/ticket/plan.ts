@@ -71,8 +71,10 @@ interface TravelPlan {
 	title: string;
 	note?: string[];
 	mean: Transportation;
-	fromPlace: Place;
-	toPlace: Place;
+	move: {
+		from: Place;
+		to: Place;
+	};
 	cost?: Cost;
 }
 
