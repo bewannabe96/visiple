@@ -73,6 +73,7 @@ interface TravelPlan {
 	mean: Transportation;
 	fromPlace: Place;
 	toPlace: Place;
+	cost?: Cost;
 }
 
 interface ActivityPlan {
