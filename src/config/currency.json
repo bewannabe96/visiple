@@ -623,7 +623,7 @@
     "MKD": {
         "symbol": "MKD",
         "name": "Macedonian Denar",
-        "symbol_native": "MKD",
+        "symbol_native": "ден",
         "decimal_digits": 2,
         "rounding": 0,
         "code": "MKD",
