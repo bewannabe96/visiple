@@ -7,6 +7,11 @@ interface Cost {
 	currency: Currency;
 }
 
+interface Move {
+	from: Place;
+	to: Place;
+}
+
 type Transportation =
 	| 'subway'
 	| 'bus'
@@ -48,6 +53,7 @@ interface MealPlan {
 	note?: string[];
 	category: MealCategory;
 	atPlace?: Place;
+	cost?: Cost;
 }
 
 interface RestPlan {
@@ -71,10 +77,7 @@ interface TravelPlan {
 	title: string;
 	note?: string[];
 	mean: Transportation;
-	move: {
-		from: Place;
-		to: Place;
-	};
+	move: Move;
 	cost?: Cost;
 }
 
