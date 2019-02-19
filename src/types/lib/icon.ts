@@ -41,7 +41,8 @@ export type IconName =
 	| 'subway'
 	| 'taxi'
 	| 'train'
-	| 'tram';
+	| 'tram'
+	| 'walk';
 
 const ICON_SOURCE: { [name in IconName]: any } = {
 	// UI
@@ -87,6 +88,7 @@ const ICON_SOURCE: { [name in IconName]: any } = {
 	taxi: require('../../assets/icons/transportation/taxi.png'),
 	train: require('../../assets/icons/transportation/train.png'),
 	tram: require('../../assets/icons/transportation/tram.png'),
+	walk: require('../../assets/icons/transportation/walk.png'),
 };
 
 export default ICON_SOURCE;
