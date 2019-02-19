@@ -10,6 +10,7 @@ export type IconName =
 	| 'information'
 	| 'leftarrow'
 	| 'menu'
+	| 'money'
 	| 'more'
 	| 'next'
 	| 'padlock'
@@ -57,6 +58,7 @@ const ICON_SOURCE: { [name in IconName]: any } = {
 	information: require('../../assets/icons/ui/information.png'),
 	leftarrow: require('../../assets/icons/ui/left-arrow.png'),
 	menu: require('../../assets/icons/ui/menu.png'),
+	money: require('../../assets/icons/ui/money.png'),
 	more: require('../../assets/icons/ui/more.png'),
 	next: require('../../assets/icons/ui/next.png'),
 	padlock: require('../../assets/icons/ui/padlock.png'),
