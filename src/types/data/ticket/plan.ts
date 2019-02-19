@@ -34,17 +34,16 @@ type RestCategory = 'wake' | 'retire' | 'nap';
 /**
  * Plan types constant
  */
-export const DAYPLAN_TYPES = {
-	MEAL: 'MEAL',
-	REST: 'REST',
-	MEET: 'MEET',
-	TRAVEL: 'TRAVEL',
-	ACTIVITY: 'ACTIVITY',
-	SIGHTSEEING: 'SIGHTSEEING',
-};
+type DayPlanType =
+	| 'MEAL'
+	| 'REST'
+	| 'MEET'
+	| 'TRAVEL'
+	| 'ACTIVITY'
+	| 'SIGHTSEEING';
 
 interface MealPlan {
-	type: typeof DAYPLAN_TYPES.MEAL;
+	type: 'MEAL';
 	title: string;
 	note?: string[];
 	category: MealCategory;
@@ -52,7 +51,7 @@ interface MealPlan {
 }
 
 interface RestPlan {
-	type: typeof DAYPLAN_TYPES.REST;
+	type: 'REST';
 	title: string;
 	note?: string[];
 	category: RestCategory;
@@ -60,7 +59,7 @@ interface RestPlan {
 }
 
 interface MeetPlan {
-	type: typeof DAYPLAN_TYPES.MEET;
+	type: 'MEET';
 	title: string;
 	note?: string[];
 	people: string[];
@@ -68,7 +67,7 @@ interface MeetPlan {
 }
 
 interface TravelPlan {
-	type: typeof DAYPLAN_TYPES.TRAVEL;
+	type: 'TRAVEL';
 	title: string;
 	note?: string[];
 	mean: Transportation;
@@ -77,7 +76,7 @@ interface TravelPlan {
 }
 
 interface ActivityPlan {
-	type: typeof DAYPLAN_TYPES.ACTIVITY;
+	type: 'ACTIVITY';
 	title: string;
 	note?: string[];
 	atPlace?: Place;
@@ -85,7 +84,7 @@ interface ActivityPlan {
 }
 
 interface SightseeingPlan {
-	type: typeof DAYPLAN_TYPES.SIGHTSEEING;
+	type: 'SIGHTSEEING';
 	title: string;
 	note?: string[];
 	atPlace?: Place;
