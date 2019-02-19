@@ -1,72 +1,80 @@
 export type IconName =
-	| 'user'
-	| 'menu'
-	| 'padlock'
-	| 'check'
-	| 'settings'
-	| 'previous'
-	| 'next'
-	| 'home'
-	| 'cancel'
-	| 'search'
-	| 'plus'
+	// UI
 	| 'calendar'
+	| 'cancel'
+	| 'check'
 	| 'clock'
-	| 'leftarrow'
-	| 'rightarrow'
-	| 'trash'
-	| 'more'
-	| 'planning'
-	| 'backpack'
 	| 'downarrow'
+	| 'home'
+	| 'information'
+	| 'leftarrow'
+	| 'menu'
+	| 'more'
+	| 'next'
+	| 'padlock'
+	| 'placeholder'
+	| 'plus'
+	| 'previous'
+	| 'rightarrow'
+	| 'search'
+	| 'settings'
 	| 'teamwork'
-	| 'dinner'
+	| 'trash'
+	| 'user'
+	// TRAVEL
+	| 'backpack'
 	| 'bed'
-	| 'bus'
-	| 'photocamera'
-	| 'bicycle'
-	| 'plane'
-	| 'taxi'
 	| 'campingtent'
 	| 'egyptpyramid'
+	| 'photocamera'
+	| 'planning'
 	| 'smartphone'
-	| 'information'
-	| 'placeholder';
+	// MEAL
+	| 'dinner'
+	// TRANSPORTATION
+	| 'bicycle'
+	| 'bus'
+	| 'plane'
+	| 'taxi';
 
 const ICON_SOURCE: { [name in IconName]: any } = {
-	user: require('../../assets/icons/user.png'),
-	menu: require('../../assets/icons/menu.png'),
-	padlock: require('../../assets/icons/padlock.png'),
-	check: require('../../assets/icons/check.png'),
-	settings: require('../../assets/icons/settings.png'),
-	previous: require('../../assets/icons/previous.png'),
-	next: require('../../assets/icons/next.png'),
-	home: require('../../assets/icons/home.png'),
-	cancel: require('../../assets/icons/cancel.png'),
-	search: require('../../assets/icons/search.png'),
-	plus: require('../../assets/icons/plus.png'),
-	calendar: require('../../assets/icons/calendar.png'),
-	clock: require('../../assets/icons/clock.png'),
-	leftarrow: require('../../assets/icons/left-arrow.png'),
-	rightarrow: require('../../assets/icons/right-arrow.png'),
-	trash: require('../../assets/icons/trash.png'),
-	more: require('../../assets/icons/more.png'),
-	planning: require('../../assets/icons/planning.png'),
-	backpack: require('../../assets/icons/backpack.png'),
-	downarrow: require('../../assets/icons/down-arrow.png'),
-	teamwork: require('../../assets/icons/teamwork.png'),
-	dinner: require('../../assets/icons/dinner.png'),
-	bed: require('../../assets/icons/bed.png'),
-	bus: require('../../assets/icons/bus.png'),
-	photocamera: require('../../assets/icons/photo-camera.png'),
-	bicycle: require('../../assets/icons/bicycle.png'),
-	plane: require('../../assets/icons/plane.png'),
-	taxi: require('../../assets/icons/taxi.png'),
-	campingtent: require('../../assets/icons/camping-tent.png'),
-	egyptpyramid: require('../../assets/icons/egypt-pyramid.png'),
-	smartphone: require('../../assets/icons/smartphone.png'),
-	information: require('../../assets/icons/information.png'),
-	placeholder: require('../../assets/icons/placeholder.png'),
+	// UI
+	calendar: require('../../assets/icons/ui/calendar.png'),
+	cancel: require('../../assets/icons/ui/cancel.png'),
+	check: require('../../assets/icons/ui/check.png'),
+	clock: require('../../assets/icons/ui/clock.png'),
+	downarrow: require('../../assets/icons/ui/down-arrow.png'),
+	home: require('../../assets/icons/ui/home.png'),
+	information: require('../../assets/icons/ui/information.png'),
+	leftarrow: require('../../assets/icons/ui/left-arrow.png'),
+	menu: require('../../assets/icons/ui/menu.png'),
+	more: require('../../assets/icons/ui/more.png'),
+	next: require('../../assets/icons/ui/next.png'),
+	padlock: require('../../assets/icons/ui/padlock.png'),
+	placeholder: require('../../assets/icons/ui/placeholder.png'),
+	plus: require('../../assets/icons/ui/plus.png'),
+	previous: require('../../assets/icons/ui/previous.png'),
+	rightarrow: require('../../assets/icons/ui/right-arrow.png'),
+	search: require('../../assets/icons/ui/search.png'),
+	settings: require('../../assets/icons/ui/settings.png'),
+	teamwork: require('../../assets/icons/ui/teamwork.png'),
+	trash: require('../../assets/icons/ui/trash.png'),
+	user: require('../../assets/icons/ui/user.png'),
+	// TRAVEL
+	backpack: require('../../assets/icons/travel/backpack.png'),
+	bed: require('../../assets/icons/travel/bed.png'),
+	campingtent: require('../../assets/icons/travel/camping-tent.png'),
+	egyptpyramid: require('../../assets/icons/travel/egypt-pyramid.png'),
+	photocamera: require('../../assets/icons/travel/photo-camera.png'),
+	planning: require('../../assets/icons/travel/planning.png'),
+	smartphone: require('../../assets/icons/travel/smartphone.png'),
+	// MEAL
+	dinner: require('../../assets/icons/meal/dinner.png'),
+	// TRANSPORTATION
+	bicycle: require('../../assets/icons/transportation/bicycle.png'),
+	bus: require('../../assets/icons/transportation/bus.png'),
+	plane: require('../../assets/icons/transportation/plane.png'),
+	taxi: require('../../assets/icons/transportation/taxi.png'),
 };
 
 export default ICON_SOURCE;
