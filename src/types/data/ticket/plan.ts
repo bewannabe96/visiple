@@ -1,10 +1,8 @@
 type Place = string;
 
-type Currency = 'won' | 'dollar' | 'yen' | 'yuan' | string;
-
 interface Cost {
 	value: number;
-	currency: Currency;
+	currency: string;
 }
 
 interface Move {
