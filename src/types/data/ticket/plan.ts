@@ -1,3 +1,8 @@
+interface Time {
+	at: Date;
+	end?: Date;
+}
+
 type Place = string;
 
 interface Cost {
@@ -42,6 +47,7 @@ type DayPlanType = 'MEAL' | 'REST' | 'TRAVEL' | 'ACTIVITY' | 'SIGHTSEEING';
 interface MealPlan {
 	type: 'MEAL';
 	title: string;
+	time: Time;
 	note?: string[];
 	category: MealCategory;
 	atPlace?: Place;
@@ -51,6 +57,7 @@ interface MealPlan {
 interface RestPlan {
 	type: 'REST';
 	title: string;
+	time: Time;
 	note?: string[];
 	category: RestCategory;
 	atPlace?: Place;
@@ -59,6 +66,7 @@ interface RestPlan {
 interface TravelPlan {
 	type: 'TRAVEL';
 	title: string;
+	time: Time;
 	note?: string[];
 	mean: Transportation;
 	move: Move;
@@ -68,6 +76,7 @@ interface TravelPlan {
 interface ActivityPlan {
 	type: 'ACTIVITY';
 	title: string;
+	time: Time;
 	note?: string[];
 	atPlace?: Place;
 	cost?: Cost;
@@ -76,6 +85,7 @@ interface ActivityPlan {
 interface SightseeingPlan {
 	type: 'SIGHTSEEING';
 	title: string;
+	time: Time;
 	note?: string[];
 	atPlace?: Place;
 	cost?: Cost;
