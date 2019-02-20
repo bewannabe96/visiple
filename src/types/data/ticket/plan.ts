@@ -1,3 +1,5 @@
+import { UserID } from '../user';
+
 type Place = string;
 
 interface Cost {
@@ -66,7 +68,7 @@ interface MeetPlan {
 	type: 'MEET';
 	title: string;
 	note?: string[];
-	people: string[];
+	people: (UserID | string)[];
 	atPlace?: Place;
 }
 
