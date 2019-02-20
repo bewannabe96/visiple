@@ -1,16 +1,16 @@
 import { UserID } from '../user';
 
-interface Item {
+export interface PackingItem {
 	name: string;
 	ready: boolean;
 }
 
 interface IndividualPacking {
 	user: UserID;
-	list: Item[];
+	list: PackingItem[];
 }
 
 export interface Packings {
-	commonList: Item[];
+	commonList: PackingItem[];
 	indivLists: IndividualPacking[];
 }
