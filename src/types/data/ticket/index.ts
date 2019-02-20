@@ -1,5 +1,6 @@
 import { UserID } from '../user';
 import { Plans } from './plan';
+import { Packings } from './packing';
 
 export interface Ticket {
 	id: number;
@@ -11,6 +12,7 @@ export interface Ticket {
 		from: Date;
 		to: Date;
 	};
+	packings: Packings;
 	plans: Plans;
 }
 
