@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
-import { THEME_COLORS, ThemeColorType } from '../types/lib/theme';
+import { THEME_COLORS, ThemeColor } from '../types/lib/theme';
 import { THEME_FONTSIZE } from '../types/lib/size';
 import {
 	IVSPMarginProps,
@@ -19,7 +19,7 @@ interface IVSPCheckboxProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the checkbox
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 }
 
 /**

@@ -7,7 +7,7 @@ import {
 } from '../types/props/vsp-margin';
 import { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
-import { THEME_COLORS, ThemeColorType, RawColorType } from '../types/lib/theme';
+import { THEME_COLORS, ThemeColor, RawColor } from '../types/lib/theme';
 
 import VSPText from './vsp-text';
 import VSPIcon from './vsp-icon';
@@ -31,12 +31,12 @@ interface IVSPDividerProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the divider
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the divider
 	 */
-	color?: RawColorType;
+	color?: RawColor;
 
 	/**
 	 * The place where the text will go

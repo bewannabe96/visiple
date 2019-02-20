@@ -3,9 +3,9 @@ import { View, TextInput, StyleSheet } from 'react-native';
 
 import {
 	THEME_COLORS,
-	ThemeColorType,
+	ThemeColor,
 	THEME_FONT,
-	RawColorType,
+	RawColor,
 } from '../types/lib/theme';
 import {
 	IVSPMarginProps,
@@ -75,12 +75,12 @@ interface IVSPTextInputProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the text input
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the button
 	 */
-	color?: RawColorType;
+	color?: RawColor;
 
 	/**
 	 * Display underline

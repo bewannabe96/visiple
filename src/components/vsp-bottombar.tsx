@@ -1,18 +1,18 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { RawColorType, ThemeColorType, THEME_COLORS } from '../types/lib/theme';
+import { RawColor, ThemeColor, THEME_COLORS } from '../types/lib/theme';
 
 interface IVSPBottomBarProps {
 	/**
 	 * Theme color of the bar
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the bar
 	 */
-	color?: RawColorType;
+	color?: RawColor;
 }
 
 /**

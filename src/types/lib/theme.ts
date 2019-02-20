@@ -8,12 +8,12 @@ export const THEME_FONT = Config.fontFamily;
 /**
  * Raw Color Type
  */
-export type RawColorType = string;
+export type RawColor = string;
 
 /**
  * Theme Color Type
  */
-export type ThemeColorType =
+export type ThemeColor =
 	| 'none'
 	| 'white'
 	| 'grey'
@@ -28,7 +28,7 @@ export type ThemeColorType =
 /**
  * Theme Colors
  */
-export const THEME_COLORS: { [key in ThemeColorType]: string } = {
+export const THEME_COLORS: { [key in ThemeColor]: string } = {
 	none: 'transparent',
 	white: '#FFFFFF',
 	grey: '#707070',
@@ -47,7 +47,7 @@ export const THEME_COLORS: { [key in ThemeColorType]: string } = {
 export const addShadowProperties = (
 	offset?: number,
 	opacity?: number,
-	color?: RawColorType,
+	color?: RawColor,
 ) => ({
 	shadowColor: color ? color : THEME_COLORS.black,
 	shadowOffset: { width: 0, height: offset ? offset : 2 },

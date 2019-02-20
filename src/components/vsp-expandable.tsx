@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { ThemeColorType, RawColorType, THEME_COLORS } from '../types/lib/theme';
+import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
 import { THEME_MINOR_FONTSIZE } from '../types/lib/size';
 import {
 	decodeVSPMarginProps,
@@ -24,12 +24,12 @@ interface IVSPExpandableProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the toggle button
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the toggle button
 	 */
-	color?: RawColorType;
+	color?: RawColor;
 }
 
 /**

@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import {
 	THEME_COLORS,
 	addShadowProperties,
-	ThemeColorType,
+	ThemeColor,
 } from '../types/lib/theme';
 import {
 	decodeVSPMarginProps,
@@ -28,7 +28,7 @@ interface IVSPBadgeProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the badge
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 }
 
 /**

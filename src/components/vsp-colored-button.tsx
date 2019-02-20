@@ -5,7 +5,7 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
-import { ThemeColorType, THEME_COLORS, RawColorType } from '../types/lib/theme';
+import { ThemeColor, THEME_COLORS, RawColor } from '../types/lib/theme';
 import { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 import {
@@ -35,12 +35,12 @@ interface IVSPColoredButtonProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the button
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the button
 	 */
-	color?: RawColorType;
+	color?: RawColor;
 
 	/**
 	 * Callback function when button pressed

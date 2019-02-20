@@ -5,7 +5,7 @@ import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
-import { ThemeColorType, RawColorType, THEME_COLORS } from '../types/lib/theme';
+import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
 import ICON_SOURCE, { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 
@@ -23,12 +23,12 @@ interface IVSPIconProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the icon
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the icon
 	 */
-	color?: RawColorType;
+	color?: RawColor;
 }
 
 /**

@@ -4,8 +4,8 @@ import { Text, StyleProp } from 'react-native';
 import {
 	THEME_FONT,
 	THEME_COLORS,
-	ThemeColorType,
-	RawColorType,
+	ThemeColor,
+	RawColor,
 } from '../types/lib/theme';
 import {
 	IVSPMarginProps,
@@ -27,12 +27,12 @@ interface IVSPTextProps extends IVSPMarginProps {
 	/**
 	 * Theme color of the text
 	 */
-	theme?: ThemeColorType;
+	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the text
 	 */
-	color?: RawColorType;
+	color?: RawColor;
 
 	/**
 	 * Style of the text
