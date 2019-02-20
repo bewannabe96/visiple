@@ -1,5 +1,3 @@
-import { UserID } from '../user';
-
 type Place = string;
 
 interface Cost {
@@ -39,13 +37,7 @@ type RestCategory = 'wake' | 'retire' | 'nap';
 /**
  * Plan types constant
  */
-type DayPlanType =
-	| 'MEAL'
-	| 'REST'
-	| 'MEET'
-	| 'TRAVEL'
-	| 'ACTIVITY'
-	| 'SIGHTSEEING';
+type DayPlanType = 'MEAL' | 'REST' | 'TRAVEL' | 'ACTIVITY' | 'SIGHTSEEING';
 
 interface MealPlan {
 	type: 'MEAL';
@@ -61,14 +53,6 @@ interface RestPlan {
 	title: string;
 	note?: string[];
 	category: RestCategory;
-	atPlace?: Place;
-}
-
-interface MeetPlan {
-	type: 'MEET';
-	title: string;
-	note?: string[];
-	people: (UserID | string)[];
 	atPlace?: Place;
 }
 
@@ -100,7 +84,6 @@ interface SightseeingPlan {
 export type DayPlan =
 	| MealPlan
 	| RestPlan
-	| MeetPlan
 	| TravelPlan
 	| ActivityPlan
 	| SightseeingPlan;
