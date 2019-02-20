@@ -8,14 +8,19 @@ import {
 	THEME_HEADER_FONTSIZE,
 	THEME_MINOR_FONTSIZE,
 } from '../../types/lib/size';
-import { formatDateString, formatISODate } from '../../types/lib/date';
+import {
+	formatDateString,
+	formatISODate,
+	formatTimeString,
+} from '../../types/lib/date';
 import { Plans, Plan, DayPlan } from '../../types/data/ticket/plan';
 import { IconName } from '../../types/lib/icon';
+import { CURRENCY } from '../../types/data/currency';
 
 import VSPIcon from '../../components/vsp-icon';
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';
-import { CURRENCY } from '../../types/data/currency';
+import VSPDivider from '../../components/vsp-divider';
 
 interface IPlanTimelineProps {
 	/**
@@ -40,6 +45,12 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 	private _renderDayPlanTitle(dayPlan: DayPlan) {
 		const style = StyleSheet.create({
 			rowView: {
+				flexDirection: 'row',
+				justifyContent: 'space-between',
+				alignItems: 'flex-start',
+			},
+
+			headerView: {
 				flexDirection: 'row',
 				alignItems: 'center',
 			},
@@ -91,11 +102,21 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 
 		return (
 			<View style={style.rowView}>
-				<View style={style.bulletDash} />
+				<View style={style.headerView}>
+					<View style={style.bulletDash} />
+					<View style={style.textView}>
+						<VSPIcon iconName={icon} theme='oceanBlue' />
+						<VSPText
+							marginLeft={HORIZONTAL_UNIT()}
+							fontWeight='bold'
+						>
+							{dayPlan.title}
+						</VSPText>
+					</View>
+				</View>
 				<View style={style.textView}>
-					<VSPIcon iconName={icon} theme='oceanBlue' />
-					<VSPText marginLeft={HORIZONTAL_UNIT()} fontWeight='bold'>
-						{dayPlan.title}
+					<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='skyBlue'>
+						{formatTimeString(dayPlan.time.at)}
 					</VSPText>
 				</View>
 			</View>
@@ -248,6 +269,23 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		);
 	}
 
+	private _renderEndTime(dayPlan: DayPlan) {
+		return (
+			<VSPDivider
+				text={
+					dayPlan.time.end !== undefined
+						? formatTimeString(dayPlan.time.end)
+						: undefined
+				}
+				fontSize={THEME_MINOR_FONTSIZE}
+				theme='skyBlue'
+				orientation='far-right'
+				marginTop={HORIZONTAL_UNIT()}
+				marginLeft={HORIZONTAL_UNIT(8)}
+			/>
+		);
+	}
+
 	private _renderPlans() {
 		const style = StyleSheet.create({
 			container: {
@@ -319,6 +357,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 												{this._renderDayPlanDetail(
 													dayPlan,
 												)}
+												{this._renderEndTime(dayPlan)}
 											</View>
 										),
 									)}
