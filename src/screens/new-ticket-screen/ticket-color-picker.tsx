@@ -40,6 +40,10 @@ export default class TicketColorPicker extends React.Component<
 				{TICKET_HEADER_COLORS_KEYS.map(colorName => (
 					<TouchableOpacity
 						key={TICKET_COLORS.THEME[colorName]}
+						disabled={
+							this.props.themeColor ===
+							TICKET_COLORS.THEME[colorName]
+						}
 						style={{
 							height: HORIZONTAL_UNIT(10),
 							width: HORIZONTAL_UNIT(10),
@@ -48,7 +52,10 @@ export default class TicketColorPicker extends React.Component<
 							backgroundColor: TICKET_COLORS.THEME[colorName],
 							borderColor: THEME_COLORS.grey,
 							borderWidth:
-								this.props.themeColor === colorName ? 3 : 0,
+								this.props.themeColor ===
+								TICKET_COLORS.THEME[colorName]
+									? 3
+									: 0,
 						}}
 						onPress={() => {
 							this.props.setTicketColor(
