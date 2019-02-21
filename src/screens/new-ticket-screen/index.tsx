@@ -110,7 +110,7 @@ export default class NewTicketScreen extends React.Component<
 				borderBottomWidth: 2,
 				marginLeft: HORIZONTAL_UNIT(4),
 				flex: 3,
-				borderColor: this.props.newTicketData.ticketColor,
+				borderColor: this.props.newTicketData.themeColor,
 			},
 
 			timeInputView: {
@@ -118,11 +118,11 @@ export default class NewTicketScreen extends React.Component<
 				borderBottomWidth: 2,
 				marginLeft: HORIZONTAL_UNIT(4),
 				flex: 2,
-				borderColor: this.props.newTicketData.ticketColor,
+				borderColor: this.props.newTicketData.themeColor,
 			},
 
 			valueText: {
-				color: this.props.newTicketData.ticketColor,
+				color: this.props.newTicketData.themeColor,
 				fontSize: THEME_HEADER_FONTSIZE,
 			},
 
@@ -142,7 +142,7 @@ export default class NewTicketScreen extends React.Component<
 							placeholder='제목을 입력해 주세요.'
 							fontSize={THEME_HEADER_FONTSIZE}
 							marginTop={HORIZONTAL_UNIT()}
-							color={this.props.newTicketData.ticketColor}
+							color={this.props.newTicketData.themeColor}
 						/>
 					</View>
 					<View style={style.categoryView}>
@@ -172,10 +172,10 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='calendar'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								>
 									{formatDateString(
 										this.props.newTicketData.period.from,
@@ -190,10 +190,10 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='clock'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								>
 									{formatTimeString(
 										this.props.newTicketData.period.from,
@@ -213,10 +213,10 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='calendar'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								>
 									{formatDateString(
 										this.props.newTicketData.period.to,
@@ -231,10 +231,10 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='clock'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.ticketColor}
+									color={this.props.newTicketData.themeColor}
 								>
 									{formatTimeString(
 										this.props.newTicketData.period.to,
@@ -253,14 +253,14 @@ export default class NewTicketScreen extends React.Component<
 							<VSPTextButton
 								icon='plus'
 								fontSize={THEME_HEADER_FONTSIZE}
-								color={this.props.newTicketData.ticketColor}
+								color={this.props.newTicketData.themeColor}
 								onPress={() => {
 									this.props.openInviteModal();
 								}}
 							/>
 						</View>
 						<InvitedFriendsList
-							ticketColor={this.props.newTicketData.ticketColor}
+							themeColor={this.props.newTicketData.themeColor}
 						/>
 						<View style={style.footerView}>
 							<View
@@ -281,11 +281,9 @@ export default class NewTicketScreen extends React.Component<
 						text='완료'
 						fontSize={THEME_HEADER_FONTSIZE}
 						margin={2 * HORIZONTAL_UNIT()}
-						color={this.props.newTicketData.ticketColor}
+						color={this.props.newTicketData.themeColor}
 					/>
-					<VSPBottomBar
-						color={this.props.newTicketData.ticketColor}
-					/>
+					<VSPBottomBar color={this.props.newTicketData.themeColor} />
 				</View>
 
 				<SelectPeriodModalContainer />

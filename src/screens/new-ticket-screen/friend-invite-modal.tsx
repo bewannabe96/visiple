@@ -14,7 +14,7 @@ interface IFriendInviteModalProps {
 	/**
 	 * Theme color of the ticket
 	 */
-	ticketColor: string;
+	themeColor: string;
 
 	/**
 	 * The modal is visible if true
@@ -29,7 +29,7 @@ interface IFriendInviteModalProps {
  * FriendInviteModal
  *
  * @property
- * - ```ticketColor```(required): Theme color of the ticket
+ * - ```themeColor```(required): Theme color of the ticket
  * - ```inviteModalVisible```(required): The modal is visible if true
  */
 export default class FriendInviteModal extends React.Component<
@@ -96,7 +96,7 @@ export default class FriendInviteModal extends React.Component<
 								text='초대'
 								icon='plus'
 								fontSize={HORIZONTAL_UNIT(2)}
-								color={this.props.ticketColor}
+								color={this.props.themeColor}
 							/>
 						</View>
 					)}

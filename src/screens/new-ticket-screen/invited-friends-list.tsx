@@ -15,14 +15,14 @@ export interface InvitedFriendsListProps {
 	/**
 	 * Theme color of the ticket
 	 */
-	ticketColor: string;
+	themeColor: string;
 }
 
 /**
  * InvitedFriendsList
  *
  * @property
- * - ```ticketColor```(required): Theme color of the ticket
+ * - ```themeColor```(required): Theme color of the ticket
  */
 export default class InvitedFriendsList extends React.Component<
 	InvitedFriendsListProps
@@ -41,7 +41,7 @@ export default class InvitedFriendsList extends React.Component<
 				<VSPTextButton
 					icon='cancel'
 					fontSize={THEME_MINOR_FONTSIZE}
-					color={this.props.ticketColor}
+					color={this.props.themeColor}
 				/>
 			</View>
 		);

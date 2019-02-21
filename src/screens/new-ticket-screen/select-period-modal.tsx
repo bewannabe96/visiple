@@ -19,7 +19,7 @@ interface ISelectPeriodModalProps {
 	/**
 	 * Theme color of the ticket
 	 */
-	ticketColor: string;
+	themeColor: string;
 
 	/**
 	 * Date the event starts from
@@ -52,7 +52,7 @@ interface ISelectPeriodModalProps {
  * SelectPeriodModal
  *
  * @property
- * - ```ticketColor```(required): Theme color of the ticket
+ * - ```themeColor```(required): Theme color of the ticket
  * - ```fromDate```(required): Date the event starts from
  * - ```toDate```(required): Date the event ends
  * - ```periodModalVisible```(required): The modal is visible if true
@@ -79,7 +79,7 @@ export default class SelectPeriodModal extends React.Component<
 					this.props.fromtoTab === 'from-tab' ? HORIZONTAL_UNIT() : 0,
 				borderRightWidth: this.props.fromtoTab === 'from-tab' ? 1 : 0,
 				borderBottomWidth: this.props.fromtoTab === 'from-tab' ? 0 : 1,
-				borderColor: this.props.ticketColor,
+				borderColor: this.props.themeColor,
 			},
 
 			toTab: {
@@ -94,18 +94,18 @@ export default class SelectPeriodModal extends React.Component<
 					this.props.fromtoTab === 'to-tab' ? HORIZONTAL_UNIT() : 0,
 				borderLeftWidth: this.props.fromtoTab === 'to-tab' ? 1 : 0,
 				borderBottomWidth: this.props.fromtoTab === 'to-tab' ? 0 : 1,
-				borderColor: this.props.ticketColor,
+				borderColor: this.props.themeColor,
 			},
 
 			dateText: {
 				alignSelf: 'flex-end',
-				color: this.props.ticketColor,
+				color: this.props.themeColor,
 				fontWeight: 'bold',
 			},
 
 			timeText: {
 				alignSelf: 'flex-end',
-				color: this.props.ticketColor,
+				color: this.props.themeColor,
 			},
 
 			calendar: {
@@ -115,7 +115,7 @@ export default class SelectPeriodModal extends React.Component<
 		});
 
 		const calendarTheme = {
-			arrowColor: this.props.ticketColor,
+			arrowColor: this.props.themeColor,
 			dayTextColor: THEME_COLORS.oceanBlue,
 			monthTextColor: THEME_COLORS.oceanBlue,
 			textDayFontFamily: THEME_FONT,
@@ -132,7 +132,7 @@ export default class SelectPeriodModal extends React.Component<
 			const rtnObj: { [key: string]: any } = {};
 			keys.map(key => {
 				rtnObj[key] = {
-					color: this.props.ticketColor,
+					color: this.props.themeColor,
 					textColor: THEME_COLORS.white,
 				};
 			});

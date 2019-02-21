@@ -12,7 +12,7 @@ interface ITicketColorPickerProps {
 	/**
 	 * Theme color of the ticket
 	 */
-	ticketColor: string;
+	themeColor: string;
 
 	// ACTION CREATORS
 	setTicketColor: any;
@@ -22,7 +22,7 @@ interface ITicketColorPickerProps {
  * TicketColorPicker
  *
  * @property
- * - ```ticketColor```(required): Theme color of the ticket
+ * - ```themeColor```(required): Theme color of the ticket
  */
 export default class TicketColorPicker extends React.Component<
 	ITicketColorPickerProps
@@ -48,7 +48,7 @@ export default class TicketColorPicker extends React.Component<
 							backgroundColor: TICKET_COLORS.THEME[colorName],
 							borderColor: THEME_COLORS.grey,
 							borderWidth:
-								this.props.ticketColor === colorName ? 3 : 0,
+								this.props.themeColor === colorName ? 3 : 0,
 						}}
 						onPress={() => {
 							this.props.setTicketColor(

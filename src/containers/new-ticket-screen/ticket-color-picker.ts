@@ -7,7 +7,7 @@ import { setTicketColor } from '../../actions/new-ticket-screen/data';
 import TicketColorPicker from '../../screens/new-ticket-screen/ticket-color-picker';
 
 const mapStateToProps = (state: RootState) => ({
-	ticketColor: state.NewTicketScreen.Data.ticketColor,
+	themeColor: state.NewTicketScreen.Data.themeColor,
 });
 
 const mapDispatchToProps = {

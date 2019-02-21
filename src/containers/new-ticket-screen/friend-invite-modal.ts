@@ -7,7 +7,7 @@ import { closeInviteModal } from '../../actions/new-ticket-screen/ui';
 import FriendInviteModal from '../../screens/new-ticket-screen/friend-invite-modal';
 
 const mapStateToProps = (state: RootState) => ({
-	ticketColor: state.NewTicketScreen.Data.ticketColor,
+	themeColor: state.NewTicketScreen.Data.themeColor,
 	inviteModalVisible: state.NewTicketScreen.UI.inviteModalVisible,
 });
 

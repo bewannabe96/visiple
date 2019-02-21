@@ -1,5 +1,5 @@
 import {
-	SET_TICKETCOLOR,
+	SET_THEMECOLOR,
 	SET_FROM_DATE,
 	SET_TO_DATE,
 } from '../../types/redux/new-ticket-screen/data';
@@ -7,9 +7,9 @@ import {
 /**
  * Data Action Creators
  */
-export const setTicketColor = (ticketColor: string) => ({
-	type: SET_TICKETCOLOR,
-	ticketColor,
+export const setTicketColor = (themeColor: string) => ({
+	type: SET_THEMECOLOR,
+	themeColor,
 });
 
 export const setFromDate = (date: Date) => ({

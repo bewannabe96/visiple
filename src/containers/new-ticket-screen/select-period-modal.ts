@@ -11,7 +11,7 @@ import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
 import SelectPeriodModal from '../../screens/new-ticket-screen/select-period-modal';
 
 const mapStateToProps = (state: RootState) => ({
-	ticketColor: state.NewTicketScreen.Data.ticketColor,
+	themeColor: state.NewTicketScreen.Data.themeColor,
 	fromDate: state.NewTicketScreen.Data.period.from,
 	toDate: state.NewTicketScreen.Data.period.to,
 	periodModalVisible: state.NewTicketScreen.UI.periodModalVisible,

@@ -5,7 +5,7 @@ import {
 import {
 	DataState,
 	DataActions,
-	SET_TICKETCOLOR,
+	SET_THEMECOLOR,
 	SET_FROM_DATE,
 	SET_TO_DATE,
 } from '../../types/redux/new-ticket-screen/data';
@@ -14,7 +14,10 @@ import {
  * Data Reducer
  */
 const dataInitialState: DataState = {
-	ticketColor: TICKET_HEADER_COLORS[TICKET_HEADER_COLORS_KEYS[0]],
+	title: 'DEV_TITLE',
+	themeColor: TICKET_HEADER_COLORS[TICKET_HEADER_COLORS_KEYS[0]],
+	owner: '0001',
+	participants: ['0001', '0002'],
 	period: {
 		from: new Date(),
 		to: new Date(),
@@ -23,10 +26,10 @@ const dataInitialState: DataState = {
 
 export function DataReducer(state = dataInitialState, action: DataActions) {
 	switch (action.type) {
-		case SET_TICKETCOLOR:
+		case SET_THEMECOLOR:
 			return {
 				...state,
-				ticketColor: action.ticketColor,
+				themeColor: action.themeColor,
 			};
 
 		case SET_FROM_DATE:
