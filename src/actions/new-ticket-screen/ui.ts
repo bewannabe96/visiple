@@ -15,9 +15,9 @@ export const openPeriodModal = () => ({ type: OPEN_PERIOD_MODAL });
 
 export const closePeriodModal = () => ({ type: CLOSE_PERIOD_MODAL });
 
-export const switchFromToTab = (tab: FromToTab) => ({
+export const switchFromToTab = (fromtoTab: FromToTab) => ({
 	type: SWITCH_FROMTO_TAB,
-	tab,
+	fromtoTab,
 });
 
 export const openInviteModal = () => ({ type: OPEN_INVITE_MODAL });
