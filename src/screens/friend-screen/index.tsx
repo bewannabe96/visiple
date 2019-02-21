@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
+import { THEME_COLORS } from '../../types/lib/theme';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
@@ -10,6 +10,7 @@ import {
 	THEME_HEADER_FONTSIZE,
 } from '../../types/lib/size';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
+import { User } from '../../types/data/user';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPHeader from '../../components/vsp-header';
@@ -24,15 +25,15 @@ import { VSPHeaderMenu } from '../../components/vsp-header-button';
 
 import AddFriendModal from './add-friend-modal';
 
-const DEV_FRIENDS = [
-	{ name: '홍길동', email: 'testtest23@nate.com' },
-	{ name: '홍길동', email: 'testtest2323@nate.com' },
-	{ name: '홍길동', email: 'testtest263@nate.com' },
-	{ name: '홍길동', email: 'testtest2353@nate.com' },
-	{ name: '홍길동', email: 'testtest213@nate.com' },
-	{ name: '홍길동', email: 'testtest223@nate.com' },
-	{ name: '홍길동', email: 'testtest233@nate.com' },
-	{ name: '홍길동', email: 'testtest243@nate.com' },
+const DEV_FRIENDS: User[] = [
+	{ userID: '0001', userName: '홍길동', userEmail: 'testtest23@nate.com' },
+	{ userID: '0002', userName: '홍길동', userEmail: 'testtest2323@nate.com' },
+	{ userID: '0003', userName: '홍길동', userEmail: 'testtest263@nate.com' },
+	{ userID: '0004', userName: '홍길동', userEmail: 'testtest2353@nate.com' },
+	{ userID: '0005', userName: '홍길동', userEmail: 'testtest213@nate.com' },
+	{ userID: '0006', userName: '홍길동', userEmail: 'testtest223@nate.com' },
+	{ userID: '0007', userName: '홍길동', userEmail: 'testtest233@nate.com' },
+	{ userID: '0008', userName: '홍길동', userEmail: 'testtest243@nate.com' },
 ];
 
 export default class FriendScreen extends React.Component<IVSPScreenProps> {
@@ -61,12 +62,13 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 				flexDirection: 'row',
 				alignItems: 'center',
 				backgroundColor: THEME_COLORS.white,
+				borderWidth: 0.5,
+				borderColor: THEME_COLORS.oceanBlue,
 				borderRadius: HORIZONTAL_UNIT(),
 				paddingHorizontal: HORIZONTAL_UNIT(4),
 				paddingVertical: HORIZONTAL_UNIT(2),
 				marginTop: HORIZONTAL_UNIT(2),
 				marginHorizontal: VSP_EDGE_PADDING,
-				...addShadowProperties(),
 			},
 
 			infoView: {
@@ -85,22 +87,26 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 
 		return (
 			<ScrollView contentContainerStyle={style.friendsView}>
-				{DEV_FRIENDS.map(friend => (
-					<View key={friend.email} style={style.itemView}>
+				{DEV_FRIENDS.map((friend: User) => (
+					<TouchableOpacity
+						key={friend.userID}
+						activeOpacity={0.6}
+						style={style.itemView}
+					>
 						<VSPProfile marginRight={HORIZONTAL_UNIT(4)} />
 						<View style={style.infoView}>
 							<VSPText style={style.nameText}>
-								{friend.name}
+								{friend.userName}
 							</VSPText>
 							<VSPText style={style.emailText}>
-								{friend.email}
+								{friend.userEmail}
 							</VSPText>
 						</View>
 						<VSPTextButton
 							icon='next'
 							fontSize={THEME_HEADER_FONTSIZE}
 						/>
-					</View>
+					</TouchableOpacity>
 				))}
 			</ScrollView>
 		);
@@ -122,7 +128,6 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 				backgroundColor: THEME_COLORS.oceanBlue,
 				paddingHorizontal: VSP_EDGE_PADDING,
 				paddingVertical: HORIZONTAL_UNIT(),
-				...addShadowProperties(),
 			},
 		});
 
