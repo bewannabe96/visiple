@@ -10,6 +10,7 @@ import {
 } from '../../types/lib/size';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { formatDateString, formatTimeString } from '../../types/lib/date';
+import { NewTicket } from '../../types/data/ticket';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
@@ -22,7 +23,6 @@ import VSPIcon from '../../components/vsp-icon';
 import VSPHeaderTitle from '../../components/vsp-header-title';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 
-import { DataState } from '../../types/redux/new-ticket-screen/data';
 import InvitedFriendsList from './invited-friends-list';
 import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';
 import SelectPeriodModalContainer from '../../containers/new-ticket-screen/select-period-modal';
@@ -32,7 +32,7 @@ interface INewTicketScreenProps extends IVSPScreenProps {
 	/**
 	 * Ticket Data
 	 */
-	newTicketData: DataState;
+	newTicket: NewTicket;
 
 	// ACTION CREATORS
 	openPeriodModal: any;
@@ -44,7 +44,7 @@ interface INewTicketScreenProps extends IVSPScreenProps {
  * NewTicketScreen
  *
  * @property
- * - ```newTicketData```(required): Ticket Data
+ * - ```newTicket```(required): Ticket Data
  */
 export default class NewTicketScreen extends React.Component<
 	INewTicketScreenProps
@@ -110,7 +110,7 @@ export default class NewTicketScreen extends React.Component<
 				borderBottomWidth: 2,
 				marginLeft: HORIZONTAL_UNIT(4),
 				flex: 3,
-				borderColor: this.props.newTicketData.themeColor,
+				borderColor: this.props.newTicket.themeColor,
 			},
 
 			timeInputView: {
@@ -118,11 +118,11 @@ export default class NewTicketScreen extends React.Component<
 				borderBottomWidth: 2,
 				marginLeft: HORIZONTAL_UNIT(4),
 				flex: 2,
-				borderColor: this.props.newTicketData.themeColor,
+				borderColor: this.props.newTicket.themeColor,
 			},
 
 			valueText: {
-				color: this.props.newTicketData.themeColor,
+				color: this.props.newTicket.themeColor,
 				fontSize: THEME_HEADER_FONTSIZE,
 			},
 
@@ -142,7 +142,7 @@ export default class NewTicketScreen extends React.Component<
 							placeholder='제목을 입력해 주세요.'
 							fontSize={THEME_HEADER_FONTSIZE}
 							marginTop={HORIZONTAL_UNIT()}
-							color={this.props.newTicketData.themeColor}
+							color={this.props.newTicket.themeColor}
 						/>
 					</View>
 					<View style={style.categoryView}>
@@ -172,13 +172,13 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='calendar'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								>
 									{formatDateString(
-										this.props.newTicketData.period.from,
+										this.props.newTicket.period.from,
 									)}
 								</VSPText>
 							</TouchableOpacity>
@@ -190,13 +190,13 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='clock'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								>
 									{formatTimeString(
-										this.props.newTicketData.period.from,
+										this.props.newTicket.period.from,
 									)}
 								</VSPText>
 							</TouchableOpacity>
@@ -213,13 +213,13 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='calendar'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								>
 									{formatDateString(
-										this.props.newTicketData.period.to,
+										this.props.newTicket.period.to,
 									)}
 								</VSPText>
 							</TouchableOpacity>
@@ -231,13 +231,13 @@ export default class NewTicketScreen extends React.Component<
 								<VSPIcon
 									iconName='clock'
 									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								/>
 								<VSPText
-									color={this.props.newTicketData.themeColor}
+									color={this.props.newTicket.themeColor}
 								>
 									{formatTimeString(
-										this.props.newTicketData.period.to,
+										this.props.newTicket.period.to,
 									)}
 								</VSPText>
 							</TouchableOpacity>
@@ -253,14 +253,14 @@ export default class NewTicketScreen extends React.Component<
 							<VSPTextButton
 								icon='plus'
 								fontSize={THEME_HEADER_FONTSIZE}
-								color={this.props.newTicketData.themeColor}
+								color={this.props.newTicket.themeColor}
 								onPress={() => {
 									this.props.openInviteModal();
 								}}
 							/>
 						</View>
 						<InvitedFriendsList
-							themeColor={this.props.newTicketData.themeColor}
+							themeColor={this.props.newTicket.themeColor}
 						/>
 						<View style={style.footerView}>
 							<View
@@ -281,9 +281,9 @@ export default class NewTicketScreen extends React.Component<
 						text='완료'
 						fontSize={THEME_HEADER_FONTSIZE}
 						margin={2 * HORIZONTAL_UNIT()}
-						color={this.props.newTicketData.themeColor}
+						color={this.props.newTicket.themeColor}
 					/>
-					<VSPBottomBar color={this.props.newTicketData.themeColor} />
+					<VSPBottomBar color={this.props.newTicket.themeColor} />
 				</View>
 
 				<SelectPeriodModalContainer />

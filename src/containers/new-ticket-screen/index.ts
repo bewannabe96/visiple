@@ -11,7 +11,7 @@ import {
 import NewTicketScreen from '../../screens/new-ticket-screen';
 
 const mapStateToProps = (state: RootState) => ({
-	newTicketData: state.NewTicketScreen.Data,
+	newTicket: state.NewTicketScreen.Data,
 });
 
 const mapDispatchToProps = {
