@@ -5,7 +5,7 @@ import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
 import { addShadowProperties, THEME_FONT } from '../../types/lib/theme';
 import { TICKET_COLORS, TICKET_TEXTS } from '../../types/data/ticket/theme';
-import Ticket from '../../types/data/ticket';
+import { Ticket } from '../../types/data/ticket';
 
 import VSPProfile from '../../components/vsp-profile';
 
