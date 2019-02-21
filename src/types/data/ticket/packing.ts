@@ -5,7 +5,7 @@ export interface PackingItem {
 	ready: boolean;
 }
 
-interface IndividualPacking {
+export interface IndividualPacking {
 	user: UserID;
 	list: PackingItem[];
 }
