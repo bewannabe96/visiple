@@ -7,17 +7,28 @@ import {
 	VSP_EDGE_PADDING,
 	THEME_HEADER_FONTSIZE,
 } from '../../types/lib/size';
+import {
+	Packings,
+	PackingItem,
+	IndividualPacking,
+} from '../../types/data/ticket/packing';
 
 import VSPIcon from '../../components/vsp-icon';
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';
 import VSPCheckbox from '../../components/vsp-checkbox';
+import VSPProfile from '../../components/vsp-profile';
 
 interface IPackingListProps {
 	/**
 	 * Theme color of the ticket
 	 */
 	ticketColor: string;
+
+	/**
+	 * Packing lists of the ticket
+	 */
+	packings: Packings;
 }
 
 /**
@@ -25,10 +36,16 @@ interface IPackingListProps {
  *
  * @property
  * - ```ticketColor```(required): Theme color of the ticket
+ * - ```packings```(required): Packing lists of the ticket
  */
 export default class PackingList extends React.Component<IPackingListProps> {
-	private _renderPackingList() {
+	private _renderPackings(packings: Packings) {
 		const style = StyleSheet.create({
+			headerView: {
+				flexDirection: 'row',
+				alignItems: 'center',
+			},
+
 			packingItem: {
 				flexDirection: 'row',
 				alignItems: 'center',
@@ -38,42 +55,80 @@ export default class PackingList extends React.Component<IPackingListProps> {
 		});
 
 		return (
-			<VSPExpandable
-				header={
-					<View style={{ flexDirection: 'row' }}>
-						<VSPIcon
-							iconName='teamwork'
-							size={THEME_HEADER_FONTSIZE}
-							marginRight={HORIZONTAL_UNIT()}
-							color={this.props.ticketColor}
-						/>
-						<VSPText
-							color={this.props.ticketColor}
-							fontSize={THEME_HEADER_FONTSIZE}
-						>
-							공통
-						</VSPText>
-					</View>
-				}
-				body={
-					<View>
-						<View style={style.packingItem}>
-							<VSPCheckbox marginRight={HORIZONTAL_UNIT(2)} />
-							<VSPText>커피포트</VSPText>
+			<View>
+				<VSPExpandable
+					header={
+						<View style={style.headerView}>
+							<VSPIcon
+								iconName='teamwork'
+								size={THEME_HEADER_FONTSIZE}
+								marginRight={HORIZONTAL_UNIT()}
+								color={this.props.ticketColor}
+							/>
+							<VSPText
+								color={this.props.ticketColor}
+								fontSize={THEME_HEADER_FONTSIZE}
+							>
+								공통
+							</VSPText>
 						</View>
-						<View style={style.packingItem}>
-							<VSPCheckbox marginRight={HORIZONTAL_UNIT(2)} />
-							<VSPText>요가메트</VSPText>
+					}
+					body={
+						<View>
+							{packings.commonList.map(
+								(item: PackingItem, index: number) => (
+									<View key={index} style={style.packingItem}>
+										<VSPCheckbox
+											marginRight={HORIZONTAL_UNIT(2)}
+										/>
+										<VSPText>{item.name}</VSPText>
+									</View>
+								),
+							)}
 						</View>
-						<View style={style.packingItem}>
-							<VSPCheckbox marginRight={HORIZONTAL_UNIT(2)} />
-							<VSPText>헬멧</VSPText>
-						</View>
-					</View>
-				}
-				color={this.props.ticketColor}
-				marginTop={HORIZONTAL_UNIT(4)}
-			/>
+					}
+					color={this.props.ticketColor}
+					marginTop={HORIZONTAL_UNIT(4)}
+				/>
+				{packings.indivLists.map((indivList: IndividualPacking) => (
+					<VSPExpandable
+						key={indivList.user}
+						header={
+							<View style={style.headerView}>
+								<VSPProfile
+									size={HORIZONTAL_UNIT(6)}
+									marginRight={HORIZONTAL_UNIT()}
+								/>
+								<VSPText
+									color={this.props.ticketColor}
+									fontSize={THEME_HEADER_FONTSIZE}
+								>
+									{indivList.user}
+								</VSPText>
+							</View>
+						}
+						body={
+							<View>
+								{indivList.list.map(
+									(item: PackingItem, index: number) => (
+										<View
+											key={index}
+											style={style.packingItem}
+										>
+											<VSPCheckbox
+												marginRight={HORIZONTAL_UNIT(2)}
+											/>
+											<VSPText>{item.name}</VSPText>
+										</View>
+									),
+								)}
+							</View>
+						}
+						color={this.props.ticketColor}
+						marginTop={HORIZONTAL_UNIT(4)}
+					/>
+				))}
+			</View>
 		);
 	}
 
@@ -108,7 +163,7 @@ export default class PackingList extends React.Component<IPackingListProps> {
 						준비물품
 					</VSPText>
 				</View>
-				{this._renderPackingList()}
+				{this._renderPackings(this.props.packings)}
 			</View>
 		);
 	}
