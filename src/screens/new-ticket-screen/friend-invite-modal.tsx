@@ -10,6 +10,8 @@ import VSPProfile from '../../components/vsp-profile';
 import VSPColoredButton from '../../components/vsp-colored-button';
 import VSPText from '../../components/vsp-text';
 
+import { closeInviteModal } from '../../actions/new-ticket-screen/ui';
+
 interface IFriendInviteModalProps {
 	/**
 	 * Theme color of the ticket
@@ -22,7 +24,7 @@ interface IFriendInviteModalProps {
 	inviteModalVisible: boolean;
 
 	// ACTION CREATORS
-	closeInviteModal: any;
+	closeInviteModal: typeof closeInviteModal;
 }
 
 /**

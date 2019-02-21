@@ -10,10 +10,16 @@ import {
 	formatISODate,
 	generateDatesArrayFromPeriod,
 } from '../../types/lib/date';
-import { FromToTab } from '../../types/redux/new-ticket-screen/ui';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
+
+import { FromToTab } from '../../types/redux/new-ticket-screen/ui';
+import {
+	switchFromToTab,
+	closePeriodModal,
+} from '../../actions/new-ticket-screen/ui';
+import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -42,10 +48,10 @@ interface ISelectPeriodModalProps {
 	fromtoTab: FromToTab;
 
 	// ACTION CREATORS
-	switchFromToTab: any;
-	closePeriodModal: any;
-	setFromDate: any;
-	setToDate: any;
+	switchFromToTab: typeof switchFromToTab;
+	closePeriodModal: typeof closePeriodModal;
+	setFromDate: typeof setFromDate;
+	setToDate: typeof setToDate;
 }
 
 /**

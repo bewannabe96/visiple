@@ -28,6 +28,12 @@ import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticke
 import SelectPeriodModalContainer from '../../containers/new-ticket-screen/select-period-modal';
 import FriendInviteModalContainer from '../../containers/new-ticket-screen/friend-invite-modal';
 
+import {
+	switchFromToTab,
+	openPeriodModal,
+	openInviteModal,
+} from '../../actions/new-ticket-screen/ui';
+
 interface INewTicketScreenProps extends IVSPScreenProps {
 	/**
 	 * Ticket Data
@@ -35,9 +41,9 @@ interface INewTicketScreenProps extends IVSPScreenProps {
 	newTicket: NewTicket;
 
 	// ACTION CREATORS
-	openPeriodModal: any;
-	switchFromToTab: any;
-	openInviteModal: any;
+	openPeriodModal: typeof openPeriodModal;
+	switchFromToTab: typeof switchFromToTab;
+	openInviteModal: typeof openInviteModal;
 }
 
 /**
