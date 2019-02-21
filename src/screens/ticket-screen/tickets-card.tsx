@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
-import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
 import { addShadowProperties, THEME_FONT } from '../../types/lib/theme';
@@ -9,17 +8,26 @@ import { Ticket } from '../../types/data/ticket';
 
 import VSPProfile from '../../components/vsp-profile';
 
-interface ITicketsListProps extends NavigationInjectedProps {
+interface ITicketCardProps {
 	/**
-	 * Date which it starts from
+	 * Ticket data
 	 */
-	tickets: Ticket[];
+	ticket: Ticket;
+
+	/**
+	 * Callback function when card pressed
+	 */
+	onPress?: () => void;
 }
 
 /**
- * TicketsList
+ * TicketCard
+ *
+ * @property
+ * - ```ticket```(required): Ticket data
+ * - ```onPress```: Callback function when card pressed
  */
-class TicketsList extends React.Component<ITicketsListProps> {
+export default class TicketCard extends React.Component<ITicketCardProps> {
 	public render() {
 		const style = StyleSheet.create({
 			ticketView: {
@@ -127,80 +135,73 @@ class TicketsList extends React.Component<ITicketsListProps> {
 		});
 
 		return (
-			<View>
-				{this.props.tickets.map((ticket: Ticket) => (
-					<TouchableOpacity
-						key={ticket.id}
-						style={style.ticketView}
-						onPress={() => {
-							this.props.navigation.navigate('TicketViewScreen');
-						}}
-					>
-						<View
-							style={{
-								...style.headerView,
-								backgroundColor: ticket.themeColor,
-							}}
-						>
-							<Text style={style.topleftText}>
-								{TICKET_TEXTS.topLeft}
+			<TouchableOpacity
+				style={style.ticketView}
+				onPress={this.props.onPress}
+			>
+				<View
+					style={{
+						...style.headerView,
+						backgroundColor: this.props.ticket.themeColor,
+					}}
+				>
+					<Text style={style.topleftText}>
+						{TICKET_TEXTS.topLeft}
+					</Text>
+					<View>
+						<Text style={style.toprightSecondaryText}>
+							{TICKET_TEXTS.topRight.secondary}
+						</Text>
+						<Text style={style.toprightPrimaryText}>
+							{TICKET_TEXTS.topRight.primary}
+						</Text>
+					</View>
+				</View>
+				<View style={style.bodyView}>
+					<View style={style.fromtoView}>
+						<View style={style.fromtoInnerView}>
+							<Text style={style.fromtoText}>
+								{TICKET_TEXTS.from}
 							</Text>
-							<View>
-								<Text style={style.toprightSecondaryText}>
-									{TICKET_TEXTS.topRight.secondary}
-								</Text>
-								<Text style={style.toprightPrimaryText}>
-									{TICKET_TEXTS.topRight.primary}
-								</Text>
-							</View>
+							<Text style={style.dateText}>
+								{this.props.ticket.period.from.toLocaleDateString()}
+							</Text>
 						</View>
-						<View style={style.bodyView}>
-							<View style={style.fromtoView}>
-								<View style={style.fromtoInnerView}>
-									<Text style={style.fromtoText}>
-										{TICKET_TEXTS.from}
-									</Text>
-									<Text style={style.dateText}>
-										{ticket.period.from.toLocaleDateString()}
-									</Text>
-								</View>
-								<View style={style.fromtoInnerView}>
-									<Text style={style.fromtoText}>
-										{TICKET_TEXTS.to}
-									</Text>
-									<Text style={style.dateText}>
-										{ticket.period.to.toLocaleDateString()}
-									</Text>
-								</View>
-							</View>
-							<Text style={style.titleText}>{ticket.title}</Text>
+						<View style={style.fromtoInnerView}>
+							<Text style={style.fromtoText}>
+								{TICKET_TEXTS.to}
+							</Text>
+							<Text style={style.dateText}>
+								{this.props.ticket.period.to.toLocaleDateString()}
+							</Text>
 						</View>
-						<View style={style.footerView}>
-							<Image
-								style={style.barcode}
-								source={require('../../assets/source/barcode.png')}
-							/>
-							<View style={style.passengerView}>
-								<Text style={style.passengerText}>
-									{TICKET_TEXTS.passenger}
-								</Text>
-								<VSPProfile
-									size={HORIZONTAL_UNIT(5)}
-									marginLeft={HORIZONTAL_UNIT()}
-									castShadow={false}
-								/>
-								<VSPProfile
-									size={HORIZONTAL_UNIT(5)}
-									marginLeft={HORIZONTAL_UNIT()}
-									castShadow={false}
-								/>
-							</View>
-						</View>
-					</TouchableOpacity>
-				))}
-			</View>
+					</View>
+					<Text style={style.titleText}>
+						{this.props.ticket.title}
+					</Text>
+				</View>
+				<View style={style.footerView}>
+					<Image
+						style={style.barcode}
+						source={require('../../assets/source/barcode.png')}
+					/>
+					<View style={style.passengerView}>
+						<Text style={style.passengerText}>
+							{TICKET_TEXTS.passenger}
+						</Text>
+						<VSPProfile
+							size={HORIZONTAL_UNIT(5)}
+							marginLeft={HORIZONTAL_UNIT()}
+							castShadow={false}
+						/>
+						<VSPProfile
+							size={HORIZONTAL_UNIT(5)}
+							marginLeft={HORIZONTAL_UNIT()}
+							castShadow={false}
+						/>
+					</View>
+				</View>
+			</TouchableOpacity>
 		);
 	}
 }
-
-export default withNavigation(TicketsList);
