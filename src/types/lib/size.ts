@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 
-import * as Config from '../../config/theme.json';
+import { sizeOffset, padding, fontSize } from '../../config/theme.json';
 
 const { width, height } = Dimensions.get('window');
 
@@ -12,16 +12,16 @@ const guidelineBaseHeight = 812;
  * Size Constants
  */
 export const HORIZONTAL_UNIT = (size: number = 1) =>
-	(width / guidelineBaseWidth) * Config.sizeOffset * size;
+	(width / guidelineBaseWidth) * sizeOffset * size;
 export const VERTICAL_UNIT = (size: number = 1) =>
-	(height / guidelineBaseHeight) * Config.sizeOffset * size;
+	(height / guidelineBaseHeight) * sizeOffset * size;
 
-export const VSP_EDGE_PADDING = HORIZONTAL_UNIT(Config.padding.edge);
-export const VSP_TOP_PADDING = HORIZONTAL_UNIT(Config.padding.top);
+export const VSP_EDGE_PADDING = HORIZONTAL_UNIT(padding.edge);
+export const VSP_TOP_PADDING = HORIZONTAL_UNIT(padding.top);
 
 /**
  * Font Sizes
  */
-export const THEME_FONTSIZE = HORIZONTAL_UNIT(Config.fontSize.regular);
-export const THEME_HEADER_FONTSIZE = HORIZONTAL_UNIT(Config.fontSize.header);
-export const THEME_MINOR_FONTSIZE = HORIZONTAL_UNIT(Config.fontSize.minor);
+export const THEME_FONTSIZE = HORIZONTAL_UNIT(fontSize.regular);
+export const THEME_HEADER_FONTSIZE = HORIZONTAL_UNIT(fontSize.header);
+export const THEME_MINOR_FONTSIZE = HORIZONTAL_UNIT(fontSize.minor);
