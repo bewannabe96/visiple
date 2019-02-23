@@ -3,8 +3,8 @@ import { ScrollView, TouchableOpacity } from 'react-native';
 
 import { THEME_COLORS } from '../../types/lib/theme';
 import {
-	TICKET_COLORS,
 	TICKET_HEADER_COLORS_KEYS,
+	TICKET_THEME_COLORS,
 } from '../../types/data/ticket/theme';
 import { HORIZONTAL_UNIT } from '../../types/lib/size';
 
@@ -41,27 +41,27 @@ export default class TicketColorPicker extends React.Component<
 			>
 				{TICKET_HEADER_COLORS_KEYS.map(colorName => (
 					<TouchableOpacity
-						key={TICKET_COLORS.THEME[colorName]}
+						key={TICKET_THEME_COLORS[colorName]}
 						disabled={
 							this.props.themeColor ===
-							TICKET_COLORS.THEME[colorName]
+							TICKET_THEME_COLORS[colorName]
 						}
 						style={{
 							height: HORIZONTAL_UNIT(10),
 							width: HORIZONTAL_UNIT(10),
 							borderRadius: HORIZONTAL_UNIT(5),
 							marginHorizontal: HORIZONTAL_UNIT(),
-							backgroundColor: TICKET_COLORS.THEME[colorName],
+							backgroundColor: TICKET_THEME_COLORS[colorName],
 							borderColor: THEME_COLORS.grey,
 							borderWidth:
 								this.props.themeColor ===
-								TICKET_COLORS.THEME[colorName]
+								TICKET_THEME_COLORS[colorName]
 									? 3
 									: 0,
 						}}
 						onPress={() => {
 							this.props.setTicketColor(
-								TICKET_COLORS.THEME[colorName],
+								TICKET_THEME_COLORS[colorName],
 							);
 						}}
 					/>

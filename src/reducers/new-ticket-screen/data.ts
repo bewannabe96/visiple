@@ -1,6 +1,6 @@
 import {
 	TICKET_HEADER_COLORS_KEYS,
-	TICKET_HEADER_COLORS,
+	TICKET_THEME_COLORS,
 } from '../../types/data/ticket/theme';
 import {
 	DataState,
@@ -15,7 +15,7 @@ import {
  */
 const dataInitialState: DataState = {
 	title: 'DEV_TITLE',
-	themeColor: TICKET_HEADER_COLORS[TICKET_HEADER_COLORS_KEYS[0]],
+	themeColor: TICKET_THEME_COLORS[TICKET_HEADER_COLORS_KEYS[0]],
 	owner: '0001',
 	participants: ['0001', '0002'],
 	period: {

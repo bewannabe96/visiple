@@ -2,9 +2,18 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
 
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
-import { addShadowProperties, THEME_FONT } from '../../types/lib/theme';
-import { TICKET_COLORS, TICKET_TEXTS } from '../../types/data/ticket/theme';
+import {
+	addShadowProperties,
+	THEME_FONT,
+	THEME_COLORS,
+} from '../../types/lib/theme';
 import { Ticket } from '../../types/data/ticket';
+import { UserID } from '../../types/data/user';
+import {
+	ticketFixedTexts,
+	ticketFixedColors,
+	ticketCardMaxProfiles,
+} from '../../config/ticket.json';
 
 import VSPProfile from '../../components/vsp-profile';
 
@@ -28,6 +37,43 @@ interface ITicketCardProps {
  * - ```onPress```: Callback function when card pressed
  */
 export default class TicketCard extends React.Component<ITicketCardProps> {
+	private _renderParticipants(ids: UserID[]) {
+		if (ids.length <= ticketCardMaxProfiles) {
+			return this.props.ticket.participants.map((pid: UserID) => (
+				<VSPProfile
+					key={pid}
+					size={HORIZONTAL_UNIT(5)}
+					marginLeft={HORIZONTAL_UNIT()}
+					castShadow={false}
+				/>
+			));
+		} else {
+			let rtnElement = this.props.ticket.participants
+				.slice(0, ticketCardMaxProfiles - 1)
+				.map((pid: UserID) => (
+					<VSPProfile
+						key={pid}
+						size={HORIZONTAL_UNIT(5)}
+						marginLeft={HORIZONTAL_UNIT()}
+						castShadow={false}
+					/>
+				));
+			rtnElement.push(
+				<VSPProfile
+					key={
+						this.props.ticket.participants[
+							ticketCardMaxProfiles - 1
+						]
+					}
+					size={HORIZONTAL_UNIT(5)}
+					marginLeft={HORIZONTAL_UNIT()}
+					castShadow={false}
+				/>,
+			);
+			return rtnElement;
+		}
+	}
+
 	public render() {
 		const style = StyleSheet.create({
 			ticketView: {
@@ -50,7 +96,7 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			bodyView: {
 				justifyContent: 'space-between',
 				height: HORIZONTAL_UNIT(18),
-				backgroundColor: TICKET_COLORS.BODY,
+				backgroundColor: THEME_COLORS.greyWhite,
 				paddingHorizontal: HORIZONTAL_UNIT(3),
 				paddingVertical: HORIZONTAL_UNIT(2),
 			},
@@ -58,9 +104,10 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			footerView: {
 				flexDirection: 'row',
 				justifyContent: 'space-between',
+				alignItems: 'center',
 				height: HORIZONTAL_UNIT(7),
-				backgroundColor: TICKET_COLORS.FOOTER,
-				paddingHorizontal: HORIZONTAL_UNIT(4),
+				backgroundColor: ticketFixedColors.footer,
+				paddingHorizontal: HORIZONTAL_UNIT(3),
 				paddingVertical: HORIZONTAL_UNIT(),
 				borderBottomLeftRadius: HORIZONTAL_UNIT(2),
 				borderBottomRightRadius: HORIZONTAL_UNIT(2),
@@ -70,19 +117,19 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 				fontSize: HORIZONTAL_UNIT(2.5),
 				fontFamily: THEME_FONT,
 				fontWeight: 'bold',
-				color: TICKET_COLORS.TEXT,
+				color: ticketFixedColors.text,
 			},
 
 			toprightSecondaryText: {
 				fontSize: HORIZONTAL_UNIT(),
 				fontFamily: THEME_FONT,
-				color: TICKET_COLORS.TEXT,
+				color: ticketFixedColors.text,
 			},
 
 			toprightPrimaryText: {
 				fontSize: HORIZONTAL_UNIT(2),
 				fontFamily: THEME_FONT,
-				color: TICKET_COLORS.TEXT,
+				color: ticketFixedColors.text,
 			},
 
 			fromtoView: {
@@ -99,19 +146,19 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			fromtoText: {
 				fontFamily: THEME_FONT,
 				fontSize: HORIZONTAL_UNIT(2),
-				color: TICKET_COLORS.TEXT,
+				color: ticketFixedColors.text,
 			},
 
 			dateText: {
 				fontFamily: THEME_FONT,
 				fontSize: HORIZONTAL_UNIT(3),
-				color: TICKET_COLORS.DATE,
+				color: THEME_COLORS.oceanBlue,
 			},
 
 			titleText: {
 				fontFamily: THEME_FONT,
 				fontSize: HORIZONTAL_UNIT(3),
-				color: TICKET_COLORS.TITLE,
+				color: THEME_COLORS.brown,
 			},
 
 			passengerView: {
@@ -122,15 +169,15 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			passengerText: {
 				fontFamily: THEME_FONT,
 				fontSize: HORIZONTAL_UNIT(1.5),
-				color: TICKET_COLORS.TEXT,
+				color: ticketFixedColors.text,
 			},
 
 			barcode: {
-				width: '40%',
-				borderRadius: 2,
-				height: HORIZONTAL_UNIT(5),
+				width: '35%',
+				borderRadius: 1,
+				height: HORIZONTAL_UNIT(4.5),
 				resizeMode: 'cover',
-				tintColor: TICKET_COLORS.TEXT,
+				tintColor: ticketFixedColors.text,
 			},
 		});
 
@@ -146,14 +193,14 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 					}}
 				>
 					<Text style={style.topleftText}>
-						{TICKET_TEXTS.topLeft}
+						{ticketFixedTexts.topLeft}
 					</Text>
 					<View>
 						<Text style={style.toprightSecondaryText}>
-							{TICKET_TEXTS.topRight.secondary}
+							{ticketFixedTexts.topRight.secondary}
 						</Text>
 						<Text style={style.toprightPrimaryText}>
-							{TICKET_TEXTS.topRight.primary}
+							{ticketFixedTexts.topRight.primary}
 						</Text>
 					</View>
 				</View>
@@ -161,7 +208,7 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 					<View style={style.fromtoView}>
 						<View style={style.fromtoInnerView}>
 							<Text style={style.fromtoText}>
-								{TICKET_TEXTS.from}
+								{ticketFixedTexts.from}
 							</Text>
 							<Text style={style.dateText}>
 								{this.props.ticket.period.from.toLocaleDateString()}
@@ -169,7 +216,7 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 						</View>
 						<View style={style.fromtoInnerView}>
 							<Text style={style.fromtoText}>
-								{TICKET_TEXTS.to}
+								{ticketFixedTexts.to}
 							</Text>
 							<Text style={style.dateText}>
 								{this.props.ticket.period.to.toLocaleDateString()}
@@ -187,18 +234,11 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 					/>
 					<View style={style.passengerView}>
 						<Text style={style.passengerText}>
-							{TICKET_TEXTS.passenger}
+							{ticketFixedTexts.passenger}
 						</Text>
-						<VSPProfile
-							size={HORIZONTAL_UNIT(5)}
-							marginLeft={HORIZONTAL_UNIT()}
-							castShadow={false}
-						/>
-						<VSPProfile
-							size={HORIZONTAL_UNIT(5)}
-							marginLeft={HORIZONTAL_UNIT()}
-							castShadow={false}
-						/>
+						{this._renderParticipants(
+							this.props.ticket.participants,
+						)}
 					</View>
 				</View>
 			</TouchableOpacity>

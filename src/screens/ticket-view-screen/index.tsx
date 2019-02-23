@@ -10,8 +10,8 @@ import {
 	THEME_HEADER_FONTSIZE,
 } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
-import { TICKET_COLORS } from '../../types/data/ticket/theme';
 import { Ticket } from '../../types/data/ticket';
+import { TICKET_THEME_COLORS } from '../../types/data/ticket/theme';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
@@ -27,7 +27,7 @@ const DEV_TICKET: Ticket = {
 	title: '나혼자 여행갈꼬얌',
 	owner: '0001',
 	participants: ['0001', '0002'],
-	themeColor: TICKET_COLORS.THEME.blue,
+	themeColor: TICKET_THEME_COLORS.blue,
 	period: {
 		from: new Date('2020-03-14'),
 		to: new Date('2020-03-18'),
