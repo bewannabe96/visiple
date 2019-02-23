@@ -2,7 +2,7 @@ import React from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 
-import { THEME_COLORS, addShadowProperties } from '../types/lib/theme';
+import { THEME_COLORS } from '../types/lib/theme';
 import { VSP_TOP_PADDING } from '../types/lib/size';
 
 interface IVSPHeaderProps extends NavigationInjectedProps {
