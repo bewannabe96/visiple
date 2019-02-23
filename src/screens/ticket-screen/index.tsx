@@ -7,7 +7,6 @@ import { Ticket } from '../../types/data/ticket';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
-import VSPBottomBar from '../../components/vsp-bottombar';
 import VSPHeaderTitle from '../../components/vsp-header-title';
 import VSPHeaderButton, {
 	VSPHeaderMenu,
@@ -92,7 +91,6 @@ export default class TicketScreen extends React.Component<IVSPScreenProps> {
 						/>
 					))}
 				</ScrollView>
-				<VSPBottomBar />
 			</VSPContainer>
 		);
 	}

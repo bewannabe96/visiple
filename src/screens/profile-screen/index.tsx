@@ -8,7 +8,6 @@ import VSPContainer from '../../components/vsp-container';
 import VSPImage from '../../components/vsp-image';
 import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
-import VSPBottomBar from '../../components/vsp-bottombar';
 
 export default class ProfileScreen extends React.Component {
 	public render() {
@@ -121,7 +120,6 @@ export default class ProfileScreen extends React.Component {
 					</View>
 				</View>
 				<ScrollView style={style.profileBodyView} />
-				<VSPBottomBar />
 			</VSPContainer>
 		);
 	}

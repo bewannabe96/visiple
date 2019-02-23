@@ -17,7 +17,6 @@ import VSPHeader from '../../components/vsp-header';
 import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
 import VSPBadge from '../../components/vsp-badge';
-import VSPBottomBar from '../../components/vsp-bottombar';
 import VSPProfile from '../../components/vsp-profile';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPHeaderTitle from '../../components/vsp-header-title';
@@ -145,7 +144,6 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 					<VSPBadge value={10} theme='brown' />
 				</View>
 				{this._renderFriendsList()}
-				<VSPBottomBar />
 				<AddFriendModal />
 			</VSPContainer>
 		);

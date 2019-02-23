@@ -16,7 +16,6 @@ import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
-import VSPBottomBar from '../../components/vsp-bottombar';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPColoredButton from '../../components/vsp-colored-button';
 import VSPIcon from '../../components/vsp-icon';
@@ -289,7 +288,6 @@ export default class NewTicketScreen extends React.Component<
 						margin={2 * HORIZONTAL_UNIT()}
 						color={this.props.newTicket.themeColor}
 					/>
-					<VSPBottomBar color={this.props.newTicket.themeColor} />
 				</View>
 
 				<SelectPeriodModalContainer />
