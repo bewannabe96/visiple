@@ -17,11 +17,6 @@ interface IVSPContainerProps extends IVSPPaddingProps {
 		| 'space-between'
 		| 'space-around'
 		| 'space-evenly';
-
-	/**
-	 * Background color
-	 */
-	background?: string;
 }
 
 /**
@@ -29,7 +24,6 @@ interface IVSPContainerProps extends IVSPPaddingProps {
  *
  * @property
  * - ```justifyContent```: Justify Content (by default ```flex-start```)
- * - ```background```: Background color
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
  * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
  * - ```paddingY```: Vertical padding; including paddingTop and paddingBottom
@@ -45,11 +39,6 @@ export default class VSPContainer extends React.Component<IVSPContainerProps> {
 
 	public render() {
 		const style = StyleSheet.create({
-			container: {
-				flex: 1,
-				backgroundColor: this.props.background,
-			},
-
 			innerView: {
 				flex: 1,
 				flexDirection: 'column',
@@ -59,10 +48,6 @@ export default class VSPContainer extends React.Component<IVSPContainerProps> {
 			},
 		});
 
-		return (
-			<SafeAreaView style={style.container}>
-				<View style={style.innerView}>{this.props.children}</View>
-			</SafeAreaView>
-		);
+		return <View style={style.innerView}>{this.props.children}</View>;
 	}
 }

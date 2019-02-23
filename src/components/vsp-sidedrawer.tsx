@@ -15,6 +15,7 @@ import VSPTextButton from './vsp-text-button';
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 import VSPProfile from './vsp-profile';
+import VSPDivider from './vsp-divider';
 
 /**
  * VSPSideDrawer
@@ -28,7 +29,6 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 					justifyContent: 'space-between',
 					backgroundColor: THEME_COLORS.white,
 					padding: VSP_EDGE_PADDING,
-					marginBottom: 1,
 				}}
 				activeOpacity={0.6}
 				onPress={() => {
@@ -55,7 +55,6 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 				flexDirection: 'row',
 				backgroundColor: THEME_COLORS.greyWhite,
 				padding: VSP_EDGE_PADDING,
-				marginBottom: 1,
 			},
 
 			infoView: {
@@ -112,6 +111,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 							</VSPText>
 						</View>
 					</View>
+					<VSPDivider theme='cottoncandyBlue' />
 					{this._renderItem('친구', 'FriendStack')}
 					{this._renderItem('여행 티켓', 'TicketStack')}
 					{this._renderItem('새로운 여행 기록', 'TicketStack')}
