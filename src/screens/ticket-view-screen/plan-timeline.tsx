@@ -376,7 +376,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		const style = StyleSheet.create({
 			categoryView: {
 				marginVertical: HORIZONTAL_UNIT(2),
-				backgroundColor: THEME_COLORS.greyWhite,
+				backgroundColor: THEME_COLORS.white,
 				borderRadius: HORIZONTAL_UNIT(2),
 				padding: HORIZONTAL_UNIT(4),
 				marginHorizontal: VSP_EDGE_PADDING,
