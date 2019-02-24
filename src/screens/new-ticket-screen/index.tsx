@@ -32,6 +32,7 @@ import {
 	openPeriodModal,
 	openInviteModal,
 } from '../../actions/new-ticket-screen/ui';
+import { THEME_COLORS } from '../../types/lib/theme';
 
 interface INewTicketScreenProps extends IVSPScreenProps {
 	/**
@@ -90,6 +91,25 @@ export default class NewTicketScreen extends React.Component<
 				marginVertical: HORIZONTAL_UNIT(3),
 			},
 
+			periodView: {
+				flexDirection: 'row',
+				marginTop: HORIZONTAL_UNIT(3),
+				alignItems: 'center',
+				paddingVertical: HORIZONTAL_UNIT(2),
+			},
+
+			arrowIconView: {
+				flex: 1,
+				alignItems: 'center',
+			},
+
+			daysCountView: {
+				flexDirection: 'row',
+				justifyContent: 'flex-end',
+				alignItems: 'flex-end',
+				marginBottom: HORIZONTAL_UNIT(3),
+			},
+
 			titleView: {
 				flexDirection: 'row',
 				justifyContent: 'space-between',
@@ -102,28 +122,6 @@ export default class NewTicketScreen extends React.Component<
 			titleText: {
 				fontSize: THEME_HEADER_FONTSIZE,
 				fontWeight: 'bold',
-			},
-
-			fromtoView: {
-				flexDirection: 'row',
-				marginTop: HORIZONTAL_UNIT(4),
-				marginLeft: HORIZONTAL_UNIT(4),
-			},
-
-			dateInputView: {
-				flexDirection: 'row',
-				borderBottomWidth: 2,
-				marginLeft: HORIZONTAL_UNIT(4),
-				flex: 3,
-				borderColor: this.props.newTicket.themeColor,
-			},
-
-			timeInputView: {
-				flexDirection: 'row',
-				borderBottomWidth: 2,
-				marginLeft: HORIZONTAL_UNIT(4),
-				flex: 2,
-				borderColor: this.props.newTicket.themeColor,
 			},
 
 			valueText: {
@@ -150,103 +148,52 @@ export default class NewTicketScreen extends React.Component<
 							color={this.props.newTicket.themeColor}
 						/>
 					</View>
-					<View style={style.categoryView}>
-						<View style={style.titleView}>
-							<VSPText style={style.titleText}>기간</VSPText>
-							<View
-								style={{
-									flexDirection: 'row',
-									alignItems: 'flex-end',
-								}}
-							>
-								<VSPText style={style.valueText}>{12}</VSPText>
-								<VSPText> 박 </VSPText>
-								<VSPText style={style.valueText}>{13}</VSPText>
-								<VSPText> 일</VSPText>
-							</View>
-						</View>
-						<View style={style.fromtoView}>
-							<VSPText fontSize={THEME_HEADER_FONTSIZE}>
-								시작
+					<View style={style.periodView}>
+						<TouchableOpacity
+							activeOpacity={0.6}
+							onPress={this._openModalWithFromtab}
+						>
+							<VSPText fontWeight='bold'>시작</VSPText>
+							<VSPText color={this.props.newTicket.themeColor}>
+								{formatDateString(
+									this.props.newTicket.period.from,
+								)}
 							</VSPText>
-							<TouchableOpacity
-								style={style.dateInputView}
-								activeOpacity={0.6}
-								onPress={this._openModalWithFromtab}
-							>
-								<VSPIcon
-									iconName='calendar'
-									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicket.themeColor}
-								/>
-								<VSPText
-									color={this.props.newTicket.themeColor}
-								>
-									{formatDateString(
-										this.props.newTicket.period.from,
-									)}
-								</VSPText>
-							</TouchableOpacity>
-							<TouchableOpacity
-								style={style.timeInputView}
-								activeOpacity={0.6}
-								onPress={this._openModalWithFromtab}
-							>
-								<VSPIcon
-									iconName='clock'
-									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicket.themeColor}
-								/>
-								<VSPText
-									color={this.props.newTicket.themeColor}
-								>
-									{formatTimeString(
-										this.props.newTicket.period.from,
-									)}
-								</VSPText>
-							</TouchableOpacity>
-						</View>
-						<View style={style.fromtoView}>
-							<VSPText fontSize={THEME_HEADER_FONTSIZE}>
-								종료
+							<VSPText color={this.props.newTicket.themeColor}>
+								{formatTimeString(
+									this.props.newTicket.period.from,
+								)}
 							</VSPText>
-							<TouchableOpacity
-								style={style.dateInputView}
-								activeOpacity={0.6}
-								onPress={this._openModalWithTotab}
-							>
-								<VSPIcon
-									iconName='calendar'
-									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicket.themeColor}
-								/>
-								<VSPText
-									color={this.props.newTicket.themeColor}
-								>
-									{formatDateString(
-										this.props.newTicket.period.to,
-									)}
-								</VSPText>
-							</TouchableOpacity>
-							<TouchableOpacity
-								style={style.timeInputView}
-								activeOpacity={0.6}
-								onPress={this._openModalWithTotab}
-							>
-								<VSPIcon
-									iconName='clock'
-									marginRight={HORIZONTAL_UNIT()}
-									color={this.props.newTicket.themeColor}
-								/>
-								<VSPText
-									color={this.props.newTicket.themeColor}
-								>
-									{formatTimeString(
-										this.props.newTicket.period.to,
-									)}
-								</VSPText>
-							</TouchableOpacity>
+						</TouchableOpacity>
+						<View style={style.arrowIconView}>
+							<VSPIcon
+								iconName='rightarrow'
+								theme='oceanBlue'
+								size={HORIZONTAL_UNIT(6)}
+							/>
 						</View>
+						<TouchableOpacity
+							activeOpacity={0.6}
+							onPress={this._openModalWithTotab}
+						>
+							<VSPText fontWeight='bold'>종료</VSPText>
+							<VSPText color={this.props.newTicket.themeColor}>
+								{formatDateString(
+									this.props.newTicket.period.to,
+								)}
+							</VSPText>
+							<VSPText color={this.props.newTicket.themeColor}>
+								{formatTimeString(
+									this.props.newTicket.period.to,
+								)}
+							</VSPText>
+						</TouchableOpacity>
+					</View>
+					<View style={style.daysCountView}>
+						<VSPText style={style.valueText}>{12}</VSPText>
+						<VSPText> 박 </VSPText>
+						<VSPText style={style.valueText}>{13}</VSPText>
+						<VSPText> 일</VSPText>
 					</View>
 					<View style={style.categoryView}>
 						<VSPText style={style.titleText}>테마 색상</VSPText>
