@@ -16,11 +16,11 @@ import { TICKET_THEME_COLORS } from '../../types/data/ticket/theme';
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPTextButton from '../../components/vsp-text-button';
-import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
 
 import PlanTimeline from './plan-timeline';
 import PackingList from './packing-list';
+import ParticipantsList from './participants-list';
 
 const DEV_TICKET: Ticket = {
 	id: 1,
@@ -209,18 +209,6 @@ export default class TicketViewScreen extends React.Component<
 				width: '100%',
 			},
 
-			profilesView: {
-				flexDirection: 'row',
-				marginHorizontal: VSP_EDGE_PADDING,
-				marginBottom: HORIZONTAL_UNIT(),
-				zIndex: 1,
-			},
-
-			stackedProfile: {
-				left: HORIZONTAL_UNIT(-3 * 1),
-				zIndex: 1,
-			},
-
 			bodyCapView: {
 				position: 'absolute',
 				bottom: 0,
@@ -240,10 +228,9 @@ export default class TicketViewScreen extends React.Component<
 			<VSPContainer>
 				<View style={style.headerView}>
 					<View style={style.bottomView}>
-						<View style={style.profilesView}>
-							<VSPProfile />
-							<VSPProfile style={style.stackedProfile} />
-						</View>
+						<ParticipantsList
+							participants={DEV_TICKET.participants}
+						/>
 						<View style={style.bodyCapView} />
 					</View>
 				</View>
