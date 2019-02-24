@@ -37,14 +37,14 @@ interface IVSPProfileProps extends IVSPMarginProps {
  * @property
  * - ```size```: Size of the icon (by default ```12HU```)
  * - ```overlaidText```: Overlaid text with the profile blurred
- * - ```castShadow```: Casts shadow if true (by default ```true```)
+ * - ```castShadow```: Casts shadow if true (by default ```false```)
  * - ```style```: Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
  */
 export default class VSPProfile extends React.Component<IVSPProfileProps> {
 	public static defaultProps = {
 		size: HORIZONTAL_UNIT(12),
 		blur: false,
-		castShadow: true,
+		castShadow: false,
 	};
 
 	public render() {
