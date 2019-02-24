@@ -19,7 +19,7 @@ const DEV_TICKETS: Ticket[] = [
 		id: 1,
 		title: '나혼자 여행갈꼬얌',
 		owner: '0001',
-		participants: ['0001', '0002'],
+		participants: ['0001', '0002', '0004', '0005'],
 		themeColor: '#73C0F4',
 		period: {
 			from: new Date('2020-03-14'),
@@ -35,7 +35,7 @@ const DEV_TICKETS: Ticket[] = [
 		id: 2,
 		title: '두번째 티켓',
 		owner: '0001',
-		participants: ['0001', '0003', '0004'],
+		participants: ['0001', '0003', '0004', '0005', '0006'],
 		themeColor: '#AEEAB0',
 		period: {
 			from: new Date('2020-03-14'),

@@ -1,4 +1,5 @@
 {
+	"ticketCardMaxProfiles": 4,
 	"ticketFixedTexts": {
 		"topLeft": "VISIPLE AIRLINE",
 		"topRight": {

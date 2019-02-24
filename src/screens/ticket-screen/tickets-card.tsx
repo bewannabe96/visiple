@@ -67,6 +67,8 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 					}
 					size={HORIZONTAL_UNIT(5)}
 					marginLeft={HORIZONTAL_UNIT()}
+					overlaidText={`+${ids.length - ticketCardMaxProfiles + 1}`}
+					blur={true}
 					castShadow={false}
 				/>,
 			);
