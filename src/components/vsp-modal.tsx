@@ -71,8 +71,9 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 				height: HORIZONTAL_UNIT(12),
 				borderTopLeftRadius: HORIZONTAL_UNIT(2),
 				borderTopRightRadius: HORIZONTAL_UNIT(2),
-				backgroundColor: THEME_COLORS.greyWhite,
-				...addShadowProperties(),
+				backgroundColor: THEME_COLORS.white,
+				borderBottomWidth: 0.5,
+				borderColor: THEME_COLORS.brown,
 			},
 
 			headerTitleView: {
@@ -109,6 +110,7 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 						<View style={style.headerLeftView}>
 							<VSPTextButton
 								icon='previous'
+								theme='brown'
 								marginLeft={HORIZONTAL_UNIT(4)}
 								onPress={this.props.closeAction}
 							/>
