@@ -39,9 +39,9 @@ interface ITicketCardProps {
 export default class TicketCard extends React.Component<ITicketCardProps> {
 	private _renderParticipants(ids: UserID[]) {
 		if (ids.length <= ticketCardMaxProfiles) {
-			return this.props.ticket.participants.map((pid: UserID) => (
+			return this.props.ticket.participants.map((uid: UserID) => (
 				<VSPProfile
-					key={pid}
+					key={uid}
 					size={HORIZONTAL_UNIT(5)}
 					marginLeft={HORIZONTAL_UNIT()}
 				/>
@@ -49,9 +49,9 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 		} else {
 			let rtnElement = this.props.ticket.participants
 				.slice(0, ticketCardMaxProfiles - 1)
-				.map((pid: UserID) => (
+				.map((uid: UserID) => (
 					<VSPProfile
-						key={pid}
+						key={uid}
 						size={HORIZONTAL_UNIT(5)}
 						marginLeft={HORIZONTAL_UNIT()}
 					/>
