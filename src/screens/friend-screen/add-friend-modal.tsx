@@ -76,7 +76,7 @@ export default class AddFriendModal extends React.Component {
 			<View style={style.overlayView}>
 				<VSPRoundIconButton
 					icon='plus'
-					fontSize={HORIZONTAL_UNIT(5)}
+					size={HORIZONTAL_UNIT(10)}
 					theme='brown'
 					onPress={() => {
 						this.setState({ modalVisible: true });
