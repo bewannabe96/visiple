@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
-import { THEME_MINOR_FONTSIZE } from '../types/lib/size';
+import { THEME_FONTSIZE } from '../types/lib/size';
 import {
 	decodeVSPMarginProps,
 	IVSPMarginProps,
@@ -88,7 +88,7 @@ export default class VSPExpandable extends React.Component<
 					<VSPRoundIconButton
 						outline={this.state.expanded}
 						icon={this.state.expanded ? 'downarrowhead' : 'plus'}
-						fontSize={THEME_MINOR_FONTSIZE}
+						size={THEME_FONTSIZE * 2}
 						onPress={this._toggleExpand}
 						color={
 							this.props.color
