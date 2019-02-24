@@ -27,9 +27,9 @@ interface IVSPRoundIconButtonProps extends IVSPMarginProps {
 	outline?: boolean;
 
 	/**
-	 * Size of the text and the icon inside the button
+	 * Size of the button
 	 */
-	fontSize?: number;
+	size?: number;
 
 	/**
 	 * Theme color of the button
@@ -53,7 +53,7 @@ interface IVSPRoundIconButtonProps extends IVSPMarginProps {
  * @property
  * - ```icon```(required): Icon to be displayed in the button
  * - ```outline```: Outline button style if true (by default ```false```)
- * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
+ * - ```size```: Size of the button (by default ```THEME_FONTSIZE```)
  * - ```theme```: Theme color of the button (by default ```oceanBlue```)
  * - ```color```: Raw color of the button
  * - ```onPress```: Callback function when button pressed
@@ -70,7 +70,7 @@ export default class VSPRoundIconButton extends React.Component<
 > {
 	public static defaultProps = {
 		outline: false,
-		fontSize: THEME_FONTSIZE,
+		size: THEME_FONTSIZE,
 		theme: 'oceanBlue',
 	};
 
@@ -83,9 +83,9 @@ export default class VSPRoundIconButton extends React.Component<
 				flexDirection: 'row',
 				justifyContent: 'center',
 				alignItems: 'center',
-				height: 2 * this.props.fontSize!,
-				width: 2 * this.props.fontSize!,
-				borderRadius: this.props.fontSize!,
+				height: this.props.size!,
+				width: this.props.size!,
+				borderRadius: this.props.size! / 2,
 				backgroundColor: this.props.outline!
 					? THEME_COLORS.none
 					: color,
@@ -104,7 +104,7 @@ export default class VSPRoundIconButton extends React.Component<
 				<VSPIcon
 					iconName={this.props.icon}
 					color={this.props.outline! ? color : THEME_COLORS.white}
-					size={this.props.fontSize}
+					size={this.props.size! / 2}
 				/>
 			</TouchableOpacity>
 		);
