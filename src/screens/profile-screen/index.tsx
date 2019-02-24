@@ -19,6 +19,10 @@ export default class ProfileScreen extends React.Component {
 				bottom: 0,
 			},
 
+			profileImage: {
+				zIndex: 1,
+			},
+
 			profileTitleInfoView: {
 				flex: 1,
 				justifyContent: 'flex-end',
@@ -83,6 +87,7 @@ export default class ProfileScreen extends React.Component {
 							size={HORIZONTAL_UNIT(22)}
 							marginLeft={HORIZONTAL_UNIT(6)}
 							marginRight={HORIZONTAL_UNIT(2)}
+							style={style.profileImage}
 						/>
 						<View style={style.profileTitleInfoView}>
 							<VSPText
