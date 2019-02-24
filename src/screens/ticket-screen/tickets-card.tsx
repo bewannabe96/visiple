@@ -44,7 +44,6 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 					key={pid}
 					size={HORIZONTAL_UNIT(5)}
 					marginLeft={HORIZONTAL_UNIT()}
-					castShadow={false}
 				/>
 			));
 		} else {
@@ -55,7 +54,6 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 						key={pid}
 						size={HORIZONTAL_UNIT(5)}
 						marginLeft={HORIZONTAL_UNIT()}
-						castShadow={false}
 					/>
 				));
 			rtnElement.push(
@@ -69,7 +67,6 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 					marginLeft={HORIZONTAL_UNIT()}
 					overlaidText={`+${ids.length - ticketCardMaxProfiles + 1}`}
 					blur={true}
-					castShadow={false}
 				/>,
 			);
 			return rtnElement;
