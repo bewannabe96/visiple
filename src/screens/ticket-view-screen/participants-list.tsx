@@ -27,6 +27,7 @@ export default class ParticipantsList extends React.Component<
 		const style = StyleSheet.create({
 			profilesView: {
 				flexDirection: 'row',
+				alignItems: 'flex-end',
 				marginHorizontal: VSP_EDGE_PADDING,
 				marginBottom: HORIZONTAL_UNIT(),
 				zIndex: 1,
@@ -55,7 +56,7 @@ export default class ParticipantsList extends React.Component<
 					<VSPRoundIconButton
 						icon='plus'
 						theme='grey'
-						size={HORIZONTAL_UNIT(12)}
+						size={HORIZONTAL_UNIT(8)}
 					/>
 				</View>
 			</View>
