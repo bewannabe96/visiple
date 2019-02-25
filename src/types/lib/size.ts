@@ -9,6 +9,12 @@ const guidelineBaseWidth = 375;
 const guidelineBaseHeight = 812;
 
 /**
+ * Device size
+ */
+export const DEVICE_HEIGHT = height;
+export const DEVICE_WIDTH = width;
+
+/**
  * Size Constants
  */
 export const HORIZONTAL_UNIT = (size: number = 1) =>
