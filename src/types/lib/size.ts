@@ -1,8 +1,19 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
 import { sizeOffset, padding, fontSize } from '../../config/theme.json';
 
-const { width, height } = Dimensions.get('window');
+const width =
+	Platform.OS === 'ios'
+		? Dimensions.get('window').width
+		: require('react-native-extra-dimensions-android').get(
+				'REAL_WINDOW_WIDTH',
+		  );
+const height =
+	Platform.OS === 'ios'
+		? Dimensions.get('window').height
+		: require('react-native-extra-dimensions-android').get(
+				'REAL_WINDOW_HEIGHT',
+		  );
 
 // Guideline sizes are based on IPhone X
 const guidelineBaseWidth = 375;
