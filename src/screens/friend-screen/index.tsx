@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { THEME_COLORS } from '../../types/lib/theme';
+import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
@@ -21,6 +21,7 @@ import VSPProfile from '../../components/vsp-profile';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPHeaderTitle from '../../components/vsp-header-title';
 import { VSPHeaderMenu } from '../../components/vsp-header-button';
+import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
 import AddFriendModal from './add-friend-modal';
 
@@ -128,10 +129,27 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 				paddingHorizontal: VSP_EDGE_PADDING,
 				paddingVertical: HORIZONTAL_UNIT(),
 			},
+
+			addFriendButtonView: {
+				position: 'absolute',
+				bottom: HORIZONTAL_UNIT(5),
+				right: HORIZONTAL_UNIT(6),
+				...addShadowProperties(),
+			},
 		});
 
 		return (
 			<VSPContainer>
+				<View style={style.addFriendButtonView}>
+					<VSPRoundIconButton
+						icon='plus'
+						size={HORIZONTAL_UNIT(10)}
+						theme='brown'
+						onPress={() => {
+							this.setState({ modalVisible: true });
+						}}
+					/>
+				</View>
 				<View style={style.searchView}>
 					<VSPTextInput
 						placeholder='검색'
