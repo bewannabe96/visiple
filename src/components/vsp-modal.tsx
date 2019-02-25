@@ -3,7 +3,7 @@ import { StyleSheet, View, GestureResponderEvent } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../types/lib/size';
-import { THEME_COLORS, addShadowProperties } from '../types/lib/theme';
+import { THEME_COLORS } from '../types/lib/theme';
 import {
 	IVSPPaddingProps,
 	decodeVSPPaddingProps,
@@ -22,7 +22,7 @@ interface IVSPModalProps extends IVSPPaddingProps {
 	/**
 	 * Close action
 	 */
-	closeAction: () => {};
+	closeAction: () => any;
 
 	/**
 	 * Title text in the middle of the header
