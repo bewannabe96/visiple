@@ -33,6 +33,11 @@ interface IVSPTextButtonProps extends IVSPMarginProps {
 	fontSize?: number;
 
 	/**
+	 * Underline text if true
+	 */
+	underline?: boolean;
+
+	/**
 	 * Theme color of the button
 	 */
 	theme?: ThemeColor;
@@ -55,6 +60,7 @@ interface IVSPTextButtonProps extends IVSPMarginProps {
  * - ```text```: Text inside the button
  * - ```icon```: Icon to be displayed in the button
  * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
+ * - ```underline```: Underline text if true (by default ```true```)
  * - ```theme```: Theme color of the button (by default ```oceanBlue```)
  * - ```color```: Raw color of the button
  * - ```onPress```: Callback function when button pressed
@@ -71,6 +77,7 @@ export default class VSPTextButton extends React.Component<
 > {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
+		underline: true,
 		theme: 'oceanBlue',
 	};
 
@@ -86,7 +93,7 @@ export default class VSPTextButton extends React.Component<
 			text: {
 				fontSize: this.props.fontSize!,
 				marginLeft: this.props.icon ? 0.7 * this.props.fontSize! : 0,
-				textDecorationLine: 'underline',
+				textDecorationLine: this.props.underline! ? 'underline' : null,
 				color: this.props.color
 					? this.props.color
 					: THEME_COLORS[this.props.theme!],
