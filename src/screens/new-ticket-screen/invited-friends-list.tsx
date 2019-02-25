@@ -1,15 +1,11 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 
-import {
-	VERTICAL_UNIT,
-	THEME_MINOR_FONTSIZE,
-	HORIZONTAL_UNIT,
-} from '../../types/lib/size';
+import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 
 import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
-import VSPTextButton from '../../components/vsp-text-button';
+import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
 export interface InvitedFriendsListProps {
 	/**
@@ -38,11 +34,18 @@ export default class InvitedFriendsList extends React.Component<
 			>
 				<VSPProfile />
 				<VSPText marginY={HORIZONTAL_UNIT()}>김윤회</VSPText>
-				<VSPTextButton
-					icon='cancel'
-					fontSize={THEME_MINOR_FONTSIZE}
-					color={this.props.themeColor}
-				/>
+				<View
+					style={{
+						position: 'absolute',
+						right: 0,
+					}}
+				>
+					<VSPRoundIconButton
+						icon='cancel'
+						size={THEME_HEADER_FONTSIZE}
+						theme='grey'
+					/>
+				</View>
 			</View>
 		);
 	}
