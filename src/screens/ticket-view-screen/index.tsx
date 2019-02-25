@@ -1,26 +1,26 @@
 import React from 'react';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
-	VSP_TOP_PADDING,
 	THEME_HEADER_FONTSIZE,
+	VSP_TOP_PADDING,
 } from '../../types/lib/size';
-import { THEME_COLORS } from '../../types/lib/theme';
 import { Ticket } from '../../types/data/ticket';
 import { TICKET_THEME_COLORS } from '../../types/data/ticket/theme';
+import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
-import VSPTextButton from '../../components/vsp-text-button';
 import VSPText from '../../components/vsp-text';
 
 import PlanTimeline from './plan-timeline';
 import PackingList from './packing-list';
 import ParticipantsList from './participants-list';
+import VSPHeaderButton from '../../components/vsp-header-button';
 
 const DEV_TICKET: Ticket = {
 	id: 1,
@@ -175,22 +175,15 @@ export default class TicketViewScreen extends React.Component<
 				<VSPHeader
 					transparent={true}
 					headerLeft={
-						<VSPTextButton
+						<VSPHeaderButton
 							icon='leftarrow'
 							theme='white'
-							fontSize={28}
 							onPress={() => {
 								navigation.pop();
 							}}
 						/>
 					}
-					headerRight={
-						<VSPTextButton
-							icon='more'
-							theme='white'
-							fontSize={28}
-						/>
-					}
+					headerRight={<VSPHeaderButton icon='trash' theme='white' />}
 				/>
 			),
 		};
