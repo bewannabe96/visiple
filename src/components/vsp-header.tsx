@@ -5,6 +5,8 @@ import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { THEME_COLORS } from '../types/lib/theme';
 import { VSP_TOP_PADDING } from '../types/lib/size';
 
+export const HEADER_HEIGHT = 55;
+
 interface IVSPHeaderProps extends NavigationInjectedProps {
 	/**
 	 * Title or component to be displayed in the center
@@ -57,7 +59,7 @@ class VSPHeader extends React.Component<IVSPHeaderProps> {
 			>
 				<View
 					style={{
-						height: 55,
+						height: HEADER_HEIGHT,
 						flexDirection: 'row',
 						alignItems: 'stretch',
 					}}
