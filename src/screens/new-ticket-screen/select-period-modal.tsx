@@ -156,6 +156,8 @@ export default class SelectPeriodModal extends React.Component<
 		return (
 			<VSPModal
 				titleText={'기간'}
+				rightButtonText={'완료'}
+				rightButtonOnPress={this.props.closePeriodModal}
 				isVisible={this.props.periodModalVisible}
 				closeAction={this.props.closePeriodModal}
 				paddingY={HORIZONTAL_UNIT(3)}
