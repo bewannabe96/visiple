@@ -95,7 +95,7 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			bodyView: {
 				justifyContent: 'space-between',
 				height: HORIZONTAL_UNIT(18),
-				backgroundColor: THEME_COLORS.greyWhite,
+				backgroundColor: ticketFixedColors.body,
 				paddingHorizontal: HORIZONTAL_UNIT(3),
 				paddingVertical: HORIZONTAL_UNIT(2),
 			},

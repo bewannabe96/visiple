@@ -11,6 +11,7 @@
 		"passenger": "Passenger"
 	},
 	"ticketFixedColors": {
+		"body":		"#FDFDFD",
 		"footer":	"#EFEFEF",
 		"text":		"#555555"
 	},
