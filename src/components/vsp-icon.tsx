@@ -37,7 +37,7 @@ interface IVSPIconProps extends IVSPMarginProps {
  * @property
  * - ```iconName```(required): Name of the icon
  * - ```size```: Size of the icon (by default THEME_FONTSIZE)
- * - ```theme```: Theme color of the icon (by default ```grey```)
+ * - ```theme```: Theme color of the icon (by default ```black```)
  * - ```color ```: Raw color of the icon
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
@@ -50,7 +50,7 @@ interface IVSPIconProps extends IVSPMarginProps {
 export default class VSPIcon extends React.Component<IVSPIconProps> {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
-		theme: 'grey',
+		theme: 'black',
 	};
 
 	public render() {
