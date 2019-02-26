@@ -39,6 +39,13 @@ interface IVSPProfileProps extends IVSPMarginProps {
  * - ```overlaidText```: Overlaid text with the profile blurred
  * - ```castShadow```: Casts shadow if true (by default ```false```)
  * - ```style```: Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
+ * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
+ * - ```marginX```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginTop```: Top margin
+ * - ```marginBottom```: Bottom margin
+ * - ```marginRight```: Rigth margin
+ * - ```marginLeft```: Left margin
  */
 export default class VSPProfile extends React.Component<IVSPProfileProps> {
 	public static defaultProps = {
