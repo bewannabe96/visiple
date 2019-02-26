@@ -35,8 +35,8 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 					this.props.navigation.navigate(desinationRouteName);
 				}}
 			>
-				<VSPText>{title}</VSPText>
-				<VSPIcon iconName='next' theme='oceanBlue' />
+				<VSPText theme='grey'>{title}</VSPText>
+				<VSPIcon iconName='next' theme='grey' />
 			</TouchableOpacity>
 		);
 	}
@@ -60,7 +60,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 			infoView: {
 				flex: 1,
 				justifyContent: 'center',
-				paddingLeft: HORIZONTAL_UNIT(2),
+				paddingLeft: HORIZONTAL_UNIT(3),
 			},
 		});
 
@@ -100,13 +100,13 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 					<View style={style.profileTab}>
 						<VSPProfile />
 						<View style={style.infoView}>
-							<VSPText
-								fontWeight={'bold'}
-								marginBottom={HORIZONTAL_UNIT()}
-							>
+							<VSPText marginBottom={HORIZONTAL_UNIT()}>
 								{'홍길동'}
 							</VSPText>
-							<VSPText fontSize={THEME_MINOR_FONTSIZE}>
+							<VSPText
+								fontSize={THEME_MINOR_FONTSIZE}
+								theme='grey'
+							>
 								{'testuser@gmail.com'}
 							</VSPText>
 						</View>
