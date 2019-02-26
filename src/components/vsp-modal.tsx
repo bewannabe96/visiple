@@ -24,8 +24,9 @@ interface IVSPModalProps extends IVSPPaddingProps {
 	 *
 	 * - ```auto```: Fit the content
 	 * - ```full```: Full size modal
+	 * - ```minimum```: Minimum size modal
 	 */
-	heightMode?: 'auto' | 'full';
+	heightMode?: 'auto' | 'full' | 'minimum';
 
 	/**
 	 * Close action
@@ -135,7 +136,12 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 
 			bodyView: {
 				backgroundColor: THEME_COLORS.white,
-				height: this.props.heightMode! === 'full' ? '85%' : undefined,
+				height:
+					this.props.heightMode! === 'full'
+						? '85%'
+						: this.props.heightMode! === 'minimum'
+						? '30%'
+						: undefined,
 				...decodeVSPPaddingProps(this.props),
 			},
 		});
