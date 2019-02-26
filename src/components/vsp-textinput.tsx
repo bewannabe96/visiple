@@ -81,11 +81,6 @@ interface IVSPTextInputProps extends IVSPMarginProps {
 	 * Raw color of the button
 	 */
 	color?: RawColor;
-
-	/**
-	 * Display underline
-	 */
-	displayUnderline?: boolean;
 }
 
 /**
@@ -97,9 +92,8 @@ interface IVSPTextInputProps extends IVSPMarginProps {
  * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```frontIcon```: Icon to be diplayed in the front of the text input
  * - ```rearIcon```: Icon to be diplayed in the back of the text input
- * - ```theme```: Theme color of the text input (by default ```oceanBlue```)
+ * - ```theme```: Theme color of the text input (by default ```grey```)
  * - ```color```: Raw color of the button
- * - ```displayUnderline```: Display underline (by default ```true```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom
@@ -112,7 +106,7 @@ export default class VSPTextInput extends React.Component<IVSPTextInputProps> {
 	public static defaultProps = {
 		textContentType: 'none',
 		fontSize: THEME_FONTSIZE,
-		theme: 'oceanBlue',
+		theme: 'grey',
 		displayUnderline: true,
 	};
 
@@ -126,11 +120,9 @@ export default class VSPTextInput extends React.Component<IVSPTextInputProps> {
 				width: '100%',
 				flexDirection: 'row',
 				alignItems: 'center',
-				borderBottomWidth: this.props.displayUnderline ? 2 : 0,
-				borderBottomColor: this.props.color
-					? this.props.color
-					: THEME_COLORS[this.props.theme!],
-				paddingVertical: 0.3 * this.props.fontSize!,
+				padding: 0.6 * this.props.fontSize!,
+				borderRadius: 0.3 * this.props.fontSize!,
+				backgroundColor: THEME_COLORS.greyWhite,
 				...decodeVSPMarginProps(this.props),
 			},
 
