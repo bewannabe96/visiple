@@ -38,11 +38,7 @@ export default class FriendInviteModal extends React.Component<
 	IFriendInviteModalProps
 > {
 	public render() {
-		const style = StyleSheet.create({
-			friendsList: {
-				height: '70%',
-			},
-		});
+		const style = StyleSheet.create({});
 
 		return (
 			<VSPModal
@@ -50,6 +46,7 @@ export default class FriendInviteModal extends React.Component<
 				rightButtonText={'완료'}
 				rightButtonOnPress={this.props.closeInviteModal}
 				isVisible={this.props.inviteModalVisible}
+				heightMode='full'
 				closeAction={this.props.closeInviteModal}
 				padding={HORIZONTAL_UNIT(4)}
 			>
@@ -59,13 +56,17 @@ export default class FriendInviteModal extends React.Component<
 					marginBottom={HORIZONTAL_UNIT(3)}
 				/>
 				<FlatList
-					style={style.friendsList}
 					data={[
 						{ key: 'a' },
 						{ key: 'b' },
 						{ key: 'c' },
 						{ key: 'd' },
 						{ key: 'e' },
+						{ key: 'f' },
+						{ key: 'g' },
+						{ key: 'h' },
+						{ key: 'i' },
+						{ key: 'j' },
 					]}
 					renderItem={item => (
 						<View
