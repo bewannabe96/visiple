@@ -7,7 +7,6 @@ import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
 	THEME_MINOR_FONTSIZE,
-	THEME_HEADER_FONTSIZE,
 } from '../../types/lib/size';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { User } from '../../types/data/user';
@@ -18,12 +17,12 @@ import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
 import VSPBadge from '../../components/vsp-badge';
 import VSPProfile from '../../components/vsp-profile';
-import VSPTextButton from '../../components/vsp-text-button';
 import VSPHeaderTitle from '../../components/vsp-header-title';
 import { VSPHeaderMenu } from '../../components/vsp-header-button';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
 import AddFriendModal from './add-friend-modal';
+import VSPIcon from '../../components/vsp-icon';
 
 const DEV_FRIENDS: User[] = [
 	{ userID: '0001', userName: '홍길동', userEmail: 'testtest23@nate.com' },
@@ -61,51 +60,33 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 			itemView: {
 				flexDirection: 'row',
 				alignItems: 'center',
-				backgroundColor: THEME_COLORS.white,
-				borderWidth: 0.5,
-				borderColor: THEME_COLORS.oceanBlue,
-				borderRadius: HORIZONTAL_UNIT(),
-				paddingHorizontal: HORIZONTAL_UNIT(4),
-				paddingVertical: HORIZONTAL_UNIT(2),
-				marginTop: HORIZONTAL_UNIT(2),
-				marginHorizontal: VSP_EDGE_PADDING,
-			},
-
-			infoView: {
-				flex: 1,
-			},
-
-			nameText: {
-				fontWeight: 'bold',
-				marginBottom: HORIZONTAL_UNIT(),
-			},
-
-			emailText: {
-				fontSize: THEME_MINOR_FONTSIZE,
+				paddingVertical: HORIZONTAL_UNIT(3),
+				paddingHorizontal: VSP_EDGE_PADDING,
 			},
 		});
 
 		return (
 			<ScrollView contentContainerStyle={style.friendsView}>
 				{DEV_FRIENDS.map((friend: User) => (
-					<TouchableOpacity
-						key={friend.userID}
-						activeOpacity={0.6}
-						style={style.itemView}
-					>
-						<VSPProfile marginRight={HORIZONTAL_UNIT(4)} />
-						<View style={style.infoView}>
-							<VSPText style={style.nameText}>
-								{friend.userName}
-							</VSPText>
-							<VSPText style={style.emailText}>
-								{friend.userEmail}
-							</VSPText>
+					<TouchableOpacity key={friend.userID} activeOpacity={0.6}>
+						<View style={style.itemView}>
+							<VSPProfile
+								size={HORIZONTAL_UNIT(10)}
+								marginRight={HORIZONTAL_UNIT(3)}
+							/>
+							<View style={{ flex: 1 }}>
+								<VSPText marginBottom={HORIZONTAL_UNIT()}>
+									{friend.userName}
+								</VSPText>
+								<VSPText
+									fontSize={THEME_MINOR_FONTSIZE}
+									theme='grey'
+								>
+									{friend.userEmail}
+								</VSPText>
+							</View>
+							<VSPIcon iconName='next' theme='grey' />
 						</View>
-						<VSPTextButton
-							icon='next'
-							fontSize={THEME_HEADER_FONTSIZE}
-						/>
 					</TouchableOpacity>
 				))}
 			</ScrollView>
@@ -116,8 +97,8 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 		const style = StyleSheet.create({
 			searchView: {
 				justifyContent: 'center',
-				backgroundColor: THEME_COLORS.greyWhite,
-				height: HORIZONTAL_UNIT(10),
+				backgroundColor: THEME_COLORS.white,
+				paddingVertical: HORIZONTAL_UNIT(2),
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
 
