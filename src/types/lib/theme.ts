@@ -33,7 +33,7 @@ export const THEME_COLORS: { [key in ThemeColor]: string } = {
 	white: '#FFFFFF',
 	grey: '#707070',
 	black: '#000000',
-	greyWhite: '#FCFCFC',
+	greyWhite: '#F0F0F0',
 	oceanBlue: '#728CA3',
 	skyBlue: '#73C0F4',
 	cottoncandyBlue: '#E6EFF3',
