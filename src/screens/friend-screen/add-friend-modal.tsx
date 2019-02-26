@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { HORIZONTAL_UNIT } from '../../types/lib/size';
-import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPTextInput from '../../components/vsp-textinput';
 import VSPModal from '../../components/vsp-modal';
@@ -26,6 +25,7 @@ export default class AddFriendModal extends React.Component {
 				titleText='친구 추가'
 				closeAction={() => {}}
 				padding={HORIZONTAL_UNIT(4)}
+				rightButtonText={'취소'}
 			>
 				<VSPTextInput
 					placeholder='이메일을 입력하세요'
