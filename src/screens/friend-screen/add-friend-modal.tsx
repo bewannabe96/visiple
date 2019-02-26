@@ -13,41 +13,26 @@ import VSPModal from '../../components/vsp-modal';
 export default class AddFriendModal extends React.Component {
 	public render() {
 		const style = StyleSheet.create({
-			container: {
-				height: '50%',
-				width: '90%',
-				alignSelf: 'center',
-			},
-
-			bodyView: {
-				flex: 1,
-				padding: HORIZONTAL_UNIT(4),
-				borderBottomLeftRadius: HORIZONTAL_UNIT(2),
-				borderBottomRightRadius: HORIZONTAL_UNIT(2),
-				backgroundColor: THEME_COLORS.white,
-			},
-
 			resultView: {
 				flex: 1,
+				marginVertical: HORIZONTAL_UNIT(4),
 			},
 		});
 
 		return (
 			<VSPModal
 				isVisible={false}
+				heightMode='minimum'
 				titleText='친구 추가'
 				closeAction={() => {}}
+				padding={HORIZONTAL_UNIT(4)}
 			>
-				<View style={style.container}>
-					<View style={style.bodyView}>
-						<VSPTextInput
-							placeholder='이메일을 입력하세요'
-							rearIcon='search'
-							textContentType='emailAddress'
-						/>
-						<View style={style.resultView} />
-					</View>
-				</View>
+				<VSPTextInput
+					placeholder='이메일을 입력하세요'
+					rearIcon='search'
+					textContentType='emailAddress'
+				/>
+				<View style={style.resultView} />
 			</VSPModal>
 		);
 	}
