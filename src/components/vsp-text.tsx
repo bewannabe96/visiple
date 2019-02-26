@@ -46,7 +46,7 @@ interface IVSPTextProps extends IVSPMarginProps {
  * @property
  * - ```fontSize```: Size of the font (by default ```THEME_FONTSIZE```)
  * - ```fontWeight```: Weight of the font (by default ```normal```)
- * - ```theme```: Theme color of the button (by default ```oceanBlue```)
+ * - ```theme```: Theme color of the button (by default ```grey```)
  * - ```color```: Raw color of the button
  * - ```style```: Style of the text
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
@@ -60,7 +60,7 @@ interface IVSPTextProps extends IVSPMarginProps {
 export default class VSPText extends React.Component<IVSPTextProps> {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
-		theme: 'oceanBlue',
+		theme: 'grey',
 		fontWeight: 'normal',
 	};
 
