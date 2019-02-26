@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-	StyleSheet,
-	View,
-	GestureResponderEvent,
-	SafeAreaView,
-} from 'react-native';
+import { StyleSheet, View, GestureResponderEvent } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../types/lib/size';
@@ -23,6 +18,14 @@ interface IVSPModalProps extends IVSPPaddingProps {
 	 * Visible if true
 	 */
 	isVisible: boolean;
+
+	/**
+	 * Height of the modal
+	 *
+	 * - ```auto```: Fit the content
+	 * - ```full```: Full size modal
+	 */
+	heightMode?: 'auto' | 'full';
 
 	/**
 	 * Close action
@@ -70,6 +73,7 @@ interface IVSPModalProps extends IVSPPaddingProps {
  *
  * @property
  * - ```isVisible```(required): Visible if true
+ * - ```heightMode```: Height of the modal (by default ```auto```)
  * - ```closeAction```(required): Close action
  * - ```titleText```(required): Title text in the middle of the header
  * - ```rightButtonIcon```: Icon of the right button
@@ -88,6 +92,10 @@ interface IVSPModalProps extends IVSPPaddingProps {
  * =
  */
 export default class VSPModal extends React.Component<IVSPModalProps> {
+	public static defaultProps = {
+		heightMode: 'auto',
+	};
+
 	public render() {
 		const style = StyleSheet.create({
 			container: {
@@ -126,9 +134,8 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 			},
 
 			bodyView: {
-				borderBottomLeftRadius: HORIZONTAL_UNIT(2),
-				borderBottomRightRadius: HORIZONTAL_UNIT(2),
 				backgroundColor: THEME_COLORS.white,
+				height: this.props.heightMode! === 'full' ? '85%' : undefined,
 				...decodeVSPPaddingProps(this.props),
 			},
 		});
@@ -174,9 +181,7 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 							))}
 					</View>
 				</View>
-				<SafeAreaView style={style.bodyView}>
-					{this.props.children}
-				</SafeAreaView>
+				<View style={style.bodyView}>{this.props.children}</View>
 			</Modal>
 		);
 	}
