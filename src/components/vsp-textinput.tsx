@@ -120,7 +120,7 @@ export default class VSPTextInput extends React.Component<IVSPTextInputProps> {
 				width: '100%',
 				flexDirection: 'row',
 				alignItems: 'center',
-				padding: 0.6 * this.props.fontSize!,
+				padding: 0.7 * this.props.fontSize!,
 				borderRadius: 0.3 * this.props.fontSize!,
 				backgroundColor: THEME_COLORS.greyWhite,
 				...decodeVSPMarginProps(this.props),
