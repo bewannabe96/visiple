@@ -38,8 +38,6 @@ export default class FriendInviteModal extends React.Component<
 	IFriendInviteModalProps
 > {
 	public render() {
-		const style = StyleSheet.create({});
-
 		return (
 			<VSPModal
 				titleText={'친구 초대'}
