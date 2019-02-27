@@ -105,17 +105,14 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				<View style={style.headerView}>
 					<View style={style.bulletDash} />
 					<View style={style.textView}>
-						<VSPIcon iconName={icon} theme='oceanBlue' />
-						<VSPText
-							marginLeft={HORIZONTAL_UNIT()}
-							fontWeight='bold'
-						>
+						<VSPIcon iconName={icon} />
+						<VSPText marginLeft={HORIZONTAL_UNIT()}>
 							{dayPlan.title}
 						</VSPText>
 					</View>
 				</View>
 				<View style={style.textView}>
-					<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='skyBlue'>
+					<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='grey'>
 						{formatTimeString(dayPlan.time.at)}
 					</VSPText>
 				</View>
@@ -148,7 +145,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 					<View style={style.rowView}>
 						<VSPIcon
 							iconName='placeholder'
-							theme='oceanBlue'
+							theme='grey'
 							size={THEME_MINOR_FONTSIZE}
 						/>
 						<VSPText
@@ -165,28 +162,34 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
 								fontWeight='bold'
+								theme='grey'
 							>
 								FROM
 							</VSPText>
 							<VSPIcon
 								iconName='downarrow'
-								theme='oceanBlue'
+								theme='grey'
 								size={THEME_MINOR_FONTSIZE}
 								marginY={HORIZONTAL_UNIT()}
 							/>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
 								fontWeight='bold'
+								theme='grey'
 							>
 								TO
 							</VSPText>
 						</View>
 						<View style={style.fromtoView}>
-							<VSPText fontSize={THEME_MINOR_FONTSIZE}>
+							<VSPText
+								fontSize={THEME_MINOR_FONTSIZE}
+								theme='grey'
+							>
 								{dayPlan.move.from}
 							</VSPText>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
+								theme='grey'
 								marginTop={
 									THEME_MINOR_FONTSIZE + HORIZONTAL_UNIT(2)
 								}
@@ -200,7 +203,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 					<View style={style.rowView}>
 						<VSPIcon
 							iconName='money'
-							theme='oceanBlue'
+							theme='grey'
 							size={THEME_MINOR_FONTSIZE}
 							marginRight={HORIZONTAL_UNIT()}
 						/>
@@ -214,12 +217,16 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								<VSPText
 									fontSize={THEME_MINOR_FONTSIZE}
 									marginRight={HORIZONTAL_UNIT()}
+									theme='grey'
 									fontWeight='bold'
 								>
 									{dayPlan.cost.currency}
 								</VSPText>
 								{dayPlan.cost.currency in CURRENCY && (
-									<VSPText fontSize={THEME_MINOR_FONTSIZE}>
+									<VSPText
+										fontSize={THEME_MINOR_FONTSIZE}
+										theme='grey'
+									>
 										{`(${
 											CURRENCY[dayPlan.cost.currency].name
 										})`}
@@ -228,6 +235,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 							</View>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
+								theme='grey'
 								style={{
 									textAlign: 'right',
 								}}
@@ -250,12 +258,13 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						<View key={index} style={style.rowView}>
 							<VSPIcon
 								iconName='information'
-								theme='oceanBlue'
+								theme='grey'
 								size={THEME_MINOR_FONTSIZE}
 							/>
 							<VSPText
 								marginLeft={HORIZONTAL_UNIT()}
 								fontSize={THEME_MINOR_FONTSIZE}
+								theme='grey'
 								style={{
 									flex: 1,
 									textAlign: 'justify',
@@ -278,7 +287,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						: undefined
 				}
 				fontSize={THEME_MINOR_FONTSIZE}
-				theme='skyBlue'
+				theme='grey'
 				orientation='far-right'
 				marginTop={HORIZONTAL_UNIT()}
 				marginLeft={HORIZONTAL_UNIT(8)}
@@ -391,11 +400,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		return (
 			<View style={style.categoryView}>
 				<View style={style.categoryTitleView}>
-					<VSPIcon
-						iconName='planning'
-						size={THEME_HEADER_FONTSIZE}
-						theme='oceanBlue'
-					/>
+					<VSPIcon iconName='planning' size={THEME_HEADER_FONTSIZE} />
 					<VSPText
 						fontSize={THEME_HEADER_FONTSIZE}
 						marginLeft={HORIZONTAL_UNIT(2)}

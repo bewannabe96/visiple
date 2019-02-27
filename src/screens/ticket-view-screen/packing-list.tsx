@@ -49,8 +49,8 @@ export default class PackingList extends React.Component<IPackingListProps> {
 			packingItem: {
 				flexDirection: 'row',
 				alignItems: 'center',
-				paddingLeft: VSP_EDGE_PADDING,
-				marginTop: HORIZONTAL_UNIT(2),
+				paddingLeft: HORIZONTAL_UNIT(5),
+				marginTop: HORIZONTAL_UNIT(3),
 			},
 		});
 
@@ -80,8 +80,11 @@ export default class PackingList extends React.Component<IPackingListProps> {
 									<View key={index} style={style.packingItem}>
 										<VSPCheckbox
 											marginRight={HORIZONTAL_UNIT(2)}
+											theme='grey'
 										/>
-										<VSPText>{item.name}</VSPText>
+										<VSPText theme='grey'>
+											{item.name}
+										</VSPText>
 									</View>
 								),
 							)}
@@ -96,7 +99,7 @@ export default class PackingList extends React.Component<IPackingListProps> {
 						header={
 							<View style={style.headerView}>
 								<VSPProfile
-									size={HORIZONTAL_UNIT(6)}
+									size={HORIZONTAL_UNIT(5)}
 									marginRight={HORIZONTAL_UNIT()}
 								/>
 								<VSPText
@@ -116,9 +119,12 @@ export default class PackingList extends React.Component<IPackingListProps> {
 											style={style.packingItem}
 										>
 											<VSPCheckbox
+												theme='grey'
 												marginRight={HORIZONTAL_UNIT(2)}
 											/>
-											<VSPText>{item.name}</VSPText>
+											<VSPText theme='grey'>
+												{item.name}
+											</VSPText>
 										</View>
 									),
 								)}
@@ -151,11 +157,7 @@ export default class PackingList extends React.Component<IPackingListProps> {
 		return (
 			<View style={style.categoryView}>
 				<View style={style.categoryTitleView}>
-					<VSPIcon
-						iconName='backpack'
-						size={THEME_HEADER_FONTSIZE}
-						theme='oceanBlue'
-					/>
+					<VSPIcon iconName='backpack' size={THEME_HEADER_FONTSIZE} />
 					<VSPText
 						fontSize={THEME_HEADER_FONTSIZE}
 						marginLeft={HORIZONTAL_UNIT(2)}
