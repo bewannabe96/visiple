@@ -117,7 +117,6 @@ export default class VSPTextInput extends React.Component<IVSPTextInputProps> {
 	public render() {
 		const style = StyleSheet.create({
 			container: {
-				width: '100%',
 				flexDirection: 'row',
 				alignItems: 'center',
 				padding: 0.7 * this.props.fontSize!,
