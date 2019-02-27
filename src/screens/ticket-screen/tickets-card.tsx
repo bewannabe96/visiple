@@ -139,11 +139,11 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			fromtoInnerView: {
 				flex: 1,
 				alignItems: 'flex-start',
-				marginHorizontal: HORIZONTAL_UNIT(),
 			},
 
 			fromtoText: {
 				fontFamily: THEME_FONT,
+				fontWeight: 'bold',
 				fontSize: HORIZONTAL_UNIT(2),
 				color: ticketFixedColors.text,
 			},
@@ -151,13 +151,14 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			dateText: {
 				fontFamily: THEME_FONT,
 				fontSize: HORIZONTAL_UNIT(3),
-				color: THEME_COLORS.oceanBlue,
+				color: THEME_COLORS.grey,
+				marginTop: HORIZONTAL_UNIT(),
 			},
 
 			titleText: {
 				fontFamily: THEME_FONT,
 				fontSize: HORIZONTAL_UNIT(3),
-				color: THEME_COLORS.brown,
+				color: this.props.ticket.themeColor,
 			},
 
 			passengerView: {
