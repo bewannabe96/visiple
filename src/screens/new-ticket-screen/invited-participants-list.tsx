@@ -8,7 +8,7 @@ import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
-export interface InvitedFriendsListProps {
+export interface IInvitedParticipantsListProps {
 	/**
 	 * Theme color of the ticket
 	 */
@@ -21,13 +21,13 @@ export interface InvitedFriendsListProps {
 }
 
 /**
- * InvitedFriendsList
+ * InvitedParticipantsList
  *
  * @property
  * - ```themeColor```(required): Theme color of the ticket
  */
-export default class InvitedFriendsList extends React.Component<
-	InvitedFriendsListProps
+export default class InvitedParticipantsList extends React.Component<
+	IInvitedParticipantsListProps
 > {
 	private _renderParticipant(pid: UserID) {
 		return (

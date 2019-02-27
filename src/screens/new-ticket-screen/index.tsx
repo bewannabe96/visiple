@@ -22,17 +22,16 @@ import VSPIcon from '../../components/vsp-icon';
 import VSPHeaderTitle from '../../components/vsp-header-title';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 
-import InvitedFriendsList from './invited-friends-list';
 import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';
 import SelectPeriodModalContainer from '../../containers/new-ticket-screen/select-period-modal';
 import FriendInviteModalContainer from '../../containers/new-ticket-screen/friend-invite-modal';
+import InvitedParticipantsListContainer from '../../containers/new-ticket-screen/invited-participants-list';
 
 import {
 	switchFromToTab,
 	openPeriodModal,
 	openInviteModal,
 } from '../../actions/new-ticket-screen/ui';
-import InvitedFriendsListContainer from '../../containers/new-ticket-screen/invited-friends-list';
 
 interface INewTicketScreenProps extends IVSPScreenProps {
 	/**
@@ -213,7 +212,7 @@ export default class NewTicketScreen extends React.Component<
 								}}
 							/>
 						</View>
-						<InvitedFriendsListContainer />
+						<InvitedParticipantsListContainer />
 						<View style={style.footerView}>
 							<VSPText theme='grey'>총</VSPText>
 							<VSPText style={style.valueText}>{`${
