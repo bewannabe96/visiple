@@ -32,8 +32,8 @@ export default class ProfileScreen extends React.Component {
 			profileBodyCap: {
 				height: HORIZONTAL_UNIT(10),
 				width: '100%',
-				borderTopLeftRadius: HORIZONTAL_UNIT(5),
-				borderTopRightRadius: HORIZONTAL_UNIT(5),
+				borderTopLeftRadius: HORIZONTAL_UNIT(4),
+				borderTopRightRadius: HORIZONTAL_UNIT(4),
 				backgroundColor: THEME_COLORS.white,
 				position: 'absolute',
 				bottom: HORIZONTAL_UNIT(-5),
