@@ -16,11 +16,11 @@
 		"text":		"#555555"
 	},
   	"themeColors": {
-		"blue":     "#6286FF",
-		"red":      "#FFB5B5",
-		"orange":   "#FFC87C",
-		"skyblue":  "#73C0F4",
-		"purple":   "#B09DFF",
-		"green":    "#AEEAB0"
+		"blue":     "#6286ff",
+		"red":      "#ef9292",
+		"orange":   "#efb058",
+		"skyblue":  "#73c0f4",
+		"purple":   "#b09dff",
+		"green":    "#56ce5a"
 	}
 }
