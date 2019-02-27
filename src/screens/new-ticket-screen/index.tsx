@@ -7,6 +7,7 @@ import {
 	VSP_TOP_PADDING,
 	HORIZONTAL_UNIT,
 	THEME_HEADER_FONTSIZE,
+	THEME_FONTSIZE,
 } from '../../types/lib/size';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { formatDateString, formatTimeString } from '../../types/lib/date';
@@ -81,7 +82,9 @@ export default class NewTicketScreen extends React.Component<
 
 	public render() {
 		const style = StyleSheet.create({
-			scrollView: {
+			container: {
+				flex: 1,
+				justifyContent: 'space-between',
 				paddingVertical: VSP_TOP_PADDING,
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
@@ -122,115 +125,111 @@ export default class NewTicketScreen extends React.Component<
 				fontSize: THEME_HEADER_FONTSIZE,
 				marginHorizontal: HORIZONTAL_UNIT(),
 			},
-
-			bottomView: {
-				position: 'absolute',
-				bottom: 0,
-				width: '100%',
-			},
 		});
 
 		return (
 			<VSPContainer>
-				<ScrollView contentContainerStyle={style.scrollView}>
-					<View style={style.categoryView}>
-						<VSPTextInput
-							placeholder='티켓 제목을 입력해 주세요.'
-							fontSize={THEME_HEADER_FONTSIZE}
-							marginTop={HORIZONTAL_UNIT()}
-							color={this.props.newTicket.themeColor}
-						/>
-					</View>
-					<View style={style.periodView}>
-						<TouchableOpacity
-							activeOpacity={0.6}
-							onPress={this._openModalWithFromtab}
-						>
-							<VSPText>시작</VSPText>
-							<VSPText
-								marginY={HORIZONTAL_UNIT()}
+				<View style={style.container}>
+					<View>
+						<View style={style.categoryView}>
+							<VSPTextInput
+								placeholder='티켓 제목을 입력해 주세요.'
+								fontSize={THEME_FONTSIZE}
+								marginTop={HORIZONTAL_UNIT()}
 								color={this.props.newTicket.themeColor}
-							>
-								{formatDateString(
-									this.props.newTicket.period.from,
-								)}
-							</VSPText>
-							<VSPText color={this.props.newTicket.themeColor}>
-								{formatTimeString(
-									this.props.newTicket.period.from,
-								)}
-							</VSPText>
-						</TouchableOpacity>
-						<View style={style.arrowIconView}>
-							<VSPIcon
-								iconName='rightarrow'
-								theme='grey'
-								size={HORIZONTAL_UNIT(6)}
 							/>
 						</View>
-						<TouchableOpacity
-							activeOpacity={0.6}
-							onPress={this._openModalWithTotab}
-						>
-							<VSPText>종료</VSPText>
-							<VSPText
-								marginY={HORIZONTAL_UNIT()}
-								color={this.props.newTicket.themeColor}
+						<View style={style.periodView}>
+							<TouchableOpacity
+								activeOpacity={0.6}
+								onPress={this._openModalWithFromtab}
 							>
-								{formatDateString(
-									this.props.newTicket.period.to,
-								)}
-							</VSPText>
-							<VSPText color={this.props.newTicket.themeColor}>
-								{formatTimeString(
-									this.props.newTicket.period.to,
-								)}
-							</VSPText>
-						</TouchableOpacity>
-					</View>
-					<View style={style.footerView}>
-						<VSPText style={style.valueText}>{`12`}</VSPText>
-						<VSPText theme='grey'>박</VSPText>
-						<VSPText style={style.valueText}>{`13`}</VSPText>
-						<VSPText theme='grey'>일</VSPText>
-					</View>
-					<View style={style.categoryView}>
-						<VSPText style={style.titleText}>테마 색상</VSPText>
-						<TicketColorPickerContainer />
-					</View>
-					<View style={style.categoryView}>
-						<View style={style.titleView}>
-							<VSPText style={style.titleText}>
-								함께하는 친구
-							</VSPText>
-							<VSPTextButton
-								icon='plus'
-								fontSize={THEME_HEADER_FONTSIZE}
-								color={this.props.newTicket.themeColor}
-								onPress={() => {
-									this.props.openInviteModal();
-								}}
-							/>
+								<VSPText>시작</VSPText>
+								<VSPText
+									marginY={HORIZONTAL_UNIT()}
+									color={this.props.newTicket.themeColor}
+								>
+									{formatDateString(
+										this.props.newTicket.period.from,
+									)}
+								</VSPText>
+								<VSPText
+									color={this.props.newTicket.themeColor}
+								>
+									{formatTimeString(
+										this.props.newTicket.period.from,
+									)}
+								</VSPText>
+							</TouchableOpacity>
+							<View style={style.arrowIconView}>
+								<VSPIcon
+									iconName='rightarrow'
+									theme='grey'
+									size={HORIZONTAL_UNIT(6)}
+								/>
+							</View>
+							<TouchableOpacity
+								activeOpacity={0.6}
+								onPress={this._openModalWithTotab}
+							>
+								<VSPText>종료</VSPText>
+								<VSPText
+									marginY={HORIZONTAL_UNIT()}
+									color={this.props.newTicket.themeColor}
+								>
+									{formatDateString(
+										this.props.newTicket.period.to,
+									)}
+								</VSPText>
+								<VSPText
+									color={this.props.newTicket.themeColor}
+								>
+									{formatTimeString(
+										this.props.newTicket.period.to,
+									)}
+								</VSPText>
+							</TouchableOpacity>
 						</View>
-						<InvitedParticipantsListContainer />
 						<View style={style.footerView}>
-							<VSPText theme='grey'>총</VSPText>
-							<VSPText style={style.valueText}>{`${
-								this.props.newTicket.participants.length
-							}`}</VSPText>
-							<VSPText theme='grey'>명</VSPText>
+							<VSPText style={style.valueText}>{`12`}</VSPText>
+							<VSPText theme='grey'>박</VSPText>
+							<VSPText style={style.valueText}>{`13`}</VSPText>
+							<VSPText theme='grey'>일</VSPText>
+						</View>
+						<View style={style.categoryView}>
+							<VSPText style={style.titleText}>테마 색상</VSPText>
+							<TicketColorPickerContainer />
+						</View>
+						<View style={style.categoryView}>
+							<View style={style.titleView}>
+								<VSPText style={style.titleText}>
+									함께하는 친구
+								</VSPText>
+								<VSPTextButton
+									icon='plus'
+									fontSize={THEME_HEADER_FONTSIZE}
+									color={this.props.newTicket.themeColor}
+									onPress={() => {
+										this.props.openInviteModal();
+									}}
+								/>
+							</View>
+							<InvitedParticipantsListContainer />
+							<View style={style.footerView}>
+								<VSPText theme='grey'>총</VSPText>
+								<VSPText style={style.valueText}>{`${
+									this.props.newTicket.participants.length
+								}`}</VSPText>
+								<VSPText theme='grey'>명</VSPText>
+							</View>
 						</View>
 					</View>
-				</ScrollView>
-				<View style={style.bottomView}>
 					<VSPColoredButton
 						text='완료'
 						fontSize={THEME_HEADER_FONTSIZE}
-						margin={2 * HORIZONTAL_UNIT()}
 						color={this.props.newTicket.themeColor}
 					/>
 				</View>
-
 				<SelectPeriodModalContainer />
 				<FriendInviteModalContainer />
 			</VSPContainer>
