@@ -32,7 +32,7 @@ import {
 	openPeriodModal,
 	openInviteModal,
 } from '../../actions/new-ticket-screen/ui';
-import { THEME_COLORS } from '../../types/lib/theme';
+import InvitedFriendsListContainer from '../../containers/new-ticket-screen/invited-friends-list';
 
 interface INewTicketScreenProps extends IVSPScreenProps {
 	/**
@@ -103,30 +103,25 @@ export default class NewTicketScreen extends React.Component<
 				alignItems: 'center',
 			},
 
-			daysCountView: {
-				flexDirection: 'row',
-				justifyContent: 'flex-end',
-				alignItems: 'flex-end',
-				marginBottom: HORIZONTAL_UNIT(3),
-			},
-
 			titleView: {
 				flexDirection: 'row',
 				justifyContent: 'space-between',
 			},
 
 			footerView: {
+				flexDirection: 'row',
+				justifyContent: 'flex-end',
 				alignItems: 'flex-end',
 			},
 
 			titleText: {
 				fontSize: THEME_HEADER_FONTSIZE,
-				fontWeight: 'bold',
 			},
 
 			valueText: {
 				color: this.props.newTicket.themeColor,
 				fontSize: THEME_HEADER_FONTSIZE,
+				marginHorizontal: HORIZONTAL_UNIT(),
 			},
 
 			bottomView: {
@@ -140,9 +135,8 @@ export default class NewTicketScreen extends React.Component<
 			<VSPContainer>
 				<ScrollView contentContainerStyle={style.scrollView}>
 					<View style={style.categoryView}>
-						<VSPText style={style.titleText}>티켓 제목</VSPText>
 						<VSPTextInput
-							placeholder='제목을 입력해 주세요.'
+							placeholder='티켓 제목을 입력해 주세요.'
 							fontSize={THEME_HEADER_FONTSIZE}
 							marginTop={HORIZONTAL_UNIT()}
 							color={this.props.newTicket.themeColor}
@@ -153,8 +147,11 @@ export default class NewTicketScreen extends React.Component<
 							activeOpacity={0.6}
 							onPress={this._openModalWithFromtab}
 						>
-							<VSPText fontWeight='bold'>시작</VSPText>
-							<VSPText color={this.props.newTicket.themeColor}>
+							<VSPText>시작</VSPText>
+							<VSPText
+								marginY={HORIZONTAL_UNIT()}
+								color={this.props.newTicket.themeColor}
+							>
 								{formatDateString(
 									this.props.newTicket.period.from,
 								)}
@@ -168,7 +165,7 @@ export default class NewTicketScreen extends React.Component<
 						<View style={style.arrowIconView}>
 							<VSPIcon
 								iconName='rightarrow'
-								theme='oceanBlue'
+								theme='grey'
 								size={HORIZONTAL_UNIT(6)}
 							/>
 						</View>
@@ -176,8 +173,11 @@ export default class NewTicketScreen extends React.Component<
 							activeOpacity={0.6}
 							onPress={this._openModalWithTotab}
 						>
-							<VSPText fontWeight='bold'>종료</VSPText>
-							<VSPText color={this.props.newTicket.themeColor}>
+							<VSPText>종료</VSPText>
+							<VSPText
+								marginY={HORIZONTAL_UNIT()}
+								color={this.props.newTicket.themeColor}
+							>
 								{formatDateString(
 									this.props.newTicket.period.to,
 								)}
@@ -189,11 +189,11 @@ export default class NewTicketScreen extends React.Component<
 							</VSPText>
 						</TouchableOpacity>
 					</View>
-					<View style={style.daysCountView}>
-						<VSPText style={style.valueText}>{12}</VSPText>
-						<VSPText> 박 </VSPText>
-						<VSPText style={style.valueText}>{13}</VSPText>
-						<VSPText> 일</VSPText>
+					<View style={style.footerView}>
+						<VSPText style={style.valueText}>{`12`}</VSPText>
+						<VSPText theme='grey'>박</VSPText>
+						<VSPText style={style.valueText}>{`13`}</VSPText>
+						<VSPText theme='grey'>일</VSPText>
 					</View>
 					<View style={style.categoryView}>
 						<VSPText style={style.titleText}>테마 색상</VSPText>
@@ -201,7 +201,9 @@ export default class NewTicketScreen extends React.Component<
 					</View>
 					<View style={style.categoryView}>
 						<View style={style.titleView}>
-							<VSPText style={style.titleText}>친구</VSPText>
+							<VSPText style={style.titleText}>
+								함께하는 친구
+							</VSPText>
 							<VSPTextButton
 								icon='plus'
 								fontSize={THEME_HEADER_FONTSIZE}
@@ -211,20 +213,13 @@ export default class NewTicketScreen extends React.Component<
 								}}
 							/>
 						</View>
-						<InvitedFriendsList
-							themeColor={this.props.newTicket.themeColor}
-						/>
+						<InvitedFriendsListContainer />
 						<View style={style.footerView}>
-							<View
-								style={{
-									flexDirection: 'row',
-									alignItems: 'flex-end',
-								}}
-							>
-								<VSPText>총 </VSPText>
-								<VSPText style={style.valueText}>{13}</VSPText>
-								<VSPText> 명</VSPText>
-							</View>
+							<VSPText theme='grey'>총</VSPText>
+							<VSPText style={style.valueText}>{`${
+								this.props.newTicket.participants.length
+							}`}</VSPText>
+							<VSPText theme='grey'>명</VSPText>
 						</View>
 					</View>
 				</ScrollView>

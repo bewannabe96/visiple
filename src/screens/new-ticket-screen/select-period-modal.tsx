@@ -105,13 +105,13 @@ export default class SelectPeriodModal extends React.Component<
 
 			dateText: {
 				alignSelf: 'flex-end',
-				color: this.props.themeColor,
-				fontWeight: 'bold',
+				color: THEME_COLORS.grey,
+				marginVertical: HORIZONTAL_UNIT(),
 			},
 
 			timeText: {
 				alignSelf: 'flex-end',
-				color: this.props.themeColor,
+				color: THEME_COLORS.grey,
 			},
 
 			calendar: {
@@ -122,8 +122,8 @@ export default class SelectPeriodModal extends React.Component<
 
 		const calendarTheme = {
 			arrowColor: this.props.themeColor,
-			dayTextColor: THEME_COLORS.oceanBlue,
-			monthTextColor: THEME_COLORS.oceanBlue,
+			dayTextColor: THEME_COLORS.grey,
+			monthTextColor: THEME_COLORS.grey,
 			textDayFontFamily: THEME_FONT,
 			textDayFontSize: THEME_FONTSIZE,
 			textDayHeaderFontFamily: THEME_FONT,
@@ -170,7 +170,7 @@ export default class SelectPeriodModal extends React.Component<
 							this.props.switchFromToTab('from-tab');
 						}}
 					>
-						<VSPText fontWeight={'bold'}>시작</VSPText>
+						<VSPText>시작</VSPText>
 						<VSPText style={style.dateText}>
 							{formatDateString(this.props.fromDate)}
 						</VSPText>
@@ -185,7 +185,7 @@ export default class SelectPeriodModal extends React.Component<
 							this.props.switchFromToTab('to-tab');
 						}}
 					>
-						<VSPText fontWeight={'bold'}>종료</VSPText>
+						<VSPText>종료</VSPText>
 						<VSPText style={style.dateText}>
 							{formatDateString(this.props.toDate)}
 						</VSPText>
