@@ -111,7 +111,6 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 							</VSPText>
 						</View>
 					</View>
-					<VSPDivider theme='cottoncandyBlue' />
 					{this._renderItem('친구', 'FriendStack')}
 					{this._renderItem('여행 티켓', 'TicketStack')}
 					{this._renderItem('새로운 여행 기록', 'TicketStack')}
