@@ -127,6 +127,11 @@ export default class NewTicketScreen extends React.Component<
 			},
 		});
 
+		const days = this.props.newTicket.period.to.diff(
+			this.props.newTicket.period.from,
+			'day',
+		).days;
+
 		return (
 			<VSPContainer>
 				<View style={style.container}>
@@ -141,6 +146,7 @@ export default class NewTicketScreen extends React.Component<
 						</View>
 						<View style={style.periodView}>
 							<TouchableOpacity
+								style={{ flex: 2 }}
 								activeOpacity={0.6}
 								onPress={this._openModalWithFromtab}
 							>
@@ -150,15 +156,18 @@ export default class NewTicketScreen extends React.Component<
 									color={this.props.newTicket.themeColor}
 								>
 									{this.props.newTicket.period.from.toLocaleString(
-										DateTime.DATE_SHORT,
+										DateTime.DATE_MED,
 									)}
 								</VSPText>
 								<VSPText
 									color={this.props.newTicket.themeColor}
 								>
-									{this.props.newTicket.period.from.toLocaleString(
-										DateTime.TIME_24_WITH_SHORT_OFFSET,
-									)}
+									{`${this.props.newTicket.period.from.toLocaleString(
+										DateTime.TIME_24_SIMPLE,
+									)} (${
+										this.props.newTicket.period.from
+											.offsetNameShort
+									})`}
 								</VSPText>
 							</TouchableOpacity>
 							<View style={style.arrowIconView}>
@@ -169,6 +178,7 @@ export default class NewTicketScreen extends React.Component<
 								/>
 							</View>
 							<TouchableOpacity
+								style={{ flex: 2 }}
 								activeOpacity={0.6}
 								onPress={this._openModalWithTotab}
 							>
@@ -178,24 +188,37 @@ export default class NewTicketScreen extends React.Component<
 									color={this.props.newTicket.themeColor}
 								>
 									{this.props.newTicket.period.to.toLocaleString(
-										DateTime.DATE_SHORT,
+										DateTime.DATE_MED,
 									)}
 								</VSPText>
 								<VSPText
 									color={this.props.newTicket.themeColor}
 								>
-									{this.props.newTicket.period.to.toLocaleString(
-										DateTime.TIME_24_WITH_SHORT_OFFSET,
-									)}
+									{`${this.props.newTicket.period.to.toLocaleString(
+										DateTime.TIME_24_SIMPLE,
+									)} (${
+										this.props.newTicket.period.to
+											.offsetNameShort
+									})`}
 								</VSPText>
 							</TouchableOpacity>
 						</View>
-						<View style={style.footerView}>
-							<VSPText style={style.valueText}>{`12`}</VSPText>
-							<VSPText theme='grey'>박</VSPText>
-							<VSPText style={style.valueText}>{`13`}</VSPText>
-							<VSPText theme='grey'>일</VSPText>
-						</View>
+						{days === 0 && (
+							<View style={style.footerView}>
+								<VSPText style={style.valueText}>당일</VSPText>
+							</View>
+						)}
+						{days !== 0 && (
+							<View style={style.footerView}>
+								<VSPText
+									style={style.valueText}
+								>{`${days}`}</VSPText>
+								<VSPText theme='grey'>박</VSPText>
+								<VSPText style={style.valueText}>{`${days +
+									1}`}</VSPText>
+								<VSPText theme='grey'>일</VSPText>
+							</View>
+						)}
 						<View style={style.categoryView}>
 							<VSPText style={style.titleText}>테마 색상</VSPText>
 							<TicketColorPickerContainer />
