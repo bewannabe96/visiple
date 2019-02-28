@@ -17,12 +17,12 @@ export const setTicketColor = (themeColor: string): SetTicketColorAction => ({
 	themeColor,
 });
 
-export const setFromDate = (date: DateTime): SetFromDateTimeAction => ({
+export const setFromDateTime = (date: DateTime): SetFromDateTimeAction => ({
 	type: SET_FROM_DATETIME,
 	date,
 });
 
-export const setToDate = (date: DateTime): SetToDateTimeAction => ({
+export const setToDateTime = (date: DateTime): SetToDateTimeAction => ({
 	type: SET_TO_DATETIME,
 	date,
 });
