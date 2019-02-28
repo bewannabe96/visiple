@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { UserID } from '../user';
 import { Plans } from './plan';
 import { Packings } from './packing';
@@ -9,8 +10,8 @@ export interface Ticket {
 	owner: UserID;
 	participants: UserID[];
 	period: {
-		from: Date;
-		to: Date;
+		from: DateTime;
+		to: DateTime;
 	};
 	packings: Packings;
 	plans: Plans;
@@ -22,7 +23,7 @@ export interface NewTicket {
 	owner: UserID;
 	participants: UserID[];
 	period: {
-		from: Date;
-		to: Date;
+		from: DateTime;
+		to: DateTime;
 	};
 }

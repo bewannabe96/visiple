@@ -1,6 +1,8 @@
-interface Time {
-	at: Date;
-	end?: Date;
+import { DateTime } from 'luxon';
+
+interface PlanTime {
+	at: DateTime;
+	end?: DateTime;
 }
 
 type Place = string;
@@ -47,7 +49,7 @@ type DayPlanType = 'MEAL' | 'REST' | 'TRAVEL' | 'ACTIVITY' | 'SIGHTSEEING';
 interface MealPlan {
 	type: 'MEAL';
 	title: string;
-	time: Time;
+	time: PlanTime;
 	note?: string[];
 	category: MealCategory;
 	atPlace?: Place;
@@ -57,7 +59,7 @@ interface MealPlan {
 interface RestPlan {
 	type: 'REST';
 	title: string;
-	time: Time;
+	time: PlanTime;
 	note?: string[];
 	category: RestCategory;
 	atPlace?: Place;
@@ -66,7 +68,7 @@ interface RestPlan {
 interface TravelPlan {
 	type: 'TRAVEL';
 	title: string;
-	time: Time;
+	time: PlanTime;
 	note?: string[];
 	mean: Transportation;
 	move: Move;
@@ -76,7 +78,7 @@ interface TravelPlan {
 interface ActivityPlan {
 	type: 'ACTIVITY';
 	title: string;
-	time: Time;
+	time: PlanTime;
 	note?: string[];
 	atPlace?: Place;
 	cost?: Cost;
@@ -85,7 +87,7 @@ interface ActivityPlan {
 interface SightseeingPlan {
 	type: 'SIGHTSEEING';
 	title: string;
-	time: Time;
+	time: PlanTime;
 	note?: string[];
 	atPlace?: Place;
 	cost?: Cost;
@@ -101,7 +103,7 @@ export type DayPlan =
 type DayPlans = DayPlan[];
 
 export interface Plan {
-	date: Date;
+	date: DateTime;
 	dayPlans: DayPlans;
 }
 
