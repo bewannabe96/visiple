@@ -14,10 +14,7 @@ import {
 	switchFromToTab,
 	closePeriodModal,
 } from '../../actions/new-ticket-screen/ui';
-import {
-	setFromDateTime,
-	setToDateTime,
-} from '../../actions/new-ticket-screen/data';
+import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -48,8 +45,8 @@ interface ISelectPeriodModalProps {
 	// ACTION CREATORS
 	switchFromToTab: typeof switchFromToTab;
 	closePeriodModal: typeof closePeriodModal;
-	setFromDateTime: typeof setFromDateTime;
-	setToDateTime: typeof setToDateTime;
+	setFromDate: typeof setFromDate;
+	setToDate: typeof setToDate;
 }
 
 /**
@@ -132,18 +129,19 @@ export default class SelectPeriodModal extends React.Component<
 		};
 
 		const calendarMarkeddays = (from: DateTime, to: DateTime) => {
-			let fromDate = from.startOf('day');
-			const toDate = to.startOf('day');
+			from = from.startOf('day');
+			to = to.startOf('day');
+			let pointer = from;
 
 			const rtnObj: { [key: string]: any } = {};
-			while (fromDate <= toDate) {
-				rtnObj[fromDate.toISO()] = {
+			while (pointer <= to) {
+				rtnObj[pointer.toISODate()] = {
 					color: this.props.themeColor,
 					textColor: THEME_COLORS.white,
-					startingDay: +fromDate === +from.startOf('day'),
-					endingDay: +fromDate === +toDate,
+					startingDay: +pointer === +from.startOf('day'),
+					endingDay: +pointer === +to,
 				};
-				fromDate += fromDate.plus({ days: 1 });
+				pointer = pointer.plus({ days: 1 });
 			}
 			return rtnObj;
 		};
@@ -214,20 +212,15 @@ export default class SelectPeriodModal extends React.Component<
 						this.props.toDateTime,
 					)}
 					onDayPress={day => {
-						const date =
-							this.props.fromtoTab === 'from-tab'
-								? this.props.fromDateTime
-								: this.props.toDateTime;
-						date = date.set({
-							year: day.year,
-							month: day.month,
-							day: day.day,
-						});
 						// Do error handling
 						if (this.props.fromtoTab === 'from-tab') {
-							this.props.setFromDateTime(date);
+							this.props.setFromDate(
+								day.year,
+								day.month,
+								day.day,
+							);
 						} else {
-							this.props.setToDateTime(date);
+							this.props.setToDate(day.year, day.month, day.day);
 						}
 					}}
 				/>

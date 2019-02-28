@@ -11,8 +11,8 @@ export type DataState = NewTicket;
  * Data Action Constants
  */
 export const SET_THEMECOLOR = 'visiple/new-ticket/SET_THEMECOLOR';
-export const SET_FROM_DATETIME = 'visiple/new-ticket/SET_FROM_DATETIME';
-export const SET_TO_DATETIME = 'visiple/new-ticket/SET_TO_DATETIME';
+export const SET_FROM_DATE = 'visiple/new-ticket/SET_FROM_DATE';
+export const SET_TO_DATE = 'visiple/new-ticket/SET_TO_DATE';
 
 /**
  * Data Action Interfaces
@@ -22,14 +22,18 @@ export interface SetTicketColorAction {
 	themeColor: string;
 }
 
-export interface SetFromDateTimeAction {
-	type: typeof SET_FROM_DATETIME;
-	date: DateTime;
+export interface SetFromDateAction {
+	type: typeof SET_FROM_DATE;
+	year: number;
+	month: number;
+	day: number;
 }
 
-export interface SetToDateTimeAction {
-	type: typeof SET_TO_DATETIME;
-	date: DateTime;
+export interface SetToDateAction {
+	type: typeof SET_TO_DATE;
+	year: number;
+	month: number;
+	day: number;
 }
 
 /**
@@ -37,5 +41,5 @@ export interface SetToDateTimeAction {
  */
 export type DataActions =
 	| SetTicketColorAction
-	| SetFromDateTimeAction
-	| SetToDateTimeAction;
+	| SetFromDateAction
+	| SetToDateAction;

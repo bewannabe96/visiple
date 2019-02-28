@@ -39,7 +39,11 @@ export function DataReducer(state = dataInitialState, action: DataActions) {
 				...state,
 				period: {
 					...state.period,
-					from: action.date,
+					from: state.period.from.set({
+						year: action.year,
+						month: action.month,
+						day: action.day,
+					}),
 				},
 			};
 
@@ -48,7 +52,11 @@ export function DataReducer(state = dataInitialState, action: DataActions) {
 				...state,
 				period: {
 					...state.period,
-					to: action.date,
+					to: state.period.to.set({
+						year: action.year,
+						month: action.month,
+						day: action.day,
+					}),
 				},
 			};
 
