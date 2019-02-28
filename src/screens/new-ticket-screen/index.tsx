@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
+import { DateTime } from 'luxon';
 
 import {
 	VSP_EDGE_PADDING,
