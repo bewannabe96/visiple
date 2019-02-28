@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon';
+
 import { NewTicket } from '../../data/ticket';
 
 /**
@@ -13,21 +15,21 @@ export const SET_FROM_DATE = 'visiple/new-ticket/SET_FROMDATE';
 export const SET_TO_DATE = 'visiple/new-ticket/SET_TODATE';
 
 /**
- * Data Action Creator Interfaces
+ * Data Action Interfaces
  */
-interface SetTicketColorAction {
+export interface SetTicketColorAction {
 	type: typeof SET_THEMECOLOR;
 	themeColor: string;
 }
 
-interface SetFromDateAction {
+export interface SetFromDateAction {
 	type: typeof SET_FROM_DATE;
-	date: Date;
+	date: DateTime;
 }
 
-interface SetToDateACtion {
+export interface SetToDateAction {
 	type: typeof SET_TO_DATE;
-	date: Date;
+	date: DateTime;
 }
 
 /**
@@ -36,4 +38,4 @@ interface SetToDateACtion {
 export type DataActions =
 	| SetTicketColorAction
 	| SetFromDateAction
-	| SetToDateACtion;
+	| SetToDateAction;

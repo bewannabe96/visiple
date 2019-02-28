@@ -21,26 +21,26 @@ export const OPEN_INVITE_MODAL = 'visiple/new-ticket/OPEN_INVITE_MODAL';
 export const CLOSE_INVITE_MODAL = 'visiple/new-ticket/CLOSE_INVITE_MODAL';
 
 /**
- * UI Action Creator Interfaces
+ * UI Action Interfaces
  */
-interface OpenPeriodModalAction {
+export interface OpenPeriodModalAction {
 	type: typeof OPEN_PERIOD_MODAL;
 }
 
-interface ClosePeriodModalAction {
+export interface ClosePeriodModalAction {
 	type: typeof CLOSE_PERIOD_MODAL;
 }
 
-interface SwitchFromToTabAction {
+export interface SwitchFromToTabAction {
 	type: typeof SWITCH_FROMTO_TAB;
 	fromtoTab: FromToTab;
 }
 
-interface OpenInviteModalAction {
+export interface OpenInviteModalAction {
 	type: typeof OPEN_INVITE_MODAL;
 }
 
-interface CloseInviteModalAction {
+export interface CloseInviteModalAction {
 	type: typeof CLOSE_INVITE_MODAL;
 }
 

@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon';
+
 import {
 	TICKET_HEADER_COLORS_KEYS,
 	TICKET_THEME_COLORS,
@@ -19,8 +21,8 @@ const dataInitialState: DataState = {
 	owner: '0001',
 	participants: ['0001', '0002'],
 	period: {
-		from: new Date(),
-		to: new Date(),
+		from: DateTime.local(),
+		to: DateTime.local(),
 	},
 };
 
