@@ -13,6 +13,7 @@ import VSPHeaderButton, {
 } from '../../components/vsp-header-button';
 
 import TicketCard from './tickets-card';
+import { DateTime } from 'luxon';
 
 const DEV_TICKETS: Ticket[] = [
 	{
@@ -22,8 +23,8 @@ const DEV_TICKETS: Ticket[] = [
 		participants: ['0001', '0002', '0004', '0005'],
 		themeColor: '#73C0F4',
 		period: {
-			from: new Date('2020-03-14'),
-			to: new Date('2020-03-18'),
+			from: DateTime.local(2020, 3, 14),
+			to: DateTime.local(2020, 3, 18),
 		},
 		packings: {
 			commonList: [],
@@ -38,8 +39,8 @@ const DEV_TICKETS: Ticket[] = [
 		participants: ['0001', '0003', '0004', '0005', '0006'],
 		themeColor: '#AEEAB0',
 		period: {
-			from: new Date('2020-03-14'),
-			to: new Date('2020-03-18'),
+			from: DateTime.local(2020, 3, 14),
+			to: DateTime.local(2020, 3, 18),
 		},
 		packings: {
 			commonList: [],

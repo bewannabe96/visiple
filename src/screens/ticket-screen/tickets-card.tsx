@@ -16,6 +16,7 @@ import {
 } from '../../config/ticket.json';
 
 import VSPProfile from '../../components/vsp-profile';
+import { DateTime } from 'luxon';
 
 interface ITicketCardProps {
 	/**
@@ -211,7 +212,9 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 								{ticketFixedTexts.from}
 							</Text>
 							<Text style={style.dateText}>
-								{this.props.ticket.period.from.toLocaleDateString()}
+								{this.props.ticket.period.from.toLocaleString(
+									DateTime.DATE_SHORT,
+								)}
 							</Text>
 						</View>
 						<View style={style.fromtoInnerView}>
@@ -219,7 +222,9 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 								{ticketFixedTexts.to}
 							</Text>
 							<Text style={style.dateText}>
-								{this.props.ticket.period.to.toLocaleDateString()}
+								{this.props.ticket.period.to.toLocaleString(
+									DateTime.DATE_SHORT,
+								)}
 							</Text>
 						</View>
 					</View>
