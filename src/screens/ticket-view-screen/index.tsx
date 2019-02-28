@@ -21,6 +21,7 @@ import PlanTimeline from './plan-timeline';
 import PackingList from './packing-list';
 import ParticipantsList from './participants-list';
 import VSPHeaderButton from '../../components/vsp-header-button';
+import { DateTime } from 'luxon';
 
 const DEV_TICKET: Ticket = {
 	id: 1,
@@ -29,8 +30,8 @@ const DEV_TICKET: Ticket = {
 	participants: ['0001', '0002'],
 	themeColor: TICKET_THEME_COLORS.blue,
 	period: {
-		from: new Date('2020-03-14'),
-		to: new Date('2020-03-18'),
+		from: DateTime.local(2020, 3, 14),
+		to: DateTime.local(2020, 3, 18),
 	},
 	packings: {
 		commonList: [
@@ -74,13 +75,13 @@ const DEV_TICKET: Ticket = {
 	},
 	plans: [
 		{
-			date: new Date('2020-03-14'),
+			date: DateTime.local(2020, 3, 14),
 			dayPlans: [
 				{
 					type: 'REST',
 					title: 'test',
 					time: {
-						at: new Date(2020, 2, 14, 9, 30),
+						at: DateTime.local(2020, 3, 14, 9, 30),
 					},
 					category: 'wake',
 					atPlace: 'test',
@@ -89,8 +90,8 @@ const DEV_TICKET: Ticket = {
 					type: 'MEAL',
 					title: 'meal test',
 					time: {
-						at: new Date(2020, 2, 14, 10, 30),
-						end: new Date(2020, 2, 14, 11, 30),
+						at: DateTime.local(2020, 3, 14, 10, 30),
+						end: DateTime.local(2020, 3, 14, 11, 30),
 					},
 					category: 'bar',
 					cost: {
@@ -106,8 +107,8 @@ const DEV_TICKET: Ticket = {
 					type: 'TRAVEL',
 					title: 'test',
 					time: {
-						at: new Date(2020, 2, 14, 12, 0),
-						end: new Date(2020, 2, 14, 13, 30),
+						at: DateTime.local(2020, 3, 14, 12, 0),
+						end: DateTime.local(2020, 3, 14, 13, 30),
 					},
 					mean: 'walk',
 					move: {
@@ -119,7 +120,7 @@ const DEV_TICKET: Ticket = {
 					type: 'ACTIVITY',
 					title: 'activity test',
 					time: {
-						at: new Date(2020, 2, 14, 13, 40),
+						at: DateTime.local(2020, 3, 14, 13, 40),
 					},
 					atPlace: 'what',
 				},
@@ -127,8 +128,8 @@ const DEV_TICKET: Ticket = {
 					type: 'SIGHTSEEING',
 					title: 'meal test',
 					time: {
-						at: new Date(2020, 2, 14, 17, 0),
-						end: new Date(2020, 2, 14, 19, 0),
+						at: DateTime.local(2020, 3, 14, 17, 30),
+						end: DateTime.local(2020, 3, 14, 19, 30),
 					},
 					note: [
 						'타투컨벤션장 입장조건: 샌들, 반바지 금지타투컨벤션장 입장조건: 샌들, 반바지 금지',
@@ -137,19 +138,19 @@ const DEV_TICKET: Ticket = {
 			],
 		},
 		{
-			date: new Date('2020-03-15'),
+			date: DateTime.local(2020, 3, 15),
 			dayPlans: [],
 		},
 		{
-			date: new Date('2020-03-16'),
+			date: DateTime.local(2020, 3, 16),
 			dayPlans: [],
 		},
 		{
-			date: new Date('2020-03-17'),
+			date: DateTime.local(2020, 3, 17),
 			dayPlans: [],
 		},
 		{
-			date: new Date('2020-03-18'),
+			date: DateTime.local(2020, 3, 18),
 			dayPlans: [],
 		},
 	],

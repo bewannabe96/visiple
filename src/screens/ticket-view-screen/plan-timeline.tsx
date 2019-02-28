@@ -8,11 +8,6 @@ import {
 	THEME_HEADER_FONTSIZE,
 	THEME_MINOR_FONTSIZE,
 } from '../../types/lib/size';
-import {
-	formatDateString,
-	formatISODate,
-	formatTimeString,
-} from '../../types/lib/date';
 import { Plans, Plan, DayPlan } from '../../types/data/ticket/plan';
 import { IconName } from '../../types/lib/icon';
 import { CURRENCY } from '../../types/data/currency';
