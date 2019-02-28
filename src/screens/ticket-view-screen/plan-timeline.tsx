@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { DateTime } from 'luxon';
 
 import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
 import {
@@ -108,7 +109,9 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				</View>
 				<View style={style.textView}>
 					<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='grey'>
-						{formatTimeString(dayPlan.time.at)}
+						{dayPlan.time.at.toLocaleString(
+							DateTime.TIME_24_WITH_SECONDS,
+						)}
 					</VSPText>
 				</View>
 			</View>
@@ -278,7 +281,9 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 			<VSPDivider
 				text={
 					dayPlan.time.end !== undefined
-						? formatTimeString(dayPlan.time.end)
+						? dayPlan.time.end.toLocaleString(
+								DateTime.TIME_24_WITH_SECONDS,
+						  )
 						: undefined
 				}
 				fontSize={THEME_MINOR_FONTSIZE}
@@ -335,7 +340,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		return (
 			<View style={style.container}>
 				{this.props.plans.map((plan: Plan, index: number) => (
-					<View key={formatISODate(plan.date)}>
+					<View key={plan.date.toISO()}>
 						<View style={style.bulletLine} />
 						<VSPExpandable
 							marginTop={index === 0 ? 0 : HORIZONTAL_UNIT(4)}
@@ -343,7 +348,9 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								<View style={style.itemContainer}>
 									<View style={style.bulletDot} />
 									<VSPText color={this.props.ticketColor}>
-										{formatDateString(plan.date)}
+										{plan.date.toLocaleString(
+											DateTime.DATE_FULL,
+										)}
 									</VSPText>
 								</View>
 							}
