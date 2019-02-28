@@ -1,15 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
+import { DateTime } from 'luxon';
 
 import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
-import {
-	formatDateString,
-	formatTimeString,
-	formatISODate,
-	generateDatesArrayFromPeriod,
-} from '../../types/lib/date';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
@@ -19,7 +14,10 @@ import {
 	switchFromToTab,
 	closePeriodModal,
 } from '../../actions/new-ticket-screen/ui';
-import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
+import {
+	setFromDateTime,
+	setToDateTime,
+} from '../../actions/new-ticket-screen/data';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -30,12 +28,12 @@ interface ISelectPeriodModalProps {
 	/**
 	 * Date the event starts from
 	 */
-	fromDate: Date;
+	fromDateTime: DateTime;
 
 	/**
 	 * Date the event ends
 	 */
-	toDate: Date;
+	toDateTime: DateTime;
 
 	/**
 	 * The modal is visible if true
@@ -50,8 +48,8 @@ interface ISelectPeriodModalProps {
 	// ACTION CREATORS
 	switchFromToTab: typeof switchFromToTab;
 	closePeriodModal: typeof closePeriodModal;
-	setFromDate: typeof setFromDate;
-	setToDate: typeof setToDate;
+	setFromDateTime: typeof setFromDateTime;
+	setToDateTime: typeof setToDateTime;
 }
 
 /**
@@ -133,23 +131,20 @@ export default class SelectPeriodModal extends React.Component<
 			textMonthFontSize: THEME_FONTSIZE,
 		};
 
-		const calendarMarkeddays = (start: Date, end: Date) => {
-			const keys = generateDatesArrayFromPeriod(start, end);
+		const calendarMarkeddays = (from: DateTime, to: DateTime) => {
+			let fromDate = from.startOf('day');
+			const toDate = to.startOf('day');
+
 			const rtnObj: { [key: string]: any } = {};
-			keys.map(key => {
-				rtnObj[key] = {
+			while (fromDate <= toDate) {
+				rtnObj[fromDate.toISO()] = {
 					color: this.props.themeColor,
 					textColor: THEME_COLORS.white,
+					startingDay: +fromDate === +from.startOf('day'),
+					endingDay: +fromDate === +toDate,
 				};
-			});
-			rtnObj[formatISODate(start)] = {
-				...rtnObj[formatISODate(start)],
-				startingDay: true,
-			};
-			rtnObj[formatISODate(end)] = {
-				...rtnObj[formatISODate(end)],
-				endingDay: true,
-			};
+				fromDate += fromDate.plus({ days: 1 });
+			}
 			return rtnObj;
 		};
 
@@ -172,10 +167,14 @@ export default class SelectPeriodModal extends React.Component<
 					>
 						<VSPText>시작</VSPText>
 						<VSPText style={style.dateText}>
-							{formatDateString(this.props.fromDate)}
+							{this.props.fromDateTime.toLocaleString(
+								DateTime.DATE_SHORT,
+							)}
 						</VSPText>
 						<VSPText style={style.timeText}>
-							{formatTimeString(this.props.fromDate)}
+							{this.props.fromDateTime.toLocaleString(
+								DateTime.TIME_24_WITH_SHORT_OFFSET,
+							)}
 						</VSPText>
 					</TouchableOpacity>
 					<TouchableOpacity
@@ -187,40 +186,48 @@ export default class SelectPeriodModal extends React.Component<
 					>
 						<VSPText>종료</VSPText>
 						<VSPText style={style.dateText}>
-							{formatDateString(this.props.toDate)}
+							{this.props.toDateTime.toLocaleString(
+								DateTime.DATE_SHORT,
+							)}
 						</VSPText>
 						<VSPText style={style.timeText}>
-							{formatTimeString(this.props.fromDate)}
+							{this.props.toDateTime.toLocaleString(
+								DateTime.TIME_24_WITH_SHORT_OFFSET,
+							)}
 						</VSPText>
 					</TouchableOpacity>
 				</View>
 				<Calendar
 					style={style.calendar}
 					theme={calendarTheme}
-					current={formatISODate(
+					current={
 						this.props.fromtoTab === 'from-tab'
-							? this.props.fromDate
-							: this.props.toDate,
-					)}
-					minDate={formatISODate(new Date())}
+							? this.props.fromDateTime.toISO()
+							: this.props.toDateTime.toISO()
+					}
+					minDate={DateTime.local().toISO()}
 					monthFormat={'MMM yyyy'}
 					hideExtraDays={true}
 					markingType={'period'}
 					markedDates={calendarMarkeddays(
-						this.props.fromDate,
-						this.props.toDate,
+						this.props.fromDateTime,
+						this.props.toDateTime,
 					)}
 					onDayPress={day => {
 						const date =
 							this.props.fromtoTab === 'from-tab'
-								? this.props.fromDate
-								: this.props.toDate;
-						date.setFullYear(day.year, day.month - 1, day.day);
+								? this.props.fromDateTime
+								: this.props.toDateTime;
+						date = date.set({
+							year: day.year,
+							month: day.month,
+							day: day.day,
+						});
 						// Do error handling
 						if (this.props.fromtoTab === 'from-tab') {
-							this.props.setFromDate(new Date(date));
+							this.props.setFromDateTime(date);
 						} else {
-							this.props.setToDate(new Date(date));
+							this.props.setToDateTime(date);
 						}
 					}}
 				/>

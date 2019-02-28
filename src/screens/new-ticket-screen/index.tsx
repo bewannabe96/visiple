@@ -10,7 +10,6 @@ import {
 	THEME_FONTSIZE,
 } from '../../types/lib/size';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
-import { formatDateString, formatTimeString } from '../../types/lib/date';
 import { NewTicket } from '../../types/data/ticket';
 
 import VSPHeader from '../../components/vsp-header';
@@ -149,15 +148,15 @@ export default class NewTicketScreen extends React.Component<
 									marginY={HORIZONTAL_UNIT()}
 									color={this.props.newTicket.themeColor}
 								>
-									{formatDateString(
-										this.props.newTicket.period.from,
+									{this.props.newTicket.period.from.toLocaleString(
+										DateTime.DATE_SHORT,
 									)}
 								</VSPText>
 								<VSPText
 									color={this.props.newTicket.themeColor}
 								>
-									{formatTimeString(
-										this.props.newTicket.period.from,
+									{this.props.newTicket.period.from.toLocaleString(
+										DateTime.TIME_24_WITH_SHORT_OFFSET,
 									)}
 								</VSPText>
 							</TouchableOpacity>
@@ -177,15 +176,15 @@ export default class NewTicketScreen extends React.Component<
 									marginY={HORIZONTAL_UNIT()}
 									color={this.props.newTicket.themeColor}
 								>
-									{formatDateString(
-										this.props.newTicket.period.to,
+									{this.props.newTicket.period.to.toLocaleString(
+										DateTime.DATE_SHORT,
 									)}
 								</VSPText>
 								<VSPText
 									color={this.props.newTicket.themeColor}
 								>
-									{formatTimeString(
-										this.props.newTicket.period.to,
+									{this.props.newTicket.period.to.toLocaleString(
+										DateTime.TIME_24_WITH_SHORT_OFFSET,
 									)}
 								</VSPText>
 							</TouchableOpacity>

@@ -2,11 +2,11 @@ import { DateTime } from 'luxon';
 
 import {
 	SET_THEMECOLOR,
-	SET_FROM_DATE,
-	SET_TO_DATE,
+	SET_FROM_DATETIME,
+	SET_TO_DATETIME,
 	SetTicketColorAction,
-	SetFromDateAction,
-	SetToDateAction,
+	SetFromDateTimeAction,
+	SetToDateTimeAction,
 } from '../../types/redux/new-ticket-screen/data';
 
 /**
@@ -17,12 +17,12 @@ export const setTicketColor = (themeColor: string): SetTicketColorAction => ({
 	themeColor,
 });
 
-export const setFromDate = (date: DateTime): SetFromDateAction => ({
-	type: SET_FROM_DATE,
+export const setFromDate = (date: DateTime): SetFromDateTimeAction => ({
+	type: SET_FROM_DATETIME,
 	date,
 });
 
-export const setToDate = (date: DateTime): SetToDateAction => ({
-	type: SET_TO_DATE,
+export const setToDate = (date: DateTime): SetToDateTimeAction => ({
+	type: SET_TO_DATETIME,
 	date,
 });

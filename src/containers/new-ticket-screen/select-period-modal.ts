@@ -6,14 +6,17 @@ import {
 	closePeriodModal,
 	switchFromToTab,
 } from '../../actions/new-ticket-screen/ui';
-import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
+import {
+	setFromDateTime,
+	setToDateTime,
+} from '../../actions/new-ticket-screen/data';
 
 import SelectPeriodModal from '../../screens/new-ticket-screen/select-period-modal';
 
 const mapStateToProps = (state: RootState) => ({
 	themeColor: state.NewTicketScreen.Data.themeColor,
-	fromDate: state.NewTicketScreen.Data.period.from,
-	toDate: state.NewTicketScreen.Data.period.to,
+	fromDateTime: state.NewTicketScreen.Data.period.from,
+	toDateTime: state.NewTicketScreen.Data.period.to,
 	periodModalVisible: state.NewTicketScreen.UI.periodModalVisible,
 	fromtoTab: state.NewTicketScreen.UI.fromtoTab,
 });
@@ -21,8 +24,8 @@ const mapStateToProps = (state: RootState) => ({
 const mapDispatchToProps = {
 	switchFromToTab,
 	closePeriodModal,
-	setFromDate,
-	setToDate,
+	setFromDateTime,
+	setToDateTime,
 };
 
 const SelectPeriodModalContainer = connect(
