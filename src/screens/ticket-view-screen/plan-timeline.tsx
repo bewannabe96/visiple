@@ -109,9 +109,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				</View>
 				<View style={style.textView}>
 					<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='grey'>
-						{dayPlan.time.at.toLocaleString(
-							DateTime.TIME_24_WITH_SECONDS,
-						)}
+						{dayPlan.time.at.toLocaleString(DateTime.TIME_SIMPLE)}
 					</VSPText>
 				</View>
 			</View>
@@ -281,9 +279,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 			<VSPDivider
 				text={
 					dayPlan.time.end !== undefined
-						? dayPlan.time.end.toLocaleString(
-								DateTime.TIME_24_WITH_SECONDS,
-						  )
+						? dayPlan.time.end.toLocaleString(DateTime.TIME_SIMPLE)
 						: undefined
 				}
 				fontSize={THEME_MINOR_FONTSIZE}

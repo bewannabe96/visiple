@@ -22,7 +22,7 @@ const dataInitialState: DataState = {
 	participants: ['0001', '0002'],
 	period: {
 		from: DateTime.local(),
-		to: DateTime.local(),
+		to: DateTime.local().plus({ hours: 1 }),
 	},
 };
 

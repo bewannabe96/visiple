@@ -127,11 +127,6 @@ export default class NewTicketScreen extends React.Component<
 			},
 		});
 
-		const days = this.props.newTicket.period.to.diff(
-			this.props.newTicket.period.from,
-			'day',
-		).days;
-
 		return (
 			<VSPContainer>
 				<View style={style.container}>
@@ -203,7 +198,7 @@ export default class NewTicketScreen extends React.Component<
 								</VSPText>
 							</TouchableOpacity>
 						</View>
-						{days === 0 && (
+						{/* {days === 0 && (
 							<View style={style.footerView}>
 								<VSPText style={style.valueText}>당일</VSPText>
 							</View>
@@ -218,7 +213,7 @@ export default class NewTicketScreen extends React.Component<
 									1}`}</VSPText>
 								<VSPText theme='grey'>일</VSPText>
 							</View>
-						)}
+						)} */}
 						<View style={style.categoryView}>
 							<VSPText style={style.titleText}>테마 색상</VSPText>
 							<TicketColorPickerContainer />

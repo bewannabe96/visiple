@@ -166,13 +166,13 @@ export default class SelectPeriodModal extends React.Component<
 						<VSPText>시작</VSPText>
 						<VSPText style={style.dateText}>
 							{this.props.fromDateTime.toLocaleString(
-								DateTime.DATE_SHORT,
+								DateTime.DATE_FULL,
 							)}
 						</VSPText>
 						<VSPText style={style.timeText}>
-							{this.props.fromDateTime.toLocaleString(
-								DateTime.TIME_24_WITH_SHORT_OFFSET,
-							)}
+							{`${this.props.fromDateTime.toLocaleString(
+								DateTime.TIME_24_SIMPLE,
+							)} (${this.props.fromDateTime.offsetNameShort})`}
 						</VSPText>
 					</TouchableOpacity>
 					<TouchableOpacity
@@ -185,13 +185,13 @@ export default class SelectPeriodModal extends React.Component<
 						<VSPText>종료</VSPText>
 						<VSPText style={style.dateText}>
 							{this.props.toDateTime.toLocaleString(
-								DateTime.DATE_SHORT,
+								DateTime.DATE_FULL,
 							)}
 						</VSPText>
 						<VSPText style={style.timeText}>
-							{this.props.toDateTime.toLocaleString(
-								DateTime.TIME_24_WITH_SHORT_OFFSET,
-							)}
+							{`${this.props.toDateTime.toLocaleString(
+								DateTime.TIME_24_SIMPLE,
+							)} (${this.props.toDateTime.offsetNameShort})`}
 						</VSPText>
 					</TouchableOpacity>
 				</View>
