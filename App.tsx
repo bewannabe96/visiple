@@ -6,7 +6,7 @@ import { createAppContainer } from 'react-navigation';
 import AuthSwitch from './src/navigators/auth-switch';
 import RootReducer from './src/reducers';
 
-const navigationPersistenceKey = __DEV__ ? 'NavigationStateDEV' : null;
+const navigationPersistenceKey = __DEV__ ? 'NavigationStateDEVv0.1' : null;
 
 const AppContainer = createAppContainer(AuthSwitch);
 
