@@ -53,8 +53,8 @@ class VSPHeader extends React.Component<IVSPHeaderProps> {
 					position: this.props.transparent! ? 'absolute' : 'relative',
 					top: 0,
 					width: '100%',
-					borderBottomWidth: this.props.transparent! ? 0 : 0.5,
-					borderColor: THEME_COLORS.brown,
+					borderBottomWidth: this.props.transparent! ? 0 : 1,
+					borderColor: THEME_COLORS.greyWhite,
 				}}
 			>
 				<View
