@@ -22,6 +22,7 @@ import PackingList from './packing-list';
 import ParticipantsList from './participants-list';
 import VSPHeaderButton from '../../components/vsp-header-button';
 import { DateTime } from 'luxon';
+import VSPHeaderDropdown from '../../components/vsp-header-dropdown';
 
 const DEV_TICKET: Ticket = {
 	id: 1,
@@ -184,7 +185,16 @@ export default class TicketViewScreen extends React.Component<
 							}}
 						/>
 					}
-					headerRight={<VSPHeaderButton icon='trash' theme='white' />}
+					headerRight={
+						<VSPHeaderDropdown
+							icon='more'
+							theme='white'
+							contents={[
+								{ title: '기록 생성' },
+								{ icon: 'trash', title: '삭제' },
+							]}
+						/>
+					}
 				/>
 			),
 		};
