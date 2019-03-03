@@ -7,7 +7,6 @@ import { Ticket } from '../../types/data/ticket';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
-import VSPHeaderTitle from '../../components/vsp-header-title';
 import VSPHeaderButton, {
 	VSPHeaderMenu,
 } from '../../components/vsp-header-button';
@@ -59,7 +58,7 @@ export default class TicketScreen extends React.Component<IVSPScreenProps> {
 		return {
 			header: (
 				<VSPHeader
-					headerTitle={<VSPHeaderTitle text='티켓' />}
+					headerTitle='티켓'
 					headerLeft={VSPHeaderMenu(navigation)}
 					headerRight={
 						<VSPHeaderButton

@@ -48,7 +48,6 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 
 		return (
 			<VSPContainer
-				background='cottoncandy-blue'
 				justifyContent='space-between'
 				paddingX={HORIZONTAL_UNIT(9)}
 				paddingY={HORIZONTAL_UNIT(6)}

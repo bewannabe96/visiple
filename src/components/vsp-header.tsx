@@ -3,6 +3,7 @@ import { View, SafeAreaView } from 'react-native';
 
 import { THEME_COLORS } from '../types/lib/theme';
 import { VSP_TOP_PADDING } from '../types/lib/size';
+import VSPText from './vsp-text';
 
 export const HEADER_HEIGHT = 55;
 
@@ -10,17 +11,17 @@ interface IVSPHeaderProps {
 	/**
 	 * Title or component to be displayed in the center
 	 */
-	headerTitle?: string | React.ReactElement<any>;
+	headerTitle?: string | Element;
 
 	/**
 	 * Component to be diplayed in the left
 	 */
-	headerLeft?: React.ReactElement<any>;
+	headerLeft?: Element;
 
 	/**
 	 * Component to be displayed in the right
 	 */
-	headerRight?: React.ReactElement<any>;
+	headerRight?: Element;
 
 	/**
 	 * Transparent if true (by default ```false```)
@@ -80,7 +81,17 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 							alignItems: 'center',
 						}}
 					>
-						{this.props.headerTitle}
+						{typeof this.props.headerTitle === 'string' && (
+							<VSPText
+								fontSize={20}
+								fontWeight='bold'
+								theme='brown'
+							>
+								{this.props.headerTitle}
+							</VSPText>
+						)}
+						{typeof this.props.headerTitle !== 'string' &&
+							this.props.headerTitle}
 					</View>
 					<View
 						style={{

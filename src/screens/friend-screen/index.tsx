@@ -17,7 +17,6 @@ import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
 import VSPBadge from '../../components/vsp-badge';
 import VSPProfile from '../../components/vsp-profile';
-import VSPHeaderTitle from '../../components/vsp-header-title';
 import { VSPHeaderMenu } from '../../components/vsp-header-button';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
@@ -44,7 +43,7 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 		return {
 			header: (
 				<VSPHeader
-					headerTitle={<VSPHeaderTitle text='친구' />}
+					headerTitle='친구'
 					headerLeft={VSPHeaderMenu(navigation)}
 				/>
 			),

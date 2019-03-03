@@ -24,7 +24,6 @@ export default class LoginScreen extends React.Component<IVSPScreenProps> {
 		return (
 			<VSPContainer
 				justifyContent='flex-end'
-				background='cottoncandy-blue'
 				paddingX={HORIZONTAL_UNIT(9)}
 				paddingY={HORIZONTAL_UNIT(6)}
 			>

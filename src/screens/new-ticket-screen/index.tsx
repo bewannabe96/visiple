@@ -20,7 +20,6 @@ import VSPTextInput from '../../components/vsp-textinput';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPColoredButton from '../../components/vsp-colored-button';
 import VSPIcon from '../../components/vsp-icon';
-import VSPHeaderTitle from '../../components/vsp-header-title';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 
 import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';
@@ -63,7 +62,7 @@ export default class NewTicketScreen extends React.Component<
 		return {
 			header: (
 				<VSPHeader
-					headerTitle={<VSPHeaderTitle text='새로운 티켓' />}
+					headerTitle='새로운 티켓'
 					headerLeft={VSPHeaderBack(navigation)}
 				/>
 			),
