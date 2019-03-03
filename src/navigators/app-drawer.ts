@@ -5,6 +5,7 @@ import VSPSideDrawer from '../components/vsp-sidedrawer';
 import _HomeStack from './home-stack';
 import _FriendStack from './friend-stack';
 import _TicketStack from './ticket-stack';
+import _TravelLogTab from './travel-log-tab';
 
 const AppDrawer = createDrawerNavigator(
 	{
@@ -16,6 +17,9 @@ const AppDrawer = createDrawerNavigator(
 		},
 		TicketStack: {
 			screen: _TicketStack,
+		},
+		TravelLogTab: {
+			screen: _TravelLogTab,
 		},
 	},
 	{
