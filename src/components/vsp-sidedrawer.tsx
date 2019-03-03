@@ -15,7 +15,6 @@ import VSPTextButton from './vsp-text-button';
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 import VSPProfile from './vsp-profile';
-import VSPDivider from './vsp-divider';
 
 /**
  * VSPSideDrawer
