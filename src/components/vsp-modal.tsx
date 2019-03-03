@@ -12,6 +12,7 @@ import { IconName } from '../types/lib/icon';
 
 import VSPText from './vsp-text';
 import VSPTextButton from './vsp-text-button';
+import VSPHeader from './vsp-header';
 
 interface IVSPModalProps extends IVSPPaddingProps {
 	/**
@@ -156,37 +157,33 @@ export default class VSPModal extends React.Component<IVSPModalProps> {
 				onBackButtonPress={this.props.closeAction}
 				onBackdropPress={this.props.closeAction}
 			>
-				<View style={style.headerView}>
-					<View style={style.headerLeftView}>
-						{!!this.props.leftButtonIcon ||
-							(!!this.props.leftButtonText && (
-								<VSPTextButton
-									icon={this.props.leftButtonIcon}
-									text={this.props.leftButtonText}
-									theme='brown'
-									underline={false}
-									onPress={this.props.leftButtonOnPress}
-								/>
-							))}
-					</View>
-					<View style={style.headerTitleView}>
-						<VSPText fontSize={THEME_HEADER_FONTSIZE} theme='brown'>
-							{this.props.titleText}
-						</VSPText>
-					</View>
-					<View style={style.headerRightView}>
-						{!!this.props.rightButtonIcon ||
-							(!!this.props.rightButtonText && (
-								<VSPTextButton
-									icon={this.props.rightButtonIcon}
-									text={this.props.rightButtonText}
-									theme='brown'
-									underline={false}
-									onPress={this.props.rightButtonOnPress}
-								/>
-							))}
-					</View>
-				</View>
+				<VSPHeader
+					headerTitle={this.props.titleText}
+					headerLeft={
+						!!this.props.leftButtonIcon ||
+						(!!this.props.leftButtonText && (
+							<VSPTextButton
+								icon={this.props.leftButtonIcon}
+								text={this.props.leftButtonText}
+								theme='brown'
+								underline={false}
+								onPress={this.props.leftButtonOnPress}
+							/>
+						))
+					}
+					headerRight={
+						!!this.props.rightButtonIcon ||
+						(!!this.props.rightButtonText && (
+							<VSPTextButton
+								icon={this.props.rightButtonIcon}
+								text={this.props.rightButtonText}
+								theme='brown'
+								underline={false}
+								onPress={this.props.rightButtonOnPress}
+							/>
+						))
+					}
+				/>
 				<View style={style.bodyView}>{this.props.children}</View>
 			</Modal>
 		);
