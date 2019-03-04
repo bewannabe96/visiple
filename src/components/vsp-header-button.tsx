@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavigationScreenProp } from 'react-navigation';
+import { NavigationScreenProp, Header } from 'react-navigation';
 
 import { IconName } from '../types/lib/icon';
 
 import VSPTextButton from './vsp-text-button';
 import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
 
-export const VSP_HEADER_BUTTON_SIZE = 28;
+const VSP_HEADER_BUTTON_SIZE = Header.HEIGHT * 0.5;
 
 interface IVSPHeaderButtonProps {
 	/**

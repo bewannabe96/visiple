@@ -6,7 +6,8 @@ import { THEME_COLORS } from '../types/lib/theme';
 import { VSP_TOP_PADDING } from '../types/lib/size';
 import VSPText from './vsp-text';
 
-export const HEADER_HEIGHT = Header.HEIGHT;
+const VSP_HEADER_HEIGHT = Header.HEIGHT;
+const VSP_HEADER_TITLE_SIZE = VSP_HEADER_HEIGHT * 0.35;
 
 interface IVSPHeaderProps {
 	/**
@@ -60,7 +61,7 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 			>
 				<View
 					style={{
-						height: HEADER_HEIGHT,
+						height: VSP_HEADER_HEIGHT,
 						flexDirection: 'row',
 						alignItems: 'stretch',
 					}}
@@ -84,7 +85,7 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 					>
 						{typeof this.props.headerTitle === 'string' && (
 							<VSPText
-								fontSize={20}
+								fontSize={VSP_HEADER_TITLE_SIZE}
 								fontWeight='bold'
 								theme='brown'
 							>
