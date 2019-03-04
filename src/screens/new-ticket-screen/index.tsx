@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import {
+	StyleSheet,
+	View,
+	TouchableOpacity,
+	SafeAreaView,
+	ScrollView,
+} from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
@@ -124,11 +130,17 @@ export default class NewTicketScreen extends React.Component<
 				fontSize: THEME_HEADER_FONTSIZE,
 				marginHorizontal: HORIZONTAL_UNIT(),
 			},
+
+			bottomButtonView: {
+				position: 'absolute',
+				width: '100%',
+				bottom: 0,
+			},
 		});
 
 		return (
 			<VSPContainer>
-				<View style={style.container}>
+				<ScrollView contentContainerStyle={style.container}>
 					<View>
 						<View style={style.categoryView}>
 							<VSPTextInput
@@ -241,12 +253,15 @@ export default class NewTicketScreen extends React.Component<
 							</View>
 						</View>
 					</View>
+				</ScrollView>
+				<SafeAreaView style={style.bottomButtonView}>
 					<VSPColoredButton
 						text='완료'
 						fontSize={THEME_HEADER_FONTSIZE}
 						color={this.props.newTicket.themeColor}
+						disableBorderRadius={true}
 					/>
-				</View>
+				</SafeAreaView>
 				<SelectPeriodModalContainer />
 				<FriendInviteModalContainer />
 			</VSPContainer>
