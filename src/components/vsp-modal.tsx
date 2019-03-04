@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, GestureResponderEvent } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../types/lib/size';
+import { HORIZONTAL_UNIT } from '../types/lib/size';
 import { THEME_COLORS } from '../types/lib/theme';
 import {
 	IVSPPaddingProps,
@@ -10,7 +10,6 @@ import {
 } from '../types/props/vsp-padding';
 import { IconName } from '../types/lib/icon';
 
-import VSPText from './vsp-text';
 import VSPTextButton from './vsp-text-button';
 import VSPHeader from './vsp-header';
 
