@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, SafeAreaView } from 'react-native';
+import { Header } from 'react-navigation';
 
 import { THEME_COLORS } from '../types/lib/theme';
 import { VSP_TOP_PADDING } from '../types/lib/size';
 import VSPText from './vsp-text';
 
-export const HEADER_HEIGHT = 55;
+export const HEADER_HEIGHT = Header.HEIGHT;
 
 interface IVSPHeaderProps {
 	/**
