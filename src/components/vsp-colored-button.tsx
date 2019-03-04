@@ -43,6 +43,11 @@ interface IVSPColoredButtonProps extends IVSPMarginProps {
 	color?: RawColor;
 
 	/**
+	 * Remove border radius if true
+	 */
+	disableBorderRadius?: boolean;
+
+	/**
 	 * Callback function when button pressed
 	 */
 	onPress?: (event: GestureResponderEvent) => void;
@@ -57,6 +62,7 @@ interface IVSPColoredButtonProps extends IVSPMarginProps {
  * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
  * - ```theme```: Theme color of the button (by default ```oceanBlue```)
  * - ```color```: Raw color of the button
+ * - ```disableBorderRadius```: Remove border radius if true (by default ```false```)
  * - ```onPress```: Callback function when button pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
@@ -72,6 +78,7 @@ export default class VSPColoredButton extends React.Component<
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
 		theme: 'oceanBlue',
+		disableBorderRadius: false,
 	};
 
 	public render() {
@@ -81,7 +88,9 @@ export default class VSPColoredButton extends React.Component<
 				justifyContent: 'center',
 				alignItems: 'center',
 				padding: 0.5 * this.props.fontSize!,
-				borderRadius: 0.3 * this.props.fontSize!,
+				borderRadius: this.props.disableBorderRadius!
+					? 0
+					: 0.3 * this.props.fontSize!,
 				backgroundColor: this.props.color
 					? this.props.color
 					: THEME_COLORS[this.props.theme!],
