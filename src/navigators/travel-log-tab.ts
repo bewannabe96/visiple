@@ -1,20 +1,16 @@
-import { createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 
-import _LoginScreen from '../screens/login-screen';
-import _RegisterScreen from '../screens/register-screen';
+import _TravelLogScreen from '../screens/travel-log-screen';
 
-const TravelLogTab = createBottomTabNavigator(
+const TravelLogStack = createStackNavigator(
 	{
-		LoginScreenX: {
-			screen: _LoginScreen,
-		},
-		RegisterScreenX: {
-			screen: _RegisterScreen,
+		TravelLogScreen: {
+			screen: _TravelLogScreen,
 		},
 	},
 	{
-		initialRouteName: 'LoginScreenX',
+		initialRouteName: 'TravelLogScreen',
 	},
 );
 
-export default TravelLogTab;
+export default TravelLogStack;

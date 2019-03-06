@@ -112,7 +112,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 					</View>
 					{this._renderItem('친구', 'FriendStack')}
 					{this._renderItem('여행 티켓', 'TicketStack')}
-					{this._renderItem('여행 기록', 'TravelLogTab')}
+					{this._renderItem('여행 기록', 'TravelLogStack')}
 				</View>
 			</VSPContainer>
 		);
