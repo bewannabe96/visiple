@@ -1,15 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { IVSPMarginProps } from '../types/props/vsp-margin';
 import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
 import { IconName } from '../types/lib/icon';
-import {
-	HORIZONTAL_UNIT,
-	DEVICE_WIDTH,
-	VSP_TOP_PADDING,
-} from '../types/lib/size';
+import { HORIZONTAL_UNIT, DEVICE_WIDTH } from '../types/lib/size';
 
 import VSPHeaderButton from './vsp-header-button';
 import VSPIcon from './vsp-icon';
@@ -66,16 +62,18 @@ export default class VSPHeaderDropdown extends React.Component<
 
 	public render() {
 		const style = StyleSheet.create({
-			dropdownContainer: {
+			modal: {
 				position: 'absolute',
-				right: VSP_TOP_PADDING,
-				top: 50,
-				borderRadius: HORIZONTAL_UNIT(),
-				backgroundColor: THEME_COLORS.white,
-				width: DEVICE_WIDTH * 0.45,
-				alignItems: 'stretch',
-				paddingVertical: HORIZONTAL_UNIT(),
+				right: 0,
 				margin: 0,
+			},
+
+			dropdownContainer: {
+				paddingVertical: HORIZONTAL_UNIT(),
+				alignItems: 'stretch',
+				width: DEVICE_WIDTH * 0.45,
+				backgroundColor: THEME_COLORS.white,
+				borderRadius: HORIZONTAL_UNIT(),
 			},
 
 			contentItem: {
@@ -95,31 +93,35 @@ export default class VSPHeaderDropdown extends React.Component<
 				/>
 				<Modal
 					isVisible={this.state.visible}
-					style={style.dropdownContainer}
+					style={style.modal}
 					onBackdropPress={this._closeDropdown}
 					backdropColor={THEME_COLORS.none}
-					animationIn='zoomIn'
-					animationOut='zoomOut'
+					animationIn='fadeIn'
+					animationOut='fadeOut'
 					useNativeDriver={true}
 				>
-					{this.props.contents.map((content, index) => (
-						<TouchableOpacity
-							key={index}
-							style={style.contentItem}
-							onPress={() => {
-								!!content.onPress && content.onPress();
-								this._closeDropdown();
-							}}
-						>
-							{!!content.icon && (
-								<VSPIcon
-									iconName={content.icon}
-									marginRight={HORIZONTAL_UNIT()}
-								/>
-							)}
-							<VSPText>{content.title}</VSPText>
-						</TouchableOpacity>
-					))}
+					<SafeAreaView>
+						<View style={style.dropdownContainer}>
+							{this.props.contents.map((content, index) => (
+								<TouchableOpacity
+									key={index}
+									style={style.contentItem}
+									onPress={() => {
+										!!content.onPress && content.onPress();
+										this._closeDropdown();
+									}}
+								>
+									{!!content.icon && (
+										<VSPIcon
+											iconName={content.icon}
+											marginRight={HORIZONTAL_UNIT()}
+										/>
+									)}
+									<VSPText>{content.title}</VSPText>
+								</TouchableOpacity>
+							))}
+						</View>
+					</SafeAreaView>
 				</Modal>
 			</View>
 		);
