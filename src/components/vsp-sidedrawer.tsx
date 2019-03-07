@@ -32,6 +32,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 				activeOpacity={0.6}
 				onPress={() => {
 					this.props.navigation.navigate(desinationRouteName);
+					this.props.navigation.closeDrawer();
 				}}
 			>
 				<VSPText theme='grey'>{title}</VSPText>
@@ -85,6 +86,7 @@ export default class VSPSideDrawer extends React.Component<DrawerItemsProps> {
 								theme='brown'
 								onPress={() => {
 									this.props.navigation.navigate('HomeStack');
+									this.props.navigation.closeDrawer();
 								}}
 							/>
 							<VSPTextButton
