@@ -13,7 +13,7 @@ import {
 } from '../types/props/vsp-margin';
 import { THEME_FONTSIZE } from '../types/lib/size';
 
-interface IVSPTextProps extends IVSPMarginProps {
+interface IVSPTextProps {
 	/**
 	 * Size of the font
 	 */
@@ -57,7 +57,9 @@ interface IVSPTextProps extends IVSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPText extends React.Component<IVSPTextProps> {
+export default class VSPText extends React.Component<
+	IVSPMarginProps<IVSPTextProps>
+> {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
 		theme: 'black',

@@ -1,5 +1,5 @@
 import { NavigationScreenProp } from 'react-navigation';
 
-export interface IVSPScreenProps {
+export type IVSPScreenProps<T = {}> = T & {
 	navigation: NavigationScreenProp<any>;
-}
+};

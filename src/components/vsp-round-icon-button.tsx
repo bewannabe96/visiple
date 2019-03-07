@@ -15,7 +15,7 @@ import { THEME_FONTSIZE } from '../types/lib/size';
 
 import VSPIcon from './vsp-icon';
 
-interface IVSPRoundIconButtonProps extends IVSPMarginProps {
+interface IVSPRoundIconButtonProps {
 	/**
 	 * Icon to be displayed in the button
 	 */
@@ -66,7 +66,7 @@ interface IVSPRoundIconButtonProps extends IVSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPRoundIconButton extends React.Component<
-	IVSPRoundIconButtonProps
+	IVSPMarginProps<IVSPRoundIconButtonProps>
 > {
 	public static defaultProps = {
 		outline: false,

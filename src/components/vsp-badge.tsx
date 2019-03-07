@@ -14,7 +14,7 @@ import { THEME_FONTSIZE } from '../types/lib/size';
 
 import VSPText from './vsp-text';
 
-interface IVSPBadgeProps extends IVSPMarginProps {
+interface IVSPBadgeProps {
 	/**
 	 * Value of the badge
 	 */
@@ -39,7 +39,9 @@ interface IVSPBadgeProps extends IVSPMarginProps {
  * - ```size```: Size of the badge (by default ```THEME_FONTSIZE```)
  * - ```theme```: Theme color of the badge (by default ```oceanBlue```)
  */
-export default class VSPBadge extends React.Component<IVSPBadgeProps> {
+export default class VSPBadge extends React.Component<
+	IVSPMarginProps<IVSPBadgeProps>
+> {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
 		theme: 'oceanBlue',

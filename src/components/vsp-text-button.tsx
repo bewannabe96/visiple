@@ -16,7 +16,7 @@ import VSPText from './vsp-text';
 import { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 
-interface IVSPTextButtonProps extends IVSPMarginProps {
+interface IVSPTextButtonProps {
 	/**
 	 * Text inside the button
 	 */
@@ -73,7 +73,7 @@ interface IVSPTextButtonProps extends IVSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPTextButton extends React.Component<
-	IVSPTextButtonProps
+	IVSPMarginProps<IVSPTextButtonProps>
 > {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,

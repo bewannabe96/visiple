@@ -6,7 +6,7 @@ import {
 	IVSPPaddingProps,
 } from '../types/props/vsp-padding';
 
-interface IVSPContainerProps extends IVSPPaddingProps {
+interface IVSPContainerProps {
 	/**
 	 * Justify Content
 	 */
@@ -32,7 +32,9 @@ interface IVSPContainerProps extends IVSPPaddingProps {
  * - ```paddingRight```: Rigth padding
  * - ```paddingLeft```: Left padding
  */
-export default class VSPContainer extends React.Component<IVSPContainerProps> {
+export default class VSPContainer extends React.Component<
+	IVSPPaddingProps<IVSPContainerProps>
+> {
 	public static defaultProps = {
 		justifyContent: 'flex-start',
 	};

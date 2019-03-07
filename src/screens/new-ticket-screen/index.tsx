@@ -39,7 +39,7 @@ import {
 	openInviteModal,
 } from '../../actions/new-ticket-screen/ui';
 
-interface INewTicketScreenProps extends IVSPScreenProps {
+interface INewTicketScreenProps {
 	/**
 	 * Ticket Data
 	 */
@@ -58,7 +58,7 @@ interface INewTicketScreenProps extends IVSPScreenProps {
  * - ```newTicket```(required): Ticket Data
  */
 export default class NewTicketScreen extends React.Component<
-	INewTicketScreenProps
+	IVSPScreenProps<INewTicketScreenProps>
 > {
 	public static navigationOptions = ({
 		navigation,

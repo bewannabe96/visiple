@@ -10,7 +10,7 @@
  * - ```marginLeft```: Left margin
  */
 
-export interface IVSPMarginProps {
+export type IVSPMarginProps<T = {}> = T & {
 	/**
 	 * Overall margin; including marginTop, marginBottom, marginRight and marginLeft
 	 */
@@ -45,7 +45,7 @@ export interface IVSPMarginProps {
 	 * Left margin
 	 */
 	marginLeft?: number;
-}
+};
 
 interface IMarginStyleProps {
 	marginTop?: number;

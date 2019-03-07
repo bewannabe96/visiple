@@ -9,7 +9,7 @@ import {
 } from '../types/props/vsp-margin';
 import VSPText from './vsp-text';
 
-interface IVSPProfileProps extends IVSPMarginProps {
+interface IVSPProfileProps {
 	/**
 	 * Size of the icon
 	 */
@@ -47,7 +47,9 @@ interface IVSPProfileProps extends IVSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPProfile extends React.Component<IVSPProfileProps> {
+export default class VSPProfile extends React.Component<
+	IVSPMarginProps<IVSPProfileProps>
+> {
 	public static defaultProps = {
 		size: HORIZONTAL_UNIT(12),
 		blur: false,

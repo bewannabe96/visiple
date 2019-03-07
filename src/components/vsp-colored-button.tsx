@@ -16,7 +16,7 @@ import {
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 
-interface IVSPColoredButtonProps extends IVSPMarginProps {
+interface IVSPColoredButtonProps {
 	/**
 	 * Text inside the button
 	 */
@@ -73,7 +73,7 @@ interface IVSPColoredButtonProps extends IVSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPColoredButton extends React.Component<
-	IVSPColoredButtonProps
+	IVSPMarginProps<IVSPColoredButtonProps>
 > {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,

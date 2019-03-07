@@ -49,11 +49,13 @@ const DEV_TICKETS: Ticket[] = [
 	},
 ];
 
-interface ITicketScreenProps extends IVSPScreenProps {
+interface ITicketScreenProps {
 	tickets: Ticket[];
 }
 
-export default class TicketScreen extends React.Component<ITicketScreenProps> {
+export default class TicketScreen extends React.Component<
+	IVSPScreenProps<ITicketScreenProps>
+> {
 	public static navigationOptions = ({
 		navigation,
 	}: {

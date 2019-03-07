@@ -10,7 +10,7 @@
  * - ```paddingLeft```: Left padding
  */
 
-export interface IVSPPaddingProps {
+export type IVSPPaddingProps<T = {}> = T & {
 	/**
 	 * Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
 	 */
@@ -45,7 +45,7 @@ export interface IVSPPaddingProps {
 	 * Left padding
 	 */
 	paddingLeft?: number;
-}
+};
 
 interface IPaddingStyleProps {
 	paddingTop?: number;

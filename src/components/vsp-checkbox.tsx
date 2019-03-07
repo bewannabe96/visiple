@@ -10,7 +10,7 @@ import {
 
 import VSPIcon from './vsp-icon';
 
-interface IVSPCheckboxProps extends IVSPMarginProps {
+interface IVSPCheckboxProps {
 	/**
 	 * Size of the checkbox
 	 */
@@ -36,7 +36,9 @@ interface IVSPCheckboxProps extends IVSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPCheckbox extends React.Component<IVSPCheckboxProps> {
+export default class VSPCheckbox extends React.Component<
+	IVSPMarginProps<IVSPCheckboxProps>
+> {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
 		theme: 'oceanBlue',

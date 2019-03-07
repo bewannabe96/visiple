@@ -11,7 +11,7 @@ import VSPText from '../../components/vsp-text';
 
 import { VSPHeaderMenu } from '../../components/vsp-header-button';
 
-interface ITravelLogScreenProps extends IVSPScreenProps {
+interface ITravelLogScreenProps {
 	ticket: Ticket;
 }
 
@@ -19,7 +19,7 @@ interface ITravelLogScreenProps extends IVSPScreenProps {
  * TravelLogScreen
  */
 export default class TravelLogScreen extends React.Component<
-	ITravelLogScreenProps
+	IVSPScreenProps<ITravelLogScreenProps>
 > {
 	public static navigationOptions = ({
 		navigation,

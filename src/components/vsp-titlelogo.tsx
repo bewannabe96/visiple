@@ -11,7 +11,7 @@ import {
  */
 const IMAGE_RATIO = 8 / 5;
 
-interface IVSPTitleLogoProps extends IVSPMarginProps {
+interface IVSPTitleLogoProps {
 	/**
 	 * Direction to fit the title logo
 	 *
@@ -32,8 +32,17 @@ interface IVSPTitleLogoProps extends IVSPMarginProps {
  * @property
  * - ```fillDirection```(required): Direction to fit the title logo
  * - ```rescaleRatio```: Ratio by which will rescale the title logo abide (by default ```100%```)
+ * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
+ * - ```marginX```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginTop```: Top margin
+ * - ```marginBottom```: Bottom margin
+ * - ```marginRight```: Rigth margin
+ * - ```marginLeft```: Left margin
  */
-export default class VSPTitleLogo extends React.Component<IVSPTitleLogoProps> {
+export default class VSPTitleLogo extends React.Component<
+	IVSPMarginProps<IVSPTitleLogoProps>
+> {
 	public static defaultProps = {
 		rescaleRatio: '100%',
 	};

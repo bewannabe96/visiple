@@ -157,7 +157,7 @@ const DEV_TICKET: Ticket = {
 	],
 };
 
-interface ITicketViewScreenProps extends IVSPScreenProps {
+interface ITicketViewScreenProps {
 	ticket: Ticket;
 }
 
@@ -165,7 +165,7 @@ interface ITicketViewScreenProps extends IVSPScreenProps {
  * TicketViewScreen
  */
 export default class TicketViewScreen extends React.Component<
-	ITicketViewScreenProps
+	IVSPScreenProps<ITicketViewScreenProps>
 > {
 	public static navigationOptions = ({
 		navigation,

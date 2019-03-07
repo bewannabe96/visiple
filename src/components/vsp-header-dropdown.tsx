@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { IVSPMarginProps } from '../types/props/vsp-margin';
 import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
 import { IconName } from '../types/lib/icon';
 import { HORIZONTAL_UNIT, DEVICE_WIDTH } from '../types/lib/size';
@@ -11,7 +10,7 @@ import VSPHeaderButton from './vsp-header-button';
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 
-interface IVSPVSPDropdownProps extends IVSPMarginProps {
+interface IVSPVSPDropdownProps {
 	/**
 	 * Icon to be displayed
 	 */

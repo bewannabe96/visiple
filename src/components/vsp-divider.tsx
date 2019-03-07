@@ -12,7 +12,7 @@ import { THEME_COLORS, ThemeColor, RawColor } from '../types/lib/theme';
 import VSPText from './vsp-text';
 import VSPIcon from './vsp-icon';
 
-interface IVSPDividerProps extends IVSPMarginProps {
+interface IVSPDividerProps {
 	/**
 	 * Text to be displayed
 	 */
@@ -55,7 +55,9 @@ interface IVSPDividerProps extends IVSPMarginProps {
  * - ```color```: Raw color of the divider
  * - ```orientation```: The place where the text will go (by default ```left```)
  */
-export default class VSPDivider extends React.Component<IVSPDividerProps> {
+export default class VSPDivider extends React.Component<
+	IVSPMarginProps<IVSPDividerProps>
+> {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
 		theme: 'oceanBlue',

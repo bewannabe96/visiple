@@ -47,7 +47,7 @@ type textContentType =
 	| 'username'
 	| 'password';
 
-interface IVSPTextInputProps extends IVSPMarginProps {
+interface IVSPTextInputProps {
 	/**
 	 * Placeholder of the textinput
 	 */
@@ -102,7 +102,9 @@ interface IVSPTextInputProps extends IVSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPTextInput extends React.Component<IVSPTextInputProps> {
+export default class VSPTextInput extends React.Component<
+	IVSPMarginProps<IVSPTextInputProps>
+> {
 	public static defaultProps = {
 		textContentType: 'none',
 		fontSize: THEME_FONTSIZE,

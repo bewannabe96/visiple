@@ -10,7 +10,7 @@ import {
 
 import VSPRoundIconButton from './vsp-round-icon-button';
 
-interface IVSPExpandableProps extends IVSPMarginProps {
+interface IVSPExpandableProps {
 	/**
 	 * Header component of the expandable
 	 */
@@ -49,7 +49,7 @@ interface IVSPExpandableProps extends IVSPMarginProps {
  * - ```marginLeft```: Left margin
  */
 export default class VSPExpandable extends React.Component<
-	IVSPExpandableProps
+	IVSPMarginProps<IVSPExpandableProps>
 > {
 	public static defaultProps = {
 		theme: 'oceanBlue',

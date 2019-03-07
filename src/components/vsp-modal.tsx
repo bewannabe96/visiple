@@ -13,7 +13,7 @@ import { IconName } from '../types/lib/icon';
 import VSPTextButton from './vsp-text-button';
 import VSPHeader from './vsp-header';
 
-interface IVSPModalProps extends IVSPPaddingProps {
+interface IVSPModalProps {
 	/**
 	 * Visible if true
 	 */
@@ -92,7 +92,9 @@ interface IVSPModalProps extends IVSPPaddingProps {
  * - ```paddingLeft```: Left padding
  * =
  */
-export default class VSPModal extends React.Component<IVSPModalProps> {
+export default class VSPModal extends React.Component<
+	IVSPPaddingProps<IVSPModalProps>
+> {
 	public static defaultProps = {
 		heightMode: 'auto',
 	};

@@ -9,7 +9,7 @@ import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
 import ICON_SOURCE, { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 
-interface IVSPIconProps extends IVSPMarginProps {
+interface IVSPIconProps {
 	/**
 	 * Name of the icon
 	 */
@@ -47,7 +47,9 @@ interface IVSPIconProps extends IVSPMarginProps {
  * - ```marginRight```: Rigth margin
  * - ```marginLeft```: Left margin
  */
-export default class VSPIcon extends React.Component<IVSPIconProps> {
+export default class VSPIcon extends React.Component<
+	IVSPMarginProps<IVSPIconProps>
+> {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
 		theme: 'black',
