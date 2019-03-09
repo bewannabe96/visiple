@@ -5,7 +5,7 @@ import { UserID } from '../user';
 export interface TravelLog {
 	id: number;
 	title: string;
-	titleImage: any;
+	titleImage: string;
 	owner: UserID;
 	participants: UserID[];
 	period: {
