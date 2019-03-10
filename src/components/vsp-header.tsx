@@ -78,17 +78,16 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 				>
 					<View
 						style={{
-							flex: 1,
 							justifyContent: 'center',
 							alignItems: 'flex-start',
-							paddingLeft: VSP_TOP_PADDING,
+							paddingHorizontal: VSP_TOP_PADDING,
 						}}
 					>
 						{this.props.headerLeft}
 					</View>
 					<View
 						style={{
-							flex: 2,
+							flex: 1,
 							justifyContent: 'center',
 						}}
 					>
@@ -105,10 +104,9 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 					</View>
 					<View
 						style={{
-							flex: 1,
 							justifyContent: 'center',
 							alignItems: 'flex-end',
-							paddingRight: VSP_TOP_PADDING,
+							paddingHorizontal: VSP_TOP_PADDING,
 						}}
 					>
 						{this.props.headerRight}
