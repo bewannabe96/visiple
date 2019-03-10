@@ -90,13 +90,11 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						style={{
 							flex: 2,
 							justifyContent: 'center',
-							alignItems: 'center',
 						}}
 					>
 						{typeof this.props.headerTitle === 'string' && (
 							<VSPText
 								fontSize={VSP_HEADER_TITLE_SIZE}
-								fontWeight='bold'
 								theme='brown'
 							>
 								{this.props.headerTitle}
