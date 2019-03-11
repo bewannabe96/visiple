@@ -2,6 +2,7 @@ import { DateTime } from 'luxon';
 
 import { UserID } from '../user';
 import { Image } from '../image';
+import { Events } from './event';
 
 export interface TravelLog {
 	id: number;
@@ -13,4 +14,5 @@ export interface TravelLog {
 		from: DateTime;
 		to: DateTime;
 	};
+	events: Events;
 }

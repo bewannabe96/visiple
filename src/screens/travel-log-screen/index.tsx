@@ -24,6 +24,7 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 			from: DateTime.local(),
 			to: DateTime.local(),
 		},
+		events: [],
 	},
 	{
 		id: 2,
@@ -35,6 +36,7 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 			from: DateTime.local(),
 			to: DateTime.local(),
 		},
+		events: [],
 	},
 	{
 		id: 3,
@@ -46,6 +48,7 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 			from: DateTime.local(),
 			to: DateTime.local(),
 		},
+		events: [],
 	},
 ];
 

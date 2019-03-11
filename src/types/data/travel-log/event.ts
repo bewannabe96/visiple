@@ -5,3 +5,5 @@ interface Event {
 	description?: string;
 	images?: Image[];
 }
+
+export type Events = Event[];
