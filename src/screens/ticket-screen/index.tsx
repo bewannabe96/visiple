@@ -29,7 +29,7 @@ const DEV_TICKETS: Ticket[] = [
 			commonList: [],
 			indivLists: [],
 		},
-		plans: [],
+		dayPlans: [],
 	},
 	{
 		id: 2,
@@ -45,7 +45,7 @@ const DEV_TICKETS: Ticket[] = [
 			commonList: [],
 			indivLists: [],
 		},
-		plans: [],
+		dayPlans: [],
 	},
 ];
 
