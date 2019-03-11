@@ -1,18 +1,20 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
+import { DateTime } from 'luxon';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { Ticket } from '../../types/data/ticket';
+import { HORIZONTAL_UNIT, VSP_EDGE_PADDING } from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
-import VSPHeaderButton, {
-	VSPHeaderMenu,
-} from '../../components/vsp-header-button';
+import { VSPHeaderMenu } from '../../components/vsp-header-button';
+import VSPText from '../../components/vsp-text';
+import VSPIcon from '../../components/vsp-icon';
 
 import TicketCard from './tickets-card';
-import { DateTime } from 'luxon';
 
 const DEV_TICKETS: Ticket[] = [
 	{
@@ -66,14 +68,6 @@ export default class TicketScreen extends React.Component<
 				<VSPHeader
 					headerTitle='티켓'
 					headerLeft={VSPHeaderMenu(navigation)}
-					headerRight={
-						<VSPHeaderButton
-							icon='plus'
-							onPress={() => {
-								navigation.navigate('NewTicketScreen');
-							}}
-						/>
-					}
 				/>
 			),
 		};
@@ -96,6 +90,32 @@ export default class TicketScreen extends React.Component<
 							}}
 						/>
 					))}
+					<TouchableOpacity
+						style={{
+							alignItems: 'center',
+							marginTop: HORIZONTAL_UNIT(5),
+							marginHorizontal: VSP_EDGE_PADDING,
+							height: HORIZONTAL_UNIT(31),
+							justifyContent: 'center',
+							borderRadius: HORIZONTAL_UNIT(2),
+							borderColor: THEME_COLORS.grey,
+							borderWidth: 1,
+						}}
+						onPress={() => {
+							this.props.navigation.navigate('NewTicketScreen');
+						}}
+					>
+						<View style={{ flexDirection: 'row' }}>
+							<VSPIcon
+								iconName='plus'
+								marginRight={HORIZONTAL_UNIT(2)}
+								theme='grey'
+							/>
+							<VSPText theme='grey' fontWeight='bold'>
+								새로운 티켓 만들기
+							</VSPText>
+						</View>
+					</TouchableOpacity>
 				</ScrollView>
 			</VSPContainer>
 		);
