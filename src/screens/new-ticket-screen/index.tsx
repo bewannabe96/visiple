@@ -89,7 +89,8 @@ export default class NewTicketScreen extends React.Component<
 		const style = StyleSheet.create({
 			container: {
 				flex: 1,
-				paddingVertical: VSP_TOP_PADDING,
+				paddingTop: VSP_TOP_PADDING,
+				paddingBottom: HORIZONTAL_UNIT(10),
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
 
