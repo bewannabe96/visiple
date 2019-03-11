@@ -9,7 +9,7 @@ import {
 	THEME_HEADER_FONTSIZE,
 	THEME_MINOR_FONTSIZE,
 } from '../../types/lib/size';
-import { Plans, Plan, DayPlan } from '../../types/data/ticket/plan';
+import { DayPlans, Plan, DayPlan } from '../../types/data/ticket/plan';
 import { IconName } from '../../types/lib/icon';
 import { CURRENCY } from '../../types/data/currency';
 
@@ -27,7 +27,7 @@ interface IPlanTimelineProps {
 	/**
 	 * Plans of the ticket
 	 */
-	plans: Plans;
+	dayPlans: DayPlans;
 }
 
 /**
@@ -38,7 +38,7 @@ interface IPlanTimelineProps {
  * - ```plans```(required): Plans of the ticket
  */
 export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
-	private _renderDayPlanTitle(dayPlan: DayPlan) {
+	private _renderDayPlanTitle(plan: Plan) {
 		const style = StyleSheet.create({
 			rowView: {
 				flexDirection: 'row',
@@ -68,7 +68,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 
 		let icon: IconName = 'information';
 
-		switch (dayPlan.type) {
+		switch (plan.type) {
 			case 'MEAL':
 				icon = 'dinner';
 				break;
@@ -76,17 +76,17 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				icon = 'bed';
 				break;
 			case 'TRAVEL':
-				dayPlan.mean === 'automobile' && (icon = 'car');
-				dayPlan.mean === 'bike' && (icon = 'bicycle');
-				dayPlan.mean === 'bus' && (icon = 'bus');
-				dayPlan.mean === 'motorcycle' && (icon = 'motorbike');
-				dayPlan.mean === 'plane' && (icon = 'plane');
-				dayPlan.mean === 'ship' && (icon = 'boat');
-				dayPlan.mean === 'subway' && (icon = 'subway');
-				dayPlan.mean === 'taxi' && (icon = 'taxi');
-				dayPlan.mean === 'train' && (icon = 'train');
-				dayPlan.mean === 'tram' && (icon = 'tram');
-				dayPlan.mean === 'walk' && (icon = 'walk');
+				plan.mean === 'automobile' && (icon = 'car');
+				plan.mean === 'bike' && (icon = 'bicycle');
+				plan.mean === 'bus' && (icon = 'bus');
+				plan.mean === 'motorcycle' && (icon = 'motorbike');
+				plan.mean === 'plane' && (icon = 'plane');
+				plan.mean === 'ship' && (icon = 'boat');
+				plan.mean === 'subway' && (icon = 'subway');
+				plan.mean === 'taxi' && (icon = 'taxi');
+				plan.mean === 'train' && (icon = 'train');
+				plan.mean === 'tram' && (icon = 'tram');
+				plan.mean === 'walk' && (icon = 'walk');
 				break;
 			case 'ACTIVITY':
 				icon = 'campingtent';
@@ -103,20 +103,20 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 					<View style={style.textView}>
 						<VSPIcon iconName={icon} />
 						<VSPText marginLeft={HORIZONTAL_UNIT()}>
-							{dayPlan.title}
+							{plan.title}
 						</VSPText>
 					</View>
 				</View>
 				<View style={style.textView}>
 					<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='grey'>
-						{dayPlan.time.at.toLocaleString(DateTime.TIME_SIMPLE)}
+						{plan.time.at.toLocaleString(DateTime.TIME_SIMPLE)}
 					</VSPText>
 				</View>
 			</View>
 		);
 	}
 
-	private _renderDayPlanDetail(dayPlan: DayPlan) {
+	private _renderDayPlanDetail(plan: Plan) {
 		const style = StyleSheet.create({
 			rowView: {
 				flexDirection: 'row',
@@ -137,7 +137,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 
 		return (
 			<View>
-				{'atPlace' in dayPlan && dayPlan.atPlace !== undefined && (
+				{'atPlace' in Plan && plan.atPlace !== undefined && (
 					<View style={style.rowView}>
 						<VSPIcon
 							iconName='placeholder'
@@ -148,11 +148,11 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 							marginLeft={HORIZONTAL_UNIT()}
 							fontSize={THEME_MINOR_FONTSIZE}
 						>
-							{dayPlan.atPlace}
+							{plan.atPlace}
 						</VSPText>
 					</View>
 				)}
-				{'move' in dayPlan && (
+				{'move' in Plan && (
 					<View style={style.rowView}>
 						<View style={style.fromtoFixedView}>
 							<VSPText
@@ -181,7 +181,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								fontSize={THEME_MINOR_FONTSIZE}
 								theme='grey'
 							>
-								{dayPlan.move.from}
+								{plan.move.from}
 							</VSPText>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
@@ -190,12 +190,12 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 									THEME_MINOR_FONTSIZE + HORIZONTAL_UNIT(2)
 								}
 							>
-								{dayPlan.move.to}
+								{plan.move.to}
 							</VSPText>
 						</View>
 					</View>
 				)}
-				{'cost' in dayPlan && dayPlan.cost !== undefined && (
+				{'cost' in Plan && plan.cost !== undefined && (
 					<View style={style.rowView}>
 						<VSPIcon
 							iconName='money'
@@ -216,15 +216,15 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 									theme='grey'
 									fontWeight='bold'
 								>
-									{dayPlan.cost.currency}
+									{plan.cost.currency}
 								</VSPText>
-								{dayPlan.cost.currency in CURRENCY && (
+								{plan.cost.currency in CURRENCY && (
 									<VSPText
 										fontSize={THEME_MINOR_FONTSIZE}
 										theme='grey'
 									>
 										{`(${
-											CURRENCY[dayPlan.cost.currency].name
+											CURRENCY[plan.cost.currency].name
 										})`}
 									</VSPText>
 								)}
@@ -236,21 +236,21 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 									textAlign: 'right',
 								}}
 							>
-								{dayPlan.cost.currency in CURRENCY
-									? dayPlan.cost.value.toLocaleString(
+								{plan.cost.currency in CURRENCY
+									? plan.cost.value.toLocaleString(
 											undefined,
 											{
 												style: 'currency',
-												currency: dayPlan.cost.currency,
+												currency: plan.cost.currency,
 											},
 									  )
-									: `$${dayPlan.cost.value.toLocaleString()}`}
+									: `$${plan.cost.value.toLocaleString()}`}
 							</VSPText>
 						</View>
 					</View>
 				)}
-				{dayPlan.note !== undefined &&
-					dayPlan.note.map((note: string, index: number) => (
+				{plan.note !== undefined &&
+					plan.note.map((note: string, index: number) => (
 						<View key={index} style={style.rowView}>
 							<VSPIcon
 								iconName='information'
@@ -274,12 +274,12 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		);
 	}
 
-	private _renderEndTime(dayPlan: DayPlan) {
+	private _renderEndTime(plan: Plan) {
 		return (
 			<VSPDivider
 				text={
-					dayPlan.time.end !== undefined
-						? dayPlan.time.end.toLocaleString(DateTime.TIME_SIMPLE)
+					plan.time.end !== undefined
+						? plan.time.end.toLocaleString(DateTime.TIME_SIMPLE)
 						: undefined
 				}
 				fontSize={THEME_MINOR_FONTSIZE}
@@ -335,7 +335,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 
 		return (
 			<View style={style.container}>
-				{this.props.plans.map((plan: Plan, index: number) => (
+				{this.props.dayPlans.map((dayPlan: DayPlan, index: number) => (
 					<View key={plan.date.toISO()}>
 						<View style={style.bulletLine} />
 						<VSPExpandable
@@ -352,19 +352,17 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 							}
 							body={
 								<View>
-									{plan.dayPlans.map(
-										(dayPlan: DayPlan, index: number) => (
+									{dayPlan.plans.map(
+										(plan: Plan, index: number) => (
 											<View
 												key={index}
 												style={style.dayplanView}
 											>
-												{this._renderDayPlanTitle(
-													dayPlan,
-												)}
+												{this._renderDayPlanTitle(plan)}
 												{this._renderDayPlanDetail(
-													dayPlan,
+													plan,
 												)}
-												{this._renderEndTime(dayPlan)}
+												{this._renderEndTime(plan)}
 											</View>
 										),
 									)}

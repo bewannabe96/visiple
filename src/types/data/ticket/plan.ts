@@ -93,18 +93,18 @@ interface SightseeingPlan {
 	cost?: Cost;
 }
 
-export type DayPlan =
+export type Plan =
 	| MealPlan
 	| RestPlan
 	| TravelPlan
 	| ActivityPlan
 	| SightseeingPlan;
 
-type DayPlans = DayPlan[];
+type Plans = Plan[];
 
-export interface Plan {
+export interface DayPlan {
 	date: DateTime;
-	dayPlans: DayPlans;
+	plans: Plans;
 }
 
-export type Plans = Plan[];
+export type DayPlans = DayPlan[];

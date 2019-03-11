@@ -74,10 +74,10 @@ const DEV_TICKET: Ticket = {
 			},
 		],
 	},
-	plans: [
+	dayPlans: [
 		{
 			date: DateTime.local(2020, 3, 14),
-			dayPlans: [
+			plans: [
 				{
 					type: 'REST',
 					title: 'test',
@@ -253,7 +253,7 @@ export default class TicketViewScreen extends React.Component<
 							ticketColor={DEV_TICKET.themeColor}
 						/>
 						<PlanTimeline
-							plans={DEV_TICKET.plans}
+							plans={DEV_TICKET.dayPlans}
 							ticketColor={DEV_TICKET.themeColor}
 						/>
 					</ScrollView>
