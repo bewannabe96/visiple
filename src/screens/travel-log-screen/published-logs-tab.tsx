@@ -5,15 +5,19 @@ import {
 	StyleSheet,
 	Dimensions,
 	TouchableOpacity,
+	Image,
 } from 'react-native';
 import { TabProps } from 'react-native-scrollable-tab-view';
 
 import { TravelLog } from '../../types/data/travel-log';
-import { THEME_HEADER_FONTSIZE, HORIZONTAL_UNIT } from '../../types/lib/size';
-import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
+import {
+	THEME_HEADER_FONTSIZE,
+	HORIZONTAL_UNIT,
+	VSP_EDGE_PADDING,
+} from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPText from '../../components/vsp-text';
-import VSPImage from '../../components/vsp-image';
 
 interface IPublishedLogsTabProps {
 	/**
@@ -34,18 +38,24 @@ export default class PublishedLogsTab extends React.Component<
 	private _renderItems() {
 		const style = StyleSheet.create({
 			container: {
-				padding: HORIZONTAL_UNIT(3),
-				alignItems: 'stretch',
-				...addShadowProperties(),
+				marginVertical: HORIZONTAL_UNIT(2),
+				marginHorizontal: HORIZONTAL_UNIT(3),
+				backgroundColor: THEME_COLORS.black,
+				borderRadius: HORIZONTAL_UNIT(2),
 			},
 
 			imageView: {
+				opacity: 0.7,
+				width: '100%',
 				height: Dimensions.get('window').width * 0.6,
+				borderRadius: HORIZONTAL_UNIT(2),
 			},
 
 			titleView: {
-				padding: HORIZONTAL_UNIT(2),
-				backgroundColor: THEME_COLORS.white,
+				position: 'absolute',
+				bottom: 0,
+				width: '100%',
+				padding: HORIZONTAL_UNIT(3),
 			},
 		});
 
@@ -55,13 +65,12 @@ export default class PublishedLogsTab extends React.Component<
 				style={style.container}
 				activeOpacity={0.6}
 			>
-				<View style={style.imageView}>
-					<VSPImage
-						source={require('../../dev-sample-image/landscape_1.jpeg')}
-					/>
-				</View>
+				<Image
+					style={style.imageView}
+					source={require('../../dev-sample-image/landscape_1.jpeg')}
+				/>
 				<View style={style.titleView}>
-					<VSPText fontSize={THEME_HEADER_FONTSIZE}>
+					<VSPText fontSize={THEME_HEADER_FONTSIZE} theme='white'>
 						{travelLog.title}
 					</VSPText>
 				</View>
@@ -70,6 +79,12 @@ export default class PublishedLogsTab extends React.Component<
 	}
 
 	public render() {
-		return <ScrollView>{this._renderItems()}</ScrollView>;
+		return (
+			<ScrollView
+				contentContainerStyle={{ paddingVertical: HORIZONTAL_UNIT(2) }}
+			>
+				{this._renderItems()}
+			</ScrollView>
+		);
 	}
 }
