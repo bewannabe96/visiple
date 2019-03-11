@@ -89,7 +89,6 @@ export default class NewTicketScreen extends React.Component<
 		const style = StyleSheet.create({
 			container: {
 				flex: 1,
-				justifyContent: 'space-between',
 				paddingVertical: VSP_TOP_PADDING,
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
@@ -141,75 +140,70 @@ export default class NewTicketScreen extends React.Component<
 		return (
 			<VSPContainer>
 				<ScrollView contentContainerStyle={style.container}>
-					<View>
-						<View style={style.categoryView}>
-							<VSPTextInput
-								placeholder='티켓 제목을 입력해 주세요.'
-								fontSize={THEME_FONTSIZE}
-								marginTop={HORIZONTAL_UNIT()}
+					<View style={style.categoryView}>
+						<VSPTextInput
+							placeholder='티켓 제목을 입력해 주세요.'
+							fontSize={THEME_FONTSIZE}
+							marginTop={HORIZONTAL_UNIT()}
+							color={this.props.newTicket.themeColor}
+						/>
+					</View>
+					<View style={style.periodView}>
+						<TouchableOpacity
+							style={{ flex: 2 }}
+							activeOpacity={0.6}
+							onPress={this._openModalWithFromtab}
+						>
+							<VSPText>시작</VSPText>
+							<VSPText
+								marginY={HORIZONTAL_UNIT()}
 								color={this.props.newTicket.themeColor}
+							>
+								{this.props.newTicket.period.from.toLocaleString(
+									DateTime.DATE_MED,
+								)}
+							</VSPText>
+							<VSPText color={this.props.newTicket.themeColor}>
+								{`${this.props.newTicket.period.from.toLocaleString(
+									DateTime.TIME_24_SIMPLE,
+								)} (${
+									this.props.newTicket.period.from
+										.offsetNameShort
+								})`}
+							</VSPText>
+						</TouchableOpacity>
+						<View style={style.arrowIconView}>
+							<VSPIcon
+								iconName='rightarrow'
+								theme='grey'
+								size={HORIZONTAL_UNIT(6)}
 							/>
 						</View>
-						<View style={style.periodView}>
-							<TouchableOpacity
-								style={{ flex: 2 }}
-								activeOpacity={0.6}
-								onPress={this._openModalWithFromtab}
+						<TouchableOpacity
+							style={{ flex: 2 }}
+							activeOpacity={0.6}
+							onPress={this._openModalWithTotab}
+						>
+							<VSPText>종료</VSPText>
+							<VSPText
+								marginY={HORIZONTAL_UNIT()}
+								color={this.props.newTicket.themeColor}
 							>
-								<VSPText>시작</VSPText>
-								<VSPText
-									marginY={HORIZONTAL_UNIT()}
-									color={this.props.newTicket.themeColor}
-								>
-									{this.props.newTicket.period.from.toLocaleString(
-										DateTime.DATE_MED,
-									)}
-								</VSPText>
-								<VSPText
-									color={this.props.newTicket.themeColor}
-								>
-									{`${this.props.newTicket.period.from.toLocaleString(
-										DateTime.TIME_24_SIMPLE,
-									)} (${
-										this.props.newTicket.period.from
-											.offsetNameShort
-									})`}
-								</VSPText>
-							</TouchableOpacity>
-							<View style={style.arrowIconView}>
-								<VSPIcon
-									iconName='rightarrow'
-									theme='grey'
-									size={HORIZONTAL_UNIT(6)}
-								/>
-							</View>
-							<TouchableOpacity
-								style={{ flex: 2 }}
-								activeOpacity={0.6}
-								onPress={this._openModalWithTotab}
-							>
-								<VSPText>종료</VSPText>
-								<VSPText
-									marginY={HORIZONTAL_UNIT()}
-									color={this.props.newTicket.themeColor}
-								>
-									{this.props.newTicket.period.to.toLocaleString(
-										DateTime.DATE_MED,
-									)}
-								</VSPText>
-								<VSPText
-									color={this.props.newTicket.themeColor}
-								>
-									{`${this.props.newTicket.period.to.toLocaleString(
-										DateTime.TIME_24_SIMPLE,
-									)} (${
-										this.props.newTicket.period.to
-											.offsetNameShort
-									})`}
-								</VSPText>
-							</TouchableOpacity>
-						</View>
-						{/* {days === 0 && (
+								{this.props.newTicket.period.to.toLocaleString(
+									DateTime.DATE_MED,
+								)}
+							</VSPText>
+							<VSPText color={this.props.newTicket.themeColor}>
+								{`${this.props.newTicket.period.to.toLocaleString(
+									DateTime.TIME_24_SIMPLE,
+								)} (${
+									this.props.newTicket.period.to
+										.offsetNameShort
+								})`}
+							</VSPText>
+						</TouchableOpacity>
+					</View>
+					{/* {days === 0 && (
 							<View style={style.footerView}>
 								<VSPText style={style.valueText}>당일</VSPText>
 							</View>
@@ -225,32 +219,31 @@ export default class NewTicketScreen extends React.Component<
 								<VSPText theme='grey'>일</VSPText>
 							</View>
 						)} */}
-						<View style={style.categoryView}>
-							<VSPText style={style.titleText}>테마 색상</VSPText>
-							<TicketColorPickerContainer />
+					<View style={style.categoryView}>
+						<VSPText style={style.titleText}>테마 색상</VSPText>
+						<TicketColorPickerContainer />
+					</View>
+					<View style={style.categoryView}>
+						<View style={style.titleView}>
+							<VSPText style={style.titleText}>
+								함께하는 친구
+							</VSPText>
+							<VSPTextButton
+								icon='plus'
+								fontSize={THEME_HEADER_FONTSIZE}
+								color={this.props.newTicket.themeColor}
+								onPress={() => {
+									this.props.openInviteModal();
+								}}
+							/>
 						</View>
-						<View style={style.categoryView}>
-							<View style={style.titleView}>
-								<VSPText style={style.titleText}>
-									함께하는 친구
-								</VSPText>
-								<VSPTextButton
-									icon='plus'
-									fontSize={THEME_HEADER_FONTSIZE}
-									color={this.props.newTicket.themeColor}
-									onPress={() => {
-										this.props.openInviteModal();
-									}}
-								/>
-							</View>
-							<InvitedParticipantsListContainer />
-							<View style={style.footerView}>
-								<VSPText theme='grey'>총</VSPText>
-								<VSPText style={style.valueText}>{`${
-									this.props.newTicket.participants.length
-								}`}</VSPText>
-								<VSPText theme='grey'>명</VSPText>
-							</View>
+						<InvitedParticipantsListContainer />
+						<View style={style.footerView}>
+							<VSPText theme='grey'>총</VSPText>
+							<VSPText style={style.valueText}>{`${
+								this.props.newTicket.participants.length
+							}`}</VSPText>
+							<VSPText theme='grey'>명</VSPText>
 						</View>
 					</View>
 				</ScrollView>
