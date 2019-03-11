@@ -7,15 +7,13 @@ import {
 	TouchableOpacity,
 	Image,
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import { TabProps } from 'react-native-scrollable-tab-view';
 
 import { TravelLog } from '../../types/data/travel-log';
-import {
-	THEME_HEADER_FONTSIZE,
-	HORIZONTAL_UNIT,
-	VSP_EDGE_PADDING,
-} from '../../types/lib/size';
+import { THEME_HEADER_FONTSIZE, HORIZONTAL_UNIT } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
+import { IVSPScreenProps } from '../../types/props/vsp-screen';
 
 import VSPText from '../../components/vsp-text';
 
@@ -32,8 +30,8 @@ interface IPublishedLogsTabProps {
  * @property
  * - ```travelLogs```(required): Travel logs
  */
-export default class PublishedLogsTab extends React.Component<
-	TabProps<IPublishedLogsTabProps>
+class PublishedLogsTab extends React.Component<
+	IVSPScreenProps<TabProps<IPublishedLogsTabProps>>
 > {
 	private _renderItems() {
 		const style = StyleSheet.create({
@@ -64,6 +62,9 @@ export default class PublishedLogsTab extends React.Component<
 				key={travelLog.id}
 				style={style.container}
 				activeOpacity={0.6}
+				onPress={() => {
+					this.props.navigation.navigate('NewTravelLogScreen');
+				}}
 			>
 				<Image
 					style={style.imageView}
@@ -88,3 +89,5 @@ export default class PublishedLogsTab extends React.Component<
 		);
 	}
 }
+
+export default withNavigation(PublishedLogsTab);
