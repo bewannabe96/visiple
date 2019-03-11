@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
+import { DateTime } from 'luxon';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import {
@@ -16,13 +17,12 @@ import { THEME_COLORS } from '../../types/lib/theme';
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
+import VSPHeaderButton from '../../components/vsp-header-button';
+import VSPHeaderDropdown from '../../components/vsp-header-dropdown';
 
 import PlanTimeline from './dayplan-timeline';
 import PackingList from './packing-list';
 import ParticipantsList from './participants-list';
-import VSPHeaderButton from '../../components/vsp-header-button';
-import { DateTime } from 'luxon';
-import VSPHeaderDropdown from '../../components/vsp-header-dropdown';
 
 const DEV_TICKET: Ticket = {
 	id: 1,
