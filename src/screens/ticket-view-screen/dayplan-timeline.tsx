@@ -38,7 +38,7 @@ interface IPlanTimelineProps {
  * - ```plans```(required): Plans of the ticket
  */
 export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
-	private _renderDayPlanTitle(plan: Plan) {
+	private _renderPlanTitle(plan: Plan) {
 		const style = StyleSheet.create({
 			rowView: {
 				flexDirection: 'row',
@@ -116,7 +116,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		);
 	}
 
-	private _renderDayPlanDetail(plan: Plan) {
+	private _renderPlanDetail(plan: Plan) {
 		const style = StyleSheet.create({
 			rowView: {
 				flexDirection: 'row',
@@ -137,7 +137,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 
 		return (
 			<View>
-				{'atPlace' in Plan && plan.atPlace !== undefined && (
+				{'atPlace' in plan && plan.atPlace !== undefined && (
 					<View style={style.rowView}>
 						<VSPIcon
 							iconName='placeholder'
@@ -152,7 +152,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						</VSPText>
 					</View>
 				)}
-				{'move' in Plan && (
+				{'move' in plan && (
 					<View style={style.rowView}>
 						<View style={style.fromtoFixedView}>
 							<VSPText
@@ -195,7 +195,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						</View>
 					</View>
 				)}
-				{'cost' in Plan && plan.cost !== undefined && (
+				{'cost' in plan && plan.cost !== undefined && (
 					<View style={style.rowView}>
 						<VSPIcon
 							iconName='money'
@@ -291,7 +291,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		);
 	}
 
-	private _renderPlans() {
+	private _renderDayPlans() {
 		const style = StyleSheet.create({
 			container: {
 				marginTop: HORIZONTAL_UNIT(4),
@@ -336,7 +336,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		return (
 			<View style={style.container}>
 				{this.props.dayPlans.map((dayPlan: DayPlan, index: number) => (
-					<View key={plan.date.toISO()}>
+					<View key={dayPlan.date.toISO()}>
 						<View style={style.bulletLine} />
 						<VSPExpandable
 							marginTop={index === 0 ? 0 : HORIZONTAL_UNIT(4)}
@@ -344,7 +344,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								<View style={style.itemContainer}>
 									<View style={style.bulletDot} />
 									<VSPText color={this.props.ticketColor}>
-										{plan.date.toLocaleString(
+										{dayPlan.date.toLocaleString(
 											DateTime.DATE_FULL,
 										)}
 									</VSPText>
@@ -358,10 +358,8 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 												key={index}
 												style={style.dayplanView}
 											>
-												{this._renderDayPlanTitle(plan)}
-												{this._renderDayPlanDetail(
-													plan,
-												)}
+												{this._renderPlanTitle(plan)}
+												{this._renderPlanDetail(plan)}
 												{this._renderEndTime(plan)}
 											</View>
 										),
@@ -404,7 +402,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						일정
 					</VSPText>
 				</View>
-				{this._renderPlans()}
+				{this._renderDayPlans()}
 			</View>
 		);
 	}

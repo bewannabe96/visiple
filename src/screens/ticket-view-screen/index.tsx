@@ -17,7 +17,7 @@ import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
 
-import PlanTimeline from './plan-timeline';
+import PlanTimeline from './dayplan-timeline';
 import PackingList from './packing-list';
 import ParticipantsList from './participants-list';
 import VSPHeaderButton from '../../components/vsp-header-button';
@@ -140,19 +140,19 @@ const DEV_TICKET: Ticket = {
 		},
 		{
 			date: DateTime.local(2020, 3, 15),
-			dayPlans: [],
+			plans: [],
 		},
 		{
 			date: DateTime.local(2020, 3, 16),
-			dayPlans: [],
+			plans: [],
 		},
 		{
 			date: DateTime.local(2020, 3, 17),
-			dayPlans: [],
+			plans: [],
 		},
 		{
 			date: DateTime.local(2020, 3, 18),
-			dayPlans: [],
+			plans: [],
 		},
 	],
 };
@@ -253,7 +253,7 @@ export default class TicketViewScreen extends React.Component<
 							ticketColor={DEV_TICKET.themeColor}
 						/>
 						<PlanTimeline
-							plans={DEV_TICKET.dayPlans}
+							dayPlans={DEV_TICKET.dayPlans}
 							ticketColor={DEV_TICKET.themeColor}
 						/>
 					</ScrollView>
