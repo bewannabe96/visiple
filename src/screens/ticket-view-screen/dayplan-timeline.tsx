@@ -190,14 +190,11 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								theme='grey'
 							>
 								{plan.cost.currency in CURRENCY
-									? plan.cost.value.toLocaleString(
-											undefined,
-											{
-												style: 'currency',
-												currency: plan.cost.currency,
-											},
-									  )
-									: `$${plan.cost.value.toLocaleString()}`}
+									? `${
+											CURRENCY[plan.cost.currency]
+												.symbol_native
+									  } ${plan.cost.value.toLocaleString()}`
+									: `$ ${plan.cost.value.toLocaleString()}`}
 							</VSPText>
 						</View>
 						{plan.cost.currency in CURRENCY && (
