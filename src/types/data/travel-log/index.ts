@@ -16,3 +16,25 @@ export interface TravelLog {
 	};
 	events: Events;
 }
+
+export interface EditingTravelLog {
+	title: string;
+	titleImage?: Image;
+	owner: UserID;
+	participants: UserID[];
+	period: {
+		from: DateTime;
+		to: DateTime;
+	};
+	events: Events;
+}
+
+export interface NewtravelLog {
+	title: string;
+	owner: UserID;
+	participants: UserID[];
+	period: {
+		from: DateTime;
+		to: DateTime;
+	};
+}
