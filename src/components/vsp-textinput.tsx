@@ -172,8 +172,13 @@ export default class VSPTextInput extends React.Component<
 				{!!this.props.rearIcon && (
 					<VSPIcon
 						iconName={this.props.rearIcon}
-						color={THEME_COLORS[this.props.theme!]}
+						color={
+							this.props.color
+								? this.props.color
+								: THEME_COLORS[this.props.theme!]
+						}
 						size={this.props.fontSize!}
+						marginLeft={0.7 * this.props.fontSize!}
 					/>
 				)}
 			</View>
