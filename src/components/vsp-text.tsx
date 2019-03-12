@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleProp } from 'react-native';
+import { Text, StyleProp, View } from 'react-native';
 
 import {
 	THEME_FONT,
