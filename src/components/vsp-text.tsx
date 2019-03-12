@@ -82,7 +82,12 @@ export default class VSPText extends React.Component<
 
 	public render() {
 		return (
-			<View style={{ flexDirection: 'row' }}>
+			<View
+				style={{
+					flexDirection: 'row',
+					...decodeVSPMarginProps(this.props),
+				}}
+			>
 				{!!this.props.frontIcon && (
 					<VSPIcon
 						iconName={this.props.frontIcon}
@@ -92,7 +97,7 @@ export default class VSPText extends React.Component<
 								: THEME_COLORS[this.props.theme!]
 						}
 						size={this.props.fontSize!}
-						marginRight={0.7 * this.props.fontSize!}
+						marginRight={0.3 * this.props.fontSize!}
 					/>
 				)}
 				<Text
@@ -103,7 +108,6 @@ export default class VSPText extends React.Component<
 						color: this.props.color
 							? this.props.color
 							: THEME_COLORS[this.props.theme!],
-						...decodeVSPMarginProps(this.props),
 						...this.props.style,
 					}}
 				>
@@ -118,7 +122,7 @@ export default class VSPText extends React.Component<
 								: THEME_COLORS[this.props.theme!]
 						}
 						size={this.props.fontSize!}
-						marginLeft={0.7 * this.props.fontSize!}
+						marginLeft={0.3 * this.props.fontSize!}
 					/>
 				)}
 			</View>
