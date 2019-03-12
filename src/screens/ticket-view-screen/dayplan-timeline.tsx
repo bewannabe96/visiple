@@ -40,20 +40,14 @@ interface IPlanTimelineProps {
 export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 	private _renderPlanTitle(plan: Plan) {
 		const style = StyleSheet.create({
-			rowView: {
+			container: {
 				flexDirection: 'row',
 				justifyContent: 'space-between',
-				alignItems: 'flex-start',
 			},
 
 			headerView: {
 				flexDirection: 'row',
 				alignItems: 'center',
-			},
-
-			textView: {
-				flexDirection: 'row',
-				alignItems: 'flex-end',
 			},
 
 			bulletDash: {
@@ -97,98 +91,77 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		}
 
 		return (
-			<View style={style.rowView}>
+			<View style={style.container}>
 				<View style={style.headerView}>
 					<View style={style.bulletDash} />
-					<View style={style.textView}>
-						<VSPIcon iconName={icon} />
-						<VSPText marginLeft={HORIZONTAL_UNIT()}>
-							{plan.title}
-						</VSPText>
-					</View>
-				</View>
-				<View style={style.textView}>
-					<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='grey'>
-						{plan.time.at.toLocaleString(DateTime.TIME_SIMPLE)}
+					<VSPText frontIcon={icon} marginLeft={HORIZONTAL_UNIT()}>
+						{plan.title}
 					</VSPText>
 				</View>
+				<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='grey'>
+					{plan.time.at.toLocaleString(DateTime.TIME_SIMPLE)}
+				</VSPText>
 			</View>
 		);
 	}
 
 	private _renderPlanDetail(plan: Plan) {
 		const style = StyleSheet.create({
-			rowView: {
-				flexDirection: 'row',
-				alignItems: 'flex-start',
+			container: {
 				marginTop: HORIZONTAL_UNIT(2),
 				paddingLeft: HORIZONTAL_UNIT(11),
-				paddingRight: HORIZONTAL_UNIT(2),
-			},
-
-			fromtoFixedView: {
-				alignItems: 'flex-end',
-			},
-
-			fromtoView: {
-				marginLeft: HORIZONTAL_UNIT(),
 			},
 		});
 
 		return (
 			<View>
 				{'atPlace' in plan && plan.atPlace !== undefined && (
-					<View style={style.rowView}>
-						<VSPIcon
-							iconName='placeholder'
-							theme='grey'
-							size={THEME_MINOR_FONTSIZE}
-						/>
+					<View style={style.container}>
 						<VSPText
-							marginLeft={HORIZONTAL_UNIT()}
+							frontIcon='placeholder'
 							fontSize={THEME_MINOR_FONTSIZE}
+							theme='grey'
 						>
 							{plan.atPlace}
 						</VSPText>
 					</View>
 				)}
 				{'move' in plan && (
-					<View style={style.rowView}>
-						<View style={style.fromtoFixedView}>
+					<View style={style.container}>
+						<View style={{ flexDirection: 'row' }}>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
+								marginRight={HORIZONTAL_UNIT(2)}
 								fontWeight='bold'
 								theme='grey'
 							>
 								FROM
 							</VSPText>
-							<VSPIcon
-								iconName='downarrow'
-								theme='grey'
-								size={THEME_MINOR_FONTSIZE}
-								marginY={HORIZONTAL_UNIT()}
-							/>
-							<VSPText
-								fontSize={THEME_MINOR_FONTSIZE}
-								fontWeight='bold'
-								theme='grey'
-							>
-								TO
-							</VSPText>
-						</View>
-						<View style={style.fromtoView}>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
 								theme='grey'
 							>
 								{plan.move.from}
 							</VSPText>
+						</View>
+						<VSPIcon
+							iconName='downarrow'
+							theme='grey'
+							size={THEME_MINOR_FONTSIZE}
+							marginY={HORIZONTAL_UNIT()}
+						/>
+						<View style={{ flexDirection: 'row' }}>
+							<VSPText
+								fontSize={THEME_MINOR_FONTSIZE}
+								marginRight={HORIZONTAL_UNIT(2)}
+								fontWeight='bold'
+								theme='grey'
+							>
+								TO
+							</VSPText>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
 								theme='grey'
-								marginTop={
-									THEME_MINOR_FONTSIZE + HORIZONTAL_UNIT(2)
-								}
 							>
 								{plan.move.to}
 							</VSPText>
@@ -196,45 +169,25 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 					</View>
 				)}
 				{'cost' in plan && plan.cost !== undefined && (
-					<View style={style.rowView}>
-						<VSPIcon
-							iconName='money'
-							theme='grey'
-							size={THEME_MINOR_FONTSIZE}
-							marginRight={HORIZONTAL_UNIT()}
-						/>
+					<View style={style.container}>
 						<View
 							style={{
-								flex: 1,
-								alignItems: 'stretch',
+								flexDirection: 'row',
+								justifyContent: 'space-between',
 							}}
 						>
-							<View style={{ flexDirection: 'row' }}>
-								<VSPText
-									fontSize={THEME_MINOR_FONTSIZE}
-									marginRight={HORIZONTAL_UNIT()}
-									theme='grey'
-									fontWeight='bold'
-								>
-									{plan.cost.currency}
-								</VSPText>
-								{plan.cost.currency in CURRENCY && (
-									<VSPText
-										fontSize={THEME_MINOR_FONTSIZE}
-										theme='grey'
-									>
-										{`(${
-											CURRENCY[plan.cost.currency].name
-										})`}
-									</VSPText>
-								)}
-							</View>
+							<VSPText
+								frontIcon='money'
+								fontSize={THEME_MINOR_FONTSIZE}
+								marginRight={HORIZONTAL_UNIT()}
+								theme='grey'
+								fontWeight='bold'
+							>
+								{plan.cost.currency}
+							</VSPText>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
 								theme='grey'
-								style={{
-									textAlign: 'right',
-								}}
 							>
 								{plan.cost.currency in CURRENCY
 									? plan.cost.value.toLocaleString(
@@ -247,18 +200,21 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 									: `$${plan.cost.value.toLocaleString()}`}
 							</VSPText>
 						</View>
+						{plan.cost.currency in CURRENCY && (
+							<VSPText
+								fontSize={THEME_MINOR_FONTSIZE}
+								theme='grey'
+							>
+								{`(${CURRENCY[plan.cost.currency].name})`}
+							</VSPText>
+						)}
 					</View>
 				)}
 				{plan.note !== undefined &&
 					plan.note.map((note: string, index: number) => (
-						<View key={index} style={style.rowView}>
-							<VSPIcon
-								iconName='information'
-								theme='grey'
-								size={THEME_MINOR_FONTSIZE}
-							/>
+						<View key={index} style={style.container}>
 							<VSPText
-								marginLeft={HORIZONTAL_UNIT()}
+								frontIcon='information'
 								fontSize={THEME_MINOR_FONTSIZE}
 								theme='grey'
 								style={{
@@ -304,6 +260,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 
 			dayplanView: {
 				marginVertical: HORIZONTAL_UNIT(2),
+				alignItems: 'stretch',
 			},
 
 			bulletLine: {
@@ -385,23 +342,13 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				marginHorizontal: VSP_EDGE_PADDING,
 				...addShadowProperties(),
 			},
-
-			categoryTitleView: {
-				flexDirection: 'row',
-			},
 		});
 
 		return (
 			<View style={style.categoryView}>
-				<View style={style.categoryTitleView}>
-					<VSPIcon iconName='planning' size={THEME_HEADER_FONTSIZE} />
-					<VSPText
-						fontSize={THEME_HEADER_FONTSIZE}
-						marginLeft={HORIZONTAL_UNIT(2)}
-					>
-						일정
-					</VSPText>
-				</View>
+				<VSPText frontIcon='planning' fontSize={THEME_HEADER_FONTSIZE}>
+					일정
+				</VSPText>
 				{this._renderDayPlans()}
 			</View>
 		);

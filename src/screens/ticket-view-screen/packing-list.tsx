@@ -13,7 +13,6 @@ import {
 	IndividualPacking,
 } from '../../types/data/ticket/packing';
 
-import VSPIcon from '../../components/vsp-icon';
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';
 import VSPCheckbox from '../../components/vsp-checkbox';
@@ -58,20 +57,13 @@ export default class PackingList extends React.Component<IPackingListProps> {
 			<View>
 				<VSPExpandable
 					header={
-						<View style={style.headerView}>
-							<VSPIcon
-								iconName='teamwork'
-								size={THEME_HEADER_FONTSIZE}
-								marginRight={HORIZONTAL_UNIT()}
-								color={this.props.ticketColor}
-							/>
-							<VSPText
-								color={this.props.ticketColor}
-								fontSize={THEME_HEADER_FONTSIZE}
-							>
-								공통
-							</VSPText>
-						</View>
+						<VSPText
+							frontIcon='teamwork'
+							color={this.props.ticketColor}
+							fontSize={THEME_HEADER_FONTSIZE}
+						>
+							공통
+						</VSPText>
 					}
 					body={
 						<View>
@@ -148,23 +140,13 @@ export default class PackingList extends React.Component<IPackingListProps> {
 				marginHorizontal: VSP_EDGE_PADDING,
 				...addShadowProperties(),
 			},
-
-			categoryTitleView: {
-				flexDirection: 'row',
-			},
 		});
 
 		return (
 			<View style={style.categoryView}>
-				<View style={style.categoryTitleView}>
-					<VSPIcon iconName='backpack' size={THEME_HEADER_FONTSIZE} />
-					<VSPText
-						fontSize={THEME_HEADER_FONTSIZE}
-						marginLeft={HORIZONTAL_UNIT(2)}
-					>
-						준비물품
-					</VSPText>
-				</View>
+				<VSPText frontIcon='backpack' fontSize={THEME_HEADER_FONTSIZE}>
+					준비물품
+				</VSPText>
 				{this._renderPackings(this.props.packings)}
 			</View>
 		);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, TouchableOpacity } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
@@ -12,7 +12,6 @@ import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import { VSPHeaderMenu } from '../../components/vsp-header-button';
 import VSPText from '../../components/vsp-text';
-import VSPIcon from '../../components/vsp-icon';
 
 import TicketCard from './tickets-card';
 
@@ -105,16 +104,13 @@ export default class TicketScreen extends React.Component<
 							this.props.navigation.navigate('NewTicketScreen');
 						}}
 					>
-						<View style={{ flexDirection: 'row' }}>
-							<VSPIcon
-								iconName='plus'
-								marginRight={HORIZONTAL_UNIT(2)}
-								theme='grey'
-							/>
-							<VSPText theme='grey' fontWeight='bold'>
-								새로운 티켓 만들기
-							</VSPText>
-						</View>
+						<VSPText
+							frontIcon='plus'
+							theme='grey'
+							fontWeight='bold'
+						>
+							새로운 티켓 만들기
+						</VSPText>
 					</TouchableOpacity>
 				</ScrollView>
 			</VSPContainer>
