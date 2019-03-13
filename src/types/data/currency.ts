@@ -1,4 +1,4 @@
-import * as Currency from '../../config/currency.json';
+import * as Currency from '../../data/currency.json';
 
 export const CURRENCY: {
 	[code: string]: {
