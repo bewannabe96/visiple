@@ -41,14 +41,15 @@ export type Country = {
 	cioc: string | null;
 };
 
-const COUNTRIES: Country[] = _countries;
+const COUNTRIES: Country[] = _countries.countries;
 
 export const countriesByName = (name: string): Country[] => {
 	let result: Country[] = [];
+	const regexp = new RegExp(`^.*${name}.*$`, 'gi');
 	COUNTRIES.forEach((cntry: Country) => {
 		if (
-			cntry.name.search(`/.*${name}.*/i`) ||
-			cntry.translations.ko.search(`/.*${name}.*/i`)
+			cntry.name.search(regexp) !== -1 ||
+			cntry.translations.ko.search(regexp) !== -1
 		) {
 			result.push(cntry);
 		}
