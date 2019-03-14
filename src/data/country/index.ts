@@ -43,6 +43,8 @@ export type Country = {
 
 const COUNTRIES: Country[] = _countries.countries;
 
+export const allCountries = COUNTRIES;
+
 export const countriesByName = (name: string): Country[] => {
 	let result: Country[] = [];
 	const regexp = new RegExp(`^.*${name}.*$`, 'gi');
