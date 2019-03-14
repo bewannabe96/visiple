@@ -81,6 +81,11 @@ interface IVSPTextInputProps {
 	 * Raw color of the button
 	 */
 	color?: RawColor;
+
+	/**
+	 * Callback onChangeText
+	 */
+	onChangeText?: (text: string) => any;
 }
 
 /**
@@ -94,6 +99,7 @@ interface IVSPTextInputProps {
  * - ```rearIcon```: Icon to be diplayed in the back of the text input
  * - ```theme```: Theme color of the text input (by default ```grey```)
  * - ```color```: Raw color of the button
+ * - ```onChangeText```: Callback onChangeText
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom
@@ -110,10 +116,6 @@ export default class VSPTextInput extends React.Component<
 		fontSize: THEME_FONTSIZE,
 		theme: 'grey',
 		displayUnderline: true,
-	};
-
-	public state = {
-		textValue: '',
 	};
 
 	public render() {
@@ -155,7 +157,6 @@ export default class VSPTextInput extends React.Component<
 				<TextInput
 					style={style.textinput}
 					placeholder={this.props.placeholder}
-					value={this.state.textValue}
 					textContentType={this.props.textContentType!}
 					placeholderTextColor={
 						this.props.color
@@ -164,9 +165,7 @@ export default class VSPTextInput extends React.Component<
 					}
 					autoCapitalize='none'
 					autoCorrect={false}
-					onChangeText={(text: string) => {
-						this.setState({ ...this.state, textValue: text });
-					}}
+					onChangeText={this.props.onChangeText}
 					secureTextEntry={this.props.textContentType === 'password'}
 				/>
 				{!!this.props.rearIcon && (
