@@ -1,6 +1,6 @@
 import * as _countries from './countries.json';
 
-type Country = {
+export type Country = {
 	name: string;
 	topLevelDomain: string[];
 	alpha2Code: string;
