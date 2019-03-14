@@ -83,6 +83,11 @@ interface IVSPTextInputProps {
 	color?: RawColor;
 
 	/**
+	 * Remove border radius if true
+	 */
+	disableBorderRadius?: boolean;
+
+	/**
 	 * Callback onChangeText
 	 */
 	onChangeText?: (text: string) => any;
@@ -99,6 +104,7 @@ interface IVSPTextInputProps {
  * - ```rearIcon```: Icon to be diplayed in the back of the text input
  * - ```theme```: Theme color of the text input (by default ```grey```)
  * - ```color```: Raw color of the button
+ * - ```disableBorderRadius```: Remove border radius if true (by default ```false```)
  * - ```onChangeText```: Callback onChangeText
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
@@ -116,6 +122,7 @@ export default class VSPTextInput extends React.Component<
 		fontSize: THEME_FONTSIZE,
 		theme: 'grey',
 		displayUnderline: true,
+		disableBorderRadius: false,
 	};
 
 	public render() {
@@ -124,7 +131,9 @@ export default class VSPTextInput extends React.Component<
 				flexDirection: 'row',
 				alignItems: 'center',
 				padding: 0.7 * this.props.fontSize!,
-				borderRadius: 0.3 * this.props.fontSize!,
+				borderRadius: this.props.disableBorderRadius!
+					? 0
+					: 0.3 * this.props.fontSize!,
 				backgroundColor: THEME_COLORS.greyWhite,
 				...decodeVSPMarginProps(this.props),
 			},
