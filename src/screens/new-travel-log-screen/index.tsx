@@ -4,7 +4,6 @@ import { NavigationScreenProp } from 'react-navigation';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import {
-	THEME_FONTSIZE,
 	HORIZONTAL_UNIT,
 	VSP_TOP_PADDING,
 	VSP_EDGE_PADDING,
@@ -14,6 +13,8 @@ import VSPHeader from '../../components/vsp-header';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 import VSPContainer from '../../components/vsp-container';
 import VSPTextInput from '../../components/vsp-textinput';
+
+import CountrySelector from './country-selector';
 
 interface INewTravelLogScreenProps {}
 
@@ -57,9 +58,11 @@ export default class NewTravelLogScreen extends React.Component<
 					<View style={style.categoryView}>
 						<VSPTextInput
 							placeholder='로그 제목을 입력해 주세요.'
-							fontSize={THEME_FONTSIZE}
 							marginTop={HORIZONTAL_UNIT()}
 						/>
+					</View>
+					<View style={style.categoryView}>
+						<CountrySelector />
 					</View>
 				</ScrollView>
 			</VSPContainer>
