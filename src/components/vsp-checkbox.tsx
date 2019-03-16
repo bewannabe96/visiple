@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import { THEME_COLORS, ThemeColor } from '../types/lib/theme';
 import { THEME_FONTSIZE } from '../types/lib/size';
@@ -7,8 +7,6 @@ import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
-
-import VSPIcon from './vsp-icon';
 
 interface IVSPCheckboxProps {
 	/**
@@ -20,6 +18,11 @@ interface IVSPCheckboxProps {
 	 * Theme color of the checkbox
 	 */
 	theme?: ThemeColor;
+
+	/**
+	 * Checkbox is checked if true
+	 */
+	checked?: boolean;
 }
 
 /**
@@ -28,6 +31,7 @@ interface IVSPCheckboxProps {
  * @property
  * - ```size```: Size of the checkbox (by default ```THEME_FONTSIZE```)
  * - ```theme```: Theme color of the checkbox (by default ```oceanBlue```)
+ * - ```checked```: Checkbox is checked if true (by default ```false```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginX```: Horizontal margin; including marginRight and marginLeft
  * - ```marginY```: Vertical margin; including marginTop and marginBottom
@@ -42,27 +46,30 @@ export default class VSPCheckbox extends React.Component<
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
 		theme: 'oceanBlue',
+		checked: false,
 	};
 
 	public state = {
-		checked: false,
+		checked: this.props.checked!,
 	};
 
 	public render() {
 		const style = StyleSheet.create({
 			touchableopacity: {
-				justifyContent: 'center',
-				alignItems: 'center',
-				borderRadius: 0.2 * this.props.size!,
-				borderWidth: this.state.checked ? 0 : 0.1 * this.props.size!,
+				borderRadius: this.props.size!,
+				borderWidth: 0.1 * this.props.size!,
 				borderColor: THEME_COLORS[this.props.theme!],
-				backgroundColor:
-					THEME_COLORS[
-						this.state.checked ? this.props.theme! : 'none'
-					],
+				padding: 0.2 * this.props.size!,
+				...decodeVSPMarginProps(this.props),
+			},
+
+			innerCircle: {
+				borderRadius: this.props.size!,
 				width: this.props.size!,
 				height: this.props.size!,
-				...decodeVSPMarginProps(this.props),
+				backgroundColor: this.state.checked
+					? THEME_COLORS[this.props.theme!]
+					: THEME_COLORS.none,
 			},
 		});
 
@@ -73,15 +80,7 @@ export default class VSPCheckbox extends React.Component<
 					this.setState({ checked: !this.state.checked });
 				}}
 			>
-				<VSPIcon
-					iconName='check'
-					size={this.props.size! * 0.6}
-					color={
-						THEME_COLORS[
-							!this.state.checked ? this.props.theme! : 'white'
-						]
-					}
-				/>
+				<View style={style.innerCircle} />
 			</TouchableOpacity>
 		);
 	}
