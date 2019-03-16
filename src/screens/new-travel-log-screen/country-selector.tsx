@@ -154,7 +154,6 @@ export default class CountrySelector extends React.Component<
 				</ScrollView>
 				<VSPTextInput
 					placeholder='국가를 검색하세요.'
-					disableBorderRadius={true}
 					onChangeText={(text: string) => {
 						this.setState({
 							matchingCountries: countriesByName(text),
