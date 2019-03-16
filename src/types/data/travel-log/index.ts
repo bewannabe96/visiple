@@ -9,6 +9,7 @@ import { Events } from './event';
 export interface TravelLog {
 	id: number;
 	title: string;
+	published: boolean;
 	titleImage: Image;
 	owner: UserID;
 	participants: UserID[];
@@ -16,18 +17,7 @@ export interface TravelLog {
 		from: DateTime;
 		to: DateTime;
 	};
-	events: Events;
-}
-
-export interface EditingTravelLog {
-	title: string;
-	titleImage?: Image;
-	owner: UserID;
-	participants: UserID[];
-	period: {
-		from: DateTime;
-		to: DateTime;
-	};
+	countryCodes: CountryCode[];
 	events: Events;
 }
 
