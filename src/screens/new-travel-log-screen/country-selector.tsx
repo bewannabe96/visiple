@@ -9,12 +9,13 @@ import {
 import { THEME_COLORS } from '../../types/lib/theme';
 
 import {
-	countriesByName,
 	Country,
 	allCountries,
 	countryByCode,
 	countriesByCodes,
+	countryCodesByName,
 } from '../../data/country';
+import { CountryCode } from '../../types/data/country';
 
 import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
@@ -31,14 +32,68 @@ export default class CountrySelector extends React.Component<
 	public state = {
 		selectType: 'domestic',
 		countryCodes: ['USA', 'KOR'],
-		matchingCountries: allCountries,
+		serachWord: '',
 	};
+
+	private _searchResultItems: {
+		[key: string]: Element;
+	} = allCountries.reduce(
+		(accum: { [key: string]: Element }, cntry: Country) => {
+			accum[cntry.alpha3Code] = (
+				<TouchableOpacity
+					key={cntry.alpha3Code}
+					style={{
+						flexDirection: 'row',
+						alignItems: 'center',
+						justifyContent: 'space-between',
+						padding: HORIZONTAL_UNIT(2),
+						paddingHorizontal: HORIZONTAL_UNIT(3),
+					}}
+				>
+					<VSPText>{cntry.translations.ko}</VSPText>
+					<VSPCheckbox />
+				</TouchableOpacity>
+			);
+			return accum;
+		},
+		{},
+	);
+
+	private _renderSearchResult() {
+		if (this.state.serachWord !== '') {
+			let resultCodes = countryCodesByName(this.state.serachWord);
+			return (
+				<ScrollView
+					style={{
+						height: HORIZONTAL_UNIT(30),
+						borderWidth: 1,
+						borderColor: THEME_COLORS.greyWhite,
+					}}
+				>
+					{resultCodes.length === 0 && (
+						<View
+							style={{
+								alignItems: 'center',
+								padding: HORIZONTAL_UNIT(2),
+							}}
+						>
+							<VSPText>{'검색결과가 없습니다.'}</VSPText>
+						</View>
+					)}
+					{resultCodes.map(
+						(code: CountryCode) => this._searchResultItems[code],
+					)}
+				</ScrollView>
+			);
+		}
+	}
 
 	private _renderTypeButton(sType: SelectType, displayName: string) {
 		return (
 			<TouchableOpacity
 				style={{
 					flex: 1,
+					margin: 0,
 					padding: HORIZONTAL_UNIT(3),
 					alignItems: 'center',
 					backgroundColor:
@@ -46,7 +101,7 @@ export default class CountrySelector extends React.Component<
 							? THEME_COLORS.oceanBlue
 							: THEME_COLORS.none,
 					borderColor: THEME_COLORS.oceanBlue,
-					borderWidth: this.state.selectType !== sType ? 1 : 0,
+					borderWidth: 1,
 				}}
 				onPress={() => {
 					this.setState({ ...this.state, selectType: sType });
@@ -76,7 +131,7 @@ export default class CountrySelector extends React.Component<
 					paddingHorizontal: HORIZONTAL_UNIT(2),
 					borderColor: THEME_COLORS.oceanBlue,
 					borderWidth: 1,
-					borderRadius: THEME_FONTSIZE,
+					borderRadius: THEME_FONTSIZE * 2,
 				}}
 			>
 				<VSPText theme='oceanBlue'>{ctnry.translations.ko}</VSPText>
@@ -103,6 +158,13 @@ export default class CountrySelector extends React.Component<
 		}
 	}
 
+	private _onSearchWordChange = (text: string) => {
+		this.setState({
+			...this.state,
+			serachWord: text,
+		});
+	};
+
 	public render() {
 		const style = StyleSheet.create({
 			typeSelectView: {
@@ -117,25 +179,6 @@ export default class CountrySelector extends React.Component<
 			countriesView: {
 				flexDirection: 'row',
 			},
-
-			resultView: {
-				height: HORIZONTAL_UNIT(40),
-				borderWidth: 1,
-				borderColor: THEME_COLORS.greyWhite,
-			},
-
-			noResultView: {
-				alignItems: 'center',
-				padding: HORIZONTAL_UNIT(2),
-			},
-
-			resultItemView: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				justifyContent: 'space-between',
-				padding: HORIZONTAL_UNIT(2),
-				paddingHorizontal: HORIZONTAL_UNIT(3),
-			},
 		});
 
 		return (
@@ -144,40 +187,23 @@ export default class CountrySelector extends React.Component<
 					{this._renderTypeButton('domestic', '국내여행')}
 					{this._renderTypeButton('overseas', '해외여행')}
 				</View>
-				<ScrollView
-					style={style.countriesViewContainer}
-					contentContainerStyle={style.countriesView}
-					horizontal={true}
-					showsHorizontalScrollIndicator={false}
-				>
-					{this._renderCountries()}
-				</ScrollView>
-				<VSPTextInput
-					placeholder='국가를 검색하세요.'
-					onChangeText={(text: string) => {
-						this.setState({
-							matchingCountries: countriesByName(text),
-						});
-					}}
-				/>
-				<ScrollView style={style.resultView}>
-					{this.state.matchingCountries.length === 0 && (
-						<View style={style.noResultView}>
-							<VSPText>{'검색결과가 없습니다.'}</VSPText>
-						</View>
-					)}
-					{this.state.matchingCountries.map((cntry: Country) => (
-						<TouchableOpacity
-							key={cntry.alpha3Code}
-							style={style.resultItemView}
+				{this.state.selectType === 'overseas' && (
+					<View>
+						<ScrollView
+							style={style.countriesViewContainer}
+							contentContainerStyle={style.countriesView}
+							horizontal={true}
+							showsHorizontalScrollIndicator={false}
 						>
-							<VSPText key={cntry.alpha3Code}>
-								{cntry.translations.ko}
-							</VSPText>
-							<VSPCheckbox />
-						</TouchableOpacity>
-					))}
-				</ScrollView>
+							{this._renderCountries()}
+						</ScrollView>
+						<VSPTextInput
+							placeholder='국가를 검색하세요.'
+							onChangeText={this._onSearchWordChange}
+						/>
+						{this._renderSearchResult()}
+					</View>
+				)}
 			</View>
 		);
 	}
