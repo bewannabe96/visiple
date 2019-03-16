@@ -45,6 +45,8 @@ export default class CountrySelector extends React.Component<
 						this.state.selectType === sType
 							? THEME_COLORS.oceanBlue
 							: THEME_COLORS.none,
+					borderColor: THEME_COLORS.oceanBlue,
+					borderWidth: this.state.selectType !== sType ? 1 : 0,
 				}}
 				onPress={() => {
 					this.setState({ ...this.state, selectType: sType });
@@ -52,7 +54,9 @@ export default class CountrySelector extends React.Component<
 				disabled={this.state.selectType === sType}
 			>
 				<VSPText
-					theme={this.state.selectType === sType ? 'white' : 'grey'}
+					theme={
+						this.state.selectType === sType ? 'white' : 'oceanBlue'
+					}
 				>
 					{displayName}
 				</VSPText>
@@ -127,6 +131,7 @@ export default class CountrySelector extends React.Component<
 
 			resultItemView: {
 				flexDirection: 'row',
+				alignItems: 'center',
 				justifyContent: 'space-between',
 				padding: HORIZONTAL_UNIT(2),
 				paddingHorizontal: HORIZONTAL_UNIT(3),
