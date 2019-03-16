@@ -62,12 +62,14 @@ export const countriesByName = (name: string): Country[] => {
 };
 
 export const countryByCode = (code: CountryCode): Country | null => {
-	COUNTRIES.forEach((cntry: Country) => {
+	let result: Country | null = null;
+	COUNTRIES.some((cntry: Country) => {
 		if (cntry.alpha3Code === code) {
-			return cntry;
+			result = cntry;
 		}
+		return cntry.alpha3Code === code;
 	});
-	return null;
+	return result;
 };
 
 export const countriesByCodes = (codes: CountryCode[]): Country[] => {
