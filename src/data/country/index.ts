@@ -75,7 +75,7 @@ export const countryByCode = (code: CountryCode): Country | null => {
 export const countriesByCodes = (codes: CountryCode[]): Country[] => {
 	let result: Country[] = [];
 	COUNTRIES.forEach((cntry: Country) => {
-		if (cntry.alpha3Code in codes) {
+		if (codes.includes(cntry.alpha3Code)) {
 			result.push(cntry);
 		}
 	});
