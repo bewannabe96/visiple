@@ -1,10 +1,12 @@
 import * as _countries from './countries.json';
 
+import { CountryCode } from '../../types/data/country.js';
+
 export type Country = {
 	name: string;
 	topLevelDomain: string[];
 	alpha2Code: string;
-	alpha3Code: string;
+	alpha3Code: CountryCode;
 	callingCodes: string[];
 	capital: string;
 	altSpellings: string[];

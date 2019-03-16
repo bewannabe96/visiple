@@ -2,6 +2,8 @@ import { DateTime } from 'luxon';
 
 import { UserID } from '../user';
 import { Image } from '../image';
+import { CountryCode } from '../country';
+
 import { Events } from './event';
 
 export interface TravelLog {
@@ -37,4 +39,5 @@ export interface NewtravelLog {
 		from: DateTime;
 		to: DateTime;
 	};
+	countries: CountryCode[];
 }
