@@ -35,9 +35,9 @@ export interface NewtravelLog {
 	title: string;
 	owner: UserID;
 	participants: UserID[];
+	countryCodes: CountryCode[];
 	period: {
 		from: DateTime;
 		to: DateTime;
 	};
-	countries: CountryCode[];
 }
