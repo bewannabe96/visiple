@@ -1,21 +1,22 @@
-import { DateTime } from 'luxon';
-
-import { NewTicket } from '../../data/ticket';
+import { NewTicket } from '../data/ticket';
 
 /**
- * Data State Interface
+ * NewTicketState
  */
-export type DataState = NewTicket;
+export type NewTicketState = NewTicket;
 
 /**
- * Data Action Constants
+ * Action Constants
  */
+// prettier-ignore
 export const SET_THEMECOLOR = 'visiple/new-ticket/SET_THEMECOLOR';
+// prettier-ignore
 export const SET_FROM_DATE = 'visiple/new-ticket/SET_FROM_DATE';
+// prettier-ignore
 export const SET_TO_DATE = 'visiple/new-ticket/SET_TO_DATE';
 
 /**
- * Data Action Interfaces
+ * Action Interfaces
  */
 export interface SetTicketColorAction {
 	type: typeof SET_THEMECOLOR;
@@ -37,9 +38,9 @@ export interface SetToDateAction {
 }
 
 /**
- * Data Action Types
+ * Action Types
  */
-export type DataActions =
+export type Actions =
 	| SetTicketColorAction
 	| SetFromDateAction
 	| SetToDateAction;

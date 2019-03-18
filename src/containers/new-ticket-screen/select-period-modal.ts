@@ -5,17 +5,17 @@ import RootState from '../../types/redux';
 import {
 	closePeriodModal,
 	switchFromToTab,
-} from '../../actions/new-ticket-screen/ui';
-import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
+} from '../../actions/screens/new-ticket-screen';
+import { setFromDate, setToDate } from '../../actions/new-ticket';
 
 import SelectPeriodModal from '../../screens/new-ticket-screen/select-period-modal';
 
 const mapStateToProps = (state: RootState) => ({
-	themeColor: state.NewTicketScreen.Data.themeColor,
-	fromDateTime: state.NewTicketScreen.Data.period.from,
-	toDateTime: state.NewTicketScreen.Data.period.to,
-	periodModalVisible: state.NewTicketScreen.UI.periodModalVisible,
-	fromtoTab: state.NewTicketScreen.UI.fromtoTab,
+	themeColor: state.newTicket.themeColor,
+	fromDateTime: state.newTicket.period.from,
+	toDateTime: state.newTicket.period.to,
+	periodModalVisible: state.screens.newTicketScreen.periodModalVisible,
+	fromtoTab: state.screens.newTicketScreen.fromtoTab,
 });
 
 const mapDispatchToProps = {

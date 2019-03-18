@@ -1,12 +1,22 @@
 import { combineReducers } from 'redux';
 
-import NewTicketScreenReducer from './new-ticket-screen';
+import NewTicketReducer from './new-ticket';
+
+import NewTicketScreenReducer from './screens/new-ticket-screen';
+
+/**
+ * Screen Root Reducer
+ */
+const ScreenRootReduer = combineReducers({
+	newTicketScreen: NewTicketScreenReducer,
+});
 
 /**
  * App Root Reducer
  */
 const RootReducer = combineReducers({
-	NewTicketScreen: NewTicketScreenReducer,
+	newTicket: NewTicketReducer,
+	screens: ScreenRootReduer,
 });
 
 export default RootReducer;

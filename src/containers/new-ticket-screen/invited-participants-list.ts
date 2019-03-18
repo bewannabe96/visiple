@@ -5,8 +5,8 @@ import RootState from '../../types/redux';
 import InvitedParticipantsList from '../../screens/new-ticket-screen/invited-participants-list';
 
 const mapStateToProps = (state: RootState) => ({
-	themeColor: state.NewTicketScreen.Data.themeColor,
-	participants: state.NewTicketScreen.Data.participants,
+	themeColor: state.newTicket.themeColor,
+	participants: state.newTicket.participants,
 });
 
 const mapDispatchToProps = {};

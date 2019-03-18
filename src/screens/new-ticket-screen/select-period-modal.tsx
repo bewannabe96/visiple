@@ -5,16 +5,16 @@ import { DateTime } from 'luxon';
 
 import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
+import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
 
-import { FromToTab } from '../../types/redux/new-ticket-screen/ui';
 import {
 	switchFromToTab,
 	closePeriodModal,
-} from '../../actions/new-ticket-screen/ui';
-import { setFromDate, setToDate } from '../../actions/new-ticket-screen/data';
+} from '../../actions/screens/new-ticket-screen';
+import { setFromDate, setToDate } from '../../actions/new-ticket';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -148,11 +148,11 @@ export default class SelectPeriodModal extends React.Component<
 
 		return (
 			<VSPModal
+				isVisible={this.props.periodModalVisible}
+				closeAction={this.props.closePeriodModal}
 				titleText={'기간'}
 				rightButtonText={'완료'}
 				rightButtonOnPress={this.props.closePeriodModal}
-				isVisible={this.props.periodModalVisible}
-				closeAction={this.props.closePeriodModal}
 				paddingY={HORIZONTAL_UNIT(3)}
 			>
 				<View style={style.fromtoTabView}>

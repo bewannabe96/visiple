@@ -10,10 +10,10 @@ import {
 	SwitchFromToTabAction,
 	OpenInviteModalAction,
 	CloseInviteModalAction,
-} from '../../types/redux/new-ticket-screen/ui';
+} from '../../types/redux/screens/new-ticket-screen';
 
 /**
- * UI Action Creators
+ * Action Creators
  */
 
 export const openPeriodModal = (): OpenPeriodModalAction => ({

@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 
 import RootState from '../../types/redux';
 
-import { setTicketColor } from '../../actions/new-ticket-screen/data';
+import { setTicketColor } from '../../actions/new-ticket';
 
 import TicketColorPicker from '../../screens/new-ticket-screen/ticket-color-picker';
 
 const mapStateToProps = (state: RootState) => ({
-	themeColor: state.NewTicketScreen.Data.themeColor,
+	themeColor: state.newTicket.themeColor,
 });
 
 const mapDispatchToProps = {

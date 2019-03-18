@@ -37,7 +37,7 @@ import {
 	switchFromToTab,
 	openPeriodModal,
 	openInviteModal,
-} from '../../actions/new-ticket-screen/ui';
+} from '../../actions/screens/new-ticket-screen';
 
 interface INewTicketScreenProps {
 	/**

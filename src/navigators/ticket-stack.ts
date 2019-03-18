@@ -2,7 +2,7 @@ import { createStackNavigator } from 'react-navigation';
 
 import _TicketScreen from '../screens/ticket-screen';
 import _NewTicketContainer from '../containers/new-ticket-screen';
-import _TicketViewContainer from '../containers/ticket-view-screen';
+import _TicketViewScreen from '../screens/ticket-view-screen';
 
 const TicketStack = createStackNavigator(
 	{
@@ -15,7 +15,7 @@ const TicketStack = createStackNavigator(
 		},
 
 		TicketViewScreen: {
-			screen: _TicketViewContainer,
+			screen: _TicketViewScreen,
 		},
 	},
 	{

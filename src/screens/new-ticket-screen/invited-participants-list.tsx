@@ -25,6 +25,7 @@ export interface IInvitedParticipantsListProps {
  *
  * @property
  * - ```themeColor```(required): Theme color of the ticket
+ * - ```participants```(required): Participants of the ticket
  */
 export default class InvitedParticipantsList extends React.Component<
 	IInvitedParticipantsListProps

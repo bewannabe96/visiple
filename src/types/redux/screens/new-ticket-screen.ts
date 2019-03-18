@@ -1,27 +1,32 @@
 /**
- * UI State Interface
+ * NewTicketScreenState
  */
 export type FromToTab = 'from-tab' | 'to-tab';
 
-export interface UIState {
+export interface NewTicketScreenState {
 	periodModalVisible: boolean;
 	fromtoTab: FromToTab;
 	inviteModalVisible: boolean;
 }
 
 /**
- * UI Action Constants
+ * Action Constants
  */
-export const OPEN_PERIOD_MODAL = 'visiple/new-ticket/OPEN_PERIOD_MODAL';
-export const CLOSE_PERIOD_MODAL = 'visiple/new-ticket/CLOSE_PERIOD_MODAL';
+// prettier-ignore
+export const OPEN_PERIOD_MODAL = 'visiple/new-ticket-screen/OPEN_PERIOD_MODAL';
+// prettier-ignore
+export const CLOSE_PERIOD_MODAL = 'visiple/new-ticket-screen/CLOSE_PERIOD_MODAL';
 
-export const SWITCH_FROMTO_TAB = 'visiple/new-ticket/SWITCH_FROMTO_TAB';
+// prettier-ignore
+export const SWITCH_FROMTO_TAB = 'visiple/new-ticket-screen/SWITCH_FROMTO_TAB';
 
-export const OPEN_INVITE_MODAL = 'visiple/new-ticket/OPEN_INVITE_MODAL';
-export const CLOSE_INVITE_MODAL = 'visiple/new-ticket/CLOSE_INVITE_MODAL';
+// prettier-ignore
+export const OPEN_INVITE_MODAL = 'visiple/new-ticket-screen/OPEN_INVITE_MODAL';
+// prettier-ignore
+export const CLOSE_INVITE_MODAL = 'visiple/new-ticket-screen/CLOSE_INVITE_MODAL';
 
 /**
- * UI Action Interfaces
+ * Action Interfaces
  */
 export interface OpenPeriodModalAction {
 	type: typeof OPEN_PERIOD_MODAL;
@@ -45,9 +50,9 @@ export interface CloseInviteModalAction {
 }
 
 /**
- * UI Action Types
+ * Action Types
  */
-export type UIActions =
+export type Actions =
 	| OpenPeriodModalAction
 	| ClosePeriodModalAction
 	| SwitchFromToTabAction

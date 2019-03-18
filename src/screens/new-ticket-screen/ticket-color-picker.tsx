@@ -8,7 +8,7 @@ import {
 } from '../../types/data/ticket/theme';
 import { HORIZONTAL_UNIT } from '../../types/lib/size';
 
-import { setTicketColor } from '../../actions/new-ticket-screen/data';
+import { setTicketColor } from '../../actions/new-ticket';
 
 interface ITicketColorPickerProps {
 	/**

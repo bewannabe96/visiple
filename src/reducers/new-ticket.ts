@@ -3,19 +3,19 @@ import { DateTime } from 'luxon';
 import {
 	TICKET_HEADER_COLORS_KEYS,
 	TICKET_THEME_COLORS,
-} from '../../types/data/ticket/theme';
+} from '../types/data/ticket/theme';
 import {
-	DataState,
-	DataActions,
+	Actions,
 	SET_THEMECOLOR,
 	SET_FROM_DATE,
 	SET_TO_DATE,
-} from '../../types/redux/new-ticket-screen/data';
+	NewTicketState,
+} from '../types/redux/new-ticket';
 
 /**
- * Data Reducer
+ * Initial State
  */
-const dataInitialState: DataState = {
+const initialState: NewTicketState = {
 	title: 'DEV_TITLE',
 	themeColor: TICKET_THEME_COLORS[TICKET_HEADER_COLORS_KEYS[0]],
 	owner: '0001',
@@ -26,7 +26,13 @@ const dataInitialState: DataState = {
 	},
 };
 
-export function DataReducer(state = dataInitialState, action: DataActions) {
+/**
+ * NewTicketReducer
+ */
+export default function NewTicketReducer(
+	state = initialState,
+	action: Actions,
+) {
 	switch (action.type) {
 		case SET_THEMECOLOR:
 			return {

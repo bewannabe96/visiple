@@ -15,7 +15,7 @@ import VSPProfile from '../components/vsp-profile';
 import VSPColoredButton from '../components/vsp-colored-button';
 import VSPText from '../components/vsp-text';
 
-import { closeInviteModal } from '../actions/new-ticket-screen/ui';
+import { closeInviteModal } from '../actions/screens/new-ticket-screen';
 
 interface IFriendInviteModalProps {
 	/**

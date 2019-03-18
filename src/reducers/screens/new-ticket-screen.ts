@@ -1,24 +1,29 @@
 import {
-	UIState,
-	UIActions,
+	NewTicketScreenState,
+	Actions,
 	OPEN_PERIOD_MODAL,
 	CLOSE_PERIOD_MODAL,
 	SWITCH_FROMTO_TAB,
 	OPEN_INVITE_MODAL,
 	CLOSE_INVITE_MODAL,
-} from '../../types/redux/new-ticket-screen/ui';
+} from '../../types/redux/screens/new-ticket-screen';
 
 /**
- * UI Reducer
+ * Initial State
  */
-
-const uiInitialState: UIState = {
+const initialState: NewTicketScreenState = {
 	periodModalVisible: false,
 	fromtoTab: 'from-tab',
 	inviteModalVisible: false,
 };
 
-export function UIReducer(state = uiInitialState, action: UIActions) {
+/**
+ * NewTicketScreenReducer
+ */
+export default function NewTicketScreenReducer(
+	state = initialState,
+	action: Actions,
+) {
 	switch (action.type) {
 		case OPEN_PERIOD_MODAL:
 			return {

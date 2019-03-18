@@ -6,12 +6,12 @@ import {
 	openPeriodModal,
 	switchFromToTab,
 	openInviteModal,
-} from '../../actions/new-ticket-screen/ui';
+} from '../../actions/screens/new-ticket-screen';
 
 import NewTicketScreen from '../../screens/new-ticket-screen';
 
 const mapStateToProps = (state: RootState) => ({
-	newTicket: state.NewTicketScreen.Data,
+	newTicket: state.newTicket,
 });
 
 const mapDispatchToProps = {

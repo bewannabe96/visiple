@@ -1,5 +1,3 @@
-import { DateTime } from 'luxon';
-
 import {
 	SET_THEMECOLOR,
 	SET_FROM_DATE,
@@ -7,10 +5,10 @@ import {
 	SetTicketColorAction,
 	SetFromDateAction,
 	SetToDateAction,
-} from '../../types/redux/new-ticket-screen/data';
+} from '../types/redux/new-ticket';
 
 /**
- * Data Action Creators
+ * Action Creators
  */
 export const setTicketColor = (themeColor: string): SetTicketColorAction => ({
 	type: SET_THEMECOLOR,
