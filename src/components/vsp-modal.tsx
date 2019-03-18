@@ -29,11 +29,6 @@ interface IVSPModalProps {
 	heightMode?: 'auto' | 'full' | 'minimum';
 
 	/**
-	 * Close action
-	 */
-	closeAction: () => any;
-
-	/**
 	 * Title text in the middle of the header
 	 */
 	titleText: string;
@@ -75,7 +70,6 @@ interface IVSPModalProps {
  * @property
  * - ```isVisible```(required): Visible if true
  * - ```heightMode```: Height of the modal (by default ```auto```)
- * - ```closeAction```(required): Close action
  * - ```titleText```(required): Title text in the middle of the header
  * - ```rightButtonIcon```: Icon of the right button
  * - ```rightButtonText```: Text of the right button
@@ -98,6 +92,14 @@ export default class VSPModal extends React.Component<
 	public static defaultProps = {
 		heightMode: 'auto',
 	};
+
+	public state = {
+		isVisible: this.props.isVisible,
+	};
+
+	private _close() {
+		this.setState({ isVisible: false });
+	}
 
 	public render() {
 		const style = StyleSheet.create({
@@ -150,13 +152,13 @@ export default class VSPModal extends React.Component<
 
 		return (
 			<Modal
-				isVisible={this.props.isVisible}
+				isVisible={this.state.isVisible}
 				avoidKeyboard={true}
 				style={style.container}
 				hideModalContentWhileAnimating={true}
 				useNativeDriver={true}
-				onBackButtonPress={this.props.closeAction}
-				onBackdropPress={this.props.closeAction}
+				onBackButtonPress={this._close}
+				onBackdropPress={this._close}
 			>
 				<VSPHeader
 					headerTitle={this.props.titleText}
