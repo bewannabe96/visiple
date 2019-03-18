@@ -199,6 +199,7 @@ export default class CountrySelector extends React.Component<
 						</ScrollView>
 						<VSPTextInput
 							placeholder='국가를 검색하세요.'
+							rearIcon='search'
 							onChangeText={this._onSearchWordChange}
 						/>
 						{this._renderSearchResult()}
