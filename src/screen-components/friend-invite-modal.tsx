@@ -7,15 +7,15 @@ import {
 	VSP_TOP_PADDING,
 	THEME_MINOR_FONTSIZE,
 	THEME_FONTSIZE,
-} from '../../types/lib/size';
+} from '../types/lib/size';
 
-import VSPModal from '../../components/vsp-modal';
-import VSPTextInput from '../../components/vsp-textinput';
-import VSPProfile from '../../components/vsp-profile';
-import VSPColoredButton from '../../components/vsp-colored-button';
-import VSPText from '../../components/vsp-text';
+import VSPModal from '../components/vsp-modal';
+import VSPTextInput from '../components/vsp-textinput';
+import VSPProfile from '../components/vsp-profile';
+import VSPColoredButton from '../components/vsp-colored-button';
+import VSPText from '../components/vsp-text';
 
-import { closeInviteModal } from '../../actions/new-ticket-screen/ui';
+import { closeInviteModal } from '../actions/new-ticket-screen/ui';
 
 interface IFriendInviteModalProps {
 	/**
