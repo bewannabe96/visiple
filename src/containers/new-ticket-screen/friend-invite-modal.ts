@@ -8,7 +8,7 @@ import FriendInviteModal from '../../screen-components/friend-invite-modal';
 
 const mapStateToProps = (state: RootState) => ({
 	themeColor: state.newTicket.themeColor,
-	inviteModalVisible: state.screens.newTicketScreen.inviteModalVisible,
+	isVisible: state.screens.newTicketScreen.inviteModalVisible,
 });
 
 const mapDispatchToProps = {

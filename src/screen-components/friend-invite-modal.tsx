@@ -26,7 +26,7 @@ interface IFriendInviteModalProps {
 	/**
 	 * The modal is visible if true
 	 */
-	inviteModalVisible: boolean;
+	isVisible: boolean;
 
 	// ACTION CREATORS
 	closeInviteModal: typeof closeInviteModal;
@@ -37,7 +37,7 @@ interface IFriendInviteModalProps {
  *
  * @property
  * - ```themeColor```(required): Theme color of the ticket
- * - ```inviteModalVisible```(required): The modal is visible if true
+ * - ```isVisible```(required): The modal is visible if true
  */
 export default class FriendInviteModal extends React.Component<
 	IFriendInviteModalProps
@@ -48,7 +48,7 @@ export default class FriendInviteModal extends React.Component<
 				titleText={'친구 초대'}
 				rightButtonText={'취소'}
 				rightButtonOnPress={this.props.closeInviteModal}
-				isVisible={this.props.inviteModalVisible}
+				isVisible={this.props.isVisible}
 				heightMode='full'
 				paddingTop={VSP_TOP_PADDING}
 				closeAction={this.props.closeInviteModal}
