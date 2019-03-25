@@ -52,10 +52,6 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 
 	private _renderFriendsList() {
 		const style = StyleSheet.create({
-			friendsView: {
-				paddingBottom: HORIZONTAL_UNIT(2),
-			},
-
 			itemView: {
 				flexDirection: 'row',
 				alignItems: 'center',
@@ -65,7 +61,7 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 		});
 
 		return (
-			<ScrollView contentContainerStyle={style.friendsView}>
+			<ScrollView>
 				{DEV_FRIENDS.map((friend: User) => (
 					<TouchableOpacity key={friend.userID} activeOpacity={0.6}>
 						<View style={style.itemView}>

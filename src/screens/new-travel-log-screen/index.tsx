@@ -3,11 +3,7 @@ import { StyleSheet, ScrollView, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
-import {
-	HORIZONTAL_UNIT,
-	VSP_TOP_PADDING,
-	VSP_EDGE_PADDING,
-} from '../../types/lib/size';
+import { HORIZONTAL_UNIT, VSP_EDGE_PADDING } from '../../types/lib/size';
 
 import VSPHeader from '../../components/vsp-header';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
@@ -43,8 +39,7 @@ export default class NewTravelLogScreen extends React.Component<
 		const style = StyleSheet.create({
 			container: {
 				flex: 1,
-				paddingVertical: VSP_TOP_PADDING,
-				paddingHorizontal: VSP_EDGE_PADDING,
+				padding: VSP_EDGE_PADDING,
 			},
 
 			categoryView: {

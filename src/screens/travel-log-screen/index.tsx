@@ -25,6 +25,8 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 			to: DateTime.local(),
 		},
 		events: [],
+		published: false,
+		countryCodes: ['KOR'],
 	},
 	{
 		id: 2,
@@ -37,6 +39,8 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 			to: DateTime.local(),
 		},
 		events: [],
+		published: false,
+		countryCodes: ['KOR'],
 	},
 	{
 		id: 3,
@@ -49,6 +53,8 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 			to: DateTime.local(),
 		},
 		events: [],
+		published: false,
+		countryCodes: ['KOR'],
 	},
 ];
 

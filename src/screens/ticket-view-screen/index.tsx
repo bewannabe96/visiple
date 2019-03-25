@@ -8,7 +8,6 @@ import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
 	THEME_HEADER_FONTSIZE,
-	VSP_TOP_PADDING,
 } from '../../types/lib/size';
 import { Ticket } from '../../types/data/ticket';
 import { TICKET_THEME_COLORS } from '../../types/data/ticket/theme';
@@ -224,7 +223,7 @@ export default class TicketViewScreen extends React.Component<
 			bodyView: {
 				flex: 1,
 				backgroundColor: THEME_COLORS.white,
-				paddingTop: VSP_TOP_PADDING,
+				paddingTop: HORIZONTAL_UNIT(3),
 			},
 		});
 

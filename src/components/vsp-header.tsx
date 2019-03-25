@@ -3,7 +3,7 @@ import { View, SafeAreaView } from 'react-native';
 import { Header } from 'react-navigation';
 
 import { THEME_COLORS } from '../types/lib/theme';
-import { VSP_TOP_PADDING } from '../types/lib/size';
+import { VSP_EDGE_PADDING } from '../types/lib/size';
 import VSPText from './vsp-text';
 
 const VSP_HEADER_HEIGHT = Header.HEIGHT;
@@ -80,7 +80,7 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						style={{
 							justifyContent: 'center',
 							alignItems: 'flex-start',
-							paddingHorizontal: VSP_TOP_PADDING,
+							paddingHorizontal: VSP_EDGE_PADDING,
 						}}
 					>
 						{this.props.headerLeft}
@@ -106,7 +106,7 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						style={{
 							justifyContent: 'center',
 							alignItems: 'flex-end',
-							paddingHorizontal: VSP_TOP_PADDING,
+							paddingHorizontal: VSP_EDGE_PADDING,
 						}}
 					>
 						{this.props.headerRight}

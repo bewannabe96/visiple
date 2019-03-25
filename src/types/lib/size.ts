@@ -24,7 +24,6 @@ export const VERTICAL_UNIT = (size: number = 1) =>
 	(height / guidelineBaseHeight) * sizeOffset * size;
 
 export const VSP_EDGE_PADDING = HORIZONTAL_UNIT(padding.edge);
-export const VSP_TOP_PADDING = HORIZONTAL_UNIT(padding.top);
 
 /**
  * Font Sizes

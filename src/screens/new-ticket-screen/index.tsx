@@ -11,7 +11,6 @@ import { DateTime } from 'luxon';
 
 import {
 	VSP_EDGE_PADDING,
-	VSP_TOP_PADDING,
 	HORIZONTAL_UNIT,
 	THEME_HEADER_FONTSIZE,
 	THEME_FONTSIZE,
@@ -89,7 +88,7 @@ export default class NewTicketScreen extends React.Component<
 		const style = StyleSheet.create({
 			container: {
 				flex: 1,
-				paddingTop: VSP_TOP_PADDING,
+				paddingTop: VSP_EDGE_PADDING,
 				paddingBottom: HORIZONTAL_UNIT(10),
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
