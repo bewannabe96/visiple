@@ -20,7 +20,7 @@ export default class App extends Component {
 		return (
 			<Provider store={rootStore}>
 				<ThemeProvider theme={RNElementsTheme}>
-					<AppContainer persistenceKey={null} />
+					<AppContainer persistenceKey={navigationPersistenceKey} />
 				</ThemeProvider>
 			</Provider>
 		);
