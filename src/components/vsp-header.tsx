@@ -29,11 +29,6 @@ interface IVSPHeaderProps {
 	 * Transparent if true (by default ```false```)
 	 */
 	transparent?: boolean;
-
-	/**
-	 * Display border if true
-	 */
-	diplayBorder?: boolean;
 }
 
 /**
@@ -44,12 +39,10 @@ interface IVSPHeaderProps {
  * - ```headerLeft```: Component to be diplayed in the left
  * - ```headerRight```: Component to be displayed in the right
  * - ```transparent```: Transparent if true (by default ```false```)
- * - ```diplayBorder```: Display border if true (by default ```true```)
  */
 export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 	public static defaultProps = {
 		transparent: false,
-		diplayBorder: true,
 	};
 
 	public render() {
@@ -62,11 +55,6 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 					position: this.props.transparent! ? 'absolute' : 'relative',
 					top: 0,
 					width: '100%',
-					borderBottomWidth:
-						!this.props.transparent! && this.props.diplayBorder
-							? 1
-							: 0,
-					borderColor: THEME_COLORS.greyWhite,
 				}}
 			>
 				<View
