@@ -1,16 +1,12 @@
 import { THEME_COLORS } from '../types/lib/theme';
-import {
-	THEME_FONTSIZE,
-	HORIZONTAL_UNIT,
-	THEME_MINOR_FONTSIZE,
-	THEME_HEADER_FONTSIZE,
-} from '../types/lib/size';
+import { THEME_FONTSIZE, HORIZONTAL_UNIT } from '../types/lib/size';
 
 const RNElementsTheme = {
-	// Icon: {
-	// 	size: THEME_FONTSIZE,
-	// 	iconStyle: { margin: 0 },
-	// },
+	Icon: {
+		size: THEME_FONTSIZE,
+		iconStyle: { margin: 0 },
+	},
+
 	// Image: {
 	// 	resizeMode: 'cover',
 	// 	style: {
@@ -18,14 +14,14 @@ const RNElementsTheme = {
 	// 		width: '100%',
 	// 	},
 	// },
-	// Button: {
-	// 	containerStyle: {
-	// 		padding: 0,
-	// 	},
-	// 	titleStyle: {
-	// 		fontSize: THEME_FONTSIZE,
-	// 	},
-	// },
+	Button: {
+		containerStyle: {
+			padding: 0,
+		},
+		titleStyle: {
+			fontSize: THEME_FONTSIZE,
+		},
+	},
 	// Text: {
 	// 	h1Style: {
 	// 		fontSize: THEME_HEADER_FONTSIZE,
@@ -44,24 +40,25 @@ const RNElementsTheme = {
 	// 	icon: { name: 'user', type: 'font-awesome' },
 	// 	rounded: true,
 	// },
-	// Input: {
-	// 	containerStyle: { paddingHorizontal: 0 },
-	// 	labelStyle: {
-	// 		fontSize: THEME_FONTSIZE,
-	// 		fontWeight: 'normal',
-	// 		color: THEME_COLORS.black,
-	// 	},
-	// 	inputContainerStyle: {
-	// 		borderBottomColor: THEME_COLORS.black,
-	// 	},
-	// 	leftIconContainerStyle: {
-	// 		marginRight: HORIZONTAL_UNIT(2),
-	// 		marginLeft: 0,
-	// 	},
-	// 	inputStyle: {
-	// 		fontSize: THEME_FONTSIZE,
-	// 	},
-	// },
+
+	Input: {
+		containerStyle: { paddingHorizontal: 0 },
+		labelStyle: {
+			fontSize: THEME_FONTSIZE,
+			fontWeight: 'normal',
+			color: THEME_COLORS.black,
+		},
+		inputContainerStyle: {
+			borderBottomColor: THEME_COLORS.black,
+		},
+		leftIconContainerStyle: {
+			marginRight: HORIZONTAL_UNIT(2),
+			marginLeft: 0,
+		},
+		inputStyle: {
+			fontSize: THEME_FONTSIZE,
+		},
+	},
 	// SearchBar: {
 	// 	containerStyle: {
 	// 		padding: 0,

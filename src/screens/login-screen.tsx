@@ -28,7 +28,11 @@ export default class LoginScreen extends React.Component<IVSPScreenProps> {
 					<VSPTitleLogo fillDirection='X' rescaleRatio='90%' />
 				</View>
 				<Input
-					leftIcon={{ name: 'user', color: THEME_COLORS.grey }}
+					leftIcon={{
+						name: 'user',
+						type: 'font-awesome',
+						color: THEME_COLORS.grey,
+					}}
 					placeholder='이메일'
 					textContentType='username'
 					containerStyle={{ marginBottom: HORIZONTAL_UNIT(2) }}

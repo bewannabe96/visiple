@@ -1,17 +1,19 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Button, Input } from 'react-native-elements';
 
-import { HORIZONTAL_UNIT } from '../types/lib/size';
+import {
+	HORIZONTAL_UNIT,
+	THEME_HEADER_FONTSIZE,
+	VSP_EDGE_PADDING,
+} from '../types/lib/size';
 import { IVSPScreenProps } from '../types/props/vsp-screen';
 import { THEME_COLORS } from '../types/lib/theme';
 
 import VSPContainer from '../components/vsp-container';
 import VSPTitleLogo from '../components/vsp-titlelogo';
 import VSPText from '../components/vsp-text';
-import VSPTextInput from '../components/vsp-textinput';
 import VSPCheckbox from '../components/vsp-checkbox';
-import VSPTextButton from '../components/vsp-text-button';
-import VSPColoredButton from '../components/vsp-colored-button';
 
 export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 	public render() {
@@ -49,8 +51,7 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 		return (
 			<VSPContainer
 				justifyContent='space-between'
-				paddingX={HORIZONTAL_UNIT(9)}
-				paddingY={HORIZONTAL_UNIT(6)}
+				padding={VSP_EDGE_PADDING}
 			>
 				<View>
 					<View style={style.headerView}>
@@ -62,25 +63,25 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 				</View>
 				<View style={style.groupView}>
 					<VSPText fontWeight='bold'>회원정보</VSPText>
-					<VSPTextInput
+					<Input
 						placeholder='이름(실명)'
 						textContentType='name'
-						marginTop={HORIZONTAL_UNIT(4)}
+						containerStyle={{ marginTop: HORIZONTAL_UNIT(4) }}
 					/>
-					<VSPTextInput
+					<Input
 						placeholder='본인 이메일 주소 입력'
 						textContentType='emailAddress'
-						marginTop={HORIZONTAL_UNIT(4)}
+						containerStyle={{ marginTop: HORIZONTAL_UNIT(4) }}
 					/>
-					<VSPTextInput
+					<Input
 						placeholder='비밀번호(알파벳 대소문자, 숫자 포함한 8-20 글자)'
 						textContentType='password'
-						marginTop={HORIZONTAL_UNIT(4)}
+						containerStyle={{ marginTop: HORIZONTAL_UNIT(4) }}
 					/>
-					<VSPTextInput
+					<Input
 						placeholder='비밀번호 확인'
 						textContentType='password'
-						marginTop={HORIZONTAL_UNIT(4)}
+						containerStyle={{ marginTop: HORIZONTAL_UNIT(4) }}
 					/>
 				</View>
 				<View style={style.groupView}>
@@ -98,7 +99,12 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 							theme='skyBlue'
 							marginLeft={HORIZONTAL_UNIT(5)}
 						/>
-						<VSPTextButton text='이용약관' theme='brown' />
+						<Button
+							title='이용약관'
+							type='clear'
+							titleStyle={{ color: THEME_COLORS.brown }}
+							onPress={() => {}}
+						/>
 						<VSPText>에 동의합니다.</VSPText>
 					</View>
 					<View style={style.checkboxIndentItem}>
@@ -107,14 +113,24 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 							theme='skyBlue'
 							marginLeft={HORIZONTAL_UNIT(5)}
 						/>
-						<VSPTextButton text='개인정보 취급방침' theme='brown' />
+						<Button
+							title='개인정보 취급방침'
+							type='clear'
+							titleStyle={{ color: THEME_COLORS.brown }}
+							onPress={() => {}}
+						/>
 						<VSPText>에 동의합니다.</VSPText>
 					</View>
 				</View>
-				<VSPColoredButton
-					text='완료'
-					fontSize={HORIZONTAL_UNIT(4)}
-					marginTop={HORIZONTAL_UNIT(4)}
+				<Button
+					title='완료'
+					titleStyle={{ fontSize: THEME_HEADER_FONTSIZE }}
+					containerStyle={{
+						marginTop: HORIZONTAL_UNIT(4),
+					}}
+					buttonStyle={{
+						backgroundColor: THEME_COLORS.oceanBlue,
+					}}
 					onPress={() => {
 						this.props.navigation.popToTop();
 					}}
