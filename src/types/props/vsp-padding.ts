@@ -2,8 +2,8 @@
  * VSPPaddingProps
  *
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
- * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
- * - ```paddingY```: Vertical padding; including paddingTop and paddingBottom
+ * - ```paddingHorizontal```: Horizontal padding; including paddingRight and paddingLeft
+ * - ```paddingVertical```: Vertical padding; including paddingTop and paddingBottom
  * - ```paddingTop```: Top padding
  * - ```paddingBottom```: Bottom padding
  * - ```paddingRight```: Rigth padding
@@ -19,12 +19,12 @@ export type IVSPPaddingProps<T = {}> = T & {
 	/**
 	 * Horizontal padding; including paddingRight and paddingLeft
 	 */
-	paddingX?: number;
+	paddingHorizontal?: number;
 
 	/**
 	 * Vertical padding; including paddingTop and paddingBottom
 	 */
-	paddingY?: number;
+	paddingVertical?: number;
 
 	/**
 	 * Top padding
@@ -59,32 +59,32 @@ export const decodeVSPPaddingProps = (
 ): IPaddingStyleProps => ({
 	paddingTop: props.paddingTop
 		? props.paddingTop
-		: props.paddingY
-		? props.paddingY
+		: props.paddingVertical
+		? props.paddingVertical
 		: props.padding
 		? props.padding
 		: undefined,
 
 	paddingBottom: props.paddingBottom
 		? props.paddingBottom
-		: props.paddingY
-		? props.paddingY
+		: props.paddingVertical
+		? props.paddingVertical
 		: props.padding
 		? props.padding
 		: undefined,
 
 	paddingRight: props.paddingRight
 		? props.paddingRight
-		: props.paddingX
-		? props.paddingX
+		: props.paddingHorizontal
+		? props.paddingHorizontal
 		: props.padding
 		? props.padding
 		: undefined,
 
 	paddingLeft: props.paddingLeft
 		? props.paddingLeft
-		: props.paddingX
-		? props.paddingX
+		: props.paddingHorizontal
+		? props.paddingHorizontal
 		: props.padding
 		? props.padding
 		: undefined,
