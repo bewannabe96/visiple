@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { ScrollView } from 'react-navigation';
 
-import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
+import { addShadowProperties } from '../../types/lib/theme';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
@@ -15,13 +15,12 @@ import VSPContainer from '../../components/vsp-container';
 import VSPHeader from '../../components/vsp-header';
 import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
-import VSPBadge from '../../components/vsp-badge';
 import VSPProfile from '../../components/vsp-profile';
-import { VSPHeaderMenu } from '../../components/vsp-header-button';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
 import AddFriendModal from './add-friend-modal';
 import VSPIcon from '../../components/vsp-icon';
+import VSPDivider from '../../components/vsp-divider';
 
 const DEV_FRIENDS: User[] = [
 	{ userID: '0001', userName: '홍길동', userEmail: 'testtest23@nate.com' },
@@ -35,19 +34,8 @@ const DEV_FRIENDS: User[] = [
 ];
 
 export default class FriendScreen extends React.Component<IVSPScreenProps> {
-	public static navigationOptions = ({
-		navigation,
-	}: {
-		navigation: NavigationScreenProp<any>;
-	}) => {
-		return {
-			header: (
-				<VSPHeader
-					headerTitle='친구'
-					headerLeft={VSPHeaderMenu(navigation)}
-				/>
-			),
-		};
+	public static navigationOptions = {
+		header: <VSPHeader headerTitle='친구' />,
 	};
 
 	private _renderFriendsList() {
@@ -61,7 +49,7 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 		});
 
 		return (
-			<ScrollView>
+			<View>
 				{DEV_FRIENDS.map((friend: User) => (
 					<TouchableOpacity key={friend.userID} activeOpacity={0.6}>
 						<View style={style.itemView}>
@@ -84,28 +72,12 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 						</View>
 					</TouchableOpacity>
 				))}
-			</ScrollView>
+			</View>
 		);
 	}
 
 	public render() {
 		const style = StyleSheet.create({
-			searchView: {
-				justifyContent: 'center',
-				backgroundColor: THEME_COLORS.white,
-				paddingVertical: HORIZONTAL_UNIT(2),
-				paddingHorizontal: VSP_EDGE_PADDING,
-			},
-
-			friendLabelView: {
-				flexDirection: 'row',
-				justifyContent: 'space-between',
-				alignItems: 'center',
-				backgroundColor: THEME_COLORS.oceanBlue,
-				paddingHorizontal: VSP_EDGE_PADDING,
-				paddingVertical: HORIZONTAL_UNIT(),
-			},
-
 			addFriendButtonView: {
 				position: 'absolute',
 				bottom: HORIZONTAL_UNIT(5),
@@ -116,6 +88,22 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 
 		return (
 			<VSPContainer>
+				<VSPTextInput
+					placeholder='검색'
+					frontIcon='search'
+					displayUnderline={false}
+					marginX={VSP_EDGE_PADDING}
+					marginBottom={VSP_EDGE_PADDING}
+				/>
+				<ScrollView>
+					<VSPDivider
+						text='친구 10'
+						orientation='far-left'
+						marginX={VSP_EDGE_PADDING}
+					/>
+					{this._renderFriendsList()}
+				</ScrollView>
+
 				<View style={style.addFriendButtonView}>
 					<VSPRoundIconButton
 						icon='plus'
@@ -126,18 +114,6 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 						}}
 					/>
 				</View>
-				<View style={style.searchView}>
-					<VSPTextInput
-						placeholder='검색'
-						frontIcon='search'
-						displayUnderline={false}
-					/>
-				</View>
-				<View style={style.friendLabelView}>
-					<VSPText theme='white'>친구</VSPText>
-					<VSPBadge value={10} theme='brown' />
-				</View>
-				{this._renderFriendsList()}
 				<AddFriendModal />
 			</VSPContainer>
 		);

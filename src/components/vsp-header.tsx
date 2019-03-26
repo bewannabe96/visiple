@@ -62,17 +62,20 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						height: VSP_HEADER_HEIGHT,
 						flexDirection: 'row',
 						alignItems: 'stretch',
+						paddingHorizontal: VSP_EDGE_PADDING,
 					}}
 				>
-					<View
-						style={{
-							justifyContent: 'center',
-							alignItems: 'flex-start',
-							paddingHorizontal: VSP_EDGE_PADDING,
-						}}
-					>
-						{this.props.headerLeft}
-					</View>
+					{!!this.props.headerLeft && (
+						<View
+							style={{
+								justifyContent: 'center',
+								alignItems: 'flex-start',
+								paddingRight: VSP_EDGE_PADDING,
+							}}
+						>
+							{this.props.headerLeft}
+						</View>
+					)}
 					<View
 						style={{
 							flex: 1,
@@ -82,7 +85,8 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						{typeof this.props.headerTitle === 'string' && (
 							<VSPText
 								fontSize={VSP_HEADER_TITLE_SIZE}
-								theme='brown'
+								theme='black'
+								fontWeight='bold'
 							>
 								{this.props.headerTitle}
 							</VSPText>
@@ -90,15 +94,17 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						{typeof this.props.headerTitle !== 'string' &&
 							this.props.headerTitle}
 					</View>
-					<View
-						style={{
-							justifyContent: 'center',
-							alignItems: 'flex-end',
-							paddingHorizontal: VSP_EDGE_PADDING,
-						}}
-					>
-						{this.props.headerRight}
-					</View>
+					{!!this.props.headerLeft && (
+						<View
+							style={{
+								justifyContent: 'center',
+								alignItems: 'flex-end',
+								paddingLeft: VSP_EDGE_PADDING,
+							}}
+						>
+							{this.props.headerRight}
+						</View>
+					)}
 				</View>
 			</SafeAreaView>
 		);

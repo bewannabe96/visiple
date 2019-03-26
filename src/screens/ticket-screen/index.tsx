@@ -10,7 +10,6 @@ import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
-import { VSPHeaderMenu } from '../../components/vsp-header-button';
 import VSPText from '../../components/vsp-text';
 
 import TicketCard from './tickets-card';
@@ -63,12 +62,7 @@ export default class TicketScreen extends React.Component<
 		navigation: NavigationScreenProp<any>;
 	}) => {
 		return {
-			header: (
-				<VSPHeader
-					headerTitle='티켓'
-					headerLeft={VSPHeaderMenu(navigation)}
-				/>
-			),
+			header: <VSPHeader headerTitle='티켓' />,
 		};
 	};
 

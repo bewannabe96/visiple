@@ -10,6 +10,7 @@ const HomeStack = createStackNavigator(
 	},
 	{
 		initialRouteName: 'HomeScreen',
+		headerMode: 'none',
 	},
 );
 

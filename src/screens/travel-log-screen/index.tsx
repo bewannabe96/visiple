@@ -9,7 +9,6 @@ import { TravelLog } from '../../types/data/travel-log';
 import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPHeader from '../../components/vsp-header';
-import { VSPHeaderMenu } from '../../components/vsp-header-button';
 
 import PublishedLogsTab from './published-logs-tab';
 
@@ -72,13 +71,7 @@ export default class TravelLogScreen extends React.Component<
 		navigation: NavigationScreenProp<any>;
 	}) => {
 		return {
-			header: (
-				<VSPHeader
-					headerTitle='로그'
-					headerLeft={VSPHeaderMenu(navigation)}
-					diplayBorder={false}
-				/>
-			),
+			header: <VSPHeader headerTitle='로그' />,
 		};
 	};
 
