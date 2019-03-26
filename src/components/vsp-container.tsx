@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, SafeAreaView } from 'react-native';
 
 import {
 	decodeVSPPaddingProps,
@@ -41,6 +41,10 @@ export default class VSPContainer extends React.Component<
 
 	public render() {
 		const style = StyleSheet.create({
+			safeareaView: {
+				flex: 1,
+			},
+
 			innerView: {
 				flex: 1,
 				flexDirection: 'column',
@@ -50,6 +54,10 @@ export default class VSPContainer extends React.Component<
 			},
 		});
 
-		return <View style={style.innerView}>{this.props.children}</View>;
+		return (
+			<SafeAreaView style={style.safeareaView}>
+				<View style={style.innerView}>{this.props.children}</View>
+			</SafeAreaView>
+		);
 	}
 }
