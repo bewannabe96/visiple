@@ -153,7 +153,7 @@ export default class SelectPeriodModal extends React.Component<
 				titleText={'기간'}
 				rightButtonText={'완료'}
 				rightButtonOnPress={this.props.closePeriodModal}
-				paddingY={HORIZONTAL_UNIT(3)}
+				paddingVertical={HORIZONTAL_UNIT(3)}
 			>
 				<View style={style.fromtoTabView}>
 					<TouchableOpacity

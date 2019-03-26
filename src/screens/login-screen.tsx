@@ -19,12 +19,7 @@ export default class LoginScreen extends React.Component<IVSPScreenProps> {
 		});
 
 		return (
-			<VSPContainer
-				wrapSafeAreaView
-				justifyContent='flex-end'
-				paddingX={HORIZONTAL_UNIT(9)}
-				paddingY={HORIZONTAL_UNIT(6)}
-			>
+			<VSPContainer wrapSafeAreaView justifyContent='flex-end'>
 				<View style={style.topView}>
 					<VSPTitleLogo fillDirection='X' rescaleRatio='90%' />
 				</View>

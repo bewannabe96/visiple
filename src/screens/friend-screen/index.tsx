@@ -17,10 +17,10 @@ import VSPText from '../../components/vsp-text';
 import VSPTextInput from '../../components/vsp-textinput';
 import VSPProfile from '../../components/vsp-profile';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
-
-import AddFriendModal from './add-friend-modal';
 import VSPIcon from '../../components/vsp-icon';
 import VSPDivider from '../../components/vsp-divider';
+
+import AddFriendModal from './add-friend-modal';
 
 const DEV_FRIENDS: User[] = [
 	{ userID: '0001', userName: '홍길동', userEmail: 'testtest23@nate.com' },
@@ -92,14 +92,14 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 					placeholder='검색'
 					frontIcon='search'
 					displayUnderline={false}
-					marginX={VSP_EDGE_PADDING}
+					marginHorizontal={VSP_EDGE_PADDING}
 					marginBottom={VSP_EDGE_PADDING}
 				/>
 				<ScrollView>
 					<VSPDivider
 						text='친구 10'
 						orientation='far-left'
-						marginX={VSP_EDGE_PADDING}
+						marginHorizontal={VSP_EDGE_PADDING}
 					/>
 					{this._renderFriendsList()}
 				</ScrollView>

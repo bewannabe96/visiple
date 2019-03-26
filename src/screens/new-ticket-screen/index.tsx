@@ -156,7 +156,7 @@ export default class NewTicketScreen extends React.Component<
 						>
 							<VSPText>시작</VSPText>
 							<VSPText
-								marginY={HORIZONTAL_UNIT()}
+								marginVertical={HORIZONTAL_UNIT()}
 								color={this.props.newTicket.themeColor}
 							>
 								{this.props.newTicket.period.from.toLocaleString(
@@ -186,7 +186,7 @@ export default class NewTicketScreen extends React.Component<
 						>
 							<VSPText>종료</VSPText>
 							<VSPText
-								marginY={HORIZONTAL_UNIT()}
+								marginVertical={HORIZONTAL_UNIT()}
 								color={this.props.newTicket.themeColor}
 							>
 								{this.props.newTicket.period.to.toLocaleString(

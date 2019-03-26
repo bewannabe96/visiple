@@ -2,11 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 
-import {
-	HORIZONTAL_UNIT,
-	THEME_HEADER_FONTSIZE,
-	VSP_EDGE_PADDING,
-} from '../types/lib/size';
+import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../types/lib/size';
 import { IVSPScreenProps } from '../types/props/vsp-screen';
 import { THEME_COLORS } from '../types/lib/theme';
 
@@ -49,12 +45,7 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 		});
 
 		return (
-			<VSPContainer
-				wrapSafeAreaView
-				justifyContent='space-between'
-				paddingX={HORIZONTAL_UNIT(9)}
-				paddingY={HORIZONTAL_UNIT(6)}
-			>
+			<VSPContainer wrapSafeAreaView justifyContent='space-between'>
 				<View>
 					<View style={style.headerView}>
 						<VSPTitleLogo fillDirection='Y' />
