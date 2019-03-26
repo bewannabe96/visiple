@@ -63,20 +63,6 @@ export default class VSPHeaderButton extends React.Component<
 }
 
 /**
- * VSPHeaderMenu
- *
- * Opens side menu
- */
-export const VSPHeaderMenu = (navigation: NavigationScreenProp<any>) => (
-	<VSPHeaderButton
-		icon='menu'
-		onPress={() => {
-			navigation.openDrawer();
-		}}
-	/>
-);
-
-/**
  * VSPHeaderBack
  *
  * Returns to the previous page
