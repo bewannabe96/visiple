@@ -1,12 +1,12 @@
 import { createSwitchNavigator } from 'react-navigation';
 
 import _LoginStack from './login-stack';
-import _AppDrawer from './app-drawer';
+import _AppTab from './app-tab';
 
 const AuthSwitch = createSwitchNavigator(
 	{
 		LoginStack: _LoginStack,
-		App: _AppDrawer,
+		App: _AppTab,
 	},
 	{
 		initialRouteName: 'LoginStack',

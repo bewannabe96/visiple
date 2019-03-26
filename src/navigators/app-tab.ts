@@ -1,13 +1,11 @@
-import { createDrawerNavigator } from 'react-navigation';
-
-import VSPSideDrawer from '../components/vsp-sidedrawer';
+import { createBottomTabNavigator } from 'react-navigation';
 
 import _HomeStack from './home-stack';
 import _FriendStack from './friend-stack';
 import _TicketStack from './ticket-stack';
 import _TravelLogStack from './travel-log-tab';
 
-const AppDrawer = createDrawerNavigator(
+const AppTab = createBottomTabNavigator(
 	{
 		HomeStack: {
 			screen: _HomeStack,
@@ -24,8 +22,7 @@ const AppDrawer = createDrawerNavigator(
 	},
 	{
 		initialRouteName: 'HomeStack',
-		contentComponent: VSPSideDrawer,
 	},
 );
 
-export default AppDrawer;
+export default AppTab;
