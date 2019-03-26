@@ -8,6 +8,11 @@ import {
 
 interface IVSPContainerProps {
 	/**
+	 * Wrap in SafeAreaView if true
+	 */
+	wrapSafeAreaView?: boolean;
+
+	/**
 	 * Justify Content
 	 */
 	justifyContent?:
@@ -23,6 +28,7 @@ interface IVSPContainerProps {
  * VSPContainer
  *
  * @property
+ * - ```wrapSafeAreaView```: Wrap in SafeAreaView if true (by default ```false```)
  * - ```justifyContent```: Justify Content (by default ```flex-start```)
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
  * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
@@ -36,12 +42,13 @@ export default class VSPContainer extends React.Component<
 	IVSPPaddingProps<IVSPContainerProps>
 > {
 	public static defaultProps = {
+		wrapSafeAreaView: false,
 		justifyContent: 'flex-start',
 	};
 
 	public render() {
 		const style = StyleSheet.create({
-			safeareaView: {
+			safeAreaView: {
 				flex: 1,
 			},
 
@@ -54,10 +61,14 @@ export default class VSPContainer extends React.Component<
 			},
 		});
 
-		return (
-			<SafeAreaView style={style.safeareaView}>
-				<View style={style.innerView}>{this.props.children}</View>
-			</SafeAreaView>
-		);
+		if (this.props.wrapSafeAreaView) {
+			return (
+				<SafeAreaView style={style.safeAreaView}>
+					<View style={style.innerView}>{this.props.children}</View>
+				</SafeAreaView>
+			);
+		} else {
+			return <View style={style.innerView}>{this.props.children}</View>;
+		}
 	}
 }

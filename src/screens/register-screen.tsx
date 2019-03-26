@@ -50,8 +50,10 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 
 		return (
 			<VSPContainer
+				wrapSafeAreaView
 				justifyContent='space-between'
-				padding={VSP_EDGE_PADDING}
+				paddingX={HORIZONTAL_UNIT(9)}
+				paddingY={HORIZONTAL_UNIT(6)}
 			>
 				<View>
 					<View style={style.headerView}>
