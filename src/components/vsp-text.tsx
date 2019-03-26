@@ -64,8 +64,8 @@ interface IVSPTextProps {
  * - ```color```: Raw color of the button
  * - ```style```: Style of the text
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
- * - ```marginX```: Horizontal margin; including marginRight and marginLeft
- * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginVertical```: Vertical margin; including marginTop and marginBottom
  * - ```marginTop```: Top margin
  * - ```marginBottom```: Bottom margin
  * - ```marginRight```: Rigth margin

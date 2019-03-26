@@ -84,8 +84,8 @@ interface IVSPModalProps {
  * - ```leftButtonText```: Text of the left button
  * - ```leftButtonOnPress```: Callback function when left button pressed
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
- * - ```paddingX```: Horizontal padding; including paddingRight and paddingLeft
- * - ```paddingY```: Vertical padding; including paddingTop and paddingBottom
+ * - ```paddingHorizontal```: Horizontal padding; including paddingRight and paddingLeft
+ * - ```paddingVertical```: Vertical padding; including paddingTop and paddingBottom
  * - ```paddingTop```: Top padding
  * - ```paddingBottom```: Bottom padding
  * - ```paddingRight```: Rigth padding

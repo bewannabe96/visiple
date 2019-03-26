@@ -40,8 +40,8 @@ interface IVSPProfileProps {
  * - ```castShadow```: Casts shadow if true (by default ```false```)
  * - ```style```: Style of the text (by default ```THEME_FONT```, ```ocean-blue```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
- * - ```marginX```: Horizontal margin; including marginRight and marginLeft
- * - ```marginY```: Vertical margin; including marginTop and marginBottom
+ * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginVertical```: Vertical margin; including marginTop and marginBottom
  * - ```marginTop```: Top margin
  * - ```marginBottom```: Bottom margin
  * - ```marginRight```: Rigth margin

@@ -29,9 +29,7 @@ interface IVSPContainerProps {
  * - ```wrapSafeAreaView```: Wrap in SafeAreaView if true (by default ```false```)
  * - ```justifyContent```: Justify Content (by default ```flex-start```)
  */
-export default class VSPContainer extends React.Component<
-	IVSPPaddingProps<IVSPContainerProps>
-> {
+export default class VSPContainer extends React.Component<IVSPContainerProps> {
 	public static defaultProps = {
 		wrapSafeAreaView: false,
 		justifyContent: 'flex-start',

@@ -54,6 +54,13 @@ interface IVSPDividerProps {
  * - ```theme```: Theme color of the divider (by default ```oceanBlue```)
  * - ```color```: Raw color of the divider
  * - ```orientation```: The place where the text will go (by default ```left```)
+ * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
+ * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
+ * - ```marginVertical```: Vertical margin; including marginTop and marginBottom
+ * - ```marginTop```: Top margin
+ * - ```marginBottom```: Bottom margin
+ * - ```marginRight```: Rigth margin
+ * - ```marginLeft```: Left margin
  */
 export default class VSPDivider extends React.Component<
 	IVSPMarginProps<IVSPDividerProps>
