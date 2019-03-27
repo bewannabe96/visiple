@@ -3,7 +3,9 @@ import { createBottomTabNavigator } from 'react-navigation';
 import _HomeStack from './home-stack';
 import _FriendStack from './friend-stack';
 import _TicketStack from './ticket-stack';
-import _TravelLogStack from './travel-log-tab';
+import _TravelLogStack from './travel-log-stack';
+
+import VSPTabBar from '../components/vsp-tabbar';
 
 const AppTab = createBottomTabNavigator(
 	{
@@ -22,6 +24,7 @@ const AppTab = createBottomTabNavigator(
 	},
 	{
 		initialRouteName: 'HomeStack',
+		tabBarComponent: VSPTabBar,
 	},
 );
 

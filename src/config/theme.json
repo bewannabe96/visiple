@@ -1,4 +1,8 @@
 {
+    "bottomTab": {
+        "height": 10,
+        "button": 4.5
+    },
     "sizeOffset": 5,
     "fontFamily": "arial",
     "fontSize": {
