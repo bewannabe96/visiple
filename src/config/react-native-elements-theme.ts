@@ -1,5 +1,10 @@
 import { THEME_COLORS } from '../types/lib/theme';
-import { THEME_FONTSIZE, HORIZONTAL_UNIT } from '../types/lib/size';
+import {
+	THEME_FONTSIZE,
+	HORIZONTAL_UNIT,
+	THEME_HEADER_FONTSIZE,
+	THEME_MINOR_FONTSIZE,
+} from '../types/lib/size';
 
 const RNElementsTheme = {
 	Icon: {
@@ -22,20 +27,22 @@ const RNElementsTheme = {
 			fontSize: THEME_FONTSIZE,
 		},
 	},
-	// Text: {
-	// 	h1Style: {
-	// 		fontSize: THEME_HEADER_FONTSIZE,
-	// 	},
-	// 	h2Style: {
-	// 		fontSize: THEME_HEADER_FONTSIZE,
-	// 	},
-	// 	h3Style: {
-	// 		fontSize: THEME_FONTSIZE,
-	// 	},
-	// 	h4Style: {
-	// 		fontSize: THEME_MINOR_FONTSIZE,
-	// 	},
-	// },
+
+	Text: {
+		h1Style: {
+			fontSize: THEME_HEADER_FONTSIZE,
+		},
+		h2Style: {
+			fontSize: THEME_HEADER_FONTSIZE,
+		},
+		h3Style: {
+			fontSize: THEME_FONTSIZE,
+		},
+		h4Style: {
+			fontSize: THEME_MINOR_FONTSIZE,
+		},
+	},
+
 	// Avatar: {
 	// 	icon: { name: 'user', type: 'font-awesome' },
 	// 	rounded: true,
@@ -45,7 +52,7 @@ const RNElementsTheme = {
 		containerStyle: { paddingHorizontal: 0 },
 		labelStyle: {
 			fontSize: THEME_FONTSIZE,
-			fontWeight: 'normal',
+			fontWeight: 'normal' as 'normal',
 			color: THEME_COLORS.black,
 		},
 		inputContainerStyle: {
@@ -59,6 +66,7 @@ const RNElementsTheme = {
 			fontSize: THEME_FONTSIZE,
 		},
 	},
+
 	// SearchBar: {
 	// 	containerStyle: {
 	// 		padding: 0,
