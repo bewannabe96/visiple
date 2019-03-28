@@ -1,3 +1,13 @@
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+
+import icoMoonConfig from '../../config/icons.json';
+
+export const VSPIconSet = createIconSetFromIcoMoon(
+	icoMoonConfig,
+	'vspicon',
+	'vspicon.ttf',
+);
+
 export type IconName =
 	// UI
 	| 'calendar'
