@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, SafeAreaView } from 'react-native';
+import { Icon } from 'react-native-elements';
 import {
 	BottomTabBarProps,
 	NavigationRoute,
@@ -8,9 +9,6 @@ import {
 
 import { VSP_BOTTOM_TAB, VSP_BOTTOM_TAB_BUTTON } from '../types/lib/size';
 import { THEME_COLORS } from '../types/lib/theme';
-import { IconName } from '../types/lib/icon';
-
-import VSPIcon from './vsp-icon';
 
 interface TabBarProps extends BottomTabBarProps {}
 
@@ -20,13 +18,13 @@ export default class VSPTabBar extends React.Component<TabBarProps> {
 		index: number,
 	) {
 		const focused = this.props.navigation.state.index === index;
-		let iconName: IconName;
+		let iconName: string;
 		if (route.routeName === 'FriendStack') {
-			iconName = 'teamwork';
+			iconName = 'user';
 		} else if (route.routeName === 'TicketStack') {
-			iconName = 'taxi';
+			iconName = 'planning';
 		} else if (route.routeName === 'TravelLogStack') {
-			iconName = 'train';
+			iconName = 'settings';
 		} else {
 			// HomeStack
 			iconName = 'home';
@@ -47,10 +45,11 @@ export default class VSPTabBar extends React.Component<TabBarProps> {
 				}}
 				disabled={focused}
 			>
-				<VSPIcon
-					iconName={iconName}
+				<Icon
+					name={iconName}
+					type='vspicon'
 					size={VSP_BOTTOM_TAB_BUTTON}
-					theme={focused ? 'black' : 'grey'}
+					color={focused ? THEME_COLORS.brown : THEME_COLORS.grey}
 				/>
 			</TouchableOpacity>
 		);
