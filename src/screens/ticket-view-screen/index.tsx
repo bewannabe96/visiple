@@ -241,7 +241,7 @@ export default class TicketViewScreen extends React.Component<
 					<VSPText
 						fontSize={THEME_HEADER_FONTSIZE}
 						color={DEV_TICKET.themeColor}
-						marginX={VSP_EDGE_PADDING}
+						marginHorizontal={VSP_EDGE_PADDING}
 						marginBottom={HORIZONTAL_UNIT(2)}
 					>
 						{DEV_TICKET.title}

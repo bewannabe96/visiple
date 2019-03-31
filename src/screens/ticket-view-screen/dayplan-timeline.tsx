@@ -148,7 +148,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 							iconName='downarrow'
 							theme='grey'
 							size={THEME_MINOR_FONTSIZE}
-							marginY={HORIZONTAL_UNIT()}
+							marginVertical={HORIZONTAL_UNIT()}
 						/>
 						<View style={{ flexDirection: 'row' }}>
 							<VSPText
