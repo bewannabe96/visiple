@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { Avatar } from 'react-native-elements';
 
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
 import { UserID } from '../../types/data/user';
 
-import VSPProfile from '../../components/vsp-profile';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
 interface IParticipantsListProps {
@@ -37,9 +37,9 @@ export default class ParticipantsList extends React.Component<
 		return (
 			<View style={style.profilesView}>
 				{this.props.participants.map((uid: UserID, index: number) => (
-					<VSPProfile
+					<Avatar
 						key={uid}
-						style={{
+						containerStyle={{
 							left: HORIZONTAL_UNIT(-3 * index),
 							zIndex: index,
 						}}

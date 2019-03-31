@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
+import { SearchBar, Avatar } from 'react-native-elements';
 
 import {
 	HORIZONTAL_UNIT,
@@ -9,12 +10,10 @@ import {
 } from '../types/lib/size';
 
 import VSPModal from '../components/vsp-modal';
-import VSPProfile from '../components/vsp-profile';
 import VSPColoredButton from '../components/vsp-colored-button';
 import VSPText from '../components/vsp-text';
 
 import { closeInviteModal } from '../actions/screens/new-ticket-screen';
-import { SearchBar } from 'react-native-elements';
 
 interface IFriendInviteModalProps {
 	/**
@@ -80,7 +79,7 @@ export default class FriendInviteModal extends React.Component<
 								paddingHorizontal: VSP_EDGE_PADDING,
 							}}
 						>
-							<VSPProfile size={HORIZONTAL_UNIT(10)} />
+							<Avatar size={HORIZONTAL_UNIT(10)} />
 							<View
 								style={{
 									flex: 1,

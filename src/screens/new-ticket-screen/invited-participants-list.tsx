@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
+import { Avatar } from 'react-native-elements';
 
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import { UserID } from '../../types/data/user';
 
-import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
@@ -41,7 +41,7 @@ export default class InvitedParticipantsList extends React.Component<
 					marginVertical: HORIZONTAL_UNIT(),
 				}}
 			>
-				<VSPProfile />
+				<Avatar size={HORIZONTAL_UNIT(12)} />
 				<VSPText marginTop={HORIZONTAL_UNIT()} theme='grey'>
 					김윤회
 				</VSPText>

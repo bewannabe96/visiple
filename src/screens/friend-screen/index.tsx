@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Avatar } from 'react-native-elements';
 import { ScrollView } from 'react-navigation';
 
 import { addShadowProperties } from '../../types/lib/theme';
@@ -16,7 +16,6 @@ import { User } from '../../types/data/user';
 import VSPContainer from '../../components/vsp-container';
 import VSPHeader from '../../components/vsp-header';
 import VSPText from '../../components/vsp-text';
-import VSPProfile from '../../components/vsp-profile';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 import VSPIcon from '../../components/vsp-icon';
 import VSPDivider from '../../components/vsp-divider';
@@ -54,9 +53,11 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 				{DEV_FRIENDS.map((friend: User) => (
 					<TouchableOpacity key={friend.userID} activeOpacity={0.6}>
 						<View style={style.itemView}>
-							<VSPProfile
+							<Avatar
 								size={HORIZONTAL_UNIT(10)}
-								marginRight={HORIZONTAL_UNIT(3)}
+								containerStyle={{
+									marginRight: HORIZONTAL_UNIT(3),
+								}}
 							/>
 							<View style={{ flex: 1 }}>
 								<VSPText marginBottom={HORIZONTAL_UNIT()}>

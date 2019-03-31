@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
+import { Avatar } from 'react-native-elements';
+import { DateTime } from 'luxon';
 
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
 import {
@@ -14,9 +16,6 @@ import {
 	ticketFixedColors,
 	ticketCardMaxProfiles,
 } from '../../config/ticket.json';
-
-import VSPProfile from '../../components/vsp-profile';
-import { DateTime } from 'luxon';
 
 interface ITicketCardProps {
 	/**
@@ -41,33 +40,32 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 	private _renderParticipants(ids: UserID[]) {
 		if (ids.length <= ticketCardMaxProfiles) {
 			return this.props.ticket.participants.map((uid: UserID) => (
-				<VSPProfile
+				<Avatar
 					key={uid}
 					size={HORIZONTAL_UNIT(5)}
-					marginLeft={HORIZONTAL_UNIT()}
+					containerStyle={{ marginLeft: HORIZONTAL_UNIT() }}
 				/>
 			));
 		} else {
 			let rtnElement = this.props.ticket.participants
 				.slice(0, ticketCardMaxProfiles - 1)
 				.map((uid: UserID) => (
-					<VSPProfile
+					<Avatar
 						key={uid}
 						size={HORIZONTAL_UNIT(5)}
-						marginLeft={HORIZONTAL_UNIT()}
+						containerStyle={{ marginLeft: HORIZONTAL_UNIT() }}
 					/>
 				));
 			rtnElement.push(
-				<VSPProfile
+				<Avatar
 					key={
 						this.props.ticket.participants[
 							ticketCardMaxProfiles - 1
 						]
 					}
 					size={HORIZONTAL_UNIT(5)}
-					marginLeft={HORIZONTAL_UNIT()}
-					overlaidText={`+${ids.length - ticketCardMaxProfiles + 1}`}
-					blur={true}
+					containerStyle={{ marginLeft: HORIZONTAL_UNIT() }}
+					title={`+${ids.length - ticketCardMaxProfiles + 1}`}
 				/>,
 			);
 			return rtnElement;

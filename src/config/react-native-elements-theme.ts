@@ -43,10 +43,10 @@ const RNElementsTheme = {
 		},
 	},
 
-	// Avatar: {
-	// 	icon: { name: 'user', type: 'font-awesome' },
-	// 	rounded: true,
-	// },
+	Avatar: {
+		icon: { name: 'user', type: 'font-awesome' },
+		rounded: true,
+	},
 
 	Input: {
 		containerStyle: { paddingHorizontal: 0 },

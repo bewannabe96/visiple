@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { Avatar } from 'react-native-elements';
 
 import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
 import {
@@ -16,7 +17,6 @@ import {
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';
 import VSPCheckbox from '../../components/vsp-checkbox';
-import VSPProfile from '../../components/vsp-profile';
 
 interface IPackingListProps {
 	/**
@@ -90,9 +90,11 @@ export default class PackingList extends React.Component<IPackingListProps> {
 						key={indivList.user}
 						header={
 							<View style={style.headerView}>
-								<VSPProfile
+								<Avatar
 									size={HORIZONTAL_UNIT(5)}
-									marginRight={HORIZONTAL_UNIT()}
+									containerStyle={{
+										marginRight: HORIZONTAL_UNIT(),
+									}}
 								/>
 								<VSPText
 									color={this.props.ticketColor}

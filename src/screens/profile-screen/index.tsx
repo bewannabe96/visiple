@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
+import { Avatar } from 'react-native-elements';
 
 import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPImage from '../../components/vsp-image';
-import VSPProfile from '../../components/vsp-profile';
 import VSPText from '../../components/vsp-text';
 
 export default class ProfileScreen extends React.Component {
@@ -17,10 +17,6 @@ export default class ProfileScreen extends React.Component {
 				flexDirection: 'row',
 				position: 'absolute',
 				bottom: 0,
-			},
-
-			profileImage: {
-				zIndex: 1,
 			},
 
 			profileTitleInfoView: {
@@ -83,11 +79,13 @@ export default class ProfileScreen extends React.Component {
 						height={HORIZONTAL_UNIT(50)}
 					/>
 					<View style={style.profileTitleView}>
-						<VSPProfile
+						<Avatar
 							size={HORIZONTAL_UNIT(22)}
-							marginLeft={HORIZONTAL_UNIT(6)}
-							marginRight={HORIZONTAL_UNIT(2)}
-							style={style.profileImage}
+							containerStyle={{
+								zIndex: 1,
+								marginLeft: HORIZONTAL_UNIT(6),
+								marginRight: HORIZONTAL_UNIT(2),
+							}}
 						/>
 						<View style={style.profileTitleInfoView}>
 							<VSPText
