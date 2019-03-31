@@ -5,16 +5,16 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
-import { ThemeColor, THEME_COLORS, RawColor } from '../types/lib/theme';
+import { THEME_COLORS, RawColor } from '../types/lib/theme';
 import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
+import { IconName } from '../types/lib/icon';
+import { THEME_FONTSIZE } from '../types/lib/size';
 
 import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
-import { IconName } from '../types/lib/icon';
-import { THEME_FONTSIZE } from '../types/lib/size';
 
 interface IVSPTextButtonProps {
 	/**
@@ -38,11 +38,6 @@ interface IVSPTextButtonProps {
 	underline?: boolean;
 
 	/**
-	 * Theme color of the button
-	 */
-	theme?: ThemeColor;
-
-	/**
 	 * Raw color of the button
 	 */
 	color?: RawColor;
@@ -61,8 +56,7 @@ interface IVSPTextButtonProps {
  * - ```icon```: Icon to be displayed in the button
  * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
  * - ```underline```: Underline text if true (by default ```true```)
- * - ```theme```: Theme color of the button (by default ```oceanBlue```)
- * - ```color```: Raw color of the button
+ * - ```color```: Raw color of the button (by default ```THEME_COLORS.oceanBlue```)
  * - ```onPress```: Callback function when button pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
@@ -78,7 +72,7 @@ export default class VSPTextButton extends React.Component<
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
 		underline: true,
-		theme: 'oceanBlue',
+		color: THEME_COLORS.oceanBlue,
 	};
 
 	public render() {
@@ -94,9 +88,7 @@ export default class VSPTextButton extends React.Component<
 				fontSize: this.props.fontSize!,
 				marginLeft: this.props.icon ? 0.7 * this.props.fontSize! : 0,
 				textDecorationLine: this.props.underline! ? 'underline' : null,
-				color: this.props.color
-					? this.props.color
-					: THEME_COLORS[this.props.theme!],
+				color: this.props.color!,
 			},
 		});
 
@@ -109,11 +101,7 @@ export default class VSPTextButton extends React.Component<
 				{!!this.props.icon && (
 					<VSPIcon
 						iconName={this.props.icon}
-						color={
-							this.props.color
-								? this.props.color
-								: THEME_COLORS[this.props.theme!]
-						}
+						color={this.props.color!}
 						size={this.props.fontSize}
 					/>
 				)}

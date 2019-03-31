@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 import { UserID } from '../../types/data/user';
 
 import VSPText from '../../components/vsp-text';
@@ -42,7 +43,10 @@ export default class InvitedParticipantsList extends React.Component<
 				}}
 			>
 				<Avatar size={HORIZONTAL_UNIT(12)} />
-				<VSPText marginTop={HORIZONTAL_UNIT()} theme='grey'>
+				<VSPText
+					marginTop={HORIZONTAL_UNIT()}
+					color={THEME_COLORS.grey}
+				>
 					김윤회
 				</VSPText>
 				<View
@@ -54,7 +58,7 @@ export default class InvitedParticipantsList extends React.Component<
 					<VSPRoundIconButton
 						icon='cancel'
 						size={THEME_HEADER_FONTSIZE}
-						theme='grey'
+						color={THEME_COLORS.grey}
 					/>
 				</View>
 			</View>

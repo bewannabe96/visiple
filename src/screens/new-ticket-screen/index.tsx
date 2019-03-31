@@ -15,6 +15,7 @@ import {
 	HORIZONTAL_UNIT,
 	THEME_HEADER_FONTSIZE,
 } from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { NewTicket } from '../../types/data/ticket';
 
@@ -168,7 +169,7 @@ export default class NewTicketScreen extends React.Component<
 						<View style={style.arrowIconView}>
 							<VSPIcon
 								iconName='rightarrow'
-								theme='grey'
+								color={THEME_COLORS.grey}
 								size={HORIZONTAL_UNIT(6)}
 							/>
 						</View>
@@ -232,11 +233,11 @@ export default class NewTicketScreen extends React.Component<
 						</View>
 						<InvitedParticipantsListContainer />
 						<View style={style.footerView}>
-							<VSPText theme='grey'>총</VSPText>
+							<VSPText color={THEME_COLORS.grey}>총</VSPText>
 							<VSPText style={style.valueText}>{`${
 								this.props.newTicket.participants.length
 							}`}</VSPText>
-							<VSPText theme='grey'>명</VSPText>
+							<VSPText color={THEME_COLORS.grey}>명</VSPText>
 						</View>
 					</View>
 				</ScrollView>

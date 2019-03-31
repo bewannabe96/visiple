@@ -71,7 +71,10 @@ class PublishedLogsTab extends React.Component<
 					source={require('../../dev-sample-image/landscape_1.jpeg')}
 				/>
 				<View style={style.titleView}>
-					<VSPText fontSize={THEME_HEADER_FONTSIZE} theme='white'>
+					<VSPText
+						fontSize={THEME_HEADER_FONTSIZE}
+						color={THEME_COLORS.white}
+					>
 						{travelLog.title}
 					</VSPText>
 				</View>

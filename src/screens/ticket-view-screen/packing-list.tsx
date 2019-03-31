@@ -72,9 +72,9 @@ export default class PackingList extends React.Component<IPackingListProps> {
 									<View key={index} style={style.packingItem}>
 										<VSPCheckbox
 											marginRight={HORIZONTAL_UNIT(2)}
-											theme='grey'
+											color={THEME_COLORS.grey}
 										/>
-										<VSPText theme='grey'>
+										<VSPText color={THEME_COLORS.grey}>
 											{item.name}
 										</VSPText>
 									</View>
@@ -113,10 +113,10 @@ export default class PackingList extends React.Component<IPackingListProps> {
 											style={style.packingItem}
 										>
 											<VSPCheckbox
-												theme='grey'
+												color={THEME_COLORS.grey}
 												marginRight={HORIZONTAL_UNIT(2)}
 											/>
-											<VSPText theme='grey'>
+											<VSPText color={THEME_COLORS.grey}>
 												{item.name}
 											</VSPText>
 										</View>

@@ -4,7 +4,7 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { SearchBar, Avatar } from 'react-native-elements';
 import { ScrollView } from 'react-navigation';
 
-import { addShadowProperties } from '../../types/lib/theme';
+import { addShadowProperties, THEME_COLORS } from '../../types/lib/theme';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
@@ -65,12 +65,15 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 								</VSPText>
 								<VSPText
 									fontSize={THEME_MINOR_FONTSIZE}
-									theme='grey'
+									color={THEME_COLORS.grey}
 								>
 									{friend.userEmail}
 								</VSPText>
 							</View>
-							<VSPIcon iconName='next' theme='grey' />
+							<VSPIcon
+								iconName='next'
+								color={THEME_COLORS.grey}
+							/>
 						</View>
 					</TouchableOpacity>
 				))}
@@ -110,7 +113,7 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 					<VSPRoundIconButton
 						icon='plus'
 						size={HORIZONTAL_UNIT(10)}
-						theme='brown'
+						color={THEME_COLORS.brown}
 						onPress={() => {
 							this.setState({ modalVisible: true });
 						}}

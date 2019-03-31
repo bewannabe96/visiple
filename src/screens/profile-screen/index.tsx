@@ -90,12 +90,14 @@ export default class ProfileScreen extends React.Component {
 						<View style={style.profileTitleInfoView}>
 							<VSPText
 								fontSize={THEME_HEADER_FONTSIZE}
-								theme='white'
+								color={THEME_COLORS.white}
 								marginBottom={HORIZONTAL_UNIT()}
 							>
 								홍길동
 							</VSPText>
-							<VSPText theme='white'>testuser@gmail.com</VSPText>
+							<VSPText color={THEME_COLORS.white}>
+								testuser@gmail.com
+							</VSPText>
 						</View>
 						<View style={style.profileBodyCap} />
 					</View>

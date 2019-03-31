@@ -100,7 +100,7 @@ export default class TicketScreen extends React.Component<
 					>
 						<VSPText
 							frontIcon='plus'
-							theme='grey'
+							color={THEME_COLORS.grey}
 							fontWeight='bold'
 						>
 							새로운 티켓 만들기

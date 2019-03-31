@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
+import { RawColor, THEME_COLORS } from '../types/lib/theme';
 import { IconName } from '../types/lib/icon';
 import { HORIZONTAL_UNIT, DEVICE_WIDTH } from '../types/lib/size';
 
@@ -15,11 +15,6 @@ interface IVSPVSPDropdownProps {
 	 * Icon to be displayed
 	 */
 	icon: IconName;
-
-	/**
-	 * Theme color of the button
-	 */
-	theme?: ThemeColor;
 
 	/**
 	 * Raw color of the button
@@ -37,14 +32,14 @@ interface IVSPVSPDropdownProps {
  *
  * @property
  * - ```icon```(required): Icon to be displayed
- * - ```theme```: Theme color of the button (by default ```brown```)
- * - ```color```: Raw color of the button
+ * - ```contents```(required): Drop down contents
+ * - ```color```: Raw color of the button (by default ```THEME_COLORS.brown```)
  */
 export default class VSPHeaderDropdown extends React.Component<
 	IVSPVSPDropdownProps
 > {
 	public static defaultProps = {
-		theme: 'brown',
+		color: THEME_COLORS.brown,
 	};
 
 	public state = {
@@ -86,7 +81,6 @@ export default class VSPHeaderDropdown extends React.Component<
 			<View>
 				<VSPHeaderButton
 					icon={this.props.icon}
-					theme={this.props.theme}
 					color={this.props.color}
 					onPress={this._openDropdown}
 				/>

@@ -5,7 +5,7 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
-import { ThemeColor, THEME_COLORS, RawColor } from '../types/lib/theme';
+import { THEME_COLORS, RawColor } from '../types/lib/theme';
 import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
@@ -32,11 +32,6 @@ interface IVSPRoundIconButtonProps {
 	size?: number;
 
 	/**
-	 * Theme color of the button
-	 */
-	theme?: ThemeColor;
-
-	/**
 	 * Raw color of the button
 	 */
 	color?: RawColor;
@@ -54,8 +49,7 @@ interface IVSPRoundIconButtonProps {
  * - ```icon```(required): Icon to be displayed in the button
  * - ```outline```: Outline button style if true (by default ```false```)
  * - ```size```: Size of the button (by default ```THEME_FONTSIZE```)
- * - ```theme```: Theme color of the button (by default ```oceanBlue```)
- * - ```color```: Raw color of the button
+ * - ```color```: Raw color of the button (by default ```THEME_COLORS.oceanBlue```)
  * - ```onPress```: Callback function when button pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
@@ -71,13 +65,11 @@ export default class VSPRoundIconButton extends React.Component<
 	public static defaultProps = {
 		outline: false,
 		size: THEME_FONTSIZE,
-		theme: 'oceanBlue',
+		color: THEME_COLORS.oceanBlue,
 	};
 
 	public render() {
-		const color = this.props.color
-			? this.props.color
-			: THEME_COLORS[this.props.theme!];
+		const color = this.props.color!;
 		const style = StyleSheet.create({
 			touchableOpacity: {
 				flexDirection: 'row',

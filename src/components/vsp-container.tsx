@@ -1,9 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, SafeAreaView } from 'react-native';
 
-import { IVSPPaddingProps } from '../types/props/vsp-padding';
-import { HORIZONTAL_UNIT, VSP_EDGE_PADDING } from '../types/lib/size';
-
 interface IVSPContainerProps {
 	/**
 	 * Wrap in SafeAreaView if true

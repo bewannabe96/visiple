@@ -1,7 +1,7 @@
 {
     "bottomTab": {
         "height": 10,
-        "button": 4.5
+        "button": 4
     },
     "sizeOffset": 5,
     "fontFamily": "arial",
@@ -12,5 +12,15 @@
     },
     "padding": {
         "edge": 3
-    }
+    },
+    "colors": {
+        "none": "transparent",
+		"white": "#FFFFFF",
+        "black": "#000000",
+        "grey": "#707070",
+        "greyWhite": "#F0F0F0",
+        "brown": "#8F4F06",
+        "oceanBlue": "#728CA3",
+        "cottoncandyBlue": "#E6EFF3"
+	}
 }

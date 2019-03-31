@@ -5,7 +5,7 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 
-import { ThemeColor, THEME_COLORS, RawColor } from '../types/lib/theme';
+import { THEME_COLORS, RawColor } from '../types/lib/theme';
 import { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 import {
@@ -33,11 +33,6 @@ interface IVSPColoredButtonProps {
 	fontSize?: number;
 
 	/**
-	 * Theme color of the button
-	 */
-	theme?: ThemeColor;
-
-	/**
 	 * Raw color of the button
 	 */
 	color?: RawColor;
@@ -60,8 +55,7 @@ interface IVSPColoredButtonProps {
  * - ```text```: Text inside the button
  * - ```icon```: Icon to be displayed in the button
  * - ```fontSize```: Size of the text and the icon inside the button (by default ```THEME_FONTSIZE```)
- * - ```theme```: Theme color of the button (by default ```oceanBlue```)
- * - ```color```: Raw color of the button
+ * - ```color```: Raw color of the button (by default ```THEME_COLORS.oceanBlue```)
  * - ```disableBorderRadius```: Remove border radius if true (by default ```false```)
  * - ```onPress```: Callback function when button pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
@@ -77,7 +71,7 @@ export default class VSPColoredButton extends React.Component<
 > {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
-		theme: 'oceanBlue',
+		color: THEME_COLORS.oceanBlue,
 		disableBorderRadius: false,
 	};
 
@@ -91,9 +85,7 @@ export default class VSPColoredButton extends React.Component<
 				borderRadius: this.props.disableBorderRadius!
 					? 0
 					: 0.3 * this.props.fontSize!,
-				backgroundColor: this.props.color
-					? this.props.color
-					: THEME_COLORS[this.props.theme!],
+				backgroundColor: this.props.color!,
 				...decodeVSPMarginProps(this.props),
 			},
 		});
@@ -114,7 +106,7 @@ export default class VSPColoredButton extends React.Component<
 				{!!this.props.text && (
 					<VSPText
 						fontSize={this.props.fontSize}
-						theme='white'
+						color={THEME_COLORS.white}
 						marginLeft={
 							this.props.icon ? 0.3 * this.props.fontSize! : 0
 						}

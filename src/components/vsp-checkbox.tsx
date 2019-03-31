@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 
-import { THEME_COLORS, ThemeColor } from '../types/lib/theme';
+import { THEME_COLORS, RawColor } from '../types/lib/theme';
 import { THEME_FONTSIZE } from '../types/lib/size';
 import {
 	IVSPMarginProps,
@@ -15,9 +15,9 @@ interface IVSPCheckboxProps {
 	size?: number;
 
 	/**
-	 * Theme color of the checkbox
+	 * Raw color of the checkbox
 	 */
-	theme?: ThemeColor;
+	color?: RawColor;
 
 	/**
 	 * Checkbox is checked if true
@@ -30,7 +30,7 @@ interface IVSPCheckboxProps {
  *
  * @property
  * - ```size```: Size of the checkbox (by default ```THEME_FONTSIZE```)
- * - ```theme```: Theme color of the checkbox (by default ```oceanBlue```)
+ * - ```color```: Raw color of the checkbox (by default ```THEME_COLORS.oceanBlue```)
  * - ```checked```: Checkbox is checked if true (by default ```false```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
@@ -45,7 +45,7 @@ export default class VSPCheckbox extends React.Component<
 > {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
-		theme: 'oceanBlue',
+		color: THEME_COLORS.oceanBlue,
 		checked: false,
 	};
 
@@ -58,7 +58,7 @@ export default class VSPCheckbox extends React.Component<
 			touchableopacity: {
 				borderRadius: this.props.size!,
 				borderWidth: 0.1 * this.props.size!,
-				borderColor: THEME_COLORS[this.props.theme!],
+				borderColor: this.props.color!,
 				padding: 0.2 * this.props.size!,
 				...decodeVSPMarginProps(this.props),
 			},
@@ -68,7 +68,7 @@ export default class VSPCheckbox extends React.Component<
 				width: this.props.size!,
 				height: this.props.size!,
 				backgroundColor: this.state.checked
-					? THEME_COLORS[this.props.theme!]
+					? this.props.color!
 					: THEME_COLORS.none,
 			},
 		});

@@ -7,7 +7,7 @@ import {
 } from '../types/props/vsp-margin';
 import { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
-import { THEME_COLORS, ThemeColor, RawColor } from '../types/lib/theme';
+import { THEME_COLORS, RawColor } from '../types/lib/theme';
 
 import VSPText from './vsp-text';
 import VSPIcon from './vsp-icon';
@@ -29,11 +29,6 @@ interface IVSPDividerProps {
 	fontSize?: number;
 
 	/**
-	 * Theme color of the divider
-	 */
-	theme?: ThemeColor;
-
-	/**
 	 * Raw color of the divider
 	 */
 	color?: RawColor;
@@ -51,8 +46,7 @@ interface IVSPDividerProps {
  * - ```text```: Text to be displayed
  * - ```icon```: Icon to be displayed on the left side of the text
  * - ```fontSize```: Size of the text and the icon (by default ```THEME_FONTSIZE```)
- * - ```theme```: Theme color of the divider (by default ```oceanBlue```)
- * - ```color```: Raw color of the divider
+ * - ```color```: Raw color of the divider (by default ```THEME_COLORS.oceanBlue```)
  * - ```orientation```: The place where the text will go (by default ```left```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
@@ -67,7 +61,7 @@ export default class VSPDivider extends React.Component<
 > {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
-		theme: 'oceanBlue',
+		color: THEME_COLORS.oceanBlue,
 		orientation: 'left',
 	};
 
@@ -81,9 +75,7 @@ export default class VSPDivider extends React.Component<
 
 			line: {
 				height: 1,
-				backgroundColor: this.props.color
-					? this.props.color
-					: THEME_COLORS[this.props.theme!],
+				backgroundColor: this.props.color!,
 			},
 
 			contentView: {
@@ -122,22 +114,14 @@ export default class VSPDivider extends React.Component<
 						{!!this.props.icon && (
 							<VSPIcon
 								iconName={this.props.icon}
-								color={
-									this.props.color
-										? this.props.color
-										: THEME_COLORS[this.props.theme!]
-								}
+								color={this.props.color!}
 								size={this.props.fontSize}
 							/>
 						)}
 						{!!this.props.text && (
 							<VSPText
 								fontSize={this.props.fontSize}
-								color={
-									this.props.color
-										? this.props.color
-										: THEME_COLORS[this.props.theme!]
-								}
+								color={this.props.color!}
 								marginLeft={
 									this.props.icon
 										? 0.3 * this.props.fontSize!

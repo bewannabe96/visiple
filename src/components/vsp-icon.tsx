@@ -5,7 +5,7 @@ import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
-import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
+import { RawColor, THEME_COLORS } from '../types/lib/theme';
 import ICON_SOURCE, { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 
@@ -21,11 +21,6 @@ interface IVSPIconProps {
 	size?: number;
 
 	/**
-	 * Theme color of the icon
-	 */
-	theme?: ThemeColor;
-
-	/**
 	 * Raw color of the icon
 	 */
 	color?: RawColor;
@@ -37,8 +32,7 @@ interface IVSPIconProps {
  * @property
  * - ```iconName```(required): Name of the icon
  * - ```size```: Size of the icon (by default THEME_FONTSIZE)
- * - ```theme```: Theme color of the icon (by default ```black```)
- * - ```color ```: Raw color of the icon
+ * - ```color ```: Raw color of the icon (by default ```THEME_COLORS.black```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
  * - ```marginVertical```: Vertical margin; including marginTop and marginBottom
@@ -52,7 +46,7 @@ export default class VSPIcon extends React.Component<
 > {
 	public static defaultProps = {
 		size: THEME_FONTSIZE,
-		theme: 'black',
+		color: THEME_COLORS.black,
 	};
 
 	public render() {
@@ -61,9 +55,7 @@ export default class VSPIcon extends React.Component<
 				height: this.props.size!,
 				width: this.props.size!,
 				resizeMode: 'contain',
-				tintColor: this.props.color
-					? this.props.color
-					: THEME_COLORS[this.props.theme!],
+				tintColor: this.props.color!,
 				...decodeVSPMarginProps(this.props),
 			},
 		});

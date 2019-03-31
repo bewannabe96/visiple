@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 import { UserID } from '../../types/data/user';
 
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
@@ -56,7 +57,7 @@ export default class ParticipantsList extends React.Component<
 				>
 					<VSPRoundIconButton
 						icon='plus'
-						theme='grey'
+						color={THEME_COLORS.grey}
 						size={HORIZONTAL_UNIT(8)}
 					/>
 				</View>

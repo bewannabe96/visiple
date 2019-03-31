@@ -1,12 +1,7 @@
 import React from 'react';
 import { Text, StyleProp, View } from 'react-native';
 
-import {
-	THEME_FONT,
-	THEME_COLORS,
-	ThemeColor,
-	RawColor,
-} from '../types/lib/theme';
+import { THEME_FONT, THEME_COLORS, RawColor } from '../types/lib/theme';
 import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
@@ -37,11 +32,6 @@ interface IVSPTextProps {
 	rearIcon?: IconName;
 
 	/**
-	 * Theme color of the text
-	 */
-	theme?: ThemeColor;
-
-	/**
 	 * Raw color of the text
 	 */
 	color?: RawColor;
@@ -60,8 +50,7 @@ interface IVSPTextProps {
  * - ```fontWeight```: Weight of the font (by default ```normal```)
  * - ```frontIcon```: Icon to be diplayed in the front of the text
  * - ```rearIcon```: Icon to be diplayed in the back of the text
- * - ```theme```: Theme color of the button (by default ```black```)
- * - ```color```: Raw color of the button
+ * - ```color```: Raw color of the text (by default ```THEME_COLORS.black```)
  * - ```style```: Style of the text
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
@@ -76,7 +65,7 @@ export default class VSPText extends React.Component<
 > {
 	public static defaultProps = {
 		fontSize: THEME_FONTSIZE,
-		theme: 'black',
+		color: THEME_COLORS.black,
 		fontWeight: 'normal',
 	};
 
@@ -91,11 +80,7 @@ export default class VSPText extends React.Component<
 				{!!this.props.frontIcon && (
 					<VSPIcon
 						iconName={this.props.frontIcon}
-						color={
-							this.props.color
-								? this.props.color
-								: THEME_COLORS[this.props.theme!]
-						}
+						color={this.props.color!}
 						size={this.props.fontSize!}
 						marginRight={0.3 * this.props.fontSize!}
 					/>
@@ -105,9 +90,7 @@ export default class VSPText extends React.Component<
 						fontSize: this.props.fontSize!,
 						fontFamily: THEME_FONT,
 						fontWeight: this.props.fontWeight!,
-						color: this.props.color
-							? this.props.color
-							: THEME_COLORS[this.props.theme!],
+						color: this.props.color!,
 						...this.props.style,
 					}}
 				>
@@ -116,11 +99,7 @@ export default class VSPText extends React.Component<
 				{!!this.props.rearIcon && (
 					<VSPIcon
 						iconName={this.props.rearIcon}
-						color={
-							this.props.color
-								? this.props.color
-								: THEME_COLORS[this.props.theme!]
-						}
+						color={this.props.color!}
 						size={this.props.fontSize!}
 						marginLeft={0.3 * this.props.fontSize!}
 					/>

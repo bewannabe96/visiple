@@ -98,7 +98,10 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						{plan.title}
 					</VSPText>
 				</View>
-				<VSPText fontSize={THEME_MINOR_FONTSIZE} theme='grey'>
+				<VSPText
+					fontSize={THEME_MINOR_FONTSIZE}
+					color={THEME_COLORS.grey}
+				>
 					{plan.time.at.toLocaleString(DateTime.TIME_SIMPLE)}
 				</VSPText>
 			</View>
@@ -120,7 +123,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						<VSPText
 							frontIcon='placeholder'
 							fontSize={THEME_MINOR_FONTSIZE}
-							theme='grey'
+							color={THEME_COLORS.grey}
 						>
 							{plan.atPlace}
 						</VSPText>
@@ -133,20 +136,20 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								fontSize={THEME_MINOR_FONTSIZE}
 								marginRight={HORIZONTAL_UNIT(2)}
 								fontWeight='bold'
-								theme='grey'
+								color={THEME_COLORS.grey}
 							>
 								FROM
 							</VSPText>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
-								theme='grey'
+								color={THEME_COLORS.grey}
 							>
 								{plan.move.from}
 							</VSPText>
 						</View>
 						<VSPIcon
 							iconName='downarrow'
-							theme='grey'
+							color={THEME_COLORS.grey}
 							size={THEME_MINOR_FONTSIZE}
 							marginVertical={HORIZONTAL_UNIT()}
 						/>
@@ -155,13 +158,13 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								fontSize={THEME_MINOR_FONTSIZE}
 								marginRight={HORIZONTAL_UNIT(2)}
 								fontWeight='bold'
-								theme='grey'
+								color={THEME_COLORS.grey}
 							>
 								TO
 							</VSPText>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
-								theme='grey'
+								color={THEME_COLORS.grey}
 							>
 								{plan.move.to}
 							</VSPText>
@@ -180,14 +183,14 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								frontIcon='money'
 								fontSize={THEME_MINOR_FONTSIZE}
 								marginRight={HORIZONTAL_UNIT()}
-								theme='grey'
+								color={THEME_COLORS.grey}
 								fontWeight='bold'
 							>
 								{plan.cost.currency}
 							</VSPText>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
-								theme='grey'
+								color={THEME_COLORS.grey}
 							>
 								{plan.cost.currency in CURRENCY
 									? `${
@@ -200,7 +203,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						{plan.cost.currency in CURRENCY && (
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
-								theme='grey'
+								color={THEME_COLORS.grey}
 							>
 								{`(${CURRENCY[plan.cost.currency].name})`}
 							</VSPText>
@@ -213,7 +216,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 							<VSPText
 								frontIcon='information'
 								fontSize={THEME_MINOR_FONTSIZE}
-								theme='grey'
+								color={THEME_COLORS.grey}
 								style={{
 									flex: 1,
 									textAlign: 'justify',
@@ -236,7 +239,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 						: undefined
 				}
 				fontSize={THEME_MINOR_FONTSIZE}
-				theme='grey'
+				color={THEME_COLORS.grey}
 				orientation='far-right'
 				marginTop={HORIZONTAL_UNIT()}
 				marginLeft={HORIZONTAL_UNIT(8)}

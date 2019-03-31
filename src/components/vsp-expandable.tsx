@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { ThemeColor, RawColor, THEME_COLORS } from '../types/lib/theme';
+import { RawColor, THEME_COLORS } from '../types/lib/theme';
 import { THEME_FONTSIZE } from '../types/lib/size';
 import {
 	decodeVSPMarginProps,
@@ -22,11 +22,6 @@ interface IVSPExpandableProps {
 	body: React.ReactElement<any>;
 
 	/**
-	 * Theme color of the toggle button
-	 */
-	theme?: ThemeColor;
-
-	/**
 	 * Raw color of the toggle button
 	 */
 	color?: RawColor;
@@ -38,8 +33,7 @@ interface IVSPExpandableProps {
  * @property
  * - ```header```(required): Header component of the expandable
  * - ```body```(required): Body of the expandable
- * - ```theme```: Theme color of the toggle button
- * - ```color```: Raw color of the toggle button
+ * - ```color```: Raw color of the toggle button (by default ```THEME_COLORS.oceanBlue```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
  * - ```marginVertical```: Vertical margin; including marginTop and marginBottom
@@ -52,7 +46,7 @@ export default class VSPExpandable extends React.Component<
 	IVSPMarginProps<IVSPExpandableProps>
 > {
 	public static defaultProps = {
-		theme: 'oceanBlue',
+		color: THEME_COLORS.oceanBlue,
 	};
 
 	public state = {
@@ -90,11 +84,7 @@ export default class VSPExpandable extends React.Component<
 						icon={this.state.expanded ? 'downarrowhead' : 'plus'}
 						size={THEME_FONTSIZE * 2}
 						onPress={this._toggleExpand}
-						color={
-							this.props.color
-								? this.props.color
-								: THEME_COLORS[this.props.theme!]
-						}
+						color={this.props.color!}
 					/>
 				</View>
 				<View style={style.body}>

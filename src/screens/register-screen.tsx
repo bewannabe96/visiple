@@ -82,14 +82,14 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 					<View style={style.checkboxItem}>
 						<VSPCheckbox
 							size={HORIZONTAL_UNIT(5)}
-							theme='skyBlue'
+							color={THEME_COLORS.oceanBlue}
 						/>
 						<VSPText>전체동의</VSPText>
 					</View>
 					<View style={style.checkboxIndentItem}>
 						<VSPCheckbox
 							size={HORIZONTAL_UNIT(5)}
-							theme='skyBlue'
+							color={THEME_COLORS.oceanBlue}
 							marginLeft={HORIZONTAL_UNIT(5)}
 						/>
 						<Button
@@ -103,7 +103,7 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 					<View style={style.checkboxIndentItem}>
 						<VSPCheckbox
 							size={HORIZONTAL_UNIT(5)}
-							theme='skyBlue'
+							color={THEME_COLORS.oceanBlue}
 							marginLeft={HORIZONTAL_UNIT(5)}
 						/>
 						<Button

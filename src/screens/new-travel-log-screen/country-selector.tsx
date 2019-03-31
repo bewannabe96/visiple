@@ -109,8 +109,10 @@ export default class CountrySelector extends React.Component<
 				disabled={this.state.selectType === sType}
 			>
 				<VSPText
-					theme={
-						this.state.selectType === sType ? 'white' : 'oceanBlue'
+					color={
+						this.state.selectType === sType
+							? THEME_COLORS.white
+							: THEME_COLORS.oceanBlue
 					}
 				>
 					{displayName}
@@ -134,7 +136,9 @@ export default class CountrySelector extends React.Component<
 					borderRadius: THEME_FONTSIZE * 2,
 				}}
 			>
-				<VSPText theme='oceanBlue'>{ctnry.translations.ko}</VSPText>
+				<VSPText color={THEME_COLORS.oceanBlue}>
+					{ctnry.translations.ko}
+				</VSPText>
 				<VSPTextButton
 					icon='cancel'
 					fontSize={THEME_MINOR_FONTSIZE}

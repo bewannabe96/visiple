@@ -11,35 +11,9 @@ export const THEME_FONT = Config.fontFamily;
 export type RawColor = string;
 
 /**
- * Theme Color Type
- */
-export type ThemeColor =
-	| 'none'
-	| 'white'
-	| 'grey'
-	| 'black'
-	| 'greyWhite'
-	| 'oceanBlue'
-	| 'skyBlue'
-	| 'cottoncandyBlue'
-	| 'beige'
-	| 'brown';
-
-/**
  * Theme Colors
  */
-export const THEME_COLORS: { [key in ThemeColor]: string } = {
-	none: 'transparent',
-	white: '#FFFFFF',
-	grey: '#707070',
-	black: '#000000',
-	greyWhite: '#F0F0F0',
-	oceanBlue: '#728CA3',
-	skyBlue: '#73C0F4',
-	cottoncandyBlue: '#E6EFF3',
-	beige: '#F3E4C6',
-	brown: '#8F4F06',
-};
+export const THEME_COLORS = Config.colors;
 
 /**
  * Add shadow style properties
