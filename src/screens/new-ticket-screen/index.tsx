@@ -6,6 +6,7 @@ import {
 	SafeAreaView,
 	ScrollView,
 } from 'react-native';
+import { Input } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
@@ -13,7 +14,6 @@ import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
 	THEME_HEADER_FONTSIZE,
-	THEME_FONTSIZE,
 } from '../../types/lib/size';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { NewTicket } from '../../types/data/ticket';
@@ -21,7 +21,6 @@ import { NewTicket } from '../../types/data/ticket';
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
-import VSPTextInput from '../../components/vsp-textinput';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPColoredButton from '../../components/vsp-colored-button';
 import VSPIcon from '../../components/vsp-icon';
@@ -88,18 +87,17 @@ export default class NewTicketScreen extends React.Component<
 		const style = StyleSheet.create({
 			container: {
 				flex: 1,
-				paddingTop: VSP_EDGE_PADDING,
 				paddingBottom: HORIZONTAL_UNIT(10),
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
 
 			categoryView: {
-				marginVertical: HORIZONTAL_UNIT(3),
+				marginBottom: HORIZONTAL_UNIT(6),
 			},
 
 			periodView: {
 				flexDirection: 'row',
-				marginTop: HORIZONTAL_UNIT(3),
+				marginBottom: HORIZONTAL_UNIT(6),
 				alignItems: 'center',
 				paddingVertical: HORIZONTAL_UNIT(2),
 			},
@@ -141,12 +139,7 @@ export default class NewTicketScreen extends React.Component<
 			<VSPContainer>
 				<ScrollView contentContainerStyle={style.container}>
 					<View style={style.categoryView}>
-						<VSPTextInput
-							placeholder='티켓 제목을 입력해 주세요.'
-							fontSize={THEME_FONTSIZE}
-							marginTop={HORIZONTAL_UNIT()}
-							color={this.props.newTicket.themeColor}
-						/>
+						<Input placeholder='제목' />
 					</View>
 					<View style={style.periodView}>
 						<TouchableOpacity

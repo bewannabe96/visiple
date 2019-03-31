@@ -67,32 +67,33 @@ const RNElementsTheme = {
 		},
 	},
 
-	// SearchBar: {
-	// 	containerStyle: {
-	// 		padding: 0,
-	// 		backgroundColor: 'transparent',
-	// 		borderTopColor: 'transparent',
-	// 		borderBottomColor: 'transparent',
-	// 	},
-	// 	inputContainerStyle: {
-	// 		borderRadius: 0,
-	// 		backgroundColor: THEME_COLORS.greyWhite,
-	// 	},
-	// 	inputStyle: {
-	// 		fontSize: THEME_FONTSIZE,
-	// 	},
-	// 	placeholderTextColor: THEME_COLORS.grey,
-	// 	searchIcon: {
-	// 		name: 'search',
-	// 		type: 'font-awesome',
-	// 		color: THEME_COLORS.grey,
-	// 	},
-	// 	clearIcon: {
-	// 		name: 'times',
-	// 		type: 'font-awesome',
-	// 		color: THEME_COLORS.grey,
-	// 	},
-	// },
+	SearchBar: {
+		containerStyle: {
+			padding: 0,
+			backgroundColor: 'transparent',
+			borderTopColor: 'transparent',
+			borderBottomColor: 'transparent',
+		},
+		inputContainerStyle: {
+			borderRadius: 0,
+			backgroundColor: THEME_COLORS.greyWhite,
+		},
+		leftIconContainerStyle: {
+			marginRight: 0,
+		},
+		inputStyle: {
+			fontSize: THEME_FONTSIZE,
+		},
+		placeholderTextColor: THEME_COLORS.grey,
+		searchIcon: {
+			name: 'search',
+			color: THEME_COLORS.grey,
+		},
+		clearIcon: {
+			name: 'cancel',
+			color: THEME_COLORS.grey,
+		},
+	},
 	// ListItem: {
 	// 	pad: HORIZONTAL_UNIT(3),
 	// 	containerStyle: {

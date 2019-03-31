@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 
 import {
 	HORIZONTAL_UNIT,
@@ -18,7 +19,6 @@ import {
 import { CountryCode } from '../../types/data/country';
 
 import VSPText from '../../components/vsp-text';
-import VSPTextInput from '../../components/vsp-textinput';
 import VSPTextButton from '../../components/vsp-text-button';
 import VSPCheckbox from '../../components/vsp-checkbox';
 
@@ -197,9 +197,8 @@ export default class CountrySelector extends React.Component<
 						>
 							{this._renderCountries()}
 						</ScrollView>
-						<VSPTextInput
+						<SearchBar
 							placeholder='국가를 검색하세요.'
-							rearIcon='search'
 							onChangeText={this._onSearchWordChange}
 						/>
 						{this._renderSearchResult()}

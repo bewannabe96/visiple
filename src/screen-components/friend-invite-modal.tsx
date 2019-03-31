@@ -4,18 +4,17 @@ import { FlatList, View } from 'react-native';
 import {
 	HORIZONTAL_UNIT,
 	VSP_EDGE_PADDING,
-	VSP_TOP_PADDING,
 	THEME_MINOR_FONTSIZE,
 	THEME_FONTSIZE,
 } from '../types/lib/size';
 
 import VSPModal from '../components/vsp-modal';
-import VSPTextInput from '../components/vsp-textinput';
 import VSPProfile from '../components/vsp-profile';
 import VSPColoredButton from '../components/vsp-colored-button';
 import VSPText from '../components/vsp-text';
 
 import { closeInviteModal } from '../actions/screens/new-ticket-screen';
+import { SearchBar } from 'react-native-elements';
 
 interface IFriendInviteModalProps {
 	/**
@@ -50,14 +49,14 @@ export default class FriendInviteModal extends React.Component<
 				rightButtonOnPress={this.props.closeInviteModal}
 				isVisible={this.props.isVisible}
 				heightMode='full'
-				paddingTop={VSP_TOP_PADDING}
 				closeAction={this.props.closeInviteModal}
 			>
-				<VSPTextInput
+				<SearchBar
 					placeholder='이름 또는 이메일을 입력하세요'
-					rearIcon='search'
-					marginBottom={HORIZONTAL_UNIT(2)}
-					marginX={VSP_EDGE_PADDING}
+					containerStyle={{
+						marginHorizontal: VSP_EDGE_PADDING,
+						marginBottom: HORIZONTAL_UNIT(2),
+					}}
 				/>
 				<FlatList
 					data={[

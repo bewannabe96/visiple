@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 
-import { HORIZONTAL_UNIT } from '../../types/lib/size';
+import { HORIZONTAL_UNIT, VSP_EDGE_PADDING } from '../../types/lib/size';
 
-import VSPTextInput from '../../components/vsp-textinput';
 import VSPModal from '../../components/vsp-modal';
 
 /**
@@ -24,13 +24,14 @@ export default class AddFriendModal extends React.Component {
 				heightMode='minimum'
 				titleText='친구 추가'
 				closeAction={() => {}}
-				padding={HORIZONTAL_UNIT(4)}
 				rightButtonText={'취소'}
 			>
-				<VSPTextInput
+				<SearchBar
 					placeholder='이메일을 입력하세요'
-					rearIcon='search'
-					textContentType='emailAddress'
+					containerStyle={{
+						marginHorizontal: VSP_EDGE_PADDING,
+						marginBottom: HORIZONTAL_UNIT(3),
+					}}
 				/>
 				<View style={style.resultView} />
 			</VSPModal>

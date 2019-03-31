@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { SearchBar } from 'react-native-elements';
 import { ScrollView } from 'react-navigation';
 
 import { addShadowProperties } from '../../types/lib/theme';
@@ -14,7 +16,6 @@ import { User } from '../../types/data/user';
 import VSPContainer from '../../components/vsp-container';
 import VSPHeader from '../../components/vsp-header';
 import VSPText from '../../components/vsp-text';
-import VSPTextInput from '../../components/vsp-textinput';
 import VSPProfile from '../../components/vsp-profile';
 import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 import VSPIcon from '../../components/vsp-icon';
@@ -88,12 +89,12 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 
 		return (
 			<VSPContainer>
-				<VSPTextInput
+				<SearchBar
 					placeholder='검색'
-					frontIcon='search'
-					displayUnderline={false}
-					marginHorizontal={VSP_EDGE_PADDING}
-					marginBottom={VSP_EDGE_PADDING}
+					containerStyle={{
+						marginHorizontal: VSP_EDGE_PADDING,
+						marginBottom: HORIZONTAL_UNIT(3),
+					}}
 				/>
 				<ScrollView>
 					<VSPDivider
