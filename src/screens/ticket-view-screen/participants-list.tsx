@@ -39,6 +39,7 @@ export default class ParticipantsList extends React.Component<
 				{this.props.participants.map((uid: UserID, index: number) => (
 					<Avatar
 						key={uid}
+						size={HORIZONTAL_UNIT(12)}
 						containerStyle={{
 							left: HORIZONTAL_UNIT(-3 * index),
 							zIndex: index,
