@@ -8,6 +8,7 @@ import {
 	THEME_MINOR_FONTSIZE,
 	THEME_FONTSIZE,
 } from '../types/lib/size';
+import { THEME_COLORS } from '../types/lib/theme';
 
 import VSPModal from '../components/vsp-modal';
 import VSPColoredButton from '../components/vsp-colored-button';
@@ -94,7 +95,7 @@ export default class FriendInviteModal extends React.Component<
 								</VSPText>
 								<VSPText
 									fontSize={THEME_MINOR_FONTSIZE}
-									theme='grey'
+									color={THEME_COLORS.grey}
 								>
 									{'familynamega@gmail.com'}
 								</VSPText>
