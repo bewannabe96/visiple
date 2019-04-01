@@ -2,12 +2,8 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
-import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
-import {
-	HORIZONTAL_UNIT,
-	VSP_EDGE_PADDING,
-	THEME_HEADER_FONTSIZE,
-} from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
+import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import {
 	Packings,
 	PackingItem,
@@ -133,19 +129,8 @@ export default class PackingList extends React.Component<IPackingListProps> {
 	}
 
 	public render() {
-		const style = StyleSheet.create({
-			categoryView: {
-				marginVertical: HORIZONTAL_UNIT(2),
-				backgroundColor: THEME_COLORS.white,
-				borderRadius: HORIZONTAL_UNIT(2),
-				padding: HORIZONTAL_UNIT(4),
-				marginHorizontal: VSP_EDGE_PADDING,
-				...addShadowProperties(),
-			},
-		});
-
 		return (
-			<View style={style.categoryView}>
+			<View>
 				<VSPText frontIcon='backpack' fontSize={THEME_HEADER_FONTSIZE}>
 					준비물품
 				</VSPText>

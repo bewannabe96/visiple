@@ -225,6 +225,11 @@ export default class TicketViewScreen extends React.Component<
 				backgroundColor: THEME_COLORS.white,
 				paddingTop: HORIZONTAL_UNIT(3),
 			},
+
+			scrollView: {
+				paddingVertical: HORIZONTAL_UNIT(),
+				paddingHorizontal: VSP_EDGE_PADDING,
+			},
 		});
 
 		return (
@@ -246,7 +251,7 @@ export default class TicketViewScreen extends React.Component<
 					>
 						{DEV_TICKET.title}
 					</VSPText>
-					<ScrollView>
+					<ScrollView contentContainerStyle={style.scrollView}>
 						<PackingList
 							packings={DEV_TICKET.packings}
 							ticketColor={DEV_TICKET.themeColor}

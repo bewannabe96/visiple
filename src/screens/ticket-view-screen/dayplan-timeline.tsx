@@ -2,10 +2,9 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { DateTime } from 'luxon';
 
-import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
+import { THEME_COLORS } from '../../types/lib/theme';
 import {
 	HORIZONTAL_UNIT,
-	VSP_EDGE_PADDING,
 	THEME_HEADER_FONTSIZE,
 	THEME_MINOR_FONTSIZE,
 } from '../../types/lib/size';
@@ -333,19 +332,8 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 	}
 
 	public render() {
-		const style = StyleSheet.create({
-			categoryView: {
-				marginVertical: HORIZONTAL_UNIT(2),
-				backgroundColor: THEME_COLORS.white,
-				borderRadius: HORIZONTAL_UNIT(2),
-				padding: HORIZONTAL_UNIT(4),
-				marginHorizontal: VSP_EDGE_PADDING,
-				...addShadowProperties(),
-			},
-		});
-
 		return (
-			<View style={style.categoryView}>
+			<View style={{ marginTop: HORIZONTAL_UNIT(8) }}>
 				<VSPText frontIcon='planning' fontSize={THEME_HEADER_FONTSIZE}>
 					일정
 				</VSPText>
