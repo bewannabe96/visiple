@@ -40,19 +40,14 @@ export default class CountrySelector extends React.Component<
 	} = allCountries.reduce(
 		(accum: { [key: string]: Element }, cntry: Country) => {
 			accum[cntry.alpha3Code] = (
-				<TouchableOpacity
+				<VSPCheckbox
 					key={cntry.alpha3Code}
-					style={{
-						flexDirection: 'row',
-						alignItems: 'center',
-						justifyContent: 'space-between',
-						padding: HORIZONTAL_UNIT(2),
-						paddingHorizontal: HORIZONTAL_UNIT(3),
-					}}
+					marginVertical={HORIZONTAL_UNIT(2)}
+					marginHorizontal={HORIZONTAL_UNIT(3)}
+					buttonOnRight
 				>
 					<VSPText>{cntry.translations.ko}</VSPText>
-					<VSPCheckbox />
-				</TouchableOpacity>
+				</VSPCheckbox>
 			);
 			return accum;
 		},

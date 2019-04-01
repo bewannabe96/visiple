@@ -40,13 +40,6 @@ export default class PackingList extends React.Component<IPackingListProps> {
 				flexDirection: 'row',
 				alignItems: 'center',
 			},
-
-			packingItem: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				paddingLeft: HORIZONTAL_UNIT(5),
-				marginTop: HORIZONTAL_UNIT(3),
-			},
 		});
 
 		return (
@@ -65,15 +58,17 @@ export default class PackingList extends React.Component<IPackingListProps> {
 						<View>
 							{packings.commonList.map(
 								(item: PackingItem, index: number) => (
-									<View key={index} style={style.packingItem}>
-										<VSPCheckbox
-											marginRight={HORIZONTAL_UNIT(2)}
-											color={THEME_COLORS.grey}
-										/>
+									<VSPCheckbox
+										key={index}
+										marginRight={HORIZONTAL_UNIT(2)}
+										color={THEME_COLORS.grey}
+										marginTop={HORIZONTAL_UNIT(3)}
+										marginLeft={HORIZONTAL_UNIT(5)}
+									>
 										<VSPText color={THEME_COLORS.grey}>
 											{item.name}
 										</VSPText>
-									</View>
+									</VSPCheckbox>
 								),
 							)}
 						</View>
@@ -104,18 +99,17 @@ export default class PackingList extends React.Component<IPackingListProps> {
 							<View>
 								{indivList.list.map(
 									(item: PackingItem, index: number) => (
-										<View
+										<VSPCheckbox
 											key={index}
-											style={style.packingItem}
+											marginRight={HORIZONTAL_UNIT(2)}
+											color={THEME_COLORS.grey}
+											marginTop={HORIZONTAL_UNIT(3)}
+											marginLeft={HORIZONTAL_UNIT(5)}
 										>
-											<VSPCheckbox
-												color={THEME_COLORS.grey}
-												marginRight={HORIZONTAL_UNIT(2)}
-											/>
 											<VSPText color={THEME_COLORS.grey}>
 												{item.name}
 											</VSPText>
-										</View>
+										</VSPCheckbox>
 									),
 								)}
 							</View>

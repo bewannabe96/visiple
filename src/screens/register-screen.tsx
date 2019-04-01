@@ -29,19 +29,6 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 			groupView: {
 				marginVertical: HORIZONTAL_UNIT(4),
 			},
-
-			checkboxItem: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				marginTop: HORIZONTAL_UNIT(4),
-			},
-
-			checkboxIndentItem: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				marginTop: HORIZONTAL_UNIT(3),
-				marginLeft: HORIZONTAL_UNIT(4),
-			},
 		});
 
 		return (
@@ -79,41 +66,55 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 				</View>
 				<View style={style.groupView}>
 					<VSPText fontWeight='bold'>이용약관</VSPText>
-					<View style={style.checkboxItem}>
-						<VSPCheckbox
-							size={HORIZONTAL_UNIT(5)}
-							color={THEME_COLORS.oceanBlue}
-						/>
+					<VSPCheckbox
+						size={HORIZONTAL_UNIT(5)}
+						color={THEME_COLORS.oceanBlue}
+						marginTop={HORIZONTAL_UNIT(3)}
+					>
 						<VSPText>전체동의</VSPText>
-					</View>
-					<View style={style.checkboxIndentItem}>
-						<VSPCheckbox
-							size={HORIZONTAL_UNIT(5)}
-							color={THEME_COLORS.oceanBlue}
-							marginLeft={HORIZONTAL_UNIT(5)}
-						/>
-						<Button
-							title='이용약관'
-							type='clear'
-							titleStyle={{ color: THEME_COLORS.brown }}
-							onPress={() => {}}
-						/>
-						<VSPText>에 동의합니다.</VSPText>
-					</View>
-					<View style={style.checkboxIndentItem}>
-						<VSPCheckbox
-							size={HORIZONTAL_UNIT(5)}
-							color={THEME_COLORS.oceanBlue}
-							marginLeft={HORIZONTAL_UNIT(5)}
-						/>
-						<Button
-							title='개인정보 취급방침'
-							type='clear'
-							titleStyle={{ color: THEME_COLORS.brown }}
-							onPress={() => {}}
-						/>
-						<VSPText>에 동의합니다.</VSPText>
-					</View>
+					</VSPCheckbox>
+					<VSPCheckbox
+						size={HORIZONTAL_UNIT(5)}
+						color={THEME_COLORS.oceanBlue}
+						marginLeft={HORIZONTAL_UNIT(8)}
+						marginTop={HORIZONTAL_UNIT(3)}
+					>
+						<View
+							style={{
+								flexDirection: 'row',
+								alignItems: 'center',
+							}}
+						>
+							<Button
+								title='이용약관'
+								type='clear'
+								titleStyle={{ color: THEME_COLORS.brown }}
+								onPress={() => {}}
+							/>
+							<VSPText>에 동의합니다.</VSPText>
+						</View>
+					</VSPCheckbox>
+					<VSPCheckbox
+						size={HORIZONTAL_UNIT(5)}
+						color={THEME_COLORS.oceanBlue}
+						marginLeft={HORIZONTAL_UNIT(8)}
+						marginTop={HORIZONTAL_UNIT(3)}
+					>
+						<View
+							style={{
+								flexDirection: 'row',
+								alignItems: 'center',
+							}}
+						>
+							<Button
+								title='개인정보 취급방침'
+								type='clear'
+								titleStyle={{ color: THEME_COLORS.brown }}
+								onPress={() => {}}
+							/>
+							<VSPText>에 동의합니다.</VSPText>
+						</View>
+					</VSPCheckbox>
 				</View>
 				<Button
 					title='완료'
