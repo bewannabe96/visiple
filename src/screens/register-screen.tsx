@@ -23,7 +23,7 @@ export default class RegisterScreen extends React.Component<IVSPScreenProps> {
 			welcomeText: {
 				alignSelf: 'center',
 				fontWeight: 'bold',
-				color: THEME_COLORS.skyBlue,
+				color: THEME_COLORS.cottoncandyBlue,
 			},
 
 			groupView: {

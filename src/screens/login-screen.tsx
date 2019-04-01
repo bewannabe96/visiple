@@ -57,7 +57,7 @@ export default class LoginScreen extends React.Component<IVSPScreenProps> {
 						marginVertical: HORIZONTAL_UNIT(2),
 					}}
 					buttonStyle={{
-						backgroundColor: THEME_COLORS.skyBlue,
+						backgroundColor: THEME_COLORS.oceanBlue,
 					}}
 					onPress={() =>
 						this.props.navigation.navigate('RegisterScreen')
