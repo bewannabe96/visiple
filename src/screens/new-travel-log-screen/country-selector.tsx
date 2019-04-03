@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Icon } from 'react-native-elements';
 
 import {
 	HORIZONTAL_UNIT,
@@ -19,7 +19,6 @@ import {
 import { CountryCode } from '../../types/data/country';
 
 import VSPText from '../../components/vsp-text';
-import VSPTextButton from '../../components/vsp-text-button';
 import VSPCheckbox from '../../components/vsp-checkbox';
 
 type SelectType = 'domestic' | 'overseas';
@@ -122,6 +121,7 @@ export default class CountrySelector extends React.Component<
 				key={index}
 				style={{
 					flexDirection: 'row',
+					alignItems: 'center',
 					marginVertical: HORIZONTAL_UNIT(2),
 					marginHorizontal: HORIZONTAL_UNIT(),
 					paddingVertical: HORIZONTAL_UNIT(),
@@ -134,10 +134,13 @@ export default class CountrySelector extends React.Component<
 				<VSPText color={THEME_COLORS.oceanBlue}>
 					{ctnry.translations.ko}
 				</VSPText>
-				<VSPTextButton
-					icon='cancel'
-					fontSize={THEME_MINOR_FONTSIZE}
-					marginLeft={HORIZONTAL_UNIT()}
+				<Icon
+					name='cancel'
+					type='vspicon'
+					size={THEME_MINOR_FONTSIZE}
+					color={THEME_COLORS.oceanBlue}
+					containerStyle={{ marginLeft: HORIZONTAL_UNIT() }}
+					onPress={() => {}}
 				/>
 			</View>
 		);

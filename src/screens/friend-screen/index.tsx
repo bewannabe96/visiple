@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-
-import { SearchBar, Avatar } from 'react-native-elements';
+import { SearchBar, Avatar, Icon } from 'react-native-elements';
 import { ScrollView } from 'react-navigation';
 
-import { addShadowProperties, THEME_COLORS } from '../../types/lib/theme';
+import { THEME_COLORS } from '../../types/lib/theme';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
@@ -16,8 +15,6 @@ import { User } from '../../types/data/user';
 import VSPContainer from '../../components/vsp-container';
 import VSPHeader from '../../components/vsp-header';
 import VSPText from '../../components/vsp-text';
-import VSPRoundIconButton from '../../components/vsp-round-icon-button';
-import VSPIcon from '../../components/vsp-icon';
 import VSPDivider from '../../components/vsp-divider';
 
 import AddFriendModal from './add-friend-modal';
@@ -70,10 +67,7 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 									{friend.userEmail}
 								</VSPText>
 							</View>
-							<VSPIcon
-								iconName='next'
-								color={THEME_COLORS.grey}
-							/>
+							<Icon name='angle-right' type='vspicon' />
 						</View>
 					</TouchableOpacity>
 				))}
@@ -85,9 +79,8 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 		const style = StyleSheet.create({
 			addFriendButtonView: {
 				position: 'absolute',
-				bottom: HORIZONTAL_UNIT(5),
-				right: HORIZONTAL_UNIT(6),
-				...addShadowProperties(),
+				bottom: HORIZONTAL_UNIT(4),
+				right: HORIZONTAL_UNIT(4),
 			},
 		});
 
@@ -110,13 +103,16 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 				</ScrollView>
 
 				<View style={style.addFriendButtonView}>
-					<VSPRoundIconButton
-						icon='plus'
-						size={HORIZONTAL_UNIT(10)}
+					<Icon
+						name='plus'
+						type='vspicon'
+						size={HORIZONTAL_UNIT(5)}
 						color={THEME_COLORS.brown}
 						onPress={() => {
 							this.setState({ modalVisible: true });
 						}}
+						reverse
+						raised
 					/>
 				</View>
 				<AddFriendModal />

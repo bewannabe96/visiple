@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Icon, Text } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
 import { THEME_COLORS } from '../../types/lib/theme';
@@ -9,10 +10,8 @@ import {
 	THEME_MINOR_FONTSIZE,
 } from '../../types/lib/size';
 import { DayPlans, Plan, DayPlan } from '../../types/data/ticket/plan';
-import { IconName } from '../../types/lib/icon';
 import { CURRENCY } from '../../types/data/currency';
 
-import VSPIcon from '../../components/vsp-icon';
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';
 import VSPDivider from '../../components/vsp-divider';
@@ -59,7 +58,7 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 			},
 		});
 
-		let icon: IconName = 'information';
+		let icon: string = 'information';
 
 		switch (plan.type) {
 			case 'MEAL':
@@ -73,19 +72,19 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				plan.mean === 'bike' && (icon = 'bicycle');
 				plan.mean === 'bus' && (icon = 'bus');
 				plan.mean === 'motorcycle' && (icon = 'motorbike');
-				plan.mean === 'plane' && (icon = 'plane');
+				plan.mean === 'plane' && (icon = 'airplane');
 				plan.mean === 'ship' && (icon = 'boat');
 				plan.mean === 'subway' && (icon = 'subway');
 				plan.mean === 'taxi' && (icon = 'taxi');
 				plan.mean === 'train' && (icon = 'train');
-				plan.mean === 'tram' && (icon = 'tram');
+				plan.mean === 'tram' && (icon = 'trolley-bus');
 				plan.mean === 'walk' && (icon = 'walk');
 				break;
 			case 'ACTIVITY':
-				icon = 'campingtent';
+				icon = 'camping-tent';
 				break;
 			case 'SIGHTSEEING':
-				icon = 'egyptpyramid';
+				icon = 'sydney-opera-house';
 				break;
 		}
 
@@ -93,9 +92,19 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 			<View style={style.container}>
 				<View style={style.headerView}>
 					<View style={style.bulletDash} />
-					<VSPText frontIcon={icon} marginLeft={HORIZONTAL_UNIT()}>
-						{plan.title}
-					</VSPText>
+					<View
+						style={{
+							flexDirection: 'row',
+							marginLeft: HORIZONTAL_UNIT(),
+						}}
+					>
+						<Icon
+							name={icon}
+							type='vspicon'
+							containerStyle={{ marginRight: HORIZONTAL_UNIT() }}
+						/>
+						<Text h3>{plan.title}</Text>
+					</View>
 				</View>
 				<VSPText
 					fontSize={THEME_MINOR_FONTSIZE}
@@ -119,13 +128,27 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 			<View>
 				{'atPlace' in plan && plan.atPlace !== undefined && (
 					<View style={style.container}>
-						<VSPText
-							frontIcon='placeholder'
-							fontSize={THEME_MINOR_FONTSIZE}
-							color={THEME_COLORS.grey}
-						>
-							{plan.atPlace}
-						</VSPText>
+						<View style={{ flexDirection: 'row' }}>
+							<Icon
+								name='place-pin'
+								type='vspicon'
+								size={THEME_MINOR_FONTSIZE}
+								color={THEME_COLORS.grey}
+								containerStyle={{
+									marginRight: HORIZONTAL_UNIT(),
+								}}
+							/>
+							<Text
+								h4
+								style={{
+									flex: 1,
+									textAlign: 'justify',
+									color: THEME_COLORS.grey,
+								}}
+							>
+								{plan.atPlace}
+							</Text>
+						</View>
 					</View>
 				)}
 				{'move' in plan && (
@@ -146,11 +169,14 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								{plan.move.from}
 							</VSPText>
 						</View>
-						<VSPIcon
-							iconName='downarrow'
-							color={THEME_COLORS.grey}
+						<Icon
+							name='down-arrow'
+							type='vspicon'
 							size={THEME_MINOR_FONTSIZE}
-							marginVertical={HORIZONTAL_UNIT()}
+							color={THEME_COLORS.grey}
+							containerStyle={{
+								marginVertical: HORIZONTAL_UNIT(),
+							}}
 						/>
 						<View style={{ flexDirection: 'row' }}>
 							<VSPText
@@ -178,15 +204,30 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 								justifyContent: 'space-between',
 							}}
 						>
-							<VSPText
-								frontIcon='money'
-								fontSize={THEME_MINOR_FONTSIZE}
-								marginRight={HORIZONTAL_UNIT()}
-								color={THEME_COLORS.grey}
-								fontWeight='bold'
+							<View
+								style={{
+									flexDirection: 'row',
+								}}
 							>
-								{plan.cost.currency}
-							</VSPText>
+								<Icon
+									name='money'
+									type='vspicon'
+									color={THEME_COLORS.grey}
+									size={THEME_MINOR_FONTSIZE}
+									containerStyle={{
+										marginRight: HORIZONTAL_UNIT(),
+									}}
+								/>
+								<Text
+									h4
+									style={{
+										fontWeight: 'bold',
+										color: THEME_COLORS.grey,
+									}}
+								>
+									{plan.cost.currency}
+								</Text>
+							</View>
 							<VSPText
 								fontSize={THEME_MINOR_FONTSIZE}
 								color={THEME_COLORS.grey}
@@ -212,17 +253,27 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				{plan.note !== undefined &&
 					plan.note.map((note: string, index: number) => (
 						<View key={index} style={style.container}>
-							<VSPText
-								frontIcon='information'
-								fontSize={THEME_MINOR_FONTSIZE}
-								color={THEME_COLORS.grey}
-								style={{
-									flex: 1,
-									textAlign: 'justify',
-								}}
-							>
-								{note}
-							</VSPText>
+							<View style={{ flexDirection: 'row' }}>
+								<Icon
+									name='information'
+									type='vspicon'
+									size={THEME_MINOR_FONTSIZE}
+									color={THEME_COLORS.grey}
+									containerStyle={{
+										marginRight: HORIZONTAL_UNIT(),
+									}}
+								/>
+								<Text
+									h4
+									style={{
+										flex: 1,
+										textAlign: 'justify',
+										color: THEME_COLORS.grey,
+									}}
+								>
+									{note}
+								</Text>
+							</View>
 						</View>
 					))}
 			</View>
@@ -334,9 +385,15 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 	public render() {
 		return (
 			<View style={{ marginTop: HORIZONTAL_UNIT(8) }}>
-				<VSPText frontIcon='planning' fontSize={THEME_HEADER_FONTSIZE}>
-					일정
-				</VSPText>
+				<View style={{ flexDirection: 'row' }}>
+					<Icon
+						name='planning'
+						type='vspicon'
+						size={THEME_HEADER_FONTSIZE}
+						containerStyle={{ marginRight: HORIZONTAL_UNIT() }}
+					/>
+					<Text h2>일정</Text>
+				</View>
 				{this._renderDayPlans()}
 			</View>
 		);

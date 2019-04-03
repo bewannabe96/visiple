@@ -7,8 +7,7 @@ import {
 	decodeVSPMarginProps,
 	IVSPMarginProps,
 } from '../types/props/vsp-margin';
-
-import VSPRoundIconButton from './vsp-round-icon-button';
+import { Icon } from 'react-native-elements';
 
 interface IVSPExpandableProps {
 	/**
@@ -79,10 +78,10 @@ export default class VSPExpandable extends React.Component<
 			<View style={style.container}>
 				<View style={style.headerView}>
 					<View style={style.header}>{this.props.header}</View>
-					<VSPRoundIconButton
-						outline={this.state.expanded}
-						icon={this.state.expanded ? 'downarrowhead' : 'plus'}
-						size={THEME_FONTSIZE * 2}
+					<Icon
+						name={this.state.expanded ? 'angle-down' : 'plus'}
+						type='vspicon'
+						size={THEME_FONTSIZE}
 						onPress={this._toggleExpand}
 						color={this.props.color!}
 					/>

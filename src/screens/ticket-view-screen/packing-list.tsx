@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Icon, Text } from 'react-native-elements';
 
 import { THEME_COLORS } from '../../types/lib/theme';
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
@@ -46,13 +46,15 @@ export default class PackingList extends React.Component<IPackingListProps> {
 			<View>
 				<VSPExpandable
 					header={
-						<VSPText
-							frontIcon='teamwork'
-							color={this.props.ticketColor}
-							fontSize={THEME_HEADER_FONTSIZE}
-						>
-							공통
-						</VSPText>
+						<View style={{ flexDirection: 'row' }}>
+							<Icon
+								name='team'
+								type='vspicon'
+								color={this.props.ticketColor}
+								size={THEME_HEADER_FONTSIZE}
+							/>
+							<Text h2>공통</Text>
+						</View>
 					}
 					body={
 						<View>
@@ -125,9 +127,15 @@ export default class PackingList extends React.Component<IPackingListProps> {
 	public render() {
 		return (
 			<View>
-				<VSPText frontIcon='backpack' fontSize={THEME_HEADER_FONTSIZE}>
-					준비물품
-				</VSPText>
+				<View style={{ flexDirection: 'row' }}>
+					<Icon
+						name='backpack'
+						type='vspicon'
+						size={THEME_HEADER_FONTSIZE}
+						containerStyle={{ marginRight: HORIZONTAL_UNIT() }}
+					/>
+					<Text h2>준비물품</Text>
+				</View>
 				{this._renderPackings(this.props.packings)}
 			</View>
 		);

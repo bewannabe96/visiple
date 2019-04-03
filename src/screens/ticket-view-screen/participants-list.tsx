@@ -1,12 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Icon } from 'react-native-elements';
 
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
 import { UserID } from '../../types/data/user';
-
-import VSPRoundIconButton from '../../components/vsp-round-icon-button';
 
 interface IParticipantsListProps {
 	/**
@@ -55,10 +53,13 @@ export default class ParticipantsList extends React.Component<
 						zIndex: this.props.participants.length,
 					}}
 				>
-					<VSPRoundIconButton
-						icon='plus'
+					<Icon
+						name='plus'
+						type='vspicon'
 						color={THEME_COLORS.grey}
-						size={HORIZONTAL_UNIT(8)}
+						size={HORIZONTAL_UNIT(4)}
+						onPress={() => {}}
+						reverse
 					/>
 				</View>
 			</View>

@@ -6,7 +6,7 @@ import {
 	SafeAreaView,
 	ScrollView,
 } from 'react-native';
-import { Input } from 'react-native-elements';
+import { Input, Icon, Button } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
@@ -22,9 +22,6 @@ import { NewTicket } from '../../types/data/ticket';
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
-import VSPTextButton from '../../components/vsp-text-button';
-import VSPColoredButton from '../../components/vsp-colored-button';
-import VSPIcon from '../../components/vsp-icon';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 
 import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';
@@ -111,6 +108,7 @@ export default class NewTicketScreen extends React.Component<
 			titleView: {
 				flexDirection: 'row',
 				justifyContent: 'space-between',
+				alignItems: 'center',
 			},
 
 			footerView: {
@@ -166,13 +164,6 @@ export default class NewTicketScreen extends React.Component<
 								})`}
 							</VSPText>
 						</TouchableOpacity>
-						<View style={style.arrowIconView}>
-							<VSPIcon
-								iconName='rightarrow'
-								color={THEME_COLORS.grey}
-								size={HORIZONTAL_UNIT(6)}
-							/>
-						</View>
 						<TouchableOpacity
 							style={{ flex: 2 }}
 							activeOpacity={0.6}
@@ -222,10 +213,11 @@ export default class NewTicketScreen extends React.Component<
 							<VSPText style={style.titleText}>
 								함께하는 친구
 							</VSPText>
-							<VSPTextButton
-								icon='plus'
-								fontSize={THEME_HEADER_FONTSIZE}
+							<Icon
+								name='plus'
+								type='vspicon'
 								color={this.props.newTicket.themeColor}
+								size={THEME_HEADER_FONTSIZE}
 								onPress={() => {
 									this.props.openInviteModal();
 								}}
@@ -242,11 +234,13 @@ export default class NewTicketScreen extends React.Component<
 					</View>
 				</ScrollView>
 				<SafeAreaView style={style.bottomButtonView}>
-					<VSPColoredButton
-						text='완료'
-						fontSize={THEME_HEADER_FONTSIZE}
-						color={this.props.newTicket.themeColor}
-						disableBorderRadius={true}
+					<Button
+						title='완료'
+						buttonStyle={{
+							borderRadius: 0,
+							backgroundColor: this.props.newTicket.themeColor,
+						}}
+						titleStyle={{ fontSize: THEME_HEADER_FONTSIZE }}
 					/>
 				</SafeAreaView>
 				<SelectPeriodModalContainer />

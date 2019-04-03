@@ -5,23 +5,16 @@ import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
-import { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 import { THEME_COLORS, RawColor } from '../types/lib/theme';
 
 import VSPText from './vsp-text';
-import VSPIcon from './vsp-icon';
 
 interface IVSPDividerProps {
 	/**
 	 * Text to be displayed
 	 */
 	text?: string;
-
-	/**
-	 * Icon to be displayed on the left side of the text
-	 */
-	icon?: IconName;
 
 	/**
 	 * Size of the text and the icon
@@ -44,7 +37,6 @@ interface IVSPDividerProps {
  *
  * @property
  * - ```text```: Text to be displayed
- * - ```icon```: Icon to be displayed on the left side of the text
  * - ```fontSize```: Size of the text and the icon (by default ```THEME_FONTSIZE```)
  * - ```color```: Raw color of the divider (by default ```THEME_COLORS.oceanBlue```)
  * - ```orientation```: The place where the text will go (by default ```left```)
@@ -109,28 +101,14 @@ export default class VSPDivider extends React.Component<
 								: undefined,
 					}}
 				/>
-				{(!!this.props.icon || !!this.props.text) && (
+				{!!this.props.text && (
 					<View style={style.contentView}>
-						{!!this.props.icon && (
-							<VSPIcon
-								iconName={this.props.icon}
-								color={this.props.color!}
-								size={this.props.fontSize}
-							/>
-						)}
-						{!!this.props.text && (
-							<VSPText
-								fontSize={this.props.fontSize}
-								color={this.props.color!}
-								marginLeft={
-									this.props.icon
-										? 0.3 * this.props.fontSize!
-										: 0
-								}
-							>
-								{this.props.text}
-							</VSPText>
-						)}
+						<VSPText
+							fontSize={this.props.fontSize}
+							color={this.props.color!}
+						>
+							{this.props.text}
+						</VSPText>
 					</View>
 				)}
 				<View

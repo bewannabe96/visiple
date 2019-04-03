@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
@@ -85,11 +86,12 @@ export default class TicketScreen extends React.Component<
 					))}
 					<TouchableOpacity
 						style={{
+							height: HORIZONTAL_UNIT(31),
+							flexDirection: 'row',
+							justifyContent: 'center',
 							alignItems: 'center',
 							marginTop: HORIZONTAL_UNIT(5),
 							marginHorizontal: VSP_EDGE_PADDING,
-							height: HORIZONTAL_UNIT(31),
-							justifyContent: 'center',
 							borderRadius: HORIZONTAL_UNIT(2),
 							borderColor: THEME_COLORS.grey,
 							borderWidth: 1,
@@ -98,11 +100,12 @@ export default class TicketScreen extends React.Component<
 							this.props.navigation.navigate('NewTicketScreen');
 						}}
 					>
-						<VSPText
-							frontIcon='plus'
+						<Icon
+							name='plus'
+							type='vspicon'
 							color={THEME_COLORS.grey}
-							fontWeight='bold'
-						>
+						/>
+						<VSPText color={THEME_COLORS.grey} fontWeight='bold'>
 							새로운 티켓 만들기
 						</VSPText>
 					</TouchableOpacity>

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 
 import RNElementsTheme from './src/config/react-native-elements-theme';
-import { VSPIconSet } from './src/types/lib/icon';
+import VSPIconSet from './src/types/lib/icon';
 
 import AuthSwitch from './src/navigators/auth-switch';
 import RootReducer from './src/reducers';

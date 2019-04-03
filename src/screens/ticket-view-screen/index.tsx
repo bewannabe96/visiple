@@ -177,7 +177,7 @@ export default class TicketViewScreen extends React.Component<
 					transparent={true}
 					headerLeft={
 						<VSPHeaderButton
-							icon='leftarrow'
+							iconName='left-arrow'
 							color={THEME_COLORS.white}
 							onPress={() => {
 								navigation.pop();
@@ -186,11 +186,11 @@ export default class TicketViewScreen extends React.Component<
 					}
 					headerRight={
 						<VSPHeaderDropdown
-							icon='more'
+							iconName='more'
 							color={THEME_COLORS.white}
 							contents={[
 								{ title: '기록 생성' },
-								{ icon: 'trash', title: '삭제' },
+								{ icon: { name: 'trash' }, title: '삭제' },
 							]}
 						/>
 					}

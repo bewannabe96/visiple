@@ -7,9 +7,6 @@ import {
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
 import { THEME_FONTSIZE } from '../types/lib/size';
-import { IconName } from '../types/lib/icon';
-
-import VSPIcon from './vsp-icon';
 
 interface IVSPTextProps {
 	/**
@@ -21,15 +18,6 @@ interface IVSPTextProps {
 	 * Weight of the font
 	 */
 	fontWeight?: 'normal' | 'bold';
-
-	/**
-	 * Icon to be diplayed in the front of the text
-	 */
-	frontIcon?: IconName;
-	/**
-	 * Icon to be diplayed in the back of the text
-	 */
-	rearIcon?: IconName;
 
 	/**
 	 * Raw color of the text
@@ -77,14 +65,6 @@ export default class VSPText extends React.Component<
 					...decodeVSPMarginProps(this.props),
 				}}
 			>
-				{!!this.props.frontIcon && (
-					<VSPIcon
-						iconName={this.props.frontIcon}
-						color={this.props.color!}
-						size={this.props.fontSize!}
-						marginRight={0.3 * this.props.fontSize!}
-					/>
-				)}
 				<Text
 					style={{
 						fontSize: this.props.fontSize!,
@@ -96,14 +76,6 @@ export default class VSPText extends React.Component<
 				>
 					{this.props.children}
 				</Text>
-				{!!this.props.rearIcon && (
-					<VSPIcon
-						iconName={this.props.rearIcon}
-						color={this.props.color!}
-						size={this.props.fontSize!}
-						marginLeft={0.3 * this.props.fontSize!}
-					/>
-				)}
 			</View>
 		);
 	}

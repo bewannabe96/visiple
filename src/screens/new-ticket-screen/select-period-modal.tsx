@@ -9,6 +9,7 @@ import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
+import VSPTimePicker from '../../components/vsp-time-picker';
 
 import {
 	switchFromToTab,
@@ -224,6 +225,7 @@ export default class SelectPeriodModal extends React.Component<
 						}
 					}}
 				/>
+				<VSPTimePicker />
 			</VSPModal>
 		);
 	}

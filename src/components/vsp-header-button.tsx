@@ -1,9 +1,7 @@
 import React from 'react';
+import { Icon } from 'react-native-elements';
 import { NavigationScreenProp, Header } from 'react-navigation';
 
-import { IconName } from '../types/lib/icon';
-
-import VSPTextButton from './vsp-text-button';
 import { RawColor, THEME_COLORS } from '../types/lib/theme';
 
 const VSP_HEADER_BUTTON_SIZE = Header.HEIGHT * 0.4;
@@ -12,7 +10,7 @@ interface IVSPHeaderButtonProps {
 	/**
 	 * Icon to be displayed
 	 */
-	icon: IconName;
+	iconName: string;
 
 	/**
 	 * Raw color of the button
@@ -29,7 +27,7 @@ interface IVSPHeaderButtonProps {
  * VSPHeaderButton
  *
  * @property
- * - ```icon```(required): Icon to be displayed
+ * - ```iconName```(required): Icon to be displayed
  * - ```color```: Raw color of the button (by default ```THEME_COLORS.brown```)
  * - ```onPress```: Callback function when button pressed
  */
@@ -42,10 +40,11 @@ export default class VSPHeaderButton extends React.Component<
 
 	public render() {
 		return (
-			<VSPTextButton
-				icon={this.props.icon}
+			<Icon
+				name={this.props.iconName}
+				type='vspicon'
 				color={this.props.color!}
-				fontSize={VSP_HEADER_BUTTON_SIZE}
+				size={VSP_HEADER_BUTTON_SIZE}
 				onPress={this.props.onPress}
 			/>
 		);
@@ -59,7 +58,7 @@ export default class VSPHeaderButton extends React.Component<
  */
 export const VSPHeaderBack = (navigation: NavigationScreenProp<any>) => (
 	<VSPHeaderButton
-		icon='leftarrow'
+		iconName='left-arrow'
 		onPress={() => {
 			navigation.pop();
 		}}

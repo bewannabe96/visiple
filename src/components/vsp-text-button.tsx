@@ -4,16 +4,15 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native';
+import { IconProps, Icon } from 'react-native-elements';
 
 import { THEME_COLORS, RawColor } from '../types/lib/theme';
 import {
 	IVSPMarginProps,
 	decodeVSPMarginProps,
 } from '../types/props/vsp-margin';
-import { IconName } from '../types/lib/icon';
 import { THEME_FONTSIZE } from '../types/lib/size';
 
-import VSPIcon from './vsp-icon';
 import VSPText from './vsp-text';
 
 interface IVSPTextButtonProps {
@@ -25,7 +24,7 @@ interface IVSPTextButtonProps {
 	/**
 	 * Icon to be displayed in the button
 	 */
-	icon?: IconName;
+	icon?: IconProps;
 
 	/**
 	 * Size of the text and the icon inside the button
@@ -99,8 +98,8 @@ export default class VSPTextButton extends React.Component<
 				onPress={this.props.onPress}
 			>
 				{!!this.props.icon && (
-					<VSPIcon
-						iconName={this.props.icon}
+					<Icon
+						{...this.props.icon}
 						color={this.props.color!}
 						size={this.props.fontSize}
 					/>

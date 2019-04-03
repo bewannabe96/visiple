@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, GestureResponderEvent } from 'react-native';
+import { IconProps } from 'react-native-elements';
 import Modal from 'react-native-modal';
 
 import { HORIZONTAL_UNIT } from '../types/lib/size';
@@ -8,7 +9,6 @@ import {
 	IVSPPaddingProps,
 	decodeVSPPaddingProps,
 } from '../types/props/vsp-padding';
-import { IconName } from '../types/lib/icon';
 
 import VSPTextButton from './vsp-text-button';
 import VSPHeader from './vsp-header';
@@ -41,7 +41,7 @@ interface IVSPModalProps {
 	/**
 	 * Icon of the right button
 	 */
-	rightButtonIcon?: IconName;
+	rightButtonIcon?: IconProps;
 
 	/**
 	 * Text of the right button
@@ -56,7 +56,7 @@ interface IVSPModalProps {
 	/**
 	 * Icon of the left button
 	 */
-	leftButtonIcon?: IconName;
+	leftButtonIcon?: IconProps;
 
 	/**
 	 * Text of the left button
@@ -166,7 +166,7 @@ export default class VSPModal extends React.Component<
 							<VSPTextButton
 								icon={this.props.leftButtonIcon}
 								text={this.props.leftButtonText}
-								theme='brown'
+								color={THEME_COLORS.brown}
 								underline={false}
 								onPress={this.props.leftButtonOnPress}
 							/>
@@ -178,7 +178,7 @@ export default class VSPModal extends React.Component<
 							<VSPTextButton
 								icon={this.props.rightButtonIcon}
 								text={this.props.rightButtonText}
-								theme='brown'
+								color={THEME_COLORS.brown}
 								underline={false}
 								onPress={this.props.rightButtonOnPress}
 							/>

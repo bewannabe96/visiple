@@ -85,7 +85,7 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						{typeof this.props.headerTitle === 'string' && (
 							<VSPText
 								fontSize={VSP_HEADER_TITLE_SIZE}
-								theme='black'
+								color={THEME_COLORS.black}
 								fontWeight='bold'
 							>
 								{this.props.headerTitle}
