@@ -102,7 +102,7 @@ export default class FriendInviteModal extends React.Component<
 							</View>
 							<VSPColoredButton
 								text='초대'
-								icon='plus'
+								icon={{ name: 'plus', type: 'vspicon' }}
 								fontSize={THEME_MINOR_FONTSIZE}
 								color={this.props.themeColor}
 							/>
