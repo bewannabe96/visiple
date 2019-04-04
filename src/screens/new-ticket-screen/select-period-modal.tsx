@@ -9,13 +9,13 @@ import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
-import VSPTimePicker from '../../components/vsp-time-picker';
 
 import {
 	switchFromToTab,
 	closePeriodModal,
 } from '../../actions/screens/new-ticket-screen';
 import { setFromDate, setToDate } from '../../actions/new-ticket';
+import VSPTimePicker from '../../components/vsp-time-picker';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -225,7 +225,7 @@ export default class SelectPeriodModal extends React.Component<
 						}
 					}}
 				/>
-				<VSPTimePicker />
+				<VSPTimePicker color={this.props.themeColor} />
 			</VSPModal>
 		);
 	}
