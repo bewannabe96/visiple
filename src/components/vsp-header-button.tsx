@@ -4,7 +4,7 @@ import { NavigationScreenProp, Header } from 'react-navigation';
 
 import { RawColor, THEME_COLORS } from '../types/lib/theme';
 
-const VSP_HEADER_BUTTON_SIZE = Header.HEIGHT * 0.3;
+const VSP_HEADER_BUTTON_SIZE = Header.HEIGHT * 0.35;
 
 interface IVSPHeaderButtonProps {
 	/**
