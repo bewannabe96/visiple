@@ -190,7 +190,13 @@ export default class TicketViewScreen extends React.Component<
 							color={THEME_COLORS.white}
 							contents={[
 								{ title: '기록 생성' },
-								{ icon: { name: 'trash' }, title: '삭제' },
+								{
+									icon: {
+										name: 'trash-can',
+										type: 'vspicon',
+									},
+									title: '삭제',
+								},
 							]}
 						/>
 					}
