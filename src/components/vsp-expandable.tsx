@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import { RawColor, THEME_COLORS } from '../types/lib/theme';
 import { THEME_FONTSIZE } from '../types/lib/size';
@@ -7,7 +8,6 @@ import {
 	decodeVSPMarginProps,
 	IVSPMarginProps,
 } from '../types/props/vsp-margin';
-import { Icon } from 'react-native-elements';
 
 interface IVSPExpandableProps {
 	/**
