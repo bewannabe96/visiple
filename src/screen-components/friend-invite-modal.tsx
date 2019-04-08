@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { SearchBar, Avatar } from 'react-native-elements';
+import { SearchBar, Avatar, Button } from 'react-native-elements';
 
 import {
 	HORIZONTAL_UNIT,
@@ -11,7 +11,6 @@ import {
 import { THEME_COLORS } from '../types/lib/theme';
 
 import VSPModal from '../components/vsp-modal';
-import VSPColoredButton from '../components/vsp-colored-button';
 import VSPText from '../components/vsp-text';
 
 import { closeInviteModal } from '../actions/screens/new-ticket-screen';
@@ -100,11 +99,22 @@ export default class FriendInviteModal extends React.Component<
 									{'familynamega@gmail.com'}
 								</VSPText>
 							</View>
-							<VSPColoredButton
-								text='초대'
-								icon={{ name: 'plus', type: 'vspicon' }}
-								fontSize={THEME_MINOR_FONTSIZE}
-								color={this.props.themeColor}
+							<Button
+								title='초대'
+								icon={{
+									name: 'plus',
+									type: 'vspicon',
+									size: THEME_MINOR_FONTSIZE,
+									color: THEME_COLORS.white,
+									containerStyle: {
+										paddingRight: HORIZONTAL_UNIT(),
+									},
+								}}
+								buttonStyle={{
+									backgroundColor: this.props.themeColor,
+									padding: HORIZONTAL_UNIT(),
+								}}
+								titleStyle={{ fontSize: THEME_MINOR_FONTSIZE }}
 							/>
 						</View>
 					)}

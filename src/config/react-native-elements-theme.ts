@@ -9,7 +9,6 @@ import {
 const RNElementsTheme = {
 	Icon: {
 		size: THEME_FONTSIZE,
-		iconStyle: { margin: 0 },
 	},
 
 	// Image: {
