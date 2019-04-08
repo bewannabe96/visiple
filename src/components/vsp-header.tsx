@@ -94,7 +94,7 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 						{typeof this.props.headerTitle !== 'string' &&
 							this.props.headerTitle}
 					</View>
-					{!!this.props.headerLeft && (
+					{!!this.props.headerRight && (
 						<View
 							style={{
 								justifyContent: 'center',
