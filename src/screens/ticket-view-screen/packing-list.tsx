@@ -52,6 +52,9 @@ export default class PackingList extends React.Component<IPackingListProps> {
 								type='vspicon'
 								color={this.props.ticketColor}
 								size={THEME_HEADER_FONTSIZE}
+								containerStyle={{
+									marginRight: HORIZONTAL_UNIT(),
+								}}
 							/>
 							<Text h2>공통</Text>
 						</View>
