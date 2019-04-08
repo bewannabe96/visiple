@@ -9,13 +9,14 @@ import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 
 import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
+import VSPTimePicker from '../../components/vsp-time-picker';
 
 import {
 	switchFromToTab,
 	closePeriodModal,
 } from '../../actions/screens/new-ticket-screen';
 import { setFromDate, setToDate } from '../../actions/new-ticket';
-import VSPTimePicker from '../../components/vsp-time-picker';
+import { Button } from 'react-native-elements';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -152,8 +153,14 @@ export default class SelectPeriodModal extends React.Component<
 				isVisible={this.props.periodModalVisible}
 				closeAction={this.props.closePeriodModal}
 				titleText={'기간'}
-				rightButtonText={'완료'}
-				rightButtonOnPress={this.props.closePeriodModal}
+				headerRight={
+					<Button
+						title='완료'
+						type='clear'
+						titleStyle={{ color: THEME_COLORS.black }}
+						onPress={this.props.closePeriodModal}
+					/>
+				}
 				paddingVertical={HORIZONTAL_UNIT(3)}
 			>
 				<View style={style.fromtoTabView}>

@@ -44,8 +44,14 @@ export default class FriendInviteModal extends React.Component<
 		return (
 			<VSPModal
 				titleText={'친구 초대'}
-				rightButtonText={'취소'}
-				rightButtonOnPress={this.props.closeInviteModal}
+				headerRight={
+					<Button
+						title='닫기'
+						type='clear'
+						titleStyle={{ color: THEME_COLORS.black }}
+						onPress={this.props.closeInviteModal}
+					/>
+				}
 				isVisible={this.props.isVisible}
 				heightMode='full'
 				closeAction={this.props.closeInviteModal}

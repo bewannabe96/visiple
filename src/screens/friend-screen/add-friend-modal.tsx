@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Button } from 'react-native-elements';
 
 import { HORIZONTAL_UNIT, VSP_EDGE_PADDING } from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPModal from '../../components/vsp-modal';
 
@@ -24,7 +25,13 @@ export default class AddFriendModal extends React.Component {
 				heightMode='minimum'
 				titleText='친구 추가'
 				closeAction={() => {}}
-				rightButtonText={'취소'}
+				headerRight={
+					<Button
+						title='닫기'
+						type='clear'
+						titleStyle={{ color: THEME_COLORS.black }}
+					/>
+				}
 			>
 				<SearchBar
 					placeholder='이메일을 입력하세요'

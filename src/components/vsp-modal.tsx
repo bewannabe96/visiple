@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, GestureResponderEvent } from 'react-native';
-import { IconProps, Button } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { HORIZONTAL_UNIT } from '../types/lib/size';
@@ -38,34 +37,9 @@ interface IVSPModalProps {
 	titleText: string;
 
 	/**
-	 * Icon of the right button
+	 * Component to be displayed in the right of the header
 	 */
-	rightButtonIcon?: IconProps;
-
-	/**
-	 * Text of the right button
-	 */
-	rightButtonText?: string;
-
-	/**
-	 * Callback function when right button pressed
-	 */
-	rightButtonOnPress?: (event: GestureResponderEvent) => void;
-
-	/**
-	 * Icon of the left button
-	 */
-	leftButtonIcon?: IconProps;
-
-	/**
-	 * Text of the left button
-	 */
-	leftButtonText?: string;
-
-	/**
-	 * Callback function when left button pressed
-	 */
-	leftButtonOnPress?: (event: GestureResponderEvent) => void;
+	headerRight?: Element;
 }
 
 /**
@@ -76,12 +50,7 @@ interface IVSPModalProps {
  * - ```closeAction```(required): Close action callback
  * - ```heightMode```: Height of the modal (by default ```auto```)
  * - ```titleText```(required): Title text in the middle of the header
- * - ```rightButtonIcon```: Icon of the right button
- * - ```rightButtonText```: Text of the right button
- * - ```rightButtonOnPress```: Callback function when right button pressed
- * - ```leftButtonIcon```: Icon of the left button
- * - ```leftButtonText```: Text of the left button
- * - ```leftButtonOnPress```: Callback function when left button pressed
+ * - ```headerRight```: Component to be displayed in the right
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
  * - ```paddingHorizontal```: Horizontal padding; including paddingRight and paddingLeft
  * - ```paddingVertical```: Vertical padding; including paddingTop and paddingBottom
@@ -159,28 +128,7 @@ export default class VSPModal extends React.Component<
 			>
 				<VSPHeader
 					headerTitle={this.props.titleText}
-					headerLeft={
-						!!this.props.leftButtonIcon ||
-						(!!this.props.leftButtonText && (
-							<Button
-								icon={this.props.leftButtonIcon}
-								title={this.props.leftButtonText}
-								titleStyle={{ color: THEME_COLORS.brown }}
-								onPress={this.props.leftButtonOnPress}
-							/>
-						))
-					}
-					headerRight={
-						!!this.props.rightButtonIcon ||
-						(!!this.props.rightButtonText && (
-							<Button
-								icon={this.props.rightButtonIcon}
-								title={this.props.rightButtonText}
-								titleStyle={{ color: THEME_COLORS.brown }}
-								onPress={this.props.leftButtonOnPress}
-							/>
-						))
-					}
+					headerRight={this.props.headerRight}
 				/>
 				<View style={style.bodyView}>{this.props.children}</View>
 			</Modal>
