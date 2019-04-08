@@ -4,7 +4,7 @@ import { NavigationScreenProp, Header } from 'react-navigation';
 
 import { RawColor, THEME_COLORS } from '../types/lib/theme';
 
-const VSP_HEADER_BUTTON_SIZE = Header.HEIGHT * 0.4;
+const VSP_HEADER_BUTTON_SIZE = Header.HEIGHT * 0.3;
 
 interface IVSPHeaderButtonProps {
 	/**
@@ -28,14 +28,14 @@ interface IVSPHeaderButtonProps {
  *
  * @property
  * - ```iconName```(required): Icon to be displayed
- * - ```color```: Raw color of the button (by default ```THEME_COLORS.brown```)
+ * - ```color```: Raw color of the button (by default ```THEME_COLORS.black```)
  * - ```onPress```: Callback function when button pressed
  */
 export default class VSPHeaderButton extends React.Component<
 	IVSPHeaderButtonProps
 > {
 	public static defaultProps = {
-		color: THEME_COLORS.brown,
+		color: THEME_COLORS.black,
 	};
 
 	public render() {
