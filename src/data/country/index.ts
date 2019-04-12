@@ -47,9 +47,9 @@ const COUNTRIES: Country[] = _countries.countries;
 
 export const allCountries = COUNTRIES;
 
-export const countryCodesByName = (name: string): CountryCode[] => {
+export const countryCodesBySearchword = (word: string): CountryCode[] => {
 	let result: CountryCode[] = [];
-	const regexp = new RegExp(`^.*${name}.*$`, 'gi');
+	const regexp = new RegExp(`^.*${word}.*$`, 'gi');
 	COUNTRIES.forEach((cntry: Country) => {
 		if (
 			cntry.name.search(regexp) !== -1 ||

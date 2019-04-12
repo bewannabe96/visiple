@@ -14,7 +14,7 @@ import {
 	allCountries,
 	countryByCode,
 	countriesByCodes,
-	countryCodesByName,
+	countryCodesBySearchword,
 } from '../../data/country';
 import { CountryCode } from '../../types/data/country';
 
@@ -55,7 +55,7 @@ export default class CountrySelector extends React.Component<
 
 	private _renderSearchResult() {
 		if (this.state.serachWord !== '') {
-			let resultCodes = countryCodesByName(this.state.serachWord);
+			let resultCodes = countryCodesBySearchword(this.state.serachWord);
 			return (
 				<ScrollView
 					style={{
