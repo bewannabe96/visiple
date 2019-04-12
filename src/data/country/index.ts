@@ -47,15 +47,15 @@ const COUNTRIES: Country[] = _countries.countries;
 
 export const allCountries = COUNTRIES;
 
-export const countryCodesBySearchword = (word: string): CountryCode[] => {
-	let result: CountryCode[] = [];
+export const countryCodesBySearchword = (word: string): Country[] => {
+	let result: Country[] = [];
 	const regexp = new RegExp(`^.*${word}.*$`, 'gi');
 	COUNTRIES.forEach((cntry: Country) => {
 		if (
 			cntry.name.search(regexp) !== -1 ||
 			cntry.translations.ko.search(regexp) !== -1
 		) {
-			result.push(cntry.alpha3Code);
+			result.push(cntry);
 		}
 	});
 	return result;
