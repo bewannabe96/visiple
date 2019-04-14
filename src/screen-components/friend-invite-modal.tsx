@@ -1,19 +1,29 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
-import { SearchBar, Avatar, Button } from 'react-native-elements';
+import { FlatList } from 'react-native';
+import { SearchBar, Button, ListItem } from 'react-native-elements';
 
 import {
 	HORIZONTAL_UNIT,
 	VSP_EDGE_PADDING,
 	THEME_MINOR_FONTSIZE,
-	THEME_FONTSIZE,
 } from '../types/lib/size';
 import { THEME_COLORS } from '../types/lib/theme';
+import { User } from '../types/data/user';
 
 import VSPModal from '../components/vsp-modal';
-import VSPText from '../components/vsp-text';
 
 import { closeInviteModal } from '../actions/screens/new-ticket-screen';
+
+const DEV_FRIENDS: User[] = [
+	{ id: 1, name: '홍길동', email: 'testtest23@nate.com' },
+	{ id: 2, name: '홍길동', email: 'testtest2323@nate.com' },
+	{ id: 3, name: '홍길동', email: 'testtest263@nate.com' },
+	{ id: 4, name: '홍길동', email: 'testtest2353@nate.com' },
+	{ id: 5, name: '홍길동', email: 'testtest213@nate.com' },
+	{ id: 6, name: '홍길동', email: 'testtest223@nate.com' },
+	{ id: 7, name: '홍길동', email: 'testtest233@nate.com' },
+	{ id: 8, name: '홍길동', email: 'testtest243@nate.com' },
+];
 
 interface IFriendInviteModalProps {
 	/**
@@ -64,65 +74,41 @@ export default class FriendInviteModal extends React.Component<
 					}}
 				/>
 				<FlatList
-					data={[
-						{ key: 'a' },
-						{ key: 'b' },
-						{ key: 'c' },
-						{ key: 'd' },
-						{ key: 'e' },
-						{ key: 'f' },
-						{ key: 'g' },
-						{ key: 'h' },
-						{ key: 'i' },
-						{ key: 'j' },
-					]}
-					renderItem={item => (
-						<View
-							style={{
-								flexDirection: 'row',
-								alignItems: 'center',
-								paddingVertical: HORIZONTAL_UNIT(3),
-								paddingHorizontal: VSP_EDGE_PADDING,
+					data={DEV_FRIENDS}
+					keyExtractor={item => item.id.toString()}
+					renderItem={({ item }) => (
+						<ListItem
+							leftAvatar={{
+								size: HORIZONTAL_UNIT(10),
 							}}
-						>
-							<Avatar size={HORIZONTAL_UNIT(10)} />
-							<View
-								style={{
-									flex: 1,
-									paddingHorizontal: HORIZONTAL_UNIT(2),
-								}}
-							>
-								<VSPText
-									fontSize={THEME_FONTSIZE}
-									marginBottom={HORIZONTAL_UNIT()}
-								>
-									{'가씨성'}
-								</VSPText>
-								<VSPText
-									fontSize={THEME_MINOR_FONTSIZE}
-									color={THEME_COLORS.grey}
-								>
-									{'familynamega@gmail.com'}
-								</VSPText>
-							</View>
-							<Button
-								title='초대'
-								icon={{
-									name: 'plus',
-									type: 'vspicon',
-									size: THEME_MINOR_FONTSIZE,
-									color: THEME_COLORS.white,
-									containerStyle: {
-										paddingRight: HORIZONTAL_UNIT(),
-									},
-								}}
-								buttonStyle={{
-									backgroundColor: this.props.themeColor,
-									padding: HORIZONTAL_UNIT(),
-								}}
-								titleStyle={{ fontSize: THEME_MINOR_FONTSIZE }}
-							/>
-						</View>
+							containerStyle={{
+								paddingHorizontal: VSP_EDGE_PADDING,
+								paddingVertical: HORIZONTAL_UNIT(3),
+							}}
+							title={item.name}
+							subtitle={item.email}
+							rightElement={
+								<Button
+									title='초대'
+									icon={{
+										name: 'plus',
+										type: 'vspicon',
+										size: THEME_MINOR_FONTSIZE,
+										color: THEME_COLORS.white,
+										containerStyle: {
+											paddingRight: HORIZONTAL_UNIT(),
+										},
+									}}
+									buttonStyle={{
+										backgroundColor: this.props.themeColor,
+										padding: HORIZONTAL_UNIT(),
+									}}
+									titleStyle={{
+										fontSize: THEME_MINOR_FONTSIZE,
+									}}
+								/>
+							}
+						/>
 					)}
 				/>
 			</VSPModal>

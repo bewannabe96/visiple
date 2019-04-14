@@ -1,79 +1,38 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { SearchBar, Avatar, Icon } from 'react-native-elements';
-import { ScrollView } from 'react-navigation';
+import { View, StyleSheet } from 'react-native';
+import { SearchBar, Icon, ListItem } from 'react-native-elements';
+import { FlatList } from 'react-navigation';
 
 import { THEME_COLORS } from '../../types/lib/theme';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
-	THEME_MINOR_FONTSIZE,
+	THEME_FONTSIZE,
 } from '../../types/lib/size';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { User } from '../../types/data/user';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPHeader from '../../components/vsp-header';
-import VSPText from '../../components/vsp-text';
 import VSPDivider from '../../components/vsp-divider';
 
 import AddFriendModal from './add-friend-modal';
 
 const DEV_FRIENDS: User[] = [
-	{ userID: '0001', userName: '홍길동', userEmail: 'testtest23@nate.com' },
-	{ userID: '0002', userName: '홍길동', userEmail: 'testtest2323@nate.com' },
-	{ userID: '0003', userName: '홍길동', userEmail: 'testtest263@nate.com' },
-	{ userID: '0004', userName: '홍길동', userEmail: 'testtest2353@nate.com' },
-	{ userID: '0005', userName: '홍길동', userEmail: 'testtest213@nate.com' },
-	{ userID: '0006', userName: '홍길동', userEmail: 'testtest223@nate.com' },
-	{ userID: '0007', userName: '홍길동', userEmail: 'testtest233@nate.com' },
-	{ userID: '0008', userName: '홍길동', userEmail: 'testtest243@nate.com' },
+	{ id: 1, name: '홍길동', email: 'testtest23@nate.com' },
+	{ id: 2, name: '홍길동', email: 'testtest2323@nate.com' },
+	{ id: 3, name: '홍길동', email: 'testtest263@nate.com' },
+	{ id: 4, name: '홍길동', email: 'testtest2353@nate.com' },
+	{ id: 5, name: '홍길동', email: 'testtest213@nate.com' },
+	{ id: 6, name: '홍길동', email: 'testtest223@nate.com' },
+	{ id: 7, name: '홍길동', email: 'testtest233@nate.com' },
+	{ id: 8, name: '홍길동', email: 'testtest243@nate.com' },
 ];
 
 export default class FriendScreen extends React.Component<IVSPScreenProps> {
 	public static navigationOptions = {
 		header: <VSPHeader headerTitle='친구' />,
 	};
-
-	private _renderFriendsList() {
-		const style = StyleSheet.create({
-			itemView: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				paddingVertical: HORIZONTAL_UNIT(3),
-				paddingHorizontal: VSP_EDGE_PADDING,
-			},
-		});
-
-		return (
-			<View>
-				{DEV_FRIENDS.map((friend: User) => (
-					<TouchableOpacity key={friend.userID} activeOpacity={0.6}>
-						<View style={style.itemView}>
-							<Avatar
-								size={HORIZONTAL_UNIT(10)}
-								containerStyle={{
-									marginRight: HORIZONTAL_UNIT(3),
-								}}
-							/>
-							<View style={{ flex: 1 }}>
-								<VSPText marginBottom={HORIZONTAL_UNIT()}>
-									{friend.userName}
-								</VSPText>
-								<VSPText
-									fontSize={THEME_MINOR_FONTSIZE}
-									color={THEME_COLORS.grey}
-								>
-									{friend.userEmail}
-								</VSPText>
-							</View>
-							<Icon name='angle-right' type='vspicon' />
-						</View>
-					</TouchableOpacity>
-				))}
-			</View>
-		);
-	}
 
 	public render() {
 		const style = StyleSheet.create({
@@ -93,15 +52,36 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 						marginBottom: HORIZONTAL_UNIT(3),
 					}}
 				/>
-				<ScrollView>
-					<VSPDivider
-						text='친구 10'
-						orientation='far-left'
-						marginHorizontal={VSP_EDGE_PADDING}
-					/>
-					{this._renderFriendsList()}
-				</ScrollView>
-
+				<FlatList
+					data={DEV_FRIENDS}
+					keyExtractor={item => item.id.toString()}
+					ListHeaderComponent={
+						<VSPDivider
+							text={`친구 ${DEV_FRIENDS.length}`}
+							orientation='far-left'
+							marginHorizontal={VSP_EDGE_PADDING}
+						/>
+					}
+					renderItem={({ item }) => (
+						<ListItem
+							key={item.id}
+							leftAvatar={{
+								size: HORIZONTAL_UNIT(10),
+							}}
+							containerStyle={{
+								paddingHorizontal: VSP_EDGE_PADDING,
+								paddingVertical: HORIZONTAL_UNIT(3),
+							}}
+							title={item.name}
+							subtitle={item.email}
+							rightIcon={{
+								name: 'angle-right',
+								type: 'vspicon',
+								size: THEME_FONTSIZE,
+							}}
+						/>
+					)}
+				/>
 				<View style={style.addFriendButtonView}>
 					<Icon
 						name='plus'

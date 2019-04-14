@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+	View,
+	ScrollView,
+	TouchableOpacity,
+	StyleSheet,
+	FlatList,
+} from 'react-native';
 import { SearchBar, Icon } from 'react-native-elements';
 
 import {
@@ -8,15 +14,13 @@ import {
 	THEME_MINOR_FONTSIZE,
 } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
+import { Country } from '../../types/data/country';
 
 import {
-	Country,
-	allCountries,
 	countryByCode,
 	countriesByCodes,
 	countryCodesBySearchword,
 } from '../../data/country';
-import { CountryCode } from '../../types/data/country';
 
 import VSPText from '../../components/vsp-text';
 import VSPCheckbox from '../../components/vsp-checkbox';
@@ -31,40 +35,16 @@ export default class CountrySelector extends React.Component<
 	public state = {
 		selectType: 'domestic',
 		countryCodes: ['USA', 'KOR'],
-		serachWord: '',
+		searchResults: null,
 	};
 
-	private _searchResultItems: {
-		[key: string]: Element;
-	} = allCountries.reduce(
-		(accum: { [key: string]: Element }, cntry: Country) => {
-			accum[cntry.alpha3Code] = (
-				<VSPCheckbox
-					key={cntry.alpha3Code}
-					marginVertical={HORIZONTAL_UNIT(2)}
-					marginHorizontal={HORIZONTAL_UNIT(3)}
-					buttonOnRight
-				>
-					<VSPText>{cntry.translations.ko}</VSPText>
-				</VSPCheckbox>
-			);
-			return accum;
-		},
-		{},
-	);
-
 	private _renderSearchResult() {
-		if (this.state.serachWord !== '') {
-			let resultCodes = countryCodesBySearchword(this.state.serachWord);
+		if (this.state.searchResults !== null) {
 			return (
-				<ScrollView
-					style={{
-						height: HORIZONTAL_UNIT(30),
-						borderWidth: 1,
-						borderColor: THEME_COLORS.greyWhite,
-					}}
-				>
-					{resultCodes.length === 0 && (
+				<FlatList
+					data={this.state.searchResults}
+					keyExtractor={item => item.alpha3Code}
+					ListEmptyComponent={
 						<View
 							style={{
 								alignItems: 'center',
@@ -73,11 +53,23 @@ export default class CountrySelector extends React.Component<
 						>
 							<VSPText>{'검색결과가 없습니다.'}</VSPText>
 						</View>
+					}
+					renderItem={({ item }: { item: Country }) => (
+						<VSPCheckbox
+							key={item.alpha3Code}
+							marginVertical={HORIZONTAL_UNIT(2)}
+							marginHorizontal={HORIZONTAL_UNIT(3)}
+							buttonOnRight
+						>
+							<VSPText>{item.translations.ko}</VSPText>
+						</VSPCheckbox>
 					)}
-					{resultCodes.map(
-						(code: CountryCode) => this._searchResultItems[code],
-					)}
-				</ScrollView>
+					style={{
+						height: HORIZONTAL_UNIT(30),
+						borderWidth: 1,
+						borderColor: THEME_COLORS.greyWhite,
+					}}
+				/>
 			);
 		}
 	}
@@ -163,7 +155,7 @@ export default class CountrySelector extends React.Component<
 	private _onSearchWordChange = (text: string) => {
 		this.setState({
 			...this.state,
-			serachWord: text,
+			searchResults: text === '' ? null : countryCodesBySearchword(text),
 		});
 	};
 

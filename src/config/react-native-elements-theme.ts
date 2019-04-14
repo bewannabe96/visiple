@@ -18,6 +18,7 @@ const RNElementsTheme = {
 	// 		width: '100%',
 	// 	},
 	// },
+
 	Button: {
 		containerStyle: {
 			padding: 0,
@@ -93,21 +94,21 @@ const RNElementsTheme = {
 			color: THEME_COLORS.grey,
 		},
 	},
-	// ListItem: {
-	// 	pad: HORIZONTAL_UNIT(3),
-	// 	containerStyle: {
-	// 		padding: 0,
-	// 		paddingVertical: HORIZONTAL_UNIT(3),
-	// 	},
-	// 	titleStyle: {
-	// 		fontSize: THEME_FONTSIZE,
-	// 	},
-	// 	subtitleStyle: {
-	// 		fontSize: THEME_MINOR_FONTSIZE,
-	// 		color: THEME_COLORS.grey,
-	// 		marginTop: HORIZONTAL_UNIT(),
-	// 	},
-	// },
+
+	ListItem: {
+		pad: HORIZONTAL_UNIT(3),
+		containerStyle: {
+			padding: 0,
+		},
+		titleStyle: {
+			fontSize: THEME_FONTSIZE,
+		},
+		subtitleStyle: {
+			fontSize: THEME_MINOR_FONTSIZE,
+			color: THEME_COLORS.grey,
+			marginTop: HORIZONTAL_UNIT(),
+		},
+	},
 };
 
 export default RNElementsTheme;

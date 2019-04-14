@@ -17,8 +17,8 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 		id: 1,
 		title: 'Travel Log 1',
 		titleImage: '',
-		owner: 'user1',
-		participants: ['user1', 'user2'],
+		owner: 1,
+		participants: [1, 2],
 		period: {
 			from: DateTime.local(),
 			to: DateTime.local(),
@@ -31,8 +31,8 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 		id: 2,
 		title: 'Travel Log 2',
 		titleImage: '',
-		owner: 'user1',
-		participants: ['user1', 'user2'],
+		owner: 1,
+		participants: [1, 2],
 		period: {
 			from: DateTime.local(),
 			to: DateTime.local(),
@@ -45,8 +45,8 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 		id: 3,
 		title: 'Travel Log 3',
 		titleImage: '',
-		owner: 'user1',
-		participants: ['user1', 'user2'],
+		owner: 1,
+		participants: [1, 2],
 		period: {
 			from: DateTime.local(),
 			to: DateTime.local(),

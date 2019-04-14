@@ -1,13 +1,12 @@
 import React from 'react';
 import {
 	View,
-	ScrollView,
 	StyleSheet,
 	Dimensions,
 	TouchableOpacity,
 	Image,
 } from 'react-native';
-import { withNavigation } from 'react-navigation';
+import { withNavigation, FlatList } from 'react-navigation';
 import { TabProps } from 'react-native-scrollable-tab-view';
 
 import { TravelLog } from '../../types/data/travel-log';
@@ -33,7 +32,7 @@ interface IPublishedLogsTabProps {
 class PublishedLogsTab extends React.Component<
 	IVSPScreenProps<TabProps<IPublishedLogsTabProps>>
 > {
-	private _renderItems() {
+	public render() {
 		const style = StyleSheet.create({
 			container: {
 				marginVertical: HORIZONTAL_UNIT(2),
@@ -57,38 +56,36 @@ class PublishedLogsTab extends React.Component<
 			},
 		});
 
-		return this.props.travelLogs.map((travelLog: TravelLog) => (
-			<TouchableOpacity
-				key={travelLog.id}
-				style={style.container}
-				activeOpacity={0.6}
-				onPress={() => {
-					this.props.navigation.navigate('NewTravelLogScreen');
-				}}
-			>
-				<Image
-					style={style.imageView}
-					source={require('../../dev-sample-image/landscape_1.jpeg')}
-				/>
-				<View style={style.titleView}>
-					<VSPText
-						fontSize={THEME_HEADER_FONTSIZE}
-						color={THEME_COLORS.white}
-					>
-						{travelLog.title}
-					</VSPText>
-				</View>
-			</TouchableOpacity>
-		));
-	}
-
-	public render() {
 		return (
-			<ScrollView
-				contentContainerStyle={{ paddingVertical: HORIZONTAL_UNIT(2) }}
-			>
-				{this._renderItems()}
-			</ScrollView>
+			<FlatList
+				data={this.props.travelLogs}
+				keyExtractor={item => item.id.toString()}
+				renderItem={({ item }) => (
+					<TouchableOpacity
+						key={item.id}
+						style={style.container}
+						activeOpacity={0.6}
+						onPress={() => {
+							this.props.navigation.navigate(
+								'NewTravelLogScreen',
+							);
+						}}
+					>
+						<Image
+							style={style.imageView}
+							source={require('../../dev-sample-image/landscape_1.jpeg')}
+						/>
+						<View style={style.titleView}>
+							<VSPText
+								fontSize={THEME_HEADER_FONTSIZE}
+								color={THEME_COLORS.white}
+							>
+								{item.title}
+							</VSPText>
+						</View>
+					</TouchableOpacity>
+				)}
+			/>
 		);
 	}
 }

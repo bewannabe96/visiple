@@ -1,7 +1,6 @@
 import React from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
-import { Icon } from 'react-native-elements';
-import { NavigationScreenProp } from 'react-navigation';
+import { Button } from 'react-native-elements';
+import { NavigationScreenProp, FlatList } from 'react-navigation';
 import { DateTime } from 'luxon';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
@@ -11,7 +10,6 @@ import { THEME_COLORS } from '../../types/lib/theme';
 
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
-import VSPText from '../../components/vsp-text';
 
 import TicketCard from './tickets-card';
 
@@ -19,8 +17,8 @@ const DEV_TICKETS: Ticket[] = [
 	{
 		id: 1,
 		title: '나혼자 여행갈꼬얌',
-		owner: '0001',
-		participants: ['0001', '0002', '0004', '0005'],
+		owner: 1,
+		participants: [1, 2, 3, 4],
 		themeColor: '#73C0F4',
 		period: {
 			from: DateTime.local(2020, 3, 14),
@@ -35,8 +33,8 @@ const DEV_TICKETS: Ticket[] = [
 	{
 		id: 2,
 		title: '두번째 티켓',
-		owner: '0001',
-		participants: ['0001', '0003', '0004', '0005', '0006'],
+		owner: 1,
+		participants: [1, 3, 4, 5, 6],
 		themeColor: '#AEEAB0',
 		period: {
 			from: DateTime.local(2020, 3, 14),
@@ -74,42 +72,43 @@ export default class TicketScreen extends React.Component<
 	public render() {
 		return (
 			<VSPContainer>
-				<ScrollView>
-					{DEV_TICKETS.map((ticket: Ticket) => (
+				<FlatList
+					data={DEV_TICKETS}
+					keyExtractor={item => item.id.toString()}
+					ListFooterComponent={
+						<Button
+							title='새로운 티켓 만들기'
+							icon={{
+								name: 'plus',
+								type: 'vspicon',
+								color: THEME_COLORS.grey,
+							}}
+							type='outline'
+							buttonStyle={{
+								borderColor: THEME_COLORS.grey,
+							}}
+							titleStyle={{ color: THEME_COLORS.grey }}
+							containerStyle={{
+								marginTop: HORIZONTAL_UNIT(5),
+								marginHorizontal: VSP_EDGE_PADDING,
+							}}
+							onPress={() => {
+								this.props.navigation.navigate(
+									'NewTicketScreen',
+								);
+							}}
+						/>
+					}
+					renderItem={({ item }) => (
 						<TicketCard
-							key={ticket.id}
-							ticket={ticket}
+							key={item.id}
+							ticket={item}
 							onPress={() => {
 								this._onTicketPress();
 							}}
 						/>
-					))}
-					<TouchableOpacity
-						style={{
-							height: HORIZONTAL_UNIT(31),
-							flexDirection: 'row',
-							justifyContent: 'center',
-							alignItems: 'center',
-							marginTop: HORIZONTAL_UNIT(5),
-							marginHorizontal: VSP_EDGE_PADDING,
-							borderRadius: HORIZONTAL_UNIT(2),
-							borderColor: THEME_COLORS.grey,
-							borderWidth: 1,
-						}}
-						onPress={() => {
-							this.props.navigation.navigate('NewTicketScreen');
-						}}
-					>
-						<Icon
-							name='plus'
-							type='vspicon'
-							color={THEME_COLORS.grey}
-						/>
-						<VSPText color={THEME_COLORS.grey} fontWeight='bold'>
-							새로운 티켓 만들기
-						</VSPText>
-					</TouchableOpacity>
-				</ScrollView>
+					)}
+				/>
 			</VSPContainer>
 		);
 	}
