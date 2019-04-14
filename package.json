@@ -23,7 +23,7 @@
     "react-native-swiper": "^1.5.14",
     "react-native-vector-icons": "^6.4.1",
     "react-native-web": "^0.10.1",
-    "react-navigation": "^3.0.9",
+    "react-navigation": "^3.8.1",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1"
   },
@@ -40,6 +40,7 @@
     "@types/react-redux": "^7.0.1",
     "@types/react-test-renderer": "^16.0.3",
     "babel-jest": "23.6.0",
+    "create-react-context": "^0.2.3",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
     "prettier": "^1.16.4",
