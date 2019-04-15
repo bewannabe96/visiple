@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 import { THEME_COLORS, addShadowProperties } from '../../types/lib/theme';
@@ -8,6 +8,8 @@ import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import VSPContainer from '../../components/vsp-container';
 import VSPImage from '../../components/vsp-image';
 import VSPText from '../../components/vsp-text';
+
+import LogsList from './logs-list';
 
 export default class ProfileScreen extends React.Component {
 	public render() {
@@ -65,10 +67,6 @@ export default class ProfileScreen extends React.Component {
 				backgroundColor: THEME_COLORS.oceanBlue,
 				opacity: 0.5,
 			},
-
-			profileBodyView: {
-				flex: 1,
-			},
 		});
 
 		return (
@@ -124,7 +122,7 @@ export default class ProfileScreen extends React.Component {
 						<VSPText style={style.summaryItemValueText}>0</VSPText>
 					</View>
 				</View>
-				<ScrollView style={style.profileBodyView} />
+				<LogsList />
 			</VSPContainer>
 		);
 	}
