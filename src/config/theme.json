@@ -3,7 +3,7 @@
         "height": 10,
         "button": 4
     },
-    "sizeOffset": 5,
+    "sizeOffset": 4.6,
     "fontFamily": "arial",
     "fontSize": {
         "minor": 2.5,
