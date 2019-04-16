@@ -9,8 +9,8 @@ import ProfileScreen from './profile-screen';
 export default class HomeScreen extends React.Component<IVSPScreenProps> {
 	public render() {
 		return (
-			<VSPContainer>
-				<ProfileScreen />
+			<VSPContainer wrapSafeAreaView={true}>
+				<ProfileScreen navigation={this.props.navigation} />
 			</VSPContainer>
 		);
 	}
