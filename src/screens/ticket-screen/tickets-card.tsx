@@ -4,11 +4,7 @@ import { Avatar } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
 import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
-import {
-	addShadowProperties,
-	THEME_FONT,
-	THEME_COLORS,
-} from '../../types/lib/theme';
+import { THEME_FONT, THEME_COLORS } from '../../types/lib/theme';
 import { Ticket } from '../../types/data/ticket';
 import { UserID } from '../../types/data/user';
 import {
@@ -77,7 +73,6 @@ export default class TicketCard extends React.Component<ITicketCardProps> {
 			ticketView: {
 				marginTop: HORIZONTAL_UNIT(5),
 				marginHorizontal: VSP_EDGE_PADDING,
-				...addShadowProperties(),
 			},
 
 			headerView: {
