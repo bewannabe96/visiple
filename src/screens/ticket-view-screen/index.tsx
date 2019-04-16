@@ -26,8 +26,8 @@ import ParticipantsList from './participants-list';
 const DEV_TICKET: Ticket = {
 	id: 1,
 	title: '나혼자 여행갈꼬얌',
-	owner: '0001',
-	participants: ['0001', '0002'],
+	owner: 1,
+	participants: [1, 2],
 	themeColor: TICKET_THEME_COLORS.blue,
 	period: {
 		from: DateTime.local(2020, 3, 14),
@@ -46,7 +46,7 @@ const DEV_TICKET: Ticket = {
 		],
 		indivLists: [
 			{
-				user: '0001',
+				user: 1,
 				list: [
 					{
 						name: 'Item3',
@@ -59,7 +59,7 @@ const DEV_TICKET: Ticket = {
 				],
 			},
 			{
-				user: '0002',
+				user: 2,
 				list: [
 					{
 						name: 'Item5',
