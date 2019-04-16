@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-	View,
-	StyleSheet,
-	FlatList,
-	Dimensions,
-	TouchableOpacity,
-} from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Avatar, Text, Button, Image } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
@@ -15,6 +9,7 @@ import {
 	VSP_EDGE_PADDING,
 	THEME_MINOR_FONTSIZE,
 	THEME_HEADER_FONTSIZE,
+	DEVICE_WIDTH,
 } from '../../types/lib/size';
 import { TravelLog } from '../../types/data/travel-log';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
@@ -116,8 +111,8 @@ export default class ProfileScreen extends React.Component<IVSPScreenProps> {
 
 			logImageView: {
 				opacity: 0.7,
-				width: '100%',
-				height: Dimensions.get('window').width * 0.6,
+				width: DEVICE_WIDTH,
+				height: DEVICE_WIDTH * 0.6,
 			},
 
 			logTitleView: {
