@@ -64,7 +64,6 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 					}
 					renderItem={({ item }) => (
 						<ListItem
-							key={item.id}
 							leftAvatar={{
 								size: HORIZONTAL_UNIT(10),
 							}}

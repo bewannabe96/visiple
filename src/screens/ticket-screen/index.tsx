@@ -101,7 +101,6 @@ export default class TicketScreen extends React.Component<
 					}
 					renderItem={({ item }) => (
 						<TicketCard
-							key={item.id}
 							ticket={item}
 							onPress={() => {
 								this._onTicketPress();

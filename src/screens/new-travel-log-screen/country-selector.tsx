@@ -56,7 +56,6 @@ export default class CountrySelector extends React.Component<
 					}
 					renderItem={({ item }: { item: Country }) => (
 						<VSPCheckbox
-							key={item.alpha3Code}
 							marginVertical={HORIZONTAL_UNIT(2)}
 							marginHorizontal={HORIZONTAL_UNIT(3)}
 							buttonOnRight

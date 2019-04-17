@@ -204,7 +204,6 @@ export default class ProfileScreen extends React.Component<IVSPScreenProps> {
 					keyExtractor={item => item.id.toString()}
 					renderItem={({ item }) => (
 						<TouchableOpacity
-							key={item.id}
 							style={style.logItemContainer}
 							activeOpacity={0.6}
 							onPress={() => {
