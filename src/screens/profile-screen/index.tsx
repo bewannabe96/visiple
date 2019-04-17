@@ -66,33 +66,26 @@ export default class ProfileScreen extends React.Component<IVSPScreenProps> {
 	public render() {
 		const style = StyleSheet.create({
 			profileView: {
-				flexDirection: 'row',
 				paddingHorizontal: VSP_EDGE_PADDING,
-				paddingVertical: HORIZONTAL_UNIT(4),
-			},
-
-			profileInfoView: {
-				flex: 1,
-				paddingTop: HORIZONTAL_UNIT(2),
-				paddingLeft: VSP_EDGE_PADDING,
-				justifyContent: 'space-between',
+				paddingVertical: HORIZONTAL_UNIT(3),
+				alignItems: 'center',
 			},
 
 			profileButtonView: {
 				flexDirection: 'row',
 				justifyContent: 'flex-end',
+				paddingHorizontal: VSP_EDGE_PADDING,
 			},
 
 			summaryView: {
 				flexDirection: 'row',
+				paddingVertical: HORIZONTAL_UNIT(4),
 			},
 
 			summaryItemView: {
 				flex: 1,
 				justifyContent: 'center',
 				alignItems: 'center',
-				paddingTop: HORIZONTAL_UNIT(2),
-				paddingBottom: HORIZONTAL_UNIT(4),
 			},
 
 			summaryItemValueText: {
@@ -127,57 +120,55 @@ export default class ProfileScreen extends React.Component<IVSPScreenProps> {
 			<VSPContainer>
 				<View style={style.profileView}>
 					<Avatar size={HORIZONTAL_UNIT(20)} />
-					<View style={style.profileInfoView}>
-						<View>
-							<Text h2>홍길동</Text>
-							<Text
-								h3
-								style={{
-									color: THEME_COLORS.oceanBlue,
-									marginTop: HORIZONTAL_UNIT(),
-								}}
-							>
-								testuser@gmail.com
-							</Text>
-						</View>
-						<View style={style.profileButtonView}>
-							<Button
-								icon={{
-									name: 'add-user',
-									type: 'vspicon',
-									color: THEME_COLORS.brown,
-									size: THEME_MINOR_FONTSIZE,
-								}}
-								title='친구 추가'
-								type='outline'
-								titleStyle={{
-									fontSize: THEME_MINOR_FONTSIZE,
-									color: THEME_COLORS.brown,
-								}}
-								buttonStyle={{
-									borderColor: THEME_COLORS.brown,
-									height: HORIZONTAL_UNIT(6.5),
-								}}
-								containerStyle={{
-									marginRight: HORIZONTAL_UNIT(),
-									flex: 1,
-								}}
-							/>
-							<Button
-								title='팔로우'
-								titleStyle={{
-									fontSize: THEME_MINOR_FONTSIZE,
-								}}
-								buttonStyle={{
-									backgroundColor: THEME_COLORS.brown,
-									height: HORIZONTAL_UNIT(6.5),
-								}}
-								containerStyle={{
-									flex: 1,
-								}}
-							/>
-						</View>
-					</View>
+					<Text h2 style={{ marginTop: HORIZONTAL_UNIT(2) }}>
+						홍길동
+					</Text>
+					<Text
+						h3
+						style={{
+							color: THEME_COLORS.oceanBlue,
+							marginTop: HORIZONTAL_UNIT(),
+						}}
+					>
+						testuser@gmail.com
+					</Text>
+				</View>
+				<View style={style.profileButtonView}>
+					<Button
+						icon={{
+							name: 'add-user',
+							type: 'vspicon',
+							color: THEME_COLORS.brown,
+							size: THEME_MINOR_FONTSIZE,
+						}}
+						title='친구 추가'
+						type='outline'
+						titleStyle={{
+							fontSize: THEME_MINOR_FONTSIZE,
+							color: THEME_COLORS.brown,
+						}}
+						buttonStyle={{
+							borderColor: THEME_COLORS.brown,
+							height: HORIZONTAL_UNIT(7),
+						}}
+						containerStyle={{
+							marginRight: HORIZONTAL_UNIT(),
+							flex: 1,
+						}}
+					/>
+					<Button
+						title='팔로우'
+						titleStyle={{
+							fontSize: THEME_MINOR_FONTSIZE,
+						}}
+						buttonStyle={{
+							backgroundColor: THEME_COLORS.brown,
+							height: HORIZONTAL_UNIT(7),
+						}}
+						containerStyle={{
+							flex: 1,
+						}}
+					/>
 				</View>
 				<View style={style.summaryView}>
 					<View style={style.summaryItemView}>
