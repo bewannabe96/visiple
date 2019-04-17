@@ -238,7 +238,7 @@ export default class TicketViewScreen extends React.Component<
 						tabBarInactiveTextColor={THEME_COLORS.grey}
 						tabBarUnderlineStyle={{
 							height: 3,
-							backgroundColor: THEME_COLORS.brown,
+							backgroundColor: DEV_TICKET.themeColor,
 						}}
 					>
 						<ParticipantsList
