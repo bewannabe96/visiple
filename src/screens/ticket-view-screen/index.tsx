@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import {
@@ -22,7 +23,6 @@ import VSPHeaderDropdown from '../../components/vsp-header-dropdown';
 import PlanTimeline from './dayplan-timeline';
 import PackingList from './packing-list';
 import ParticipantsList from './participants-list';
-import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 const DEV_TICKET: Ticket = {
 	id: 1,
@@ -241,19 +241,19 @@ export default class TicketViewScreen extends React.Component<
 							backgroundColor: DEV_TICKET.themeColor,
 						}}
 					>
-						<ParticipantsList
-							tabLabel='함께하는 친구'
-							participants={DEV_TICKET.participants}
+						<PlanTimeline
+							tabLabel='일정'
+							dayPlans={DEV_TICKET.dayPlans}
+							ticketColor={DEV_TICKET.themeColor}
 						/>
 						<PackingList
 							tabLabel='준비물품'
 							packings={DEV_TICKET.packings}
 							ticketColor={DEV_TICKET.themeColor}
 						/>
-						<PlanTimeline
-							tabLabel='일정'
-							dayPlans={DEV_TICKET.dayPlans}
-							ticketColor={DEV_TICKET.themeColor}
+						<ParticipantsList
+							tabLabel='함께하는 친구'
+							participants={DEV_TICKET.participants}
 						/>
 					</ScrollableTabView>
 				</View>
