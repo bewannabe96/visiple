@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
@@ -22,6 +22,7 @@ import VSPHeaderDropdown from '../../components/vsp-header-dropdown';
 import PlanTimeline from './dayplan-timeline';
 import PackingList from './packing-list';
 import ParticipantsList from './participants-list';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 const DEV_TICKET: Ticket = {
 	id: 1,
@@ -209,21 +210,9 @@ export default class TicketViewScreen extends React.Component<
 		const style = StyleSheet.create({
 			headerView: {
 				height: HORIZONTAL_UNIT(40),
+				justifyContent: 'flex-end',
 				backgroundColor: DEV_TICKET.themeColor,
-			},
-
-			bottomView: {
-				position: 'absolute',
-				bottom: 0,
-				width: '100%',
-			},
-
-			bodyCapView: {
-				position: 'absolute',
-				bottom: 0,
-				height: HORIZONTAL_UNIT(5),
-				width: '100%',
-				backgroundColor: THEME_COLORS.white,
+				padding: VSP_EDGE_PADDING,
 			},
 
 			bodyView: {
@@ -231,42 +220,42 @@ export default class TicketViewScreen extends React.Component<
 				backgroundColor: THEME_COLORS.white,
 				paddingTop: HORIZONTAL_UNIT(3),
 			},
-
-			scrollView: {
-				paddingVertical: HORIZONTAL_UNIT(),
-				paddingHorizontal: VSP_EDGE_PADDING,
-			},
 		});
 
 		return (
 			<VSPContainer>
 				<View style={style.headerView}>
-					<View style={style.bottomView}>
-						<ParticipantsList
-							participants={DEV_TICKET.participants}
-						/>
-						<View style={style.bodyCapView} />
-					</View>
-				</View>
-				<View style={style.bodyView}>
 					<VSPText
 						fontSize={THEME_HEADER_FONTSIZE}
-						color={DEV_TICKET.themeColor}
-						marginHorizontal={VSP_EDGE_PADDING}
-						marginBottom={HORIZONTAL_UNIT(2)}
+						color={THEME_COLORS.white}
 					>
 						{DEV_TICKET.title}
 					</VSPText>
-					<ScrollView contentContainerStyle={style.scrollView}>
+				</View>
+				<View style={style.bodyView}>
+					<ScrollableTabView
+						tabBarActiveTextColor={THEME_COLORS.black}
+						tabBarInactiveTextColor={THEME_COLORS.grey}
+						tabBarUnderlineStyle={{
+							height: 3,
+							backgroundColor: THEME_COLORS.brown,
+						}}
+					>
+						<ParticipantsList
+							tabLabel='함께하는 친구'
+							participants={DEV_TICKET.participants}
+						/>
 						<PackingList
+							tabLabel='준비물품'
 							packings={DEV_TICKET.packings}
 							ticketColor={DEV_TICKET.themeColor}
 						/>
 						<PlanTimeline
+							tabLabel='일정'
 							dayPlans={DEV_TICKET.dayPlans}
 							ticketColor={DEV_TICKET.themeColor}
 						/>
-					</ScrollView>
+					</ScrollableTabView>
 				</View>
 			</VSPContainer>
 		);

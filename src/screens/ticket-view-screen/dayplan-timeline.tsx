@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { Icon, Text } from 'react-native-elements';
+import { TabProps } from 'react-native-scrollable-tab-view';
 import { DateTime } from 'luxon';
 
 import { THEME_COLORS } from '../../types/lib/theme';
 import {
 	HORIZONTAL_UNIT,
-	THEME_HEADER_FONTSIZE,
 	THEME_MINOR_FONTSIZE,
+	VSP_EDGE_PADDING,
 } from '../../types/lib/size';
 import { DayPlans, Plan, DayPlan } from '../../types/data/ticket/plan';
 import { CURRENCY } from '../../types/data/currency';
@@ -35,7 +36,9 @@ interface IPlanTimelineProps {
  * - ```ticketColor```(required): Theme color of the ticket
  * - ```plans```(required): Plans of the ticket
  */
-export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
+export default class PlanTimeline extends React.Component<
+	TabProps<IPlanTimelineProps>
+> {
 	private _renderPlanTitle(plan: Plan) {
 		const style = StyleSheet.create({
 			container: {
@@ -297,12 +300,8 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		);
 	}
 
-	private _renderDayPlans() {
+	private _renderDayPlan({ item, index }: { item: DayPlan; index: number }) {
 		const style = StyleSheet.create({
-			container: {
-				marginTop: HORIZONTAL_UNIT(4),
-			},
-
 			itemContainer: {
 				flexDirection: 'row',
 				alignItems: 'center',
@@ -322,15 +321,6 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 				backgroundColor: this.props.ticketColor,
 			},
 
-			bottomCap: {
-				height: HORIZONTAL_UNIT(2),
-				width: HORIZONTAL_UNIT(2),
-				borderBottomRightRadius: HORIZONTAL_UNIT(),
-				borderBottomLeftRadius: HORIZONTAL_UNIT(),
-				marginLeft: HORIZONTAL_UNIT(2),
-				backgroundColor: this.props.ticketColor,
-			},
-
 			bulletDot: {
 				height: HORIZONTAL_UNIT(6),
 				width: HORIZONTAL_UNIT(6),
@@ -341,61 +331,58 @@ export default class PlanTimeline extends React.Component<IPlanTimelineProps> {
 		});
 
 		return (
-			<View style={style.container}>
-				{this.props.dayPlans.map((dayPlan: DayPlan, index: number) => (
-					<View key={dayPlan.date.toISO()}>
-						<View style={style.bulletLine} />
-						<VSPExpandable
-							marginTop={index === 0 ? 0 : HORIZONTAL_UNIT(4)}
-							header={
-								<View style={style.itemContainer}>
-									<View style={style.bulletDot} />
-									<VSPText color={this.props.ticketColor}>
-										{dayPlan.date.toLocaleString(
-											DateTime.DATE_FULL,
-										)}
-									</VSPText>
+			<View>
+				<View style={style.bulletLine} />
+				<VSPExpandable
+					marginTop={index === 0 ? 0 : HORIZONTAL_UNIT(4)}
+					header={
+						<View style={style.itemContainer}>
+							<View style={style.bulletDot} />
+							<VSPText color={this.props.ticketColor}>
+								{item.date.toLocaleString(DateTime.DATE_FULL)}
+							</VSPText>
+						</View>
+					}
+					body={
+						<View>
+							{item.plans.map((plan: Plan, index: number) => (
+								<View key={index} style={style.dayplanView}>
+									{this._renderPlanTitle(plan)}
+									{this._renderPlanDetail(plan)}
+									{this._renderEndTime(plan)}
 								</View>
-							}
-							body={
-								<View>
-									{dayPlan.plans.map(
-										(plan: Plan, index: number) => (
-											<View
-												key={index}
-												style={style.dayplanView}
-											>
-												{this._renderPlanTitle(plan)}
-												{this._renderPlanDetail(plan)}
-												{this._renderEndTime(plan)}
-											</View>
-										),
-									)}
-								</View>
-							}
-							color={this.props.ticketColor}
-						/>
-					</View>
-				))}
-				<View style={style.bottomCap} />
+							))}
+						</View>
+					}
+					color={this.props.ticketColor}
+					expanded={true}
+				/>
 			</View>
 		);
 	}
 
 	public render() {
 		return (
-			<View style={{ marginTop: HORIZONTAL_UNIT(8) }}>
-				<View style={{ flexDirection: 'row' }}>
-					<Icon
-						name='planning'
-						type='vspicon'
-						size={THEME_HEADER_FONTSIZE}
-						containerStyle={{ marginRight: HORIZONTAL_UNIT() }}
+			<FlatList
+				data={this.props.dayPlans}
+				keyExtractor={item => item.date.toISO()}
+				ListFooterComponent={
+					<View
+						style={{
+							height: HORIZONTAL_UNIT(2),
+							width: HORIZONTAL_UNIT(2),
+							borderBottomRightRadius: HORIZONTAL_UNIT(),
+							borderBottomLeftRadius: HORIZONTAL_UNIT(),
+							marginLeft: HORIZONTAL_UNIT(2),
+							backgroundColor: this.props.ticketColor,
+						}}
 					/>
-					<Text h2>일정</Text>
-				</View>
-				{this._renderDayPlans()}
-			</View>
+				}
+				renderItem={this._renderDayPlan.bind(this)}
+				contentContainerStyle={{
+					padding: VSP_EDGE_PADDING,
+				}}
+			/>
 		);
 	}
 }

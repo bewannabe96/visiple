@@ -1,9 +1,13 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Avatar, Icon } from 'react-native-elements';
+import { StyleSheet, FlatList } from 'react-native';
+import { ListItem } from 'react-native-elements';
+import { TabProps } from 'react-native-scrollable-tab-view';
 
-import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
-import { THEME_COLORS } from '../../types/lib/theme';
+import {
+	VSP_EDGE_PADDING,
+	HORIZONTAL_UNIT,
+	THEME_FONTSIZE,
+} from '../../types/lib/size';
 import { UserID } from '../../types/data/user';
 
 interface IParticipantsListProps {
@@ -20,7 +24,7 @@ interface IParticipantsListProps {
  * - ```participants```(required): Participants of the ticket
  */
 export default class ParticipantsList extends React.Component<
-	IParticipantsListProps
+	TabProps<IParticipantsListProps>
 > {
 	public render() {
 		const style = StyleSheet.create({
@@ -34,35 +38,30 @@ export default class ParticipantsList extends React.Component<
 		});
 
 		return (
-			<View style={style.profilesView}>
-				{this.props.participants.map((uid: UserID, index: number) => (
-					<Avatar
-						key={uid}
-						size={HORIZONTAL_UNIT(12)}
+			<FlatList
+				data={this.props.participants}
+				keyExtractor={item => item.toString()}
+				renderItem={({ item }) => (
+					<ListItem
+						leftAvatar={{
+							size: HORIZONTAL_UNIT(10),
+						}}
 						containerStyle={{
-							left: HORIZONTAL_UNIT(-3 * index),
-							zIndex: index,
+							paddingVertical: HORIZONTAL_UNIT(3),
+						}}
+						title={'홍길동'}
+						subtitle={'testuser01@naver.com'}
+						rightIcon={{
+							name: 'angle-right',
+							type: 'vspicon',
+							size: THEME_FONTSIZE,
 						}}
 					/>
-				))}
-				<View
-					style={{
-						left: HORIZONTAL_UNIT(
-							-3 * this.props.participants.length,
-						),
-						zIndex: this.props.participants.length,
-					}}
-				>
-					<Icon
-						name='plus'
-						type='vspicon'
-						color={THEME_COLORS.grey}
-						size={HORIZONTAL_UNIT(4)}
-						onPress={() => {}}
-						reverse
-					/>
-				</View>
-			</View>
+				)}
+				contentContainerStyle={{
+					paddingHorizontal: VSP_EDGE_PADDING,
+				}}
+			/>
 		);
 	}
 }
