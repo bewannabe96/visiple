@@ -24,6 +24,11 @@ interface IVSPExpandableProps {
 	 * Raw color of the toggle button
 	 */
 	color?: RawColor;
+
+	/**
+	 * Expanded if true
+	 */
+	expanded?: boolean;
 }
 
 /**
@@ -33,6 +38,7 @@ interface IVSPExpandableProps {
  * - ```header```(required): Header component of the expandable
  * - ```body```(required): Body of the expandable
  * - ```color```: Raw color of the toggle button (by default ```THEME_COLORS.oceanBlue```)
+ * - ```expanded```: Expanded if true (by default ```false```)
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
  * - ```marginVertical```: Vertical margin; including marginTop and marginBottom
@@ -46,10 +52,11 @@ export default class VSPExpandable extends React.Component<
 > {
 	public static defaultProps = {
 		color: THEME_COLORS.oceanBlue,
+		expanded: false,
 	};
 
 	public state = {
-		expanded: false,
+		expanded: this.props.expanded,
 	};
 
 	private _toggleExpand = () => {
