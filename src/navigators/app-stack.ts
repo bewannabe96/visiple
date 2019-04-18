@@ -1,13 +1,16 @@
 import { createStackNavigator } from 'react-navigation';
 
-import _TicketScreen from '../screens/ticket-screen';
+import _MainTab from './main-tab';
+
 import _NewTicketContainer from '../containers/new-ticket-screen';
 import _TicketViewScreen from '../screens/ticket-view-screen';
 
-const TicketStack = createStackNavigator(
+import _NewTravelLogScreen from '../screens/new-travel-log-screen';
+
+const AppStack = createStackNavigator(
 	{
-		TicketScreen: {
-			screen: _TicketScreen,
+		MainTab: {
+			screen: _MainTab,
 		},
 
 		NewTicketScreen: {
@@ -17,10 +20,14 @@ const TicketStack = createStackNavigator(
 		TicketViewScreen: {
 			screen: _TicketViewScreen,
 		},
+
+		NewTravelLogScreen: {
+			screen: _NewTravelLogScreen,
+		},
 	},
 	{
-		initialRouteName: 'TicketScreen',
+		initialRouteName: 'MainTab',
 	},
 );
 
-export default TicketStack;
+export default AppStack;

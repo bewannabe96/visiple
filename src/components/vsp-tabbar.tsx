@@ -19,15 +19,15 @@ export default class VSPTabBar extends React.Component<TabBarProps> {
 	) {
 		const focused = this.props.navigation.state.index === index;
 		let iconName: string;
-		if (route.routeName === 'FriendStack') {
+		if (route.routeName === 'HomeScreen') {
+			iconName = 'home';
+		} else if (route.routeName === 'FriendScreen') {
 			iconName = 'user';
-		} else if (route.routeName === 'TicketStack') {
+		} else if (route.routeName === 'TicketScreen') {
 			iconName = 'ticket';
-		} else if (route.routeName === 'TravelLogStack') {
-			iconName = 'settings';
 		} else {
 			// HomeStack
-			iconName = 'home';
+			iconName = 'settings';
 		}
 
 		return (
