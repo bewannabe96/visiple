@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { NavigationScreenProp, Header } from 'react-navigation';
 
@@ -46,6 +47,7 @@ export default class VSPHeaderButton extends React.Component<
 				color={this.props.color!}
 				size={VSP_HEADER_BUTTON_SIZE}
 				onPress={this.props.onPress}
+				Component={TouchableOpacity}
 			/>
 		);
 	}
