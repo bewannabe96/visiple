@@ -4,10 +4,11 @@ import { Header } from 'react-navigation';
 
 import { THEME_COLORS } from '../types/lib/theme';
 import { VSP_EDGE_PADDING } from '../types/lib/size';
+
 import VSPText from './vsp-text';
 
 const VSP_HEADER_HEIGHT = Header.HEIGHT;
-const VSP_HEADER_TITLE_SIZE = VSP_HEADER_HEIGHT * 0.35;
+const VSP_HEADER_TITLE_SIZE = VSP_HEADER_HEIGHT * 0.4;
 
 interface IVSPHeaderProps {
 	/**
