@@ -55,14 +55,8 @@ interface ITicketScreenProps {
 export default class TicketScreen extends React.Component<
 	IVSPScreenProps<ITicketScreenProps>
 > {
-	public static navigationOptions = ({
-		navigation,
-	}: {
-		navigation: NavigationScreenProp<any>;
-	}) => {
-		return {
-			header: <VSPHeader headerTitle='티켓' />,
-		};
+	public static navigationOptions = {
+		header: <VSPHeader headerTitle='티켓' />,
 	};
 
 	private _onTicketPress() {
