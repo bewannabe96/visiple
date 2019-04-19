@@ -11,8 +11,8 @@ export const countryCodesBySearchword = (word: string): Country[] => {
 	const regexp = new RegExp(`^.*${word}.*$`, 'gi');
 	COUNTRIES.forEach((cntry: Country) => {
 		if (
-			cntry.name.search(regexp) !== -1 ||
-			cntry.translations.ko.search(regexp) !== -1
+			cntry.translations.ko.search(regexp) !== -1 ||
+			cntry.name.search(regexp) !== -1
 		) {
 			result.push(cntry);
 		}
