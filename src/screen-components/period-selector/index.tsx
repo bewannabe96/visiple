@@ -77,11 +77,11 @@ export default class PeriodSelector extends React.Component<
 			},
 
 			button: {
-				flex: 2,
+				flex: 1,
 				alignItems: 'center',
 				borderWidth: 1,
 				borderColor: this.props.color,
-				paddingVertical: HORIZONTAL_UNIT(2),
+				paddingVertical: HORIZONTAL_UNIT(3),
 			},
 
 			footerView: {
