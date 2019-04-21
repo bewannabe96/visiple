@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { DateTime } from 'luxon';
 
 import { HORIZONTAL_UNIT } from '../../types/lib/size';
+import { Period } from '../../types/data/datetime';
 
 import VSPText from '../../components/vsp-text';
 
@@ -20,10 +21,7 @@ export interface IPeriodDisplayProps {
 	/**
 	 * Period of the ticket
 	 */
-	period: {
-		from: DateTime;
-		to: DateTime;
-	};
+	period: Period;
 
 	// ACTION CREATORS
 	openPeriodModal: typeof openPeriodModal;

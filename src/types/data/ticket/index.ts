@@ -1,6 +1,6 @@
-import { DateTime } from 'luxon';
-
 import { UserID } from '../user';
+import { Period } from '../datetime';
+
 import { DayPlans } from './plan';
 import { Packings } from './packing';
 
@@ -10,10 +10,7 @@ export interface Ticket {
 	themeColor: string;
 	owner: UserID;
 	participants: UserID[];
-	period: {
-		from: DateTime;
-		to: DateTime;
-	};
+	period: Period;
 	packings: Packings;
 	dayPlans: DayPlans;
 }
@@ -23,8 +20,5 @@ export interface NewTicket {
 	themeColor: string;
 	owner: UserID;
 	participants: UserID[];
-	period: {
-		from: DateTime;
-		to: DateTime;
-	};
+	period: Period;
 }
