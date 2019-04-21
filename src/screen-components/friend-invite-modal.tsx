@@ -26,7 +26,7 @@ const DEV_FRIENDS: User[] = [
 
 interface IFriendInviteModalProps {
 	/**
-	 * Color
+	 * Theme color
 	 */
 	color: string;
 
@@ -43,7 +43,7 @@ interface IFriendInviteModalProps {
  * FriendInviteModal
  *
  * @property
- * - ```themeColor```(required): Theme color of the ticket
+ * - ```color```(required): Theme color
  * - ```isVisible```(required): The modal is visible if true
  */
 export default class FriendInviteModal extends React.Component<
