@@ -2,21 +2,15 @@ import { connect } from 'react-redux';
 
 import RootState from '../../types/redux';
 
-import {
-	openPeriodModal,
-	switchFromToTab,
-	openInviteModal,
-} from '../../actions/screens/new-ticket-screen';
+import { openInviteModal } from '../../actions/screens/new-ticket-screen';
 
 import NewTicketScreen from '../../screens/new-ticket-screen';
 
 const mapStateToProps = (state: RootState) => ({
-	newTicket: state.newTicket,
+	themeColor: state.newTicket.themeColor,
 });
 
 const mapDispatchToProps = {
-	openPeriodModal,
-	switchFromToTab,
 	openInviteModal,
 };
 
