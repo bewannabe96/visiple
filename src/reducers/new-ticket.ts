@@ -21,8 +21,10 @@ const initialState: NewTicketState = {
 	owner: 1,
 	participants: [1, 2],
 	period: {
-		from: DateTime.local(),
-		to: DateTime.local().plus({ hours: 1 }),
+		from: DateTime.local().startOf('day'),
+		to: DateTime.local()
+			.plus({ days: 1 })
+			.endOf('day'),
 	},
 };
 
