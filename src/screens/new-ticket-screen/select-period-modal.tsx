@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Button, Text } from 'react-native-elements';
 import { Calendar } from 'react-native-calendars';
 import { DateTime } from 'luxon';
 
@@ -7,16 +8,13 @@ import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
 import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 
-import VSPText from '../../components/vsp-text';
 import VSPModal from '../../components/vsp-modal';
-import VSPTimePicker from '../../components/vsp-time-picker';
 
 import {
 	switchFromToTab,
 	closePeriodModal,
 } from '../../actions/screens/new-ticket-screen';
 import { setFromDate, setToDate } from '../../actions/new-ticket';
-import { Button } from 'react-native-elements';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -64,51 +62,53 @@ interface ISelectPeriodModalProps {
 export default class SelectPeriodModal extends React.Component<
 	ISelectPeriodModalProps
 > {
+	private _renderTab(title: string, date: DateTime, tab: FromToTab) {
+		const style = StyleSheet.create({
+			container: {
+				flex: 1,
+				padding: HORIZONTAL_UNIT(3),
+				marginHorizontal: HORIZONTAL_UNIT(),
+				backgroundColor:
+					this.props.fromtoTab === tab
+						? this.props.themeColor
+						: THEME_COLORS.none,
+				borderWidth: this.props.fromtoTab === tab ? 0 : 1,
+				borderColor: this.props.themeColor,
+			},
+
+			text: {
+				color:
+					this.props.fromtoTab === tab
+						? THEME_COLORS.white
+						: THEME_COLORS.grey,
+			},
+		});
+
+		return (
+			<TouchableOpacity
+				style={style.container}
+				activeOpacity={0.6}
+				onPress={() => {
+					this.props.switchFromToTab(tab);
+				}}
+			>
+				<Text
+					h3
+					style={[style.text, { marginBottom: HORIZONTAL_UNIT() }]}
+				>
+					{title}
+				</Text>
+				<Text h2 style={style.text}>
+					{date.toLocaleString(DateTime.DATE_FULL)}
+				</Text>
+			</TouchableOpacity>
+		);
+	}
+
 	public render() {
 		const style = StyleSheet.create({
 			fromtoTabView: {
 				flexDirection: 'row',
-			},
-
-			fromTab: {
-				flex: 1,
-				paddingHorizontal: HORIZONTAL_UNIT(2),
-				paddingTop:
-					this.props.fromtoTab === 'from-tab'
-						? HORIZONTAL_UNIT()
-						: HORIZONTAL_UNIT(2),
-				paddingBottom: HORIZONTAL_UNIT(2),
-				borderTopWidth:
-					this.props.fromtoTab === 'from-tab' ? HORIZONTAL_UNIT() : 0,
-				borderRightWidth: this.props.fromtoTab === 'from-tab' ? 1 : 0,
-				borderBottomWidth: this.props.fromtoTab === 'from-tab' ? 0 : 1,
-				borderColor: this.props.themeColor,
-			},
-
-			toTab: {
-				flex: 1,
-				paddingHorizontal: HORIZONTAL_UNIT(),
-				paddingTop:
-					this.props.fromtoTab === 'to-tab'
-						? HORIZONTAL_UNIT()
-						: HORIZONTAL_UNIT(2),
-				paddingBottom: HORIZONTAL_UNIT(2),
-				borderTopWidth:
-					this.props.fromtoTab === 'to-tab' ? HORIZONTAL_UNIT() : 0,
-				borderLeftWidth: this.props.fromtoTab === 'to-tab' ? 1 : 0,
-				borderBottomWidth: this.props.fromtoTab === 'to-tab' ? 0 : 1,
-				borderColor: this.props.themeColor,
-			},
-
-			dateText: {
-				alignSelf: 'flex-end',
-				color: THEME_COLORS.grey,
-				marginVertical: HORIZONTAL_UNIT(),
-			},
-
-			timeText: {
-				alignSelf: 'flex-end',
-				color: THEME_COLORS.grey,
 			},
 
 			calendar: {
@@ -164,44 +164,12 @@ export default class SelectPeriodModal extends React.Component<
 				paddingVertical={HORIZONTAL_UNIT(3)}
 			>
 				<View style={style.fromtoTabView}>
-					<TouchableOpacity
-						style={style.fromTab}
-						activeOpacity={0.6}
-						onPress={() => {
-							this.props.switchFromToTab('from-tab');
-						}}
-					>
-						<VSPText>시작</VSPText>
-						<VSPText style={style.dateText}>
-							{this.props.fromDateTime.toLocaleString(
-								DateTime.DATE_FULL,
-							)}
-						</VSPText>
-						<VSPText style={style.timeText}>
-							{`${this.props.fromDateTime.toLocaleString(
-								DateTime.TIME_24_SIMPLE,
-							)} (${this.props.fromDateTime.offsetNameShort})`}
-						</VSPText>
-					</TouchableOpacity>
-					<TouchableOpacity
-						style={style.toTab}
-						activeOpacity={0.6}
-						onPress={() => {
-							this.props.switchFromToTab('to-tab');
-						}}
-					>
-						<VSPText>종료</VSPText>
-						<VSPText style={style.dateText}>
-							{this.props.toDateTime.toLocaleString(
-								DateTime.DATE_FULL,
-							)}
-						</VSPText>
-						<VSPText style={style.timeText}>
-							{`${this.props.toDateTime.toLocaleString(
-								DateTime.TIME_24_SIMPLE,
-							)} (${this.props.toDateTime.offsetNameShort})`}
-						</VSPText>
-					</TouchableOpacity>
+					{this._renderTab(
+						'시작',
+						this.props.fromDateTime,
+						'from-tab',
+					)}
+					{this._renderTab('종료', this.props.toDateTime, 'to-tab')}
 				</View>
 				<Calendar
 					style={style.calendar}
@@ -232,7 +200,6 @@ export default class SelectPeriodModal extends React.Component<
 						}
 					}}
 				/>
-				<VSPTimePicker color={this.props.themeColor} />
 			</VSPModal>
 		);
 	}
