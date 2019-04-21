@@ -1,11 +1,15 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { Input } from 'react-native-elements';
+import { Input, Button } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
-import { HORIZONTAL_UNIT, VSP_EDGE_PADDING } from '../../types/lib/size';
+import {
+	HORIZONTAL_UNIT,
+	VSP_EDGE_PADDING,
+	THEME_HEADER_FONTSIZE,
+} from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
 import { NewtravelLog } from '../../types/data/travel-log';
 
@@ -56,41 +60,49 @@ export default class NewTravelLogScreen extends React.Component<
 			},
 
 			categoryView: {
-				marginBottom: HORIZONTAL_UNIT(6),
+				marginTop: HORIZONTAL_UNIT(6),
 			},
 		});
 
 		return (
-			<VSPContainer>
+			<VSPContainer wrapSafeAreaView>
 				<ScrollView contentContainerStyle={style.container}>
+					<Input placeholder='제목' />
 					<View style={style.categoryView}>
-						<Input placeholder='제목' />
+						<PeriodSelector
+							color={THEME_COLORS.oceanBlue}
+							period={DEV_NEWTRAVELLOG.period}
+							isModalVisible={false}
+							fromtoTab='from-tab'
+							openPeriodModal={() => ({
+								type: 'test',
+							})}
+							switchFromToTab={() => ({
+								type: 'test',
+							})}
+							closePeriodModal={() => ({
+								type: 'test',
+							})}
+							setFromDate={() => ({
+								type: 'test',
+							})}
+							setToDate={() => ({
+								type: 'test',
+							})}
+						/>
 					</View>
-					<PeriodSelector
-						color={THEME_COLORS.oceanBlue}
-						period={DEV_NEWTRAVELLOG.period}
-						isModalVisible={false}
-						fromtoTab='from-tab'
-						openPeriodModal={() => ({
-							type: 'test',
-						})}
-						switchFromToTab={() => ({
-							type: 'test',
-						})}
-						closePeriodModal={() => ({
-							type: 'test',
-						})}
-						setFromDate={() => ({
-							type: 'test',
-						})}
-						setToDate={() => ({
-							type: 'test',
-						})}
-					/>
 					<View style={style.categoryView}>
 						<CountrySelector />
 					</View>
 				</ScrollView>
+				<Button
+					title='완료'
+					buttonStyle={{
+						borderRadius: 0,
+						backgroundColor: THEME_COLORS.oceanBlue,
+					}}
+					titleStyle={{ fontSize: THEME_HEADER_FONTSIZE }}
+				/>
 			</VSPContainer>
 		);
 	}
