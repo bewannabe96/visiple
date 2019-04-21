@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Text, Icon } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
-import { HORIZONTAL_UNIT } from '../../types/lib/size';
+import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import { Period } from '../../types/data/datetime';
-
-import VSPText from '../../components/vsp-text';
+import { THEME_COLORS } from '../../types/lib/theme';
 
 import {
 	openPeriodModal,
@@ -54,46 +54,81 @@ export default class PeriodDisplay extends React.Component<
 				flexDirection: 'row',
 				alignItems: 'center',
 			},
+
+			button: {
+				flex: 2,
+				alignItems: 'center',
+				borderWidth: 1,
+				borderColor: this.props.themeColor,
+				paddingVertical: HORIZONTAL_UNIT(2),
+			},
+
+			footerView: {
+				flexDirection: 'row',
+				justifyContent: 'flex-end',
+				alignItems: 'flex-end',
+				marginTop: HORIZONTAL_UNIT(),
+			},
+
+			valueText: {
+				color: this.props.themeColor,
+				marginHorizontal: HORIZONTAL_UNIT(),
+			},
 		});
 
 		return (
-			<View style={style.periodView}>
-				<TouchableOpacity
-					style={{ flex: 2 }}
-					activeOpacity={0.6}
-					onPress={this._openModalWithFromtab}
-				>
-					<VSPText
-						marginVertical={HORIZONTAL_UNIT()}
-						color={this.props.themeColor}
+			<View>
+				<View style={style.periodView}>
+					<TouchableOpacity
+						style={style.button}
+						activeOpacity={0.6}
+						onPress={this._openModalWithFromtab}
 					>
-						{this.props.period.from.toLocaleString(
-							DateTime.DATE_MED,
-						)}
-					</VSPText>
-					<VSPText color={this.props.themeColor}>
-						{`${this.props.period.from.toLocaleString(
-							DateTime.TIME_24_SIMPLE,
-						)} (${this.props.period.from.offsetNameShort})`}
-					</VSPText>
-				</TouchableOpacity>
-				<TouchableOpacity
-					style={{ flex: 2 }}
-					activeOpacity={0.6}
-					onPress={this._openModalWithTotab}
-				>
-					<VSPText
-						marginVertical={HORIZONTAL_UNIT()}
-						color={this.props.themeColor}
+						<Text
+							h2
+							style={{
+								color: this.props.themeColor,
+							}}
+						>
+							{`${this.props.period.from.toLocaleString(
+								DateTime.DATE_FULL,
+							)}`}
+						</Text>
+					</TouchableOpacity>
+					<Icon
+						name='right-arrow'
+						type='vspicon'
+						size={THEME_HEADER_FONTSIZE}
+						color={THEME_COLORS.grey}
+						containerStyle={{
+							marginHorizontal: HORIZONTAL_UNIT(2),
+						}}
+					/>
+					<TouchableOpacity
+						style={style.button}
+						activeOpacity={0.6}
+						onPress={this._openModalWithTotab}
 					>
-						{this.props.period.to.toLocaleString(DateTime.DATE_MED)}
-					</VSPText>
-					<VSPText color={this.props.themeColor}>
-						{`${this.props.period.to.toLocaleString(
-							DateTime.TIME_24_SIMPLE,
-						)} (${this.props.period.to.offsetNameShort})`}
-					</VSPText>
-				</TouchableOpacity>
+						<Text
+							h2
+							style={{
+								color: this.props.themeColor,
+							}}
+						>
+							{`${this.props.period.to.toLocaleString(
+								DateTime.DATE_FULL,
+							)}`}
+						</Text>
+					</TouchableOpacity>
+				</View>
+				<View style={style.footerView}>
+					<Text h3 style={{ color: THEME_COLORS.grey }}>
+						시간대
+					</Text>
+					<Text h3 style={style.valueText}>{`${
+						this.props.period.to.offsetNameShort
+					}`}</Text>
+				</View>
 			</View>
 		);
 	}
