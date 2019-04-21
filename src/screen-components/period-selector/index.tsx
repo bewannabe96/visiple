@@ -99,7 +99,7 @@ export default class PeriodSelector extends React.Component<
 						<Text
 							h2
 							style={{
-								color: this.props.color,
+								color: THEME_COLORS.grey,
 							}}
 						>
 							{`${this.props.period.from.toLocaleString(
@@ -124,7 +124,7 @@ export default class PeriodSelector extends React.Component<
 						<Text
 							h2
 							style={{
-								color: this.props.color,
+								color: THEME_COLORS.grey,
 							}}
 						>
 							{`${this.props.period.to.toLocaleString(
