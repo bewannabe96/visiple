@@ -45,6 +45,9 @@ interface IFriendInviteModalProps {
  * @property
  * - ```color```(required): Theme color
  * - ```isVisible```(required): The modal is visible if true
+ *
+ * @actionCreator
+ * - ```closeInviteModal```
  */
 export default class FriendInviteModal extends React.Component<
 	IFriendInviteModalProps

@@ -48,6 +48,12 @@ interface ISelectPeriodModalProps {
  * - ```period```(required): Period of the ticket
  * - ```isVisible```(required): The modal is visible if true
  * - ```fromtoTab```(required): Focused from/to tab
+ *
+ * @actionCreator
+ * - ```switchFromToTab```
+ * - ```closePeriodModal```
+ * - ```setFromDate```
+ * - ```setToDate```
  */
 export default class SelectPeriodModal extends React.Component<
 	ISelectPeriodModalProps

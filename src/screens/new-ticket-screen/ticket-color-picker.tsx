@@ -25,6 +25,9 @@ interface ITicketColorPickerProps {
  *
  * @property
  * - ```themeColor```(required): Theme color of the ticket
+ *
+ * @actionCreator
+ * - ```setTicketColor```
  */
 export default class TicketColorPicker extends React.Component<
 	ITicketColorPickerProps

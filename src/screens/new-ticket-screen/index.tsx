@@ -37,6 +37,9 @@ interface INewTicketScreenProps {
  *
  * @property
  * - ```themeColor```(required): Theme color of the ticket
+ *
+ * @actionCreator
+ * - ```openInviteModal```
  */
 export default class NewTicketScreen extends React.Component<
 	IVSPScreenProps<INewTicketScreenProps>

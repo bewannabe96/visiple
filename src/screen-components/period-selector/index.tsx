@@ -46,6 +46,15 @@ export interface IPeriodSelectorProps {
  * @property
  * - ```color```(required): Theme color
  * - ```period```(required): Period of the ticket
+ * - ```isModalVisible```(required):The modal is visible if true
+ * - ```fromtoTab```(required): Focused from/to tab
+ *
+ * @actionCreator
+ * - ```openPeriodModal```
+ * - ```switchFromToTab```
+ * - ```closePeriodModal```
+ * - ```setFromDate```
+ * - ```setToDate```
  */
 export default class PeriodSelector extends React.Component<
 	IPeriodSelectorProps
