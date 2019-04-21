@@ -97,7 +97,7 @@ export default class PeriodSelector extends React.Component<
 						onPress={this._openModalWithFromtab}
 					>
 						<Text
-							h2
+							h3
 							style={{
 								color: THEME_COLORS.grey,
 							}}
@@ -122,7 +122,7 @@ export default class PeriodSelector extends React.Component<
 						onPress={this._openModalWithTotab}
 					>
 						<Text
-							h2
+							h3
 							style={{
 								color: THEME_COLORS.grey,
 							}}
