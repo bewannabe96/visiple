@@ -1,1 +1,1 @@
-export type Action = () => { type: string };
+export type Action = (...param: any) => { type: string };

@@ -6,37 +6,49 @@ import { DateTime } from 'luxon';
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import { Period } from '../../types/data/datetime';
 import { THEME_COLORS } from '../../types/lib/theme';
+import { Action } from '../../types/lib/redux';
+import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 
-import {
-	openPeriodModal,
-	switchFromToTab,
-} from '../../actions/screens/new-ticket-screen';
+import SelectPeriodModal from './select-period-modal';
 
-export interface IPeriodDisplayProps {
+export interface IPeriodSelectorProps {
 	/**
-	 * Theme color of the ticket
+	 * Theme color
 	 */
-	themeColor: string;
+	color: string;
 
 	/**
 	 * Period of the ticket
 	 */
 	period: Period;
 
+	/**
+	 * The modal is visible if true
+	 */
+	isModalVisible: boolean;
+
+	/**
+	 * Focused from/to tab
+	 */
+	fromtoTab: FromToTab;
+
 	// ACTION CREATORS
-	openPeriodModal: typeof openPeriodModal;
-	switchFromToTab: typeof switchFromToTab;
+	openPeriodModal: Action;
+	switchFromToTab: Action;
+	closePeriodModal: Action;
+	setFromDate: Action;
+	setToDate: Action;
 }
 
 /**
- * PeriodDisplay
+ * PeriodSelector
  *
  * @property
- * - ```themeColor```(required): Theme color of the ticket
+ * - ```color```(required): Theme color
  * - ```period```(required): Period of the ticket
  */
-export default class PeriodDisplay extends React.Component<
-	IPeriodDisplayProps
+export default class PeriodSelector extends React.Component<
+	IPeriodSelectorProps
 > {
 	private _openModalWithFromtab = () => {
 		this.props.switchFromToTab('from-tab');
@@ -59,7 +71,7 @@ export default class PeriodDisplay extends React.Component<
 				flex: 2,
 				alignItems: 'center',
 				borderWidth: 1,
-				borderColor: this.props.themeColor,
+				borderColor: this.props.color,
 				paddingVertical: HORIZONTAL_UNIT(2),
 			},
 
@@ -71,7 +83,7 @@ export default class PeriodDisplay extends React.Component<
 			},
 
 			valueText: {
-				color: this.props.themeColor,
+				color: this.props.color,
 				marginHorizontal: HORIZONTAL_UNIT(),
 			},
 		});
@@ -87,7 +99,7 @@ export default class PeriodDisplay extends React.Component<
 						<Text
 							h2
 							style={{
-								color: this.props.themeColor,
+								color: this.props.color,
 							}}
 						>
 							{`${this.props.period.from.toLocaleString(
@@ -112,7 +124,7 @@ export default class PeriodDisplay extends React.Component<
 						<Text
 							h2
 							style={{
-								color: this.props.themeColor,
+								color: this.props.color,
 							}}
 						>
 							{`${this.props.period.to.toLocaleString(
@@ -129,6 +141,16 @@ export default class PeriodDisplay extends React.Component<
 						this.props.period.to.offsetNameShort
 					}`}</Text>
 				</View>
+				<SelectPeriodModal
+					color={this.props.color}
+					period={this.props.period}
+					isVisible={this.props.isModalVisible}
+					fromtoTab={this.props.fromtoTab}
+					switchFromToTab={this.props.switchFromToTab}
+					closePeriodModal={this.props.closePeriodModal}
+					setFromDate={this.props.setFromDate}
+					setToDate={this.props.setToDate}
+				/>
 			</View>
 		);
 	}

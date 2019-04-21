@@ -7,35 +7,26 @@ import { DateTime } from 'luxon';
 import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
 import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
+import { Period } from '../../types/data/datetime';
+import { Action } from '../../types/lib/redux';
 
 import VSPModal from '../../components/vsp-modal';
 
-import {
-	switchFromToTab,
-	closePeriodModal,
-} from '../../actions/screens/new-ticket-screen';
-import { setFromDate, setToDate } from '../../actions/new-ticket';
-
 interface ISelectPeriodModalProps {
 	/**
-	 * Theme color of the ticket
+	 * Theme color
 	 */
-	themeColor: string;
+	color: string;
 
 	/**
-	 * Date the event starts from
+	 * Period of the ticket
 	 */
-	fromDateTime: DateTime;
-
-	/**
-	 * Date the event ends
-	 */
-	toDateTime: DateTime;
+	period: Period;
 
 	/**
 	 * The modal is visible if true
 	 */
-	periodModalVisible: boolean;
+	isVisible: boolean;
 
 	/**
 	 * Focused from/to tab
@@ -43,20 +34,19 @@ interface ISelectPeriodModalProps {
 	fromtoTab: FromToTab;
 
 	// ACTION CREATORS
-	switchFromToTab: typeof switchFromToTab;
-	closePeriodModal: typeof closePeriodModal;
-	setFromDate: typeof setFromDate;
-	setToDate: typeof setToDate;
+	switchFromToTab: Action;
+	closePeriodModal: Action;
+	setFromDate: Action;
+	setToDate: Action;
 }
 
 /**
  * SelectPeriodModal
  *
  * @property
- * - ```themeColor```(required): Theme color of the ticket
- * - ```fromDate```(required): Date the event starts from
- * - ```toDate```(required): Date the event ends
- * - ```periodModalVisible```(required): The modal is visible if true
+ * - ```color```(required): Theme color
+ * - ```period```(required): Period of the ticket
+ * - ```isVisible```(required): The modal is visible if true
  * - ```fromtoTab```(required): Focused from/to tab
  */
 export default class SelectPeriodModal extends React.Component<
@@ -70,10 +60,10 @@ export default class SelectPeriodModal extends React.Component<
 				marginHorizontal: HORIZONTAL_UNIT(),
 				backgroundColor:
 					this.props.fromtoTab === tab
-						? this.props.themeColor
+						? this.props.color
 						: THEME_COLORS.none,
 				borderWidth: this.props.fromtoTab === tab ? 0 : 1,
-				borderColor: this.props.themeColor,
+				borderColor: this.props.color,
 			},
 
 			text: {
@@ -118,7 +108,7 @@ export default class SelectPeriodModal extends React.Component<
 		});
 
 		const calendarTheme = {
-			arrowColor: this.props.themeColor,
+			arrowColor: this.props.color,
 			dayTextColor: THEME_COLORS.grey,
 			monthTextColor: THEME_COLORS.grey,
 			textDayFontFamily: THEME_FONT,
@@ -138,7 +128,7 @@ export default class SelectPeriodModal extends React.Component<
 			const rtnObj: { [key: string]: any } = {};
 			while (pointer <= to) {
 				rtnObj[pointer.toISODate()] = {
-					color: this.props.themeColor,
+					color: this.props.color,
 					textColor: THEME_COLORS.white,
 					startingDay: +pointer === +from.startOf('day'),
 					endingDay: +pointer === +to,
@@ -150,7 +140,7 @@ export default class SelectPeriodModal extends React.Component<
 
 		return (
 			<VSPModal
-				isVisible={this.props.periodModalVisible}
+				isVisible={this.props.isVisible}
 				closeAction={this.props.closePeriodModal}
 				titleText={'기간'}
 				headerRight={
@@ -166,26 +156,26 @@ export default class SelectPeriodModal extends React.Component<
 				<View style={style.fromtoTabView}>
 					{this._renderTab(
 						'시작',
-						this.props.fromDateTime,
+						this.props.period.from,
 						'from-tab',
 					)}
-					{this._renderTab('종료', this.props.toDateTime, 'to-tab')}
+					{this._renderTab('종료', this.props.period.to, 'to-tab')}
 				</View>
 				<Calendar
 					style={style.calendar}
 					theme={calendarTheme}
 					current={
 						this.props.fromtoTab === 'from-tab'
-							? this.props.fromDateTime.toISO()
-							: this.props.toDateTime.toISO()
+							? this.props.period.from.toISO()
+							: this.props.period.to.toISO()
 					}
 					minDate={DateTime.local().toISO()}
 					monthFormat={'MMM yyyy'}
 					hideExtraDays={true}
 					markingType={'period'}
 					markedDates={calendarMarkeddays(
-						this.props.fromDateTime,
-						this.props.toDateTime,
+						this.props.period.from,
+						this.props.period.to,
 					)}
 					onDayPress={day => {
 						// Do error handling

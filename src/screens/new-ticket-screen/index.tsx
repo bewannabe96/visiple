@@ -17,9 +17,8 @@ import { VSPHeaderBack } from '../../components/vsp-header-button';
 
 import FriendInviteModalContainer from '../../containers/new-ticket-screen/friend-invite-modal';
 import InvitedParticipantsListContainer from '../../containers/new-ticket-screen/invited-participants-list';
-import SelectPeriodModalContainer from '../../containers/new-ticket-screen/select-period-modal';
 import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';
-import PeriodDisplayContainer from '../../containers/new-ticket-screen/period-display';
+import PeriodSelectorContainer from '../../containers/new-ticket-screen/period-selector';
 
 import { openInviteModal } from '../../actions/screens/new-ticket-screen';
 
@@ -87,7 +86,7 @@ export default class NewTicketScreen extends React.Component<
 					<Input placeholder='제목' />
 					<View style={style.categoryView}>
 						<VSPText style={style.titleText}>기간</VSPText>
-						<PeriodDisplayContainer />
+						<PeriodSelectorContainer />
 					</View>
 					<View style={style.categoryView}>
 						<VSPText style={style.titleText}>테마 색상</VSPText>
@@ -119,7 +118,6 @@ export default class NewTicketScreen extends React.Component<
 					}}
 					titleStyle={{ fontSize: THEME_HEADER_FONTSIZE }}
 				/>
-				<SelectPeriodModalContainer />
 				<FriendInviteModalContainer />
 			</VSPContainer>
 		);
