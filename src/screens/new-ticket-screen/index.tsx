@@ -15,7 +15,7 @@ import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 
-import FriendInviteModalContainer from '../../containers/screen-components/friend-invite-modal';
+import FriendInviteModalContainer from '../../containers/new-ticket-screen/friend-invite-modal';
 import InvitedParticipantsListContainer from '../../containers/new-ticket-screen/invited-participants-list';
 import SelectPeriodModalContainer from '../../containers/new-ticket-screen/select-period-modal';
 import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';

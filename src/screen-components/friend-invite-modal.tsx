@@ -9,10 +9,9 @@ import {
 } from '../types/lib/size';
 import { THEME_COLORS } from '../types/lib/theme';
 import { User } from '../types/data/user';
+import { Action } from '../types/lib/redux';
 
 import VSPModal from '../components/vsp-modal';
-
-import { closeInviteModal } from '../actions/screens/new-ticket-screen';
 
 const DEV_FRIENDS: User[] = [
 	{ id: 1, name: '홍길동', email: 'testtest23@nate.com' },
@@ -27,9 +26,9 @@ const DEV_FRIENDS: User[] = [
 
 interface IFriendInviteModalProps {
 	/**
-	 * Theme color of the ticket
+	 * Color
 	 */
-	themeColor: string;
+	color: string;
 
 	/**
 	 * The modal is visible if true
@@ -37,7 +36,7 @@ interface IFriendInviteModalProps {
 	isVisible: boolean;
 
 	// ACTION CREATORS
-	closeInviteModal: typeof closeInviteModal;
+	closeInviteModal: Action;
 }
 
 /**
@@ -100,7 +99,7 @@ export default class FriendInviteModal extends React.Component<
 										},
 									}}
 									buttonStyle={{
-										backgroundColor: this.props.themeColor,
+										backgroundColor: this.props.color,
 										padding: HORIZONTAL_UNIT(),
 									}}
 									titleStyle={{
