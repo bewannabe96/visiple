@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { Input, Button, Text } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 import { DateTime } from 'luxon';
 
@@ -19,6 +19,7 @@ import VSPContainer from '../../components/vsp-container';
 
 import PeriodSelector from '../../screen-components/period-selector';
 import CountrySelector from '../../screen-components/country-selector';
+import FriendsSelector from '../../screen-components/friends-selector';
 
 const DEV_NEWTRAVELLOG: NewtravelLog = {
 	title: '타이틀',
@@ -59,7 +60,11 @@ export default class NewTravelLogScreen extends React.Component<
 			},
 
 			categoryView: {
-				marginTop: HORIZONTAL_UNIT(6),
+				marginTop: HORIZONTAL_UNIT(5),
+			},
+
+			titleText: {
+				marginBottom: HORIZONTAL_UNIT(2),
 			},
 		});
 
@@ -71,6 +76,9 @@ export default class NewTravelLogScreen extends React.Component<
 						inputStyle={{ fontSize: THEME_HEADER_FONTSIZE }}
 					/>
 					<View style={style.categoryView}>
+						<Text h2 style={style.titleText}>
+							기간
+						</Text>
 						<PeriodSelector
 							color={THEME_COLORS.oceanBlue}
 							period={DEV_NEWTRAVELLOG.period}
@@ -83,7 +91,19 @@ export default class NewTravelLogScreen extends React.Component<
 						/>
 					</View>
 					<View style={style.categoryView}>
+						<Text h2 style={style.titleText}>
+							국가
+						</Text>
 						<CountrySelector />
+					</View>
+					<View style={style.categoryView}>
+						<Text h2 style={style.titleText}>
+							함께하는 친구
+						</Text>
+						<FriendsSelector
+							color={THEME_COLORS.oceanBlue}
+							friends={DEV_NEWTRAVELLOG.participants}
+						/>
 					</View>
 				</ScrollView>
 				<Button
