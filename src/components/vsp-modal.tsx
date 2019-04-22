@@ -13,6 +13,11 @@ import VSPHeader from './vsp-header';
 
 interface IVSPModalProps {
 	/**
+	 * Title text in the middle of the header
+	 */
+	titleText: string;
+
+	/**
 	 * Visible if true
 	 */
 	isVisible: boolean;
@@ -32,11 +37,6 @@ interface IVSPModalProps {
 	heightMode?: 'auto' | 'full' | 'minimum';
 
 	/**
-	 * Title text in the middle of the header
-	 */
-	titleText: string;
-
-	/**
 	 * Component to be displayed in the right of the header
 	 */
 	headerRight?: Element;
@@ -46,10 +46,10 @@ interface IVSPModalProps {
  * VSPModal
  *
  * @property
+ * - ```titleText```(required): Title text in the middle of the header
  * - ```isVisible```(required): Visible if true
  * - ```closeAction```(required): Close action callback
  * - ```heightMode```: Height of the modal (by default ```auto```)
- * - ```titleText```(required): Title text in the middle of the header
  * - ```headerRight```: Component to be displayed in the right
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
  * - ```paddingHorizontal```: Horizontal padding; including paddingRight and paddingLeft
