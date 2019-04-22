@@ -29,6 +29,14 @@ export default class CountrySelector extends React.Component<
 		isModalVisible: false,
 	};
 
+	private _openModal = () => {
+		this.setState({ ...this.state, isModalVisible: true });
+	};
+
+	private _closeModal = () => {
+		this.setState({ ...this.state, isModalVisible: false });
+	};
+
 	private _renderTypeButton(sType: SelectType, displayName: string) {
 		return (
 			<TouchableOpacity
@@ -92,13 +100,6 @@ export default class CountrySelector extends React.Component<
 			</View>
 		);
 	}
-	private _openModal = () => {
-		this.setState({ ...this.state, isModalVisible: true });
-	};
-
-	private _closeModal = () => {
-		this.setState({ ...this.state, isModalVisible: false });
-	};
 
 	public render() {
 		const style = StyleSheet.create({
