@@ -7,6 +7,7 @@ import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
 import { THEME_FONT, THEME_COLORS } from '../../types/lib/theme';
 import { Ticket } from '../../types/data/ticket';
 import { UserID } from '../../types/data/user';
+
 import {
 	ticketFixedTexts,
 	ticketFixedColors,

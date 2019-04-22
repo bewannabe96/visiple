@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-native-elements';
-import { NavigationScreenProp, FlatList } from 'react-navigation';
+import { FlatList } from 'react-navigation';
 import { DateTime } from 'luxon';
 
 import { IVSPScreenProps } from '../../types/props/vsp-screen';

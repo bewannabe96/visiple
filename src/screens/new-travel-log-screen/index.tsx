@@ -74,17 +74,6 @@ export default class NewTravelLogScreen extends React.Component<
 						<PeriodSelector
 							color={THEME_COLORS.oceanBlue}
 							period={DEV_NEWTRAVELLOG.period}
-							isModalVisible={false}
-							fromtoTab='from-tab'
-							openPeriodModal={() => ({
-								type: 'test',
-							})}
-							switchFromToTab={() => ({
-								type: 'test',
-							})}
-							closePeriodModal={() => ({
-								type: 'test',
-							})}
 							setFromDate={() => ({
 								type: 'test',
 							})}
