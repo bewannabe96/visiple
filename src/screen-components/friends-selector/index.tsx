@@ -26,7 +26,7 @@ export interface IFriendsSelectorProps {
  * FriendsSelector
  *
  * @property
- * - ```themeColor```(required): Theme color
+ * - ```color```(required): Theme color
  * - ```friends```(required): Selected friends
  */
 export default class FriendsSelector extends React.Component<
