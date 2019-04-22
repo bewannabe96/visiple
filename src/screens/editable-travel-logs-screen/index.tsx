@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { NavigationScreenProp, FlatList } from 'react-navigation';
 import { Card, Text } from 'react-native-elements';
 import { DateTime } from 'luxon';
@@ -91,20 +92,30 @@ export default class EditableTravelLogsScreen extends React.Component<
 	};
 
 	private _renderTravelLog = ({ item }: { item: TravelLog }) => (
-		<Card
-			title={item.title}
-			image={require('../../dev-sample-image/landscape_1.jpeg')}
-			containerStyle={{ marginVertical: HORIZONTAL_UNIT(3) }}
+		<View
+			style={{
+				paddingVertical: HORIZONTAL_UNIT(2),
+			}}
 		>
-			<Text
-				h3
-				style={{
-					color: THEME_COLORS.grey,
+			<Card
+				title={item.title}
+				image={require('../../dev-sample-image/landscape_1.jpeg')}
+				containerStyle={{
+					borderRadius: HORIZONTAL_UNIT(2),
 				}}
-			>{`${item.period.from.toLocaleString(
-				DateTime.DATE_FULL,
-			)} ~ ${item.period.to.toLocaleString(DateTime.DATE_FULL)}`}</Text>
-		</Card>
+			>
+				<Text
+					h3
+					style={{
+						color: THEME_COLORS.grey,
+					}}
+				>{`${item.period.from.toLocaleString(
+					DateTime.DATE_FULL,
+				)} ~ ${item.period.to.toLocaleString(
+					DateTime.DATE_FULL,
+				)}`}</Text>
+			</Card>
+		</View>
 	);
 
 	public render() {
