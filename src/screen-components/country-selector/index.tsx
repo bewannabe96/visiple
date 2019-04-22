@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-	View,
-	ScrollView,
-	TouchableOpacity,
-	StyleSheet,
-	FlatList,
-} from 'react-native';
-import { SearchBar, Icon } from 'react-native-elements';
+import { View, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import {
 	HORIZONTAL_UNIT,
@@ -16,14 +10,11 @@ import {
 import { THEME_COLORS } from '../../types/lib/theme';
 import { Country } from '../../types/data/country';
 
-import {
-	countryByCode,
-	countriesByCodes,
-	countryCodesBySearchword,
-} from '../../data/country';
+import { countryByCode, countriesByCodes } from '../../data/country';
 
 import VSPText from '../../components/vsp-text';
-import VSPCheckbox from '../../components/vsp-checkbox';
+
+import SelectCountryModal from './select-country-modal';
 
 type SelectType = 'domestic' | 'overseas';
 
@@ -34,44 +25,9 @@ export default class CountrySelector extends React.Component<
 > {
 	public state = {
 		selectType: 'domestic',
-		countryCodes: ['USA', 'KOR'],
-		searchResults: null,
+		countryCodes: ['USA', 'KOR', 'TWN', 'HKG'],
+		isModalVisible: false,
 	};
-
-	private _renderSearchResult() {
-		if (this.state.searchResults !== null) {
-			return (
-				<FlatList
-					data={this.state.searchResults}
-					keyExtractor={item => item.alpha3Code}
-					ListEmptyComponent={
-						<View
-							style={{
-								alignItems: 'center',
-								padding: HORIZONTAL_UNIT(2),
-							}}
-						>
-							<VSPText>{'검색결과가 없습니다.'}</VSPText>
-						</View>
-					}
-					renderItem={({ item }: { item: Country }) => (
-						<VSPCheckbox
-							marginVertical={HORIZONTAL_UNIT(2)}
-							marginHorizontal={HORIZONTAL_UNIT(3)}
-							buttonOnRight
-						>
-							<VSPText>{item.translations.ko}</VSPText>
-						</VSPCheckbox>
-					)}
-					style={{
-						height: HORIZONTAL_UNIT(30),
-						borderWidth: 1,
-						borderColor: THEME_COLORS.greyWhite,
-					}}
-				/>
-			);
-		}
-	}
 
 	private _renderTypeButton(sType: SelectType, displayName: string) {
 		return (
@@ -106,14 +62,12 @@ export default class CountrySelector extends React.Component<
 		);
 	}
 
-	private _renderCountry(ctnry: Country, index?: number) {
+	private _renderCountry({ item }: { item: Country }) {
 		return (
 			<View
-				key={index}
 				style={{
 					flexDirection: 'row',
 					alignItems: 'center',
-					marginVertical: HORIZONTAL_UNIT(2),
 					marginHorizontal: HORIZONTAL_UNIT(),
 					paddingVertical: HORIZONTAL_UNIT(),
 					paddingHorizontal: HORIZONTAL_UNIT(2),
@@ -123,39 +77,27 @@ export default class CountrySelector extends React.Component<
 				}}
 			>
 				<VSPText color={THEME_COLORS.oceanBlue}>
-					{ctnry.translations.ko}
+					{item.translations.ko}
 				</VSPText>
 				<Icon
 					name='cancel'
 					type='vspicon'
 					size={THEME_MINOR_FONTSIZE}
 					color={THEME_COLORS.oceanBlue}
-					containerStyle={{ marginLeft: HORIZONTAL_UNIT() }}
+					containerStyle={{
+						marginLeft: HORIZONTAL_UNIT(),
+					}}
 					onPress={() => {}}
 				/>
 			</View>
 		);
 	}
+	private _openModal = () => {
+		this.setState({ ...this.state, isModalVisible: true });
+	};
 
-	private _renderCountries() {
-		if (this.state.countryCodes.length === 1) {
-			let cntry = countryByCode(this.state.countryCodes[0]);
-			if (cntry !== null) {
-				return this._renderCountry(cntry);
-			}
-		} else {
-			let cntrys = countriesByCodes(this.state.countryCodes);
-			return cntrys.map((cntry: Country, index: number) => {
-				return this._renderCountry(cntry, index);
-			});
-		}
-	}
-
-	private _onSearchWordChange = (text: string) => {
-		this.setState({
-			...this.state,
-			searchResults: text === '' ? null : countryCodesBySearchword(text),
-		});
+	private _closeModal = () => {
+		this.setState({ ...this.state, isModalVisible: false });
 	};
 
 	public render() {
@@ -165,14 +107,22 @@ export default class CountrySelector extends React.Component<
 			},
 
 			countriesViewContainer: {
+				flexDirection: 'row',
+				alignItems: 'center',
 				borderWidth: 1,
 				borderColor: THEME_COLORS.greyWhite,
 			},
 
 			countriesView: {
-				flexDirection: 'row',
+				alignItems: 'center',
+				paddingHorizontal: HORIZONTAL_UNIT(),
 			},
 		});
+
+		const selectedCountries =
+			this.state.countryCodes.length === 1
+				? [countryByCode(this.state.countryCodes[0])!]
+				: countriesByCodes(this.state.countryCodes);
 
 		return (
 			<View>
@@ -181,22 +131,29 @@ export default class CountrySelector extends React.Component<
 					{this._renderTypeButton('overseas', '해외여행')}
 				</View>
 				{this.state.selectType === 'overseas' && (
-					<View>
-						<ScrollView
-							style={style.countriesViewContainer}
+					<View style={style.countriesViewContainer}>
+						<FlatList
+							data={selectedCountries}
+							keyExtractor={item => item.alpha3Code}
+							renderItem={this._renderCountry}
 							contentContainerStyle={style.countriesView}
-							horizontal={true}
+							horizontal
 							showsHorizontalScrollIndicator={false}
-						>
-							{this._renderCountries()}
-						</ScrollView>
-						<SearchBar
-							placeholder='국가를 검색하세요.'
-							onChangeText={this._onSearchWordChange}
 						/>
-						{this._renderSearchResult()}
+						<Icon
+							name='plus'
+							type='vspicon'
+							size={HORIZONTAL_UNIT(2.5)}
+							color={THEME_COLORS.oceanBlue}
+							reverse
+							onPress={this._openModal}
+						/>
 					</View>
 				)}
+				<SelectCountryModal
+					isVisible={this.state.isModalVisible}
+					closeAction={this._closeModal}
+				/>
 			</View>
 		);
 	}
