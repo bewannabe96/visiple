@@ -7,9 +7,8 @@ import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import { Period } from '../../types/data/datetime';
 import { THEME_COLORS } from '../../types/lib/theme';
 import { Action } from '../../types/lib/redux';
-import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 
-import SelectPeriodModal from './select-period-modal';
+import SelectPeriodModal, { FromToTab } from './select-period-modal';
 
 export interface IPeriodSelectorProps {
 	/**
@@ -22,20 +21,7 @@ export interface IPeriodSelectorProps {
 	 */
 	period: Period;
 
-	/**
-	 * The modal is visible if true
-	 */
-	isModalVisible: boolean;
-
-	/**
-	 * Focused from/to tab
-	 */
-	fromtoTab: FromToTab;
-
 	// ACTION CREATORS
-	openPeriodModal: Action;
-	switchFromToTab: Action;
-	closePeriodModal: Action;
 	setFromDate: Action;
 	setToDate: Action;
 }
@@ -46,27 +32,37 @@ export interface IPeriodSelectorProps {
  * @property
  * - ```color```(required): Theme color
  * - ```period```(required): Period of the ticket
- * - ```isModalVisible```(required):The modal is visible if true
- * - ```fromtoTab```(required): Focused from/to tab
  *
  * @actionCreator
- * - ```openPeriodModal```
- * - ```switchFromToTab```
- * - ```closePeriodModal```
  * - ```setFromDate```
  * - ```setToDate```
  */
 export default class PeriodSelector extends React.Component<
 	IPeriodSelectorProps
 > {
+	public state = {
+		isModalVisible: false,
+		fromtoTab: 'from-tab' as FromToTab,
+	};
+
 	private _openModalWithFromtab = () => {
-		this.props.switchFromToTab('from-tab');
-		this.props.openPeriodModal();
+		this.setState({
+			...this.state,
+			isModalVisible: true,
+			fromtoTab: 'from-tab' as FromToTab,
+		});
 	};
 
 	private _openModalWithTotab = () => {
-		this.props.switchFromToTab('to-tab');
-		this.props.openPeriodModal();
+		this.setState({
+			...this.state,
+			isModalVisible: true,
+			fromtoTab: 'to-tab' as FromToTab,
+		});
+	};
+
+	private _closeModal = () => {
+		this.setState({ ...this.state, isModalVisible: false });
 	};
 
 	public render() {
@@ -151,12 +147,11 @@ export default class PeriodSelector extends React.Component<
 					}`}</Text>
 				</View>
 				<SelectPeriodModal
+					isVisible={this.state.isModalVisible}
+					initalTab={this.state.fromtoTab}
+					closeAction={this._closeModal}
 					color={this.props.color}
 					period={this.props.period}
-					isVisible={this.props.isModalVisible}
-					fromtoTab={this.props.fromtoTab}
-					switchFromToTab={this.props.switchFromToTab}
-					closePeriodModal={this.props.closePeriodModal}
 					setFromDate={this.props.setFromDate}
 					setToDate={this.props.setToDate}
 				/>

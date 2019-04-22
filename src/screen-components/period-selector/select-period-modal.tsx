@@ -6,36 +6,40 @@ import { DateTime } from 'luxon';
 
 import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
-import { FromToTab } from '../../types/redux/screens/new-ticket-screen';
 import { Period } from '../../types/data/datetime';
 import { Action } from '../../types/lib/redux';
+
+export type FromToTab = 'from-tab' | 'to-tab';
 
 import VSPModal from '../../components/vsp-modal';
 
 interface ISelectPeriodModalProps {
-	/**
-	 * Theme color
-	 */
-	color: string;
-
-	/**
-	 * Period of the ticket
-	 */
-	period: Period;
-
 	/**
 	 * The modal is visible if true
 	 */
 	isVisible: boolean;
 
 	/**
-	 * Focused from/to tab
+	 * Initially focused from/to tab
 	 */
-	fromtoTab: FromToTab;
+	initalTab: FromToTab;
+
+	/**
+	 * Close action callback
+	 */
+	closeAction: () => any;
+
+	/**
+	 * Theme color
+	 */
+	color: string;
+
+	/**
+	 * Period
+	 */
+	period: Period;
 
 	// ACTION CREATORS
-	switchFromToTab: Action;
-	closePeriodModal: Action;
 	setFromDate: Action;
 	setToDate: Action;
 }
@@ -44,20 +48,27 @@ interface ISelectPeriodModalProps {
  * SelectPeriodModal
  *
  * @property
- * - ```color```(required): Theme color
- * - ```period```(required): Period of the ticket
  * - ```isVisible```(required): The modal is visible if true
- * - ```fromtoTab```(required): Focused from/to tab
+ * - ```initalTab```(required): Initially focused from/to tab
+ * - ```closeAction```(required): Close action callback
+ * - ```color```(required): Theme color
+ * - ```period```(required): Period
  *
  * @actionCreator
- * - ```switchFromToTab```
- * - ```closePeriodModal```
  * - ```setFromDate```
  * - ```setToDate```
  */
 export default class SelectPeriodModal extends React.Component<
 	ISelectPeriodModalProps
 > {
+	public state = {
+		fromtoTab: this.props.initalTab,
+	};
+
+	private _switchFromToTab = (tab: FromToTab) => {
+		this.setState({ ...this.state, fromtoTab: tab });
+	};
+
 	private _renderTab(title: string, date: DateTime, tab: FromToTab) {
 		const style = StyleSheet.create({
 			container: {
@@ -65,16 +76,16 @@ export default class SelectPeriodModal extends React.Component<
 				padding: HORIZONTAL_UNIT(3),
 				marginHorizontal: HORIZONTAL_UNIT(),
 				backgroundColor:
-					this.props.fromtoTab === tab
+					this.state.fromtoTab === tab
 						? this.props.color
 						: THEME_COLORS.none,
-				borderWidth: this.props.fromtoTab === tab ? 0 : 1,
+				borderWidth: this.state.fromtoTab === tab ? 0 : 1,
 				borderColor: this.props.color,
 			},
 
 			text: {
 				color:
-					this.props.fromtoTab === tab
+					this.state.fromtoTab === tab
 						? THEME_COLORS.white
 						: THEME_COLORS.grey,
 			},
@@ -85,7 +96,7 @@ export default class SelectPeriodModal extends React.Component<
 				style={style.container}
 				activeOpacity={0.6}
 				onPress={() => {
-					this.props.switchFromToTab(tab);
+					this._switchFromToTab(tab);
 				}}
 			>
 				<Text
@@ -147,14 +158,14 @@ export default class SelectPeriodModal extends React.Component<
 		return (
 			<VSPModal
 				isVisible={this.props.isVisible}
-				closeAction={this.props.closePeriodModal}
+				closeAction={this.props.closeAction}
 				titleText={'기간'}
 				headerRight={
 					<Button
 						title='완료'
 						type='clear'
 						titleStyle={{ color: THEME_COLORS.black }}
-						onPress={this.props.closePeriodModal}
+						onPress={this.props.closeAction}
 					/>
 				}
 				paddingVertical={HORIZONTAL_UNIT(3)}
@@ -171,7 +182,7 @@ export default class SelectPeriodModal extends React.Component<
 					style={style.calendar}
 					theme={calendarTheme}
 					current={
-						this.props.fromtoTab === 'from-tab'
+						this.state.fromtoTab === 'from-tab'
 							? this.props.period.from.toISO()
 							: this.props.period.to.toISO()
 					}
@@ -185,7 +196,7 @@ export default class SelectPeriodModal extends React.Component<
 					)}
 					onDayPress={day => {
 						// Do error handling
-						if (this.props.fromtoTab === 'from-tab') {
+						if (this.state.fromtoTab === 'from-tab') {
 							this.props.setFromDate(
 								day.year,
 								day.month,
