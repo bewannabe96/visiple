@@ -67,7 +67,7 @@ export default class ProfileScreen extends React.Component<IVSPScreenProps> {
 		const style = StyleSheet.create({
 			profileView: {
 				paddingHorizontal: VSP_EDGE_PADDING,
-				paddingVertical: HORIZONTAL_UNIT(3),
+				paddingBottom: HORIZONTAL_UNIT(3),
 				alignItems: 'center',
 			},
 
