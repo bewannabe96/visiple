@@ -6,12 +6,11 @@ import {
 	HORIZONTAL_UNIT,
 	VSP_EDGE_PADDING,
 	THEME_MINOR_FONTSIZE,
-} from '../types/lib/size';
-import { THEME_COLORS } from '../types/lib/theme';
-import { User } from '../types/data/user';
-import { Action } from '../types/lib/redux';
+} from '../../types/lib/size';
+import { THEME_COLORS } from '../../types/lib/theme';
+import { User } from '../../types/data/user';
 
-import VSPModal from '../components/vsp-modal';
+import VSPModal from '../../components/vsp-modal';
 
 const DEV_FRIENDS: User[] = [
 	{ id: 1, name: '홍길동', email: 'testtest23@nate.com' },
@@ -24,33 +23,33 @@ const DEV_FRIENDS: User[] = [
 	{ id: 8, name: '홍길동', email: 'testtest243@nate.com' },
 ];
 
-interface IFriendInviteModalProps {
-	/**
-	 * Theme color
-	 */
-	color: string;
-
+interface ISelectFriendModalProps {
 	/**
 	 * The modal is visible if true
 	 */
 	isVisible: boolean;
 
-	// ACTION CREATORS
-	closeInviteModal: Action;
+	/**
+	 * Close action callback
+	 */
+	closeAction: () => any;
+
+	/**
+	 * Theme color
+	 */
+	color: string;
 }
 
 /**
- * FriendInviteModal
+ * SelectFriendModal
  *
  * @property
- * - ```color```(required): Theme color
  * - ```isVisible```(required): The modal is visible if true
- *
- * @actionCreator
- * - ```closeInviteModal```
+ * - ```closeAction```(required): Close action callback
+ * - ```color```(required): Theme color
  */
-export default class FriendInviteModal extends React.Component<
-	IFriendInviteModalProps
+export default class SelectFriendModal extends React.Component<
+	ISelectFriendModalProps
 > {
 	public render() {
 		return (
@@ -61,12 +60,12 @@ export default class FriendInviteModal extends React.Component<
 						title='닫기'
 						type='clear'
 						titleStyle={{ color: THEME_COLORS.black }}
-						onPress={this.props.closeInviteModal}
+						onPress={this.props.closeAction}
 					/>
 				}
 				isVisible={this.props.isVisible}
 				heightMode='full'
-				closeAction={this.props.closeInviteModal}
+				closeAction={this.props.closeAction}
 			>
 				<SearchBar
 					placeholder='이름 또는 이메일을 입력하세요'

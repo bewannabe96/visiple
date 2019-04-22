@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Input, Icon, Button } from 'react-native-elements';
+import { Input, Button } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 
 import {
@@ -15,21 +15,15 @@ import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 
-import FriendInviteModalContainer from '../../containers/new-ticket-screen/friend-invite-modal';
-import InvitedParticipantsListContainer from '../../containers/new-ticket-screen/invited-participants-list';
 import TicketColorPickerContainer from '../../containers/new-ticket-screen/ticket-color-picker';
 import PeriodSelectorContainer from '../../containers/new-ticket-screen/period-selector';
-
-import { openInviteModal } from '../../actions/screens/new-ticket-screen';
+import FriendsSelectorContainer from '../../containers/new-ticket-screen/friends-selector';
 
 interface INewTicketScreenProps {
 	/**
 	 * Theme color of the ticket
 	 */
 	themeColor: string;
-
-	// ACTION CREATORS
-	openInviteModal: typeof openInviteModal;
 }
 
 /**
@@ -37,9 +31,6 @@ interface INewTicketScreenProps {
  *
  * @property
  * - ```themeColor```(required): Theme color of the ticket
- *
- * @actionCreator
- * - ```openInviteModal```
  */
 export default class NewTicketScreen extends React.Component<
 	IVSPScreenProps<INewTicketScreenProps>
@@ -100,17 +91,8 @@ export default class NewTicketScreen extends React.Component<
 							<VSPText style={style.titleText}>
 								함께하는 친구
 							</VSPText>
-							<Icon
-								name='plus'
-								type='vspicon'
-								color={this.props.themeColor}
-								size={THEME_HEADER_FONTSIZE}
-								onPress={() => {
-									this.props.openInviteModal();
-								}}
-							/>
 						</View>
-						<InvitedParticipantsListContainer />
+						<FriendsSelectorContainer />
 					</View>
 				</View>
 				<Button
@@ -121,7 +103,6 @@ export default class NewTicketScreen extends React.Component<
 					}}
 					titleStyle={{ fontSize: THEME_HEADER_FONTSIZE }}
 				/>
-				<FriendInviteModalContainer />
 			</VSPContainer>
 		);
 	}

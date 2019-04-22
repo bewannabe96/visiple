@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
 
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
@@ -8,32 +8,48 @@ import { UserID } from '../../types/data/user';
 
 import VSPText from '../../components/vsp-text';
 
-export interface IInvitedParticipantsListProps {
+import SelectFriendModal from './select-friend-modal';
+
+export interface IFriendsSelectorProps {
 	/**
-	 * Theme color of the ticket
+	 * Theme color
 	 */
-	themeColor: string;
+	color: string;
 
 	/**
-	 * Participants of the ticket
+	 * Selected friends
 	 */
-	participants: UserID[];
+	friends: UserID[];
 }
 
 /**
- * InvitedParticipantsList
+ * FriendsSelector
  *
  * @property
- * - ```themeColor```(required): Theme color of the ticket
- * - ```participants```(required): Participants of the ticket
+ * - ```themeColor```(required): Theme color
+ * - ```friends```(required): Selected friends
  */
-export default class InvitedParticipantsList extends React.Component<
-	IInvitedParticipantsListProps
+export default class FriendsSelector extends React.Component<
+	IFriendsSelectorProps
 > {
-	private _renderParticipant(pid: UserID) {
+	public state = {
+		isModalVisible: false,
+	};
+
+	private _openModal = () => {
+		this.setState({
+			...this.state,
+			isModalVisible: true,
+		});
+	};
+
+	private _closeModal = () => {
+		this.setState({ ...this.state, isModalVisible: false });
+	};
+
+	private _renderParticipant({ item }: { item: UserID }) {
 		return (
 			<View
-				key={pid}
 				style={{
 					alignItems: 'center',
 					padding: HORIZONTAL_UNIT(),
@@ -68,8 +84,9 @@ export default class InvitedParticipantsList extends React.Component<
 
 	public render() {
 		const style = StyleSheet.create({
-			contentContainer: {
+			container: {
 				flexDirection: 'row',
+				alignItems: 'center',
 			},
 
 			footerView: {
@@ -79,7 +96,7 @@ export default class InvitedParticipantsList extends React.Component<
 			},
 
 			valueText: {
-				color: this.props.themeColor,
+				color: this.props.color,
 				fontSize: THEME_HEADER_FONTSIZE,
 				marginHorizontal: HORIZONTAL_UNIT(),
 			},
@@ -87,20 +104,34 @@ export default class InvitedParticipantsList extends React.Component<
 
 		return (
 			<View>
-				<ScrollView
-					contentContainerStyle={style.contentContainer}
-					horizontal={true}
-					showsHorizontalScrollIndicator={false}
-				>
-					{this.props.participants.map(this._renderParticipant)}
-				</ScrollView>
+				<View style={style.container}>
+					<FlatList
+						data={this.props.friends}
+						keyExtractor={item => item.toString()}
+						renderItem={this._renderParticipant}
+						horizontal
+						showsHorizontalScrollIndicator={false}
+					/>
+					<Icon
+						name='plus'
+						type='vspicon'
+						color={this.props.color}
+						reverse
+						onPress={this._openModal}
+					/>
+				</View>
 				<View style={style.footerView}>
 					<VSPText color={THEME_COLORS.grey}>총</VSPText>
 					<VSPText style={style.valueText}>{`${
-						this.props.participants.length
+						this.props.friends.length
 					}`}</VSPText>
 					<VSPText color={THEME_COLORS.grey}>명</VSPText>
 				</View>
+				<SelectFriendModal
+					isVisible={this.state.isModalVisible}
+					closeAction={this._closeModal}
+					color={this.props.color}
+				/>
 			</View>
 		);
 	}
