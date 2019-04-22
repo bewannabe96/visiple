@@ -4,7 +4,7 @@ import RootState from '../../types/redux';
 
 import { setToDate, setFromDate } from '../../actions/new-ticket';
 
-import PeriodDisplay from '../../screen-components/period-selector';
+import PeriodSelector from '../../screen-components/period-selector';
 
 const mapStateToProps = (state: RootState) => ({
 	color: state.newTicket.themeColor,
@@ -19,6 +19,6 @@ const mapDispatchToProps = {
 const PeriodSelectorContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps,
-)(PeriodDisplay);
+)(PeriodSelector);
 
 export default PeriodSelectorContainer;
