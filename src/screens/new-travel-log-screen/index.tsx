@@ -18,8 +18,7 @@ import { VSPHeaderBack } from '../../components/vsp-header-button';
 import VSPContainer from '../../components/vsp-container';
 
 import PeriodSelector from '../../screen-components/period-selector';
-
-import CountrySelector from './country-selector';
+import CountrySelector from '../../screen-components/country-selector';
 
 const DEV_NEWTRAVELLOG: NewtravelLog = {
 	title: '타이틀',
@@ -67,7 +66,10 @@ export default class NewTravelLogScreen extends React.Component<
 		return (
 			<VSPContainer wrapSafeAreaView>
 				<ScrollView contentContainerStyle={style.container}>
-					<Input placeholder='제목' />
+					<Input
+						placeholder='제목'
+						inputStyle={{ fontSize: THEME_HEADER_FONTSIZE }}
+					/>
 					<View style={style.categoryView}>
 						<PeriodSelector
 							color={THEME_COLORS.oceanBlue}
