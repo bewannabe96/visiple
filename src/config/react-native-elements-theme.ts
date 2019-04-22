@@ -11,13 +11,13 @@ const RNElementsTheme = {
 		size: THEME_FONTSIZE,
 	},
 
-	// Image: {
-	// 	resizeMode: 'cover',
-	// 	style: {
-	// 		height: '100%',
-	// 		width: '100%',
-	// 	},
-	// },
+	Image: {
+		resizeMode: 'cover',
+		style: {
+			height: '100%',
+			width: '100%',
+		},
+	},
 
 	Button: {
 		containerStyle: {
@@ -108,6 +108,10 @@ const RNElementsTheme = {
 			color: THEME_COLORS.grey,
 			marginTop: HORIZONTAL_UNIT(),
 		},
+	},
+
+	Card: {
+		containerStyle: { margin: 0 },
 	},
 };
 

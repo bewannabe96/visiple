@@ -104,7 +104,6 @@ export default class ProfileScreen extends React.Component<IVSPScreenProps> {
 
 			logImageView: {
 				opacity: 0.7,
-				width: DEVICE_WIDTH,
 				height: DEVICE_WIDTH * 0.6,
 			},
 
@@ -197,16 +196,13 @@ export default class ProfileScreen extends React.Component<IVSPScreenProps> {
 						<TouchableOpacity
 							style={style.logItemContainer}
 							activeOpacity={0.6}
-							onPress={() => {
-								this.props.navigation.navigate(
-									'NewTravelLogScreen',
-								);
-							}}
+							onPress={() => {}}
 						>
-							<Image
-								style={style.logImageView}
-								source={require('../../dev-sample-image/landscape_1.jpeg')}
-							/>
+							<View style={style.logImageView}>
+								<Image
+									source={require('../../dev-sample-image/landscape_1.jpeg')}
+								/>
+							</View>
 							<View style={style.logTitleView}>
 								<VSPText
 									fontSize={THEME_HEADER_FONTSIZE}
