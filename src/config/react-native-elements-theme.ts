@@ -12,7 +12,7 @@ const RNElementsTheme = {
 	},
 
 	Image: {
-		resizeMode: 'cover',
+		resizeMode: 'cover' as 'cover',
 		style: {
 			height: '100%',
 			width: '100%',
