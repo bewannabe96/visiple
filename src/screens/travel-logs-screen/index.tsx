@@ -89,13 +89,13 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 	},
 ];
 
-interface IEditableTravelLogsScreenProps {}
+interface ITravelLogsScreenProps {}
 
 /**
- * NewTravelLogScreen
+ * TravelLogsScreen
  */
-export default class EditableTravelLogsScreen extends React.Component<
-	IVSPScreenProps<IEditableTravelLogsScreenProps>
+export default class TravelLogsScreen extends React.Component<
+	IVSPScreenProps<ITravelLogsScreenProps>
 > {
 	public static navigationOptions = ({
 		navigation,

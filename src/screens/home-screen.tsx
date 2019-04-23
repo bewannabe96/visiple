@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component<IVSPScreenProps> {
 						<VSPHeaderButton
 							iconName='inbox'
 							onPress={() => {
-								navigation.navigate('EditableTravelLogsScreen');
+								navigation.navigate('TravelLogsScreen');
 							}}
 						/>
 					}

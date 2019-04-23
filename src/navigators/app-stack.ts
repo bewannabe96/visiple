@@ -2,7 +2,7 @@ import { createStackNavigator } from 'react-navigation';
 
 import _MainTab from './main-tab';
 
-import _EditableTravelLogsScreen from '../screens/editable-travel-logs-screen';
+import _TravelLogsScreen from '../screens/travel-logs-screen';
 
 import _NewTicketContainer from '../containers/new-ticket-screen';
 import _TicketViewScreen from '../screens/ticket-view-screen';
@@ -15,8 +15,8 @@ const AppStack = createStackNavigator(
 			screen: _MainTab,
 		},
 
-		EditableTravelLogsScreen: {
-			screen: _EditableTravelLogsScreen,
+		TravelLogsScreen: {
+			screen: _TravelLogsScreen,
 		},
 
 		NewTicketScreen: {
