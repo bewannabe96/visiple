@@ -11,7 +11,7 @@ import { THEME_COLORS } from '../../types/lib/theme';
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 
-import TicketCard from './tickets-card';
+import TicketCard from './ticket-card';
 
 const DEV_TICKETS: Ticket[] = [
 	{
@@ -48,12 +48,12 @@ const DEV_TICKETS: Ticket[] = [
 	},
 ];
 
-interface ITicketScreenProps {
+interface ITicketsScreenProps {
 	tickets: Ticket[];
 }
 
-export default class TicketScreen extends React.Component<
-	IVSPScreenProps<ITicketScreenProps>
+export default class TicketsScreen extends React.Component<
+	IVSPScreenProps<ITicketsScreenProps>
 > {
 	public static navigationOptions = {
 		header: <VSPHeader headerTitle='티켓' />,

@@ -23,7 +23,7 @@ export default class VSPTabBar extends React.Component<TabBarProps> {
 			iconName = 'home';
 		} else if (route.routeName === 'FriendScreen') {
 			iconName = 'user';
-		} else if (route.routeName === 'TicketScreen') {
+		} else if (route.routeName === 'TicketsScreen') {
 			iconName = 'ticket';
 		} else if (route.routeName === 'SettingScreen') {
 			iconName = 'settings';

@@ -6,7 +6,7 @@ import {
 
 import _HomeScreen from '../screens/home-screen';
 import _FriendScreen from '../screens/friend-screen';
-import _TicketScreen from '../screens/ticket-screen';
+import _TicketsScreen from '../screens/tickets-screen';
 
 import VSPTabBar from '../components/vsp-tabbar';
 
@@ -18,8 +18,8 @@ const AppTab = createBottomTabNavigator(
 		FriendScreen: {
 			screen: _FriendScreen,
 		},
-		TicketScreen: {
-			screen: _TicketScreen,
+		TicketsScreen: {
+			screen: _TicketsScreen,
 		},
 	},
 	{
