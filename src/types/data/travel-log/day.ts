@@ -10,7 +10,15 @@ export interface Event {
 
 export type Events = Event[];
 
-export type Weather = 'sunny' | 'cloudy' | 'rainy';
+export type Weather =
+	| 'sunny'
+	| 'partly-cloudy'
+	| 'cloudy'
+	| 'rain'
+	| 'thunder-storm'
+	| 'snow'
+	| 'fog'
+	| 'windy';
 
 export interface Day {
 	Date: DateTime;
