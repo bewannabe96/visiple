@@ -59,7 +59,6 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 						<VSPDivider
 							text={`친구 ${DEV_FRIENDS.length}`}
 							orientation='far-left'
-							marginHorizontal={VSP_EDGE_PADDING}
 						/>
 					}
 					renderItem={({ item }) => (
@@ -68,7 +67,6 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 								size: HORIZONTAL_UNIT(10),
 							}}
 							containerStyle={{
-								paddingHorizontal: VSP_EDGE_PADDING,
 								paddingVertical: HORIZONTAL_UNIT(3),
 							}}
 							title={item.name}
@@ -80,6 +78,9 @@ export default class FriendScreen extends React.Component<IVSPScreenProps> {
 							}}
 						/>
 					)}
+					contentContainerStyle={{
+						paddingHorizontal: VSP_EDGE_PADDING,
+					}}
 				/>
 				<View style={style.addFriendButtonView}>
 					<Icon
