@@ -55,7 +55,6 @@ export default class NewTravelLogScreen extends React.Component<
 	public render() {
 		const style = StyleSheet.create({
 			container: {
-				flex: 1,
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
 
