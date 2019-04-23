@@ -6,7 +6,7 @@ import { DateTime } from 'luxon';
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import { Period } from '../../types/data/datetime';
 import { THEME_COLORS } from '../../types/lib/theme';
-import { Action } from '../../types/lib/redux';
+import { Action, EMPTY_ACTION } from '../../types/lib/redux';
 
 import SelectPeriodModal, { FromToTab } from './select-period-modal';
 
@@ -22,16 +22,16 @@ export interface IPeriodSelectorProps {
 	period: Period;
 
 	// ACTION CREATORS
-	setFromDate: Action;
-	setToDate: Action;
+	setFromDate?: Action;
+	setToDate?: Action;
 }
 
 /**
  * PeriodSelector
  *
  * @property
- * - ```color```(required): Theme color
- * - ```period```(required): Period of the ticket
+ * - ```color```: Theme color
+ * - ```period```: Period of the ticket
  *
  * @actionCreator
  * - ```setFromDate```
@@ -40,6 +40,13 @@ export interface IPeriodSelectorProps {
 export default class PeriodSelector extends React.Component<
 	IPeriodSelectorProps
 > {
+	public static defaultProps: IPeriodSelectorProps = {
+		color: THEME_COLORS.oceanBlue,
+		period: { from: DateTime.local(), to: DateTime.local() },
+		setFromDate: EMPTY_ACTION,
+		setToDate: EMPTY_ACTION,
+	};
+
 	public state = {
 		isModalVisible: false,
 		fromtoTab: 'from-tab' as FromToTab,
@@ -152,8 +159,8 @@ export default class PeriodSelector extends React.Component<
 					closeAction={this._closeModal}
 					color={this.props.color}
 					period={this.props.period}
-					setFromDate={this.props.setFromDate}
-					setToDate={this.props.setToDate}
+					setFromDate={this.props.setFromDate!}
+					setToDate={this.props.setToDate!}
 				/>
 			</View>
 		);

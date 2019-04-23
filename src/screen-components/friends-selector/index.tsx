@@ -14,24 +14,29 @@ export interface IFriendsSelectorProps {
 	/**
 	 * Theme color
 	 */
-	color: string;
+	color?: string;
 
 	/**
 	 * Selected friends
 	 */
-	friends: UserID[];
+	friends?: UserID[];
 }
 
 /**
  * FriendsSelector
  *
  * @property
- * - ```color```(required): Theme color
- * - ```friends```(required): Selected friends
+ * - ```color```: Theme color (by default ```THEME_COLORS.oceanBlue```)
+ * - ```friends```: Selected friends
  */
 export default class FriendsSelector extends React.Component<
 	IFriendsSelectorProps
 > {
+	public static defaultProps: IFriendsSelectorProps = {
+		color: THEME_COLORS.oceanBlue,
+		friends: [],
+	};
+
 	public state = {
 		isModalVisible: false,
 	};
@@ -106,7 +111,7 @@ export default class FriendsSelector extends React.Component<
 			<View>
 				<View style={style.container}>
 					<FlatList
-						data={this.props.friends}
+						data={this.props.friends!}
 						keyExtractor={item => item.toString()}
 						renderItem={this._renderParticipant}
 						horizontal
@@ -123,14 +128,14 @@ export default class FriendsSelector extends React.Component<
 				<View style={style.footerView}>
 					<VSPText color={THEME_COLORS.grey}>총</VSPText>
 					<VSPText style={style.valueText}>{`${
-						this.props.friends.length
+						this.props.friends!.length
 					}`}</VSPText>
 					<VSPText color={THEME_COLORS.grey}>명</VSPText>
 				</View>
 				<SelectFriendModal
 					isVisible={this.state.isModalVisible}
 					closeAction={this._closeModal}
-					color={this.props.color}
+					color={this.props.color!}
 				/>
 			</View>
 		);
