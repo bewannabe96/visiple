@@ -66,7 +66,7 @@ export default class VSPDivider extends React.Component<
 			},
 
 			line: {
-				height: 1,
+				height: 0.5,
 				backgroundColor: this.props.color!,
 			},
 
