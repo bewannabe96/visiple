@@ -3,7 +3,7 @@ import { Image } from '../image';
 import { CountryCode } from '../country';
 import { Period } from '../datetime';
 
-import { Events } from './event';
+import { Days } from './day';
 
 export interface TravelLog {
 	id: number;
@@ -14,7 +14,7 @@ export interface TravelLog {
 	participants: UserID[];
 	period: Period;
 	countryCodes: CountryCode[];
-	events: Events;
+	days: Days;
 }
 
 export interface NewtravelLog {
