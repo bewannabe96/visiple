@@ -146,7 +146,24 @@ export default class TravelLogsScreen extends React.Component<
 					paddingVertical: HORIZONTAL_UNIT(2),
 				}}
 			>
-				<Text h2>{item.title}</Text>
+				<View>
+					<Text h2>{item.title}</Text>
+					<View
+						style={{
+							flexDirection: 'row',
+							marginTop: HORIZONTAL_UNIT(2),
+						}}
+					>
+						<Text h4>함께하는 친구</Text>
+						<Text
+							h4
+							style={{
+								marginLeft: HORIZONTAL_UNIT(),
+								color: THEME_COLORS.grey,
+							}}
+						>{`${item.participants.length - 1}명`}</Text>
+					</View>
+				</View>
 				<View
 					style={{ flexDirection: 'row', justifyContent: 'flex-end' }}
 				>
