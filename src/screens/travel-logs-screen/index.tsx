@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp, FlatList } from 'react-navigation';
 import { Text, Image } from 'react-native-elements';
 import { DateTime } from 'luxon';
@@ -121,10 +121,14 @@ export default class TravelLogsScreen extends React.Component<
 	};
 
 	private _renderTravelLog = ({ item }: { item: TravelLog }) => (
-		<View
+		<TouchableOpacity
+			activeOpacity={0.6}
 			style={{
 				flexDirection: 'row',
 				paddingVertical: HORIZONTAL_UNIT(3),
+			}}
+			onPress={() => {
+				this.props.navigation.navigate('TravelLogEditScreen');
 			}}
 		>
 			<View
@@ -200,7 +204,7 @@ export default class TravelLogsScreen extends React.Component<
 					</View>
 				</View>
 			</View>
-		</View>
+		</TouchableOpacity>
 	);
 
 	public render() {
