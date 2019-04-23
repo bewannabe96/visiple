@@ -43,5 +43,6 @@ export const VSP_EDGE_PADDING = HORIZONTAL_UNIT(padding.edge);
  * Font Sizes
  */
 export const THEME_FONTSIZE = HORIZONTAL_UNIT(fontSize.regular);
+export const THEME_TITLE_FONTSIZE = HORIZONTAL_UNIT(fontSize.title);
 export const THEME_HEADER_FONTSIZE = HORIZONTAL_UNIT(fontSize.header);
 export const THEME_MINOR_FONTSIZE = HORIZONTAL_UNIT(fontSize.minor);

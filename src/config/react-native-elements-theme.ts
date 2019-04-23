@@ -4,6 +4,7 @@ import {
 	HORIZONTAL_UNIT,
 	THEME_HEADER_FONTSIZE,
 	THEME_MINOR_FONTSIZE,
+	THEME_TITLE_FONTSIZE,
 } from '../types/lib/size';
 
 const RNElementsTheme = {
@@ -30,7 +31,7 @@ const RNElementsTheme = {
 
 	Text: {
 		h1Style: {
-			fontSize: THEME_HEADER_FONTSIZE,
+			fontSize: THEME_TITLE_FONTSIZE,
 		},
 		h2Style: {
 			fontSize: THEME_HEADER_FONTSIZE,
