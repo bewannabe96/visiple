@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { NavigationScreenProp, FlatList } from 'react-navigation';
-import { Card, Text } from 'react-native-elements';
+import { Text, Image } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
 import { TravelLog } from '../../types/data/travel-log';
@@ -14,6 +14,7 @@ import VSPHeader from '../../components/vsp-header';
 import VSPHeaderButton, {
 	VSPHeaderBack,
 } from '../../components/vsp-header-button';
+import VSPDivider from '../../components/vsp-divider';
 
 const DEV_TRAVEL_LOG: TravelLog[] = [
 	{
@@ -47,6 +48,34 @@ const DEV_TRAVEL_LOG: TravelLog[] = [
 	{
 		id: 3,
 		title: 'Travel Log 3',
+		titleImage: '',
+		owner: 1,
+		participants: [1, 2],
+		period: {
+			from: DateTime.local(),
+			to: DateTime.local(),
+		},
+		events: [],
+		published: false,
+		countryCodes: ['KOR'],
+	},
+	{
+		id: 4,
+		title: 'Travel Log 4',
+		titleImage: '',
+		owner: 1,
+		participants: [1, 2],
+		period: {
+			from: DateTime.local(),
+			to: DateTime.local(),
+		},
+		events: [],
+		published: false,
+		countryCodes: ['KOR'],
+	},
+	{
+		id: 5,
+		title: 'Travel Log 5',
 		titleImage: '',
 		owner: 1,
 		participants: [1, 2],
@@ -94,27 +123,66 @@ export default class EditableTravelLogsScreen extends React.Component<
 	private _renderTravelLog = ({ item }: { item: TravelLog }) => (
 		<View
 			style={{
-				paddingVertical: HORIZONTAL_UNIT(2),
+				flexDirection: 'row',
+				paddingVertical: HORIZONTAL_UNIT(3),
 			}}
 		>
-			<Card
-				title={item.title}
-				image={require('../../dev-sample-image/landscape_1.jpeg')}
-				containerStyle={{
-					borderRadius: HORIZONTAL_UNIT(2),
+			<View
+				style={{
+					width: HORIZONTAL_UNIT(30),
+					height: HORIZONTAL_UNIT(32),
 				}}
 			>
-				<Text
-					h3
-					style={{
-						color: THEME_COLORS.grey,
-					}}
-				>{`${item.period.from.toLocaleString(
-					DateTime.DATE_FULL,
-				)} ~ ${item.period.to.toLocaleString(
-					DateTime.DATE_FULL,
-				)}`}</Text>
-			</Card>
+				<Image
+					source={require('../../dev-sample-image/landscape_1.jpeg')}
+					style={{ borderRadius: HORIZONTAL_UNIT(2) }}
+				/>
+			</View>
+			<View
+				style={{
+					flex: 1,
+					justifyContent: 'space-between',
+					marginLeft: HORIZONTAL_UNIT(2),
+					paddingVertical: HORIZONTAL_UNIT(2),
+				}}
+			>
+				<Text h2>{item.title}</Text>
+				<View
+					style={{ flexDirection: 'row', justifyContent: 'flex-end' }}
+				>
+					<View
+						style={{
+							alignItems: 'flex-end',
+							marginRight: HORIZONTAL_UNIT(),
+						}}
+					>
+						<Text h3>FROM</Text>
+						<Text h3>TO</Text>
+					</View>
+					<View>
+						<Text
+							h3
+							style={{
+								color: THEME_COLORS.grey,
+							}}
+						>
+							{`${item.period.from.toLocaleString(
+								DateTime.DATE_FULL,
+							)}`}
+						</Text>
+						<Text
+							h3
+							style={{
+								color: THEME_COLORS.grey,
+							}}
+						>
+							{`${item.period.to.toLocaleString(
+								DateTime.DATE_FULL,
+							)}`}
+						</Text>
+					</View>
+				</View>
+			</View>
 		</View>
 	);
 
@@ -124,6 +192,12 @@ export default class EditableTravelLogsScreen extends React.Component<
 				<FlatList
 					data={DEV_TRAVEL_LOG}
 					keyExtractor={item => item.id.toString()}
+					ListHeaderComponent={
+						<VSPDivider
+							text={`작성중인 로그 ${DEV_TRAVEL_LOG.length}`}
+							orientation='far-left'
+						/>
+					}
 					renderItem={this._renderTravelLog}
 					contentContainerStyle={{
 						paddingHorizontal: VSP_EDGE_PADDING,
