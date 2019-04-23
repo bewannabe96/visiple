@@ -77,8 +77,6 @@ export default class VSPExpandable extends React.Component<
 			header: {
 				flex: 1,
 			},
-
-			body: {},
 		});
 
 		return (
@@ -93,9 +91,7 @@ export default class VSPExpandable extends React.Component<
 						color={this.props.color!}
 					/>
 				</View>
-				<View style={style.body}>
-					{this.state.expanded && this.props.body}
-				</View>
+				<View>{this.state.expanded && this.props.body}</View>
 			</View>
 		);
 	}
