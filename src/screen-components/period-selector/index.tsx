@@ -89,7 +89,7 @@ export default class PeriodSelector extends React.Component<
 
 			footerView: {
 				flexDirection: 'row',
-				justifyContent: 'flex-end',
+				justifyContent: 'space-between',
 				alignItems: 'flex-end',
 				marginTop: HORIZONTAL_UNIT(),
 			},
@@ -99,6 +99,28 @@ export default class PeriodSelector extends React.Component<
 				marginHorizontal: HORIZONTAL_UNIT(),
 			},
 		});
+
+		let numberOfDays = this.props
+			.period!.from.until(this.props.period!.to)
+			.count('days');
+		let daycountText =
+			numberOfDays == 1 ? (
+				<Text h3 style={style.valueText}>
+					당일치기
+				</Text>
+			) : (
+				<View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+					<Text h3 style={style.valueText}>{`${numberOfDays -
+						1}`}</Text>
+					<Text h3 style={{ color: THEME_COLORS.grey }}>
+						박
+					</Text>
+					<Text h3 style={style.valueText}>{`${numberOfDays}`}</Text>
+					<Text h3 style={{ color: THEME_COLORS.grey }}>
+						일
+					</Text>
+				</View>
+			);
 
 		return (
 			<View>
@@ -146,12 +168,17 @@ export default class PeriodSelector extends React.Component<
 					</TouchableOpacity>
 				</View>
 				<View style={style.footerView}>
-					<Text h3 style={{ color: THEME_COLORS.grey }}>
-						시간대
-					</Text>
-					<Text h3 style={style.valueText}>{`${
-						this.props.period.to.offsetNameShort
-					}`}</Text>
+					{daycountText}
+					<View
+						style={{ flexDirection: 'row', alignItems: 'flex-end' }}
+					>
+						<Text h3 style={{ color: THEME_COLORS.grey }}>
+							시간대
+						</Text>
+						<Text h3 style={style.valueText}>{`${
+							this.props.period.to.offsetNameShort
+						}`}</Text>
+					</View>
 				</View>
 				<SelectPeriodModal
 					isVisible={this.state.isModalVisible}
