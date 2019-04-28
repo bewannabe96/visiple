@@ -24,7 +24,7 @@ const initialState: NewTicketState = {
 		from: DateTime.local().startOf('day'),
 		to: DateTime.local()
 			.plus({ days: 1 })
-			.endOf('day'),
+			.startOf('day'),
 	},
 };
 
