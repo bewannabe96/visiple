@@ -12,7 +12,7 @@ interface IVSPCalendarStripProps {
 	/**
 	 * Period of the calendar
 	 */
-	period?: Period;
+	period: Period;
 
 	/**
 	 * Theme color of the VSPCalendarStrip
@@ -42,12 +42,6 @@ export default class VSPCalendarStrip extends React.Component<
 	private _MONTHS: string[] = [];
 
 	public static defaultProps = {
-		period: {
-			from: DateTime.local().startOf('day'),
-			to: DateTime.local()
-				.plus({ days: 10 })
-				.startOf('day'),
-		},
 		color: THEME_COLORS.oceanBlue,
 	};
 
