@@ -4,6 +4,8 @@ import {
 	getActiveChildNavigationOptions,
 } from 'react-navigation';
 
+import TravelLogEditScreenBottomTabBar from './bottom-tabbar';
+
 import _SummaryPage from './summary-page';
 import _DayLogsPage from './day-logs-page';
 
@@ -18,6 +20,7 @@ const TravelLogEditScreen = createBottomTabNavigator(
 	},
 	{
 		initialRouteName: 'SummaryPage',
+		tabBarComponent: TravelLogEditScreenBottomTabBar,
 		navigationOptions: ({
 			navigation,
 		}: {

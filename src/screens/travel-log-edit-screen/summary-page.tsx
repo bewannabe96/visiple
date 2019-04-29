@@ -99,47 +99,45 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 
 		return (
 			<VSPContainer>
-				<ScrollView>
-					<View style={style.titleImageView}>
-						<Image
-							source={require('../../dev-sample-image/landscape_1.jpeg')}
+				<View style={style.titleImageView}>
+					<Image
+						source={require('../../dev-sample-image/landscape_1.jpeg')}
+					/>
+					<View
+						style={{
+							position: 'absolute',
+							bottom: 0,
+							width: '100%',
+							alignItems: 'flex-end',
+							padding: HORIZONTAL_UNIT(2),
+						}}
+					>
+						<Icon
+							name='photo-camera'
+							type='vspicon'
+							size={THEME_HEADER_FONTSIZE}
+							reverse
+							raised
 						/>
-						<View
-							style={{
-								position: 'absolute',
-								bottom: 0,
-								width: '100%',
-								alignItems: 'flex-end',
-								padding: HORIZONTAL_UNIT(2),
-							}}
-						>
-							<Icon
-								name='photo-camera'
-								type='vspicon'
-								size={THEME_HEADER_FONTSIZE}
-								reverse
-								raised
-							/>
-						</View>
 					</View>
-					<View style={style.bodyView}>
-						<Text h1 style={style.headerText}>
-							{this.props.title}
-						</Text>
+				</View>
+				<View style={style.bodyView}>
+					<Text h1 style={style.headerText}>
+						{this.props.title}
+					</Text>
 
-						<Text h2 style={style.headerText}>
-							함께하는 친구
-						</Text>
-						<FriendsSelector />
+					<Text h2 style={style.headerText}>
+						함께하는 친구
+					</Text>
+					<FriendsSelector />
 
-						<VSPDivider marginVertical={HORIZONTAL_UNIT(6)} />
+					<VSPDivider marginVertical={HORIZONTAL_UNIT(6)} />
 
-						<Text h2 style={style.headerText}>
-							기간
-						</Text>
-						<PeriodSelector />
-					</View>
-				</ScrollView>
+					<Text h2 style={style.headerText}>
+						기간
+					</Text>
+					<PeriodSelector />
+				</View>
 			</VSPContainer>
 		);
 	}
