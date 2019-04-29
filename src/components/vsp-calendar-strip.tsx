@@ -18,6 +18,11 @@ interface IVSPCalendarStripProps {
 	 * Theme color of the VSPCalendarStrip
 	 */
 	color?: RawColor;
+
+	/**
+	 * Callback function when date pressed
+	 */
+	onDatePress?: (isodate: string) => void;
 }
 
 /**
@@ -26,6 +31,7 @@ interface IVSPCalendarStripProps {
  * @property
  * - ```period```(required): Period of the calendar
  * - ```color```: Theme color of the VSPCalendarStrip (by default ```THEME_COLORS.oceanBlue```)
+ * - ```onPress```: Callback function when date pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
  * - ```marginVertical```: Vertical margin; including marginTop and marginBottom
@@ -148,6 +154,8 @@ export default class VSPCalendarStrip extends React.Component<
 						activeOpacity={0.6}
 						disabled={isActive}
 						onPress={() => {
+							this.props.onDatePress &&
+								this.props.onDatePress(p.toISODate());
 							this.setState({
 								...this.state,
 								currentDate: p,
