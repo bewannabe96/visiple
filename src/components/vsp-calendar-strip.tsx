@@ -99,7 +99,7 @@ export default class VSPCalendarStrip extends React.Component<
 	public render() {
 		const style = StyleSheet.create({
 			dateItem: {
-				justifyContent: 'center',
+				justifyContent: 'space-evenly',
 				alignItems: 'center',
 				width: this.state.dayTextWidth,
 				height: this.state.dayTextWidth,
@@ -163,7 +163,7 @@ export default class VSPCalendarStrip extends React.Component<
 						}}
 					>
 						<Text
-							h3
+							h4
 							style={{
 								color: isActive
 									? THEME_COLORS.white
@@ -173,7 +173,7 @@ export default class VSPCalendarStrip extends React.Component<
 							{p.weekdayShort}
 						</Text>
 						<Text
-							h2
+							h3
 							style={{
 								color: isActive
 									? THEME_COLORS.white
@@ -188,14 +188,14 @@ export default class VSPCalendarStrip extends React.Component<
 				dateItems.push(
 					<View key={p.toISODate()} style={style.dateItem}>
 						<Text
-							h3
+							h4
 							style={{
 								color: THEME_COLORS.greyWhite,
 							}}
 						>
 							{p.weekdayShort}
 						</Text>
-						<Text h2 style={{ color: THEME_COLORS.greyWhite }}>
+						<Text h3 style={{ color: THEME_COLORS.greyWhite }}>
 							{p.day}
 						</Text>
 					</View>,

@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import { TabBarProps } from 'react-native-scrollable-tab-view';
 
 import { Period } from '../../types/data/datetime';
+import { VSP_EDGE_PADDING } from '../../types/lib/size';
 
 import VSPCalendarStrip from '../../components/vsp-calendar-strip';
-import { HORIZONTAL_UNIT } from '../../types/lib/size';
 
 interface IDayLogsTabTabbarProps {
 	/**
@@ -37,7 +37,7 @@ export default class DayLogsTabTabbar extends React.Component<
 			});
 
 		return (
-			<View style={{ marginHorizontal: HORIZONTAL_UNIT() }}>
+			<View style={{ marginHorizontal: VSP_EDGE_PADDING }}>
 				<VSPCalendarStrip
 					period={this.props.period}
 					selectedDate={this._pagesInfo[this.props.activeTab || 0]}

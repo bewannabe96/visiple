@@ -91,6 +91,9 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 				paddingTop: HORIZONTAL_UNIT(3),
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
+			titleText: {
+				marginBottom: HORIZONTAL_UNIT(6),
+			},
 
 			headerText: {
 				marginBottom: HORIZONTAL_UNIT(2),
@@ -122,21 +125,21 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 					</View>
 				</View>
 				<View style={style.bodyView}>
-					<Text h1 style={style.headerText}>
+					<Text h1 style={style.titleText}>
 						{this.props.title}
 					</Text>
-
-					<Text h2 style={style.headerText}>
-						함께하는 친구
-					</Text>
-					<FriendsSelector />
-
-					<VSPDivider marginVertical={HORIZONTAL_UNIT(6)} />
 
 					<Text h2 style={style.headerText}>
 						기간
 					</Text>
 					<PeriodSelector />
+
+					<VSPDivider marginVertical={HORIZONTAL_UNIT(6)} />
+
+					<Text h2 style={style.headerText}>
+						함께하는 친구
+					</Text>
+					<FriendsSelector />
 				</View>
 			</VSPContainer>
 		);
