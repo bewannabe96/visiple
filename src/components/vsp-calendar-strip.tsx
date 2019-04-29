@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text, Icon } from 'react-native-elements';
-import { DateTime } from 'luxon';
 
 import { IVSPMarginProps } from '../types/props/vsp-margin';
 import { THEME_COLORS, RawColor } from '../types/lib/theme';
@@ -20,6 +19,11 @@ interface IVSPCalendarStripProps {
 	color?: RawColor;
 
 	/**
+	 * Selected date in ISO Date format
+	 */
+	selectedDate?: string;
+
+	/**
 	 * Callback function when date pressed
 	 */
 	onDatePress?: (isodate: string) => void;
@@ -31,6 +35,7 @@ interface IVSPCalendarStripProps {
  * @property
  * - ```period```(required): Period of the calendar
  * - ```color```: Theme color of the VSPCalendarStrip (by default ```THEME_COLORS.oceanBlue```)
+ * - ```selectedDate```: Selected date in ISO Date format
  * - ```onPress```: Callback function when date pressed
  * - ```margin```: Overall margin; including marginTop, marginBottom, marginRight and marginLeft
  * - ```marginHorizontal```: Horizontal margin; including marginRight and marginLeft
@@ -55,7 +60,6 @@ export default class VSPCalendarStrip extends React.Component<
 		firstTrigger: true,
 		dayTextWidth: 0,
 		currentWeek: 0,
-		currentDate: this.props.period!.from,
 	};
 
 	private _previousWeek = () => {
@@ -103,11 +107,11 @@ export default class VSPCalendarStrip extends React.Component<
 			},
 		});
 
-		let minDisplayDate = this.props.period!.from.plus({
-			days: -this.props.period!.from.weekday + 1,
+		let minDisplayDate = this.props.period.from.plus({
+			days: -this.props.period.from.weekday + 1,
 		});
-		let maxDisplayDate = this.props.period!.to.plus({
-			days: 7 - this.props.period!.to.weekday,
+		let maxDisplayDate = this.props.period.to.plus({
+			days: 7 - this.props.period.to.weekday,
 		});
 		this._MAX_WEEKS =
 			minDisplayDate.until(maxDisplayDate).count('days') / 7 - 1;
@@ -140,8 +144,8 @@ export default class VSPCalendarStrip extends React.Component<
 			p <= maxDisplayDate;
 			p = p.plus({ days: 1 })
 		) {
-			if (p >= this.props.period!.from && p <= this.props.period!.to) {
-				let isActive = +p === +this.state.currentDate;
+			if (p >= this.props.period.from && p <= this.props.period.to) {
+				let isActive = p.toISODate() === this.props.selectedDate;
 				dateItems.push(
 					<TouchableOpacity
 						key={p.toISODate()}
@@ -156,10 +160,6 @@ export default class VSPCalendarStrip extends React.Component<
 						onPress={() => {
 							this.props.onDatePress &&
 								this.props.onDatePress(p.toISODate());
-							this.setState({
-								...this.state,
-								currentDate: p,
-							});
 						}}
 					>
 						<Text
