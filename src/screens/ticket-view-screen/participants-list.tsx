@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { TabProps } from 'react-native-scrollable-tab-view';
 
@@ -27,16 +27,6 @@ export default class ParticipantsList extends React.Component<
 	TabProps<IParticipantsListProps>
 > {
 	public render() {
-		const style = StyleSheet.create({
-			profilesView: {
-				flexDirection: 'row',
-				alignItems: 'flex-end',
-				marginHorizontal: VSP_EDGE_PADDING,
-				marginBottom: HORIZONTAL_UNIT(),
-				zIndex: 1,
-			},
-		});
-
 		return (
 			<FlatList
 				data={this.props.participants}
