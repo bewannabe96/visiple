@@ -28,15 +28,6 @@ interface IVSPModalProps {
 	closeAction: () => any;
 
 	/**
-	 * Height of the modal
-	 *
-	 * - ```auto```: Fit the content
-	 * - ```full```: Full size modal
-	 * - ```minimum```: Minimum size modal
-	 */
-	heightMode?: 'auto' | 'full' | 'minimum';
-
-	/**
 	 * Component to be displayed in the right of the header
 	 */
 	headerRight?: Element;
@@ -49,7 +40,6 @@ interface IVSPModalProps {
  * - ```titleText```(required): Title text in the middle of the header
  * - ```isVisible```(required): Visible if true
  * - ```closeAction```(required): Close action callback
- * - ```heightMode```: Height of the modal (by default ```auto```)
  * - ```headerRight```: Component to be displayed in the right
  * - ```padding```: Overall padding; including paddingTop, paddingBottom, paddingRight and paddingLeft
  * - ```paddingHorizontal```: Horizontal padding; including paddingRight and paddingLeft
@@ -106,12 +96,7 @@ export default class VSPModal extends React.Component<
 
 			bodyView: {
 				backgroundColor: THEME_COLORS.white,
-				height:
-					this.props.heightMode! === 'full'
-						? '85%'
-						: this.props.heightMode! === 'minimum'
-						? '30%'
-						: undefined,
+				height: '85%',
 				...decodeVSPPaddingProps(this.props),
 			},
 		});
