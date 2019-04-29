@@ -32,7 +32,7 @@ const RNElementsTheme = {
 	Text: {
 		style: {
 			color: THEME_COLORS.black,
-			fontWeight: 'normal',
+			fontWeight: 'normal' as 'normal',
 		},
 		h1Style: {
 			fontSize: THEME_TITLE_FONTSIZE,
