@@ -4,7 +4,7 @@ import { Button, Text } from 'react-native-elements';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { DateTime } from 'luxon';
 
-import { KO_CALENDAR_LOCALE } from '../../config/calendar';
+import CALENDAR_LOCALES from '../../config/calendar';
 
 import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
@@ -12,9 +12,9 @@ import { Period } from '../../types/data/datetime';
 import { Action } from '../../types/lib/redux';
 import { SYSTEM_LANGUAGE_CODE } from '../../types/lib/system';
 
-export type FromToTab = 'from-tab' | 'to-tab';
-
 import VSPModal from '../../components/vsp-modal';
+
+export type FromToTab = 'from-tab' | 'to-tab';
 
 interface ISelectPeriodModalProps {
 	/**
@@ -127,8 +127,10 @@ export default class SelectPeriodModal extends React.Component<
 			},
 		});
 
-		LocaleConfig.locales['ko'] = KO_CALENDAR_LOCALE;
-		LocaleConfig.defaultLocale = SYSTEM_LANGUAGE_CODE;
+		LocaleConfig.locales = CALENDAR_LOCALES;
+		if (SYSTEM_LANGUAGE_CODE in CALENDAR_LOCALES)
+			LocaleConfig.defaultLocale = SYSTEM_LANGUAGE_CODE;
+		else LocaleConfig.defaultLocale = 'en';
 
 		const calendarTheme = {
 			arrowColor: this.props.color,
