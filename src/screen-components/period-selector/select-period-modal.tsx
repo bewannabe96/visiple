@@ -1,13 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Button, Text } from 'react-native-elements';
-import { Calendar } from 'react-native-calendars';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { DateTime } from 'luxon';
+
+import { KO_CALENDAR_LOCALE } from '../../config/calendar';
 
 import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
 import { Period } from '../../types/data/datetime';
 import { Action } from '../../types/lib/redux';
+import { SYSTEM_LANGUAGE_CODE } from '../../types/lib/system';
 
 export type FromToTab = 'from-tab' | 'to-tab';
 
@@ -124,6 +127,9 @@ export default class SelectPeriodModal extends React.Component<
 			},
 		});
 
+		LocaleConfig.locales['ko'] = KO_CALENDAR_LOCALE;
+		LocaleConfig.defaultLocale = SYSTEM_LANGUAGE_CODE;
+
 		const calendarTheme = {
 			arrowColor: this.props.color,
 			dayTextColor: THEME_COLORS.grey,
@@ -183,10 +189,10 @@ export default class SelectPeriodModal extends React.Component<
 					theme={calendarTheme}
 					current={
 						this.state.fromtoTab === 'from-tab'
-							? this.props.period.from.toISO()
-							: this.props.period.to.toISO()
+							? this.props.period.from.toISODate()
+							: this.props.period.to.toISODate()
 					}
-					minDate={DateTime.local().toISO()}
+					minDate={DateTime.local().toISODate()}
 					monthFormat={'MMM yyyy'}
 					hideExtraDays={true}
 					markingType={'period'}

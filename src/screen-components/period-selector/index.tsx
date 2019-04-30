@@ -7,6 +7,7 @@ import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import { Period } from '../../types/data/datetime';
 import { THEME_COLORS } from '../../types/lib/theme';
 import { Action, EMPTY_ACTION } from '../../types/lib/redux';
+import { SYSTEM_LANGUAGE_CODE } from '../../types/lib/system';
 
 import SelectPeriodModal, { FromToTab } from './select-period-modal';
 
@@ -42,7 +43,10 @@ export default class PeriodSelector extends React.Component<
 > {
 	public static defaultProps: IPeriodSelectorProps = {
 		color: THEME_COLORS.oceanBlue,
-		period: { from: DateTime.local(), to: DateTime.local() },
+		period: {
+			from: DateTime.local().setLocale(SYSTEM_LANGUAGE_CODE),
+			to: DateTime.local().setLocale(SYSTEM_LANGUAGE_CODE),
+		},
 		setFromDate: EMPTY_ACTION,
 		setToDate: EMPTY_ACTION,
 	};
