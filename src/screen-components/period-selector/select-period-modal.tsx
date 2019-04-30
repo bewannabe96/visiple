@@ -172,11 +172,11 @@ export default class SelectPeriodModal extends React.Component<
 			>
 				<View style={style.fromtoTabView}>
 					{this._renderTab(
-						'시작',
+						'출발',
 						this.props.period.from,
 						'from-tab',
 					)}
-					{this._renderTab('종료', this.props.period.to, 'to-tab')}
+					{this._renderTab('도착', this.props.period.to, 'to-tab')}
 				</View>
 				<Calendar
 					style={style.calendar}

@@ -82,16 +82,13 @@ export default class PeriodSelector extends React.Component<
 			button: {
 				flex: 1,
 				alignItems: 'center',
-				borderWidth: 1,
-				borderColor: this.props.color,
-				paddingVertical: HORIZONTAL_UNIT(3),
 			},
 
 			footerView: {
 				flexDirection: 'row',
 				justifyContent: 'space-between',
 				alignItems: 'flex-end',
-				marginTop: HORIZONTAL_UNIT(),
+				marginTop: HORIZONTAL_UNIT(2),
 			},
 
 			valueText: {
@@ -134,6 +131,15 @@ export default class PeriodSelector extends React.Component<
 							h3
 							style={{
 								color: THEME_COLORS.grey,
+								marginBottom: HORIZONTAL_UNIT(),
+							}}
+						>
+							출발
+						</Text>
+						<Text
+							h2
+							style={{
+								color: this.props.color,
 							}}
 						>
 							{`${this.props.period.from.toLocaleString(
@@ -159,6 +165,15 @@ export default class PeriodSelector extends React.Component<
 							h3
 							style={{
 								color: THEME_COLORS.grey,
+								marginBottom: HORIZONTAL_UNIT(),
+							}}
+						>
+							도착
+						</Text>
+						<Text
+							h2
+							style={{
+								color: this.props.color,
 							}}
 						>
 							{`${this.props.period.to.toLocaleString(
