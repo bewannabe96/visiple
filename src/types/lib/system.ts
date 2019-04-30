@@ -1,8 +1,3 @@
-import { NativeModules, Platform } from 'react-native';
+import * as RNLocalize from 'react-native-localize';
 
-export const SYSTEM_LOCALE =
-	Platform.OS == 'ios'
-		? // iOS:
-		  NativeModules.SettingsManager.settings.AppleLocale
-		: // Android:
-		  NativeModules.I18nManager.localeIdentifier;
+export const SYSTEM_LANGUAGE_CODE = RNLocalize.getLocales()[0].languageCode;
