@@ -1,6 +1,6 @@
-import * as _countries from './countries.json';
+import * as _countries from '../../data/countries.json';
 
-import { CountryCode, Country } from '../../types/data/country';
+import { CountryCode, Country } from '../data/country';
 
 const COUNTRIES: Country[] = _countries.countries;
 
