@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import { Avatar, Icon } from 'react-native-elements';
+import { Avatar, Icon, Text } from 'react-native-elements';
 
 import { HORIZONTAL_UNIT, THEME_HEADER_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
 import { UserID } from '../../types/data/user';
-
-import VSPText from '../../components/vsp-text';
 
 import SelectFriendModal from './select-friend-modal';
 
@@ -19,7 +17,7 @@ export interface IFriendsSelectorProps {
 	/**
 	 * Selected friends
 	 */
-	friends?: UserID[];
+	friends: UserID[];
 }
 
 /**
@@ -34,7 +32,7 @@ export default class FriendsSelector extends React.Component<
 > {
 	public static defaultProps: IFriendsSelectorProps = {
 		color: THEME_COLORS.oceanBlue,
-		friends: [],
+		friends: [1, 2, 3, 4, 5, 6],
 	};
 
 	public state = {
@@ -57,17 +55,18 @@ export default class FriendsSelector extends React.Component<
 			<View
 				style={{
 					alignItems: 'center',
-					padding: HORIZONTAL_UNIT(),
-					paddingHorizontal: HORIZONTAL_UNIT(2),
 				}}
 			>
 				<Avatar size={HORIZONTAL_UNIT(12)} />
-				<VSPText
-					marginTop={HORIZONTAL_UNIT()}
-					color={THEME_COLORS.grey}
+				<Text
+					h3
+					style={{
+						color: THEME_COLORS.grey,
+						marginTop: HORIZONTAL_UNIT(),
+					}}
 				>
 					김윤회
-				</VSPText>
+				</Text>
 				<View
 					style={{
 						position: 'absolute',
@@ -89,7 +88,7 @@ export default class FriendsSelector extends React.Component<
 
 	public render() {
 		const style = StyleSheet.create({
-			container: {
+			bodyView: {
 				flexDirection: 'row',
 				alignItems: 'center',
 			},
@@ -97,22 +96,30 @@ export default class FriendsSelector extends React.Component<
 			footerView: {
 				flexDirection: 'row',
 				justifyContent: 'flex-end',
-				alignItems: 'flex-end',
-			},
-
-			valueText: {
-				color: this.props.color,
-				fontSize: THEME_HEADER_FONTSIZE,
-				marginHorizontal: HORIZONTAL_UNIT(),
+				alignItems: 'center',
+				marginTop: HORIZONTAL_UNIT(1.5),
 			},
 		});
 
 		return (
 			<View>
-				<View style={style.container}>
+				<View style={style.bodyView}>
 					<FlatList
-						data={this.props.friends!}
+						data={this.props.friends}
 						keyExtractor={item => item.toString()}
+						ListEmptyComponent={
+							<Text
+								h3
+								style={{
+									color: this.props.color,
+								}}
+							>
+								친구를 초대 하십시오.
+							</Text>
+						}
+						ItemSeparatorComponent={() => (
+							<View style={{ width: HORIZONTAL_UNIT(3) }} />
+						)}
 						renderItem={this._renderParticipant}
 						horizontal
 						showsHorizontalScrollIndicator={false}
@@ -126,11 +133,18 @@ export default class FriendsSelector extends React.Component<
 					/>
 				</View>
 				<View style={style.footerView}>
-					<VSPText color={THEME_COLORS.grey}>총</VSPText>
-					<VSPText style={style.valueText}>{`${
-						this.props.friends!.length
-					}`}</VSPText>
-					<VSPText color={THEME_COLORS.grey}>명</VSPText>
+					<Text h3 style={{ color: THEME_COLORS.grey }}>
+						총
+					</Text>
+					<Text
+						h3
+						style={{
+							color: this.props.color,
+							marginHorizontal: HORIZONTAL_UNIT(),
+						}}
+					>
+						{`${this.props.friends.length} 명`}
+					</Text>
 				</View>
 				<SelectFriendModal
 					isVisible={this.state.isModalVisible}
