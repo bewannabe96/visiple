@@ -1,7 +1,8 @@
 import { UserID } from '../user';
 import { Image } from '../image';
-import { CountryCode } from '../country';
 import { Period } from '../datetime';
+
+import { CountryCode } from '../../lib/country';
 
 import { Days } from './day';
 

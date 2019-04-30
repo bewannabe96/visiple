@@ -1,6 +1,6 @@
-import * as Currency from '../../data/currency.json';
+import * as _currencies from '../../data/currency.json';
 
-export const CURRENCY: {
+export interface Currency {
 	[code: string]: {
 		symbol: string;
 		name: string;
@@ -10,4 +10,6 @@ export const CURRENCY: {
 		code: string;
 		name_plural: string;
 	};
-} = Currency;
+}
+
+export const CURRENCY: Currency = _currencies;

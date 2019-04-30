@@ -10,8 +10,8 @@ import {
 	THEME_MINOR_FONTSIZE,
 	VSP_EDGE_PADDING,
 } from '../../types/lib/size';
+import { CURRENCY } from '../../types/lib/currency';
 import { DayPlans, Plan, DayPlan } from '../../types/data/ticket/plan';
-import { CURRENCY } from '../../types/data/currency';
 
 import VSPText from '../../components/vsp-text';
 import VSPExpandable from '../../components/vsp-expandable';

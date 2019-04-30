@@ -4,9 +4,7 @@ import { Button, SearchBar, Text } from 'react-native-elements';
 
 import { THEME_COLORS } from '../../types/lib/theme';
 import { HORIZONTAL_UNIT, VSP_EDGE_PADDING } from '../../types/lib/size';
-import { Country } from '../../types/data/country';
-
-import { countryCodesBySearchword } from '../../data/country';
+import { countryCodesBySearchword, Country } from '../../types/lib/country';
 
 import VSPModal from '../../components/vsp-modal';
 import VSPCheckbox from '../../components/vsp-checkbox';

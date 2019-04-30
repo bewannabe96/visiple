@@ -8,9 +8,12 @@ import {
 	THEME_MINOR_FONTSIZE,
 } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
-import { Country } from '../../types/data/country';
 
-import { countryByCode, countriesByCodes } from '../../data/country';
+import {
+	Country,
+	countryByCode,
+	countriesByCodes,
+} from '../../types/lib/country';
 
 import VSPText from '../../components/vsp-text';
 
