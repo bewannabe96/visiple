@@ -3,6 +3,7 @@ package com.visiple;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactcommunity.rnlocalize.RNLocalizePackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNLocalizePackage(),
             new ExtraDimensionsPackage(),
             new VectorIconsPackage(),
             new RNGestureHandlerPackage()
