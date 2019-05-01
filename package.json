@@ -9,6 +9,7 @@
     "prettier": "prettier --write 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "jsc-android": "^241213.1.0",
     "luxon": "^1.11.3",
     "react": "^16.6.3",
     "react-art": "^16.8.4",
