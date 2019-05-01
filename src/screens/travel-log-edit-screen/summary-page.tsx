@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NavigationScreenProp, withNavigation } from 'react-navigation';
-import { Text, Image, Icon } from 'react-native-elements';
-import { ScrollView } from 'react-navigation';
+import { Text, Image, Icon, Input } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
 import {
 	HORIZONTAL_UNIT,
 	VSP_EDGE_PADDING,
 	THEME_HEADER_FONTSIZE,
+	THEME_TITLE_FONTSIZE,
 } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
@@ -80,6 +80,10 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 		title: DEV_TRAVEL_LOG.title,
 	};
 
+	public state = {
+		titleOnEdit: false,
+	};
+
 	public render() {
 		const style = StyleSheet.create({
 			titleImageView: {
@@ -91,14 +95,49 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 				paddingTop: HORIZONTAL_UNIT(3),
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
-			titleText: {
-				marginBottom: HORIZONTAL_UNIT(6),
+
+			titleView: {
+				flexDirection: 'row',
+				alignItems: 'center',
+				marginBottom: HORIZONTAL_UNIT(10),
 			},
 
 			headerText: {
 				marginBottom: HORIZONTAL_UNIT(2),
 			},
 		});
+
+		const titleElement = this.state.titleOnEdit ? (
+			<View style={style.titleView}>
+				<Input
+					value={this.props.title}
+					inputStyle={{ fontSize: THEME_TITLE_FONTSIZE }}
+					containerStyle={{ flex: 1 }}
+				/>
+				<Icon
+					name='check'
+					type='vspicon'
+					color={THEME_COLORS.grey}
+					containerStyle={{ marginLeft: HORIZONTAL_UNIT(4) }}
+					onPress={() => {
+						this.setState({ ...this.state, titleOnEdit: false });
+					}}
+				/>
+			</View>
+		) : (
+			<View style={style.titleView}>
+				<Text h1>{this.props.title}</Text>
+				<Icon
+					name='pencil'
+					type='vspicon'
+					color={THEME_COLORS.grey}
+					containerStyle={{ marginLeft: HORIZONTAL_UNIT(4) }}
+					onPress={() => {
+						this.setState({ ...this.state, titleOnEdit: true });
+					}}
+				/>
+			</View>
+		);
 
 		return (
 			<VSPContainer>
@@ -125,13 +164,8 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 					</View>
 				</View>
 				<View style={style.bodyView}>
-					<Text h1 style={style.titleText}>
-						{this.props.title}
-					</Text>
+					{titleElement}
 
-					<Text h2 style={style.headerText}>
-						기간
-					</Text>
 					<PeriodSelector />
 
 					<VSPDivider marginVertical={HORIZONTAL_UNIT(6)} />
