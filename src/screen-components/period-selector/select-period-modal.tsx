@@ -6,7 +6,11 @@ import { DateTime } from 'luxon';
 
 import CALENDAR_LOCALES from '../../config/calendar';
 
-import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
+import {
+	HORIZONTAL_UNIT,
+	THEME_FONTSIZE,
+	THEME_HEADER_FONTSIZE,
+} from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
 import { Period } from '../../types/data/datetime';
 import { Action } from '../../types/lib/redux';
@@ -141,8 +145,7 @@ export default class SelectPeriodModal extends React.Component<
 			textDayHeaderFontFamily: THEME_FONT,
 			textDayHeaderFontSize: THEME_FONTSIZE,
 			textMonthFontFamily: THEME_FONT,
-			textMonthFontWeight: 'bold',
-			textMonthFontSize: THEME_FONTSIZE,
+			textMonthFontSize: THEME_HEADER_FONTSIZE,
 		};
 
 		const calendarMarkeddays = (from: DateTime, to: DateTime) => {
