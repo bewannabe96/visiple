@@ -9,6 +9,7 @@ import { THEME_COLORS } from '../../types/lib/theme';
 import { Action, EMPTY_ACTION } from '../../types/lib/redux';
 
 import SelectPeriodModal, { FromToTab } from './select-period-modal';
+import { LOCALIZE_TIMEZONE } from '../../types/lib/localize';
 
 export interface IPeriodSelectorProps {
 	/**
@@ -43,8 +44,8 @@ export default class PeriodSelector extends React.Component<
 	public static defaultProps: IPeriodSelectorProps = {
 		color: THEME_COLORS.oceanBlue,
 		period: {
-			from: DateTime.local(),
-			to: DateTime.local(),
+			from: DateTime.local().setZone(LOCALIZE_TIMEZONE),
+			to: DateTime.local().setZone(LOCALIZE_TIMEZONE),
 		},
 		setFromDate: EMPTY_ACTION,
 		setToDate: EMPTY_ACTION,
