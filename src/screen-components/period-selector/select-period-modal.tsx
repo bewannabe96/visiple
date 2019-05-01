@@ -10,7 +10,7 @@ import { HORIZONTAL_UNIT, THEME_FONTSIZE } from '../../types/lib/size';
 import { THEME_COLORS, THEME_FONT } from '../../types/lib/theme';
 import { Period } from '../../types/data/datetime';
 import { Action } from '../../types/lib/redux';
-import { SYSTEM_LANGUAGE_CODE } from '../../types/lib/system';
+import { LOCALIZE_SYSTEM_LANGUAGE } from '../../types/lib/localize';
 
 import VSPModal from '../../components/vsp-modal';
 
@@ -128,8 +128,8 @@ export default class SelectPeriodModal extends React.Component<
 		});
 
 		LocaleConfig.locales = CALENDAR_LOCALES;
-		if (SYSTEM_LANGUAGE_CODE in CALENDAR_LOCALES)
-			LocaleConfig.defaultLocale = SYSTEM_LANGUAGE_CODE;
+		if (LOCALIZE_SYSTEM_LANGUAGE in CALENDAR_LOCALES)
+			LocaleConfig.defaultLocale = LOCALIZE_SYSTEM_LANGUAGE;
 		else LocaleConfig.defaultLocale = 'en';
 
 		const calendarTheme = {
