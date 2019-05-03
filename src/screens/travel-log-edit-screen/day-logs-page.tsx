@@ -4,18 +4,14 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { DateTime } from 'luxon';
 
 import { Period } from '../../types/data/datetime';
-import { THEME_COLORS } from '../../types/lib/theme';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 
 import VSPHeader from '../../components/vsp-header';
-import VSPHeaderButton, {
-	VSPHeaderBack,
-} from '../../components/vsp-header-button';
+import { VSPHeaderBack } from '../../components/vsp-header-button';
 import VSPContainer from '../../components/vsp-container';
 
 import DayLogsTabTabbar from './day-logs-tab-tabbar';
 import DayLog from './day-log';
-import { VSP_EDGE_PADDING } from '../../types/lib/size';
 
 const DEV_PERIOD = {
 	from: DateTime.local().startOf('day'),
