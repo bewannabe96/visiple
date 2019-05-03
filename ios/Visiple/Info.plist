@@ -71,6 +71,11 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>vspicon.ttf</string>
+		<string>NanumBarunGothic.ttf</string>
+		<string>NanumBarunGothicBold.ttf</string>
+		<string>NanumBarunGothicLight.ttf</string>
+		<string>NanumBarunGothicUltraLight.ttf</string>
+		<string>DXRMbxB-KSCpc-EUC-H.ttf</string>
 	</array>
 </dict>
 </plist>

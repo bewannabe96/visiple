@@ -58,6 +58,11 @@
 		9D6C006543084F1B840EE0AD /* vspicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1766EE2B21C4BC78605FA9A /* vspicon.ttf */; };
 		6F4FB1440E1B4D3B8D64F435 /* libRNLocalize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0A106D578C4D66B6F84231 /* libRNLocalize.a */; };
 		BA4C6D8E02534BB2968F46FA /* libRNLocalize-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 785E9DCB84B54417A6BAF034 /* libRNLocalize-tvOS.a */; };
+		83AB01CBE33047119B5DDEF7 /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FBC456748F6472E97453559 /* NanumBarunGothic.ttf */; };
+		4A0332F871784395BBE2B56D /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62494F911BC14F69B4439695 /* NanumBarunGothicBold.ttf */; };
+		1C9BDC2A732643BD9A66047A /* NanumBarunGothicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E82FA1753B634A4C9162F4FD /* NanumBarunGothicLight.ttf */; };
+		BD93EF733CD946298BEE8A0F /* NanumBarunGothicUltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 917ACB14683E423190F68109 /* NanumBarunGothicUltraLight.ttf */; };
+		CD1A04B8C37F4DDAB2BBF145 /* DXRMbxB-KSCpc-EUC-H.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6612174B75BB4E80B8283A87 /* DXRMbxB-KSCpc-EUC-H.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +392,11 @@
 		1D2EEB1935F649CF9ECFBC15 /* RNLocalize.xcodeproj */ = {isa = PBXFileReference; name = "RNLocalize.xcodeproj"; path = "../node_modules/react-native-localize/ios/RNLocalize.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		FC0A106D578C4D66B6F84231 /* libRNLocalize.a */ = {isa = PBXFileReference; name = "libRNLocalize.a"; path = "libRNLocalize.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		785E9DCB84B54417A6BAF034 /* libRNLocalize-tvOS.a */ = {isa = PBXFileReference; name = "libRNLocalize-tvOS.a"; path = "libRNLocalize-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		7FBC456748F6472E97453559 /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; name = "NanumBarunGothic.ttf"; path = "../src/assets/fonts/NanumBarunGothic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		62494F911BC14F69B4439695 /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; name = "NanumBarunGothicBold.ttf"; path = "../src/assets/fonts/NanumBarunGothicBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E82FA1753B634A4C9162F4FD /* NanumBarunGothicLight.ttf */ = {isa = PBXFileReference; name = "NanumBarunGothicLight.ttf"; path = "../src/assets/fonts/NanumBarunGothicLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		917ACB14683E423190F68109 /* NanumBarunGothicUltraLight.ttf */ = {isa = PBXFileReference; name = "NanumBarunGothicUltraLight.ttf"; path = "../src/assets/fonts/NanumBarunGothicUltraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6612174B75BB4E80B8283A87 /* DXRMbxB-KSCpc-EUC-H.ttf */ = {isa = PBXFileReference; name = "DXRMbxB-KSCpc-EUC-H.ttf"; path = "../src/assets/fonts/DXRMbxB-KSCpc-EUC-H.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -675,6 +685,11 @@
 				D07A02D760C74319A02D51DA /* SimpleLineIcons.ttf */,
 				B50B1615BF714187BB450495 /* Zocial.ttf */,
 				B1766EE2B21C4BC78605FA9A /* vspicon.ttf */,
+				7FBC456748F6472E97453559 /* NanumBarunGothic.ttf */,
+				62494F911BC14F69B4439695 /* NanumBarunGothicBold.ttf */,
+				E82FA1753B634A4C9162F4FD /* NanumBarunGothicLight.ttf */,
+				917ACB14683E423190F68109 /* NanumBarunGothicUltraLight.ttf */,
+				6612174B75BB4E80B8283A87 /* DXRMbxB-KSCpc-EUC-H.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1142,6 +1157,11 @@
 				66295CC735F546D0B1AE055C /* SimpleLineIcons.ttf in Resources */,
 				9D41303B42B446888D7B79E1 /* Zocial.ttf in Resources */,
 				9D6C006543084F1B840EE0AD /* vspicon.ttf in Resources */,
+				83AB01CBE33047119B5DDEF7 /* NanumBarunGothic.ttf in Resources */,
+				4A0332F871784395BBE2B56D /* NanumBarunGothicBold.ttf in Resources */,
+				1C9BDC2A732643BD9A66047A /* NanumBarunGothicLight.ttf in Resources */,
+				BD93EF733CD946298BEE8A0F /* NanumBarunGothicUltraLight.ttf in Resources */,
+				CD1A04B8C37F4DDAB2BBF145 /* DXRMbxB-KSCpc-EUC-H.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

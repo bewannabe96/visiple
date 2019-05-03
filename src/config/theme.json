@@ -4,7 +4,8 @@
         "button": 4
     },
     "sizeOffset": 4.6,
-    "fontFamily": "arial",
+    "fontFamily": "NanumBarunGothic",
+    "textFontFamily": "DXRMbxB-KSCpc-EUC-H",
     "fontSize": {
         "minor": 2.5,
         "regular": 3,

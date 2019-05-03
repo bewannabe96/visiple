@@ -1,4 +1,4 @@
-import { THEME_COLORS } from '../types/lib/theme';
+import { THEME_COLORS, THEME_FONT } from '../types/lib/theme';
 import {
 	THEME_FONTSIZE,
 	HORIZONTAL_UNIT,
@@ -26,10 +26,12 @@ const RNElementsTheme = {
 		},
 		titleStyle: {
 			fontSize: THEME_FONTSIZE,
+			fontFamily: THEME_FONT,
 		},
 	},
 
 	Text: {
+		fontFamily: THEME_FONT,
 		style: {
 			color: THEME_COLORS.black,
 			fontWeight: 'normal' as 'normal',
@@ -68,6 +70,7 @@ const RNElementsTheme = {
 			marginLeft: 0,
 		},
 		inputStyle: {
+			fontFamily: THEME_FONT,
 			fontSize: THEME_FONTSIZE,
 		},
 	},
@@ -87,6 +90,7 @@ const RNElementsTheme = {
 			marginRight: 0,
 		},
 		inputStyle: {
+			fontFamily: THEME_FONT,
 			fontSize: THEME_FONTSIZE,
 		},
 		placeholderTextColor: THEME_COLORS.grey,
@@ -106,9 +110,11 @@ const RNElementsTheme = {
 			padding: 0,
 		},
 		titleStyle: {
+			fontFamily: THEME_FONT,
 			fontSize: THEME_FONTSIZE,
 		},
 		subtitleStyle: {
+			fontFamily: THEME_FONT,
 			fontSize: THEME_MINOR_FONTSIZE,
 			color: THEME_COLORS.grey,
 			marginTop: HORIZONTAL_UNIT(),
