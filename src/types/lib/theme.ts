@@ -3,7 +3,7 @@ import * as Config from '../../config/theme.json';
 /**
  * Theme Font
  */
-export const THEME_FONT = Config.fontFamily;
+export const THEME_FONT = Config.testFontFamily;
 
 /**
  * Raw Color Type

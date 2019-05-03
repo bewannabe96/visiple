@@ -5,7 +5,7 @@
     },
     "sizeOffset": 4.6,
     "fontFamily": "NanumBarunGothic",
-    "textFontFamily": "DXRMbxB-KSCpc-EUC-H",
+    "testFontFamily": "DXRMbxB-KSCpc-EUC-H",
     "fontSize": {
         "minor": 2.5,
         "regular": 3,
