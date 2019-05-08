@@ -44,7 +44,7 @@ export default class NewTicketScreen extends React.Component<
 			header: (
 				<VSPHeader
 					headerTitle='새로운 티켓'
-					headerLeft={VSPHeaderBack(navigation)}
+					headerLeft={<VSPHeaderBack navigation={navigation} />}
 				/>
 			),
 		};

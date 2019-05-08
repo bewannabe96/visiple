@@ -21,7 +21,7 @@ import { TravelLog } from '../../types/data/travel-log';
 import VSPContainer from '../../components/vsp-container';
 import VSPDivider from '../../components/vsp-divider';
 import VSPHeader from '../../components/vsp-header';
-import VSPHeaderButton from '../../components/vsp-header-button';
+import { VSPHeaderBack } from '../../components/vsp-header-button';
 
 import FriendsSelector from '../../screen-components/friends-selector';
 import PeriodSelector from '../../screen-components/period-selector';
@@ -68,12 +68,9 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 				<VSPHeader
 					transparent
 					headerLeft={
-						<VSPHeaderButton
-							iconName='left-arrow'
+						<VSPHeaderBack
+							navigation={navigation}
 							color={THEME_COLORS.white}
-							onPress={() => {
-								navigation.pop();
-							}}
 						/>
 					}
 				/>

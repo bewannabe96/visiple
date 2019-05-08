@@ -40,7 +40,11 @@ class DayLogsPage extends React.Component<IVSPScreenProps<IDayLogsPageProps>> {
 		navigation: NavigationScreenProp<any>;
 	}) => {
 		return {
-			header: <VSPHeader headerLeft={VSPHeaderBack(navigation)} />,
+			header: (
+				<VSPHeader
+					headerLeft={<VSPHeaderBack navigation={navigation} />}
+				/>
+			),
 		};
 	};
 

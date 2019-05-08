@@ -175,7 +175,12 @@ export default class TicketViewScreen extends React.Component<
 			header: (
 				<VSPHeader
 					transparent={true}
-					headerLeft={VSPHeaderBack(navigation, THEME_COLORS.white)}
+					headerLeft={
+						<VSPHeaderBack
+							navigation={navigation}
+							color={THEME_COLORS.white}
+						/>
+					}
 				/>
 			),
 		};
