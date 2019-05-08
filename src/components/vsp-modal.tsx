@@ -13,7 +13,7 @@ import VSPHeader from './vsp-header';
 
 interface IVSPModalProps {
 	/**
-	 * Title text in the middle of the header
+	 * Title text of the header
 	 */
 	titleText: string;
 
@@ -37,7 +37,7 @@ interface IVSPModalProps {
  * VSPModal
  *
  * @property
- * - ```titleText```(required): Title text in the middle of the header
+ * - ```titleText```(required): Title text of the header
  * - ```isVisible```(required): Visible if true
  * - ```closeAction```(required): Close action callback
  * - ```headerRight```: Component to be displayed in the right
