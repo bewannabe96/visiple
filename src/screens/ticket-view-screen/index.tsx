@@ -17,8 +17,7 @@ import { THEME_COLORS } from '../../types/lib/theme';
 import VSPHeader from '../../components/vsp-header';
 import VSPContainer from '../../components/vsp-container';
 import VSPText from '../../components/vsp-text';
-import VSPHeaderButton from '../../components/vsp-header-button';
-import VSPHeaderDropdown from '../../components/vsp-header-dropdown';
+import { VSPHeaderBack } from '../../components/vsp-header-button';
 
 import PlanTimeline from './dayplan-timeline';
 import PackingList from './packing-list';
@@ -176,31 +175,7 @@ export default class TicketViewScreen extends React.Component<
 			header: (
 				<VSPHeader
 					transparent={true}
-					headerLeft={
-						<VSPHeaderButton
-							iconName='left-arrow'
-							color={THEME_COLORS.white}
-							onPress={() => {
-								navigation.pop();
-							}}
-						/>
-					}
-					headerRight={
-						<VSPHeaderDropdown
-							iconName='more'
-							color={THEME_COLORS.white}
-							contents={[
-								{ title: '기록 생성' },
-								{
-									icon: {
-										name: 'trash-can',
-										type: 'vspicon',
-									},
-									title: '삭제',
-								},
-							]}
-						/>
-					}
+					headerLeft={VSPHeaderBack(navigation, THEME_COLORS.white)}
 				/>
 			),
 		};

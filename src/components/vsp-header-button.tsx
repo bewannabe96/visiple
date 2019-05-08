@@ -58,9 +58,13 @@ export default class VSPHeaderButton extends React.Component<
  *
  * Returns to the previous page
  */
-export const VSPHeaderBack = (navigation: NavigationScreenProp<any>) => (
+export const VSPHeaderBack = (
+	navigation: NavigationScreenProp<any>,
+	color?: RawColor,
+) => (
 	<VSPHeaderButton
 		iconName='left-arrow'
+		color={color}
 		onPress={() => {
 			navigation.pop();
 		}}
