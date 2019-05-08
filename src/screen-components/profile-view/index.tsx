@@ -17,7 +17,11 @@ import VSPText from '../../components/vsp-text';
 const PROFILE_VIEW_HEIGHT = HORIZONTAL_UNIT(35);
 const SUMMARY_VIEW_HEIGHT = HORIZONTAL_UNIT(15);
 
-const PROFILE_VIEW_OPACITY_SPEED = 4 / 5;
+const COLLAPSIBLE_HEADER_MIN_HEIGHT = Header.HEIGHT;
+const COLLAPSIBLE_HEADER_MAX_HEIGHT =
+	PROFILE_VIEW_HEIGHT + COLLAPSIBLE_HEADER_MIN_HEIGHT;
+
+const HEADER_TRANSITION_POINT = 0.8;
 
 export interface IProfileViewProps {
 	/**
@@ -37,19 +41,97 @@ export default class ProfileView extends React.Component<IProfileViewProps> {
 		scrollY: new Animated.Value(0),
 	};
 
-	public render() {
-		const animatedProfileViewHeight = this.state.scrollY.interpolate({
+	private _renderHeader() {
+		const mapScrollYToOneZero = this.state.scrollY.interpolate({
 			inputRange: [0, PROFILE_VIEW_HEIGHT],
+			outputRange: [0, 1],
+			extrapolate: 'clamp',
+		});
+
+		const animatedProfileViewHeight = mapScrollYToOneZero.interpolate({
+			inputRange: [0, 1],
 			outputRange: [PROFILE_VIEW_HEIGHT, 0],
 			extrapolate: 'clamp',
 		});
 
-		const animatedProfileViewOpacity = this.state.scrollY.interpolate({
-			inputRange: [0, PROFILE_VIEW_HEIGHT * PROFILE_VIEW_OPACITY_SPEED],
+		const animatedProfileViewOpacity = mapScrollYToOneZero.interpolate({
+			inputRange: [0, HEADER_TRANSITION_POINT],
 			outputRange: [1, 0],
 			extrapolate: 'clamp',
 		});
 
+		const animatedTitleOpacity = mapScrollYToOneZero.interpolate({
+			inputRange: [HEADER_TRANSITION_POINT, 1],
+			outputRange: [0, 1],
+			extrapolate: 'clamp',
+		});
+
+		return (
+			<View style={style.collapsibleHeader}>
+				<Animated.View
+					style={[
+						style.collapsedHeader,
+						{ opacity: animatedTitleOpacity },
+					]}
+				>
+					<Text h1>홍길동</Text>
+					<Text
+						h4
+						style={{
+							color: THEME_COLORS.oceanBlue,
+						}}
+					>
+						testuser@gmail.com
+					</Text>
+				</Animated.View>
+				<Animated.View
+					style={[
+						style.profileView,
+						{
+							height: animatedProfileViewHeight,
+							opacity: animatedProfileViewOpacity,
+						},
+					]}
+				>
+					<Avatar size={HORIZONTAL_UNIT(25)} />
+					<Text h1 style={{ marginTop: HORIZONTAL_UNIT(2) }}>
+						홍길동
+					</Text>
+					<Text
+						h3
+						style={{
+							color: THEME_COLORS.oceanBlue,
+							marginTop: HORIZONTAL_UNIT(),
+						}}
+					>
+						testuser@gmail.com
+					</Text>
+				</Animated.View>
+				<View style={style.summaryView}>
+					<View style={style.summaryItemView}>
+						<VSPText style={style.summaryItemValueText}>0</VSPText>
+						<VSPText style={style.summaryItemTitleText}>
+							로그
+						</VSPText>
+					</View>
+					<View style={style.summaryItemView}>
+						<VSPText style={style.summaryItemValueText}>0</VSPText>
+						<VSPText style={style.summaryItemTitleText}>
+							친구
+						</VSPText>
+					</View>
+					<View style={style.summaryItemView}>
+						<VSPText style={style.summaryItemValueText}>0</VSPText>
+						<VSPText style={style.summaryItemTitleText}>
+							팔로워
+						</VSPText>
+					</View>
+				</View>
+			</View>
+		);
+	}
+
+	public render() {
 		return (
 			<View>
 				<FlatList
@@ -89,94 +171,7 @@ export default class ProfileView extends React.Component<IProfileViewProps> {
 					])}
 					showsVerticalScrollIndicator={false}
 				/>
-				<View style={style.collapsibleHeader}>
-					<Animated.View
-						style={[
-							style.profileView,
-							{
-								height: animatedProfileViewHeight,
-								opacity: animatedProfileViewOpacity,
-							},
-						]}
-					>
-						<Avatar size={HORIZONTAL_UNIT(20)} />
-						<Text h2 style={{ marginTop: HORIZONTAL_UNIT(2) }}>
-							홍길동
-						</Text>
-						<Text
-							h3
-							style={{
-								color: THEME_COLORS.oceanBlue,
-								marginTop: HORIZONTAL_UNIT(),
-							}}
-						>
-							testuser@gmail.com
-						</Text>
-						{/* <View style={style.profileButtonView}>
-							<Button
-								icon={{
-									name: 'add-user',
-									type: 'vspicon',
-									color: THEME_COLORS.brown,
-									size: THEME_MINOR_FONTSIZE,
-								}}
-								title='친구 추가'
-								type='outline'
-								titleStyle={{
-									fontSize: THEME_MINOR_FONTSIZE,
-									color: THEME_COLORS.brown,
-								}}
-								buttonStyle={{
-									borderColor: THEME_COLORS.brown,
-									height: HORIZONTAL_UNIT(8),
-								}}
-								containerStyle={{
-									marginRight: HORIZONTAL_UNIT(2),
-									flex: 1,
-								}}
-							/>
-							<Button
-								title='팔로우'
-								titleStyle={{
-									fontSize: THEME_MINOR_FONTSIZE,
-								}}
-								buttonStyle={{
-									backgroundColor: THEME_COLORS.brown,
-									height: HORIZONTAL_UNIT(8),
-								}}
-								containerStyle={{
-									flex: 1,
-								}}
-							/>
-						</View> */}
-					</Animated.View>
-					<View style={style.summaryView}>
-						<View style={style.summaryItemView}>
-							<VSPText style={style.summaryItemValueText}>
-								0
-							</VSPText>
-							<VSPText style={style.summaryItemTitleText}>
-								로그
-							</VSPText>
-						</View>
-						<View style={style.summaryItemView}>
-							<VSPText style={style.summaryItemValueText}>
-								0
-							</VSPText>
-							<VSPText style={style.summaryItemTitleText}>
-								친구
-							</VSPText>
-						</View>
-						<View style={style.summaryItemView}>
-							<VSPText style={style.summaryItemValueText}>
-								0
-							</VSPText>
-							<VSPText style={style.summaryItemTitleText}>
-								팔로워
-							</VSPText>
-						</View>
-					</View>
-				</View>
+				{this._renderHeader()}
 			</View>
 		);
 	}
@@ -190,17 +185,17 @@ const style = StyleSheet.create({
 		backgroundColor: THEME_COLORS.white,
 	},
 
+	collapsedHeader: {
+		height: COLLAPSIBLE_HEADER_MIN_HEIGHT,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+
 	profileView: {
 		paddingHorizontal: VSP_EDGE_PADDING,
 		justifyContent: 'flex-end',
 		alignItems: 'center',
 	},
-
-	// profileButtonView: {
-	// 	flexDirection: 'row',
-	// 	alignItems: 'center',
-	// 	marginTop: HORIZONTAL_UNIT(1.5),
-	// },
 
 	summaryView: {
 		flexDirection: 'row',
@@ -209,7 +204,7 @@ const style = StyleSheet.create({
 	},
 
 	scrollPaddingSpacer: {
-		height: PROFILE_VIEW_HEIGHT + SUMMARY_VIEW_HEIGHT,
+		height: COLLAPSIBLE_HEADER_MAX_HEIGHT + SUMMARY_VIEW_HEIGHT,
 	},
 
 	summaryItemView: {
