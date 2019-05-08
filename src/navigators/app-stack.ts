@@ -8,8 +8,6 @@ import _TravelLogEditScreen from '../screens/travel-log-edit-screen';
 import _NewTicketContainer from '../containers/new-ticket-screen';
 import _TicketViewScreen from '../screens/ticket-view-screen';
 
-import _NewTravelLogScreen from '../screens/new-travel-log-screen';
-
 const AppStack = createStackNavigator(
 	{
 		MainTab: {
@@ -30,10 +28,6 @@ const AppStack = createStackNavigator(
 
 		TicketViewScreen: {
 			screen: _TicketViewScreen,
-		},
-
-		NewTravelLogScreen: {
-			screen: _NewTravelLogScreen,
 		},
 	},
 	{

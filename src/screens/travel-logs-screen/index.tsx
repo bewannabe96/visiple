@@ -108,12 +108,7 @@ export default class TravelLogsScreen extends React.Component<
 					headerTitle='로그'
 					headerLeft={VSPHeaderBack(navigation)}
 					headerRight={
-						<VSPHeaderButton
-							iconName='plus'
-							onPress={() => {
-								navigation.navigate('NewTravelLogScreen');
-							}}
-						/>
+						<VSPHeaderButton iconName='plus' onPress={() => {}} />
 					}
 				/>
 			),

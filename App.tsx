@@ -10,7 +10,7 @@ import VSPIconSet from './src/types/lib/icon';
 import AuthSwitch from './src/navigators/auth-switch';
 import RootReducer from './src/reducers';
 
-const navigationPersistenceKey = __DEV__ ? 'NavigationStateDEVv0.8' : null;
+const navigationPersistenceKey = __DEV__ ? 'NavigationStateDEVv0.9' : null;
 
 const AppContainer = createAppContainer(AuthSwitch);
 
