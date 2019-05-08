@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NavigationScreenProp, withNavigation } from 'react-navigation';
+import {
+	NavigationScreenProp,
+	withNavigation,
+	ScrollView,
+} from 'react-navigation';
 import { Text, Image, Icon, Input } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
@@ -21,6 +25,7 @@ import VSPHeaderButton from '../../components/vsp-header-button';
 
 import FriendsSelector from '../../screen-components/friends-selector';
 import PeriodSelector from '../../screen-components/period-selector';
+import CountrySelector from '../../screen-components/country-selector';
 
 const DEV_TRAVEL_LOG: TravelLog = {
 	id: 1,
@@ -91,8 +96,7 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 			},
 
 			bodyView: {
-				flex: 1,
-				paddingTop: HORIZONTAL_UNIT(3),
+				paddingVertical: HORIZONTAL_UNIT(3),
 				paddingHorizontal: VSP_EDGE_PADDING,
 			},
 
@@ -163,18 +167,25 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 						/>
 					</View>
 				</View>
-				<View style={style.bodyView}>
+				<ScrollView contentContainerStyle={style.bodyView}>
 					{titleElement}
 
 					<PeriodSelector />
 
-					<VSPDivider marginVertical={HORIZONTAL_UNIT(6)} />
+					<VSPDivider marginVertical={HORIZONTAL_UNIT(8)} />
+
+					<Text h2 style={style.headerText}>
+						여행 국가
+					</Text>
+					<CountrySelector />
+
+					<VSPDivider marginVertical={HORIZONTAL_UNIT(8)} />
 
 					<Text h2 style={style.headerText}>
 						함께하는 친구
 					</Text>
 					<FriendsSelector />
-				</View>
+				</ScrollView>
 			</VSPContainer>
 		);
 	}
