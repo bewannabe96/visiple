@@ -94,7 +94,7 @@ export default class ProfileView extends React.Component<IProfileViewProps> {
 					]}
 				>
 					<Avatar size={HORIZONTAL_UNIT(25)} />
-					<Text h1 style={{ marginTop: HORIZONTAL_UNIT(2) }}>
+					<Text h2 style={{ marginTop: HORIZONTAL_UNIT(2) }}>
 						홍길동
 					</Text>
 					<Text
