@@ -10,7 +10,7 @@ import { THEME_COLORS } from '../../types/lib/theme';
 import {
 	VSP_EDGE_PADDING,
 	HORIZONTAL_UNIT,
-	THEME_HEADER_FONTSIZE,
+	THEME_FONTSIZE,
 } from '../../types/lib/size';
 
 import VSPContainer from '../../components/vsp-container';
@@ -124,7 +124,7 @@ export default class TravelLogsScreen extends React.Component<
 								<Input
 									placeholder='제목을 입력해주세요.'
 									inputStyle={{
-										fontSize: THEME_HEADER_FONTSIZE,
+										fontSize: THEME_FONTSIZE,
 									}}
 								/>
 								<Button
