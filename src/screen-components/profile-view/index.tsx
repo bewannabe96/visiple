@@ -174,6 +174,7 @@ export default class ProfileView extends React.Component<IProfileViewProps> {
 						},
 					])}
 					showsVerticalScrollIndicator={false}
+					overScrollMode='never'
 				/>
 				{this._renderHeader()}
 			</View>
