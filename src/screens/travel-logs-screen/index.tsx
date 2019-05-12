@@ -1,20 +1,23 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp, FlatList } from 'react-navigation';
-import { Text, Image } from 'react-native-elements';
+import { Text, Image, Input, Button } from 'react-native-elements';
 import { DateTime } from 'luxon';
 
 import { TravelLog } from '../../types/data/travel-log';
 import { IVSPScreenProps } from '../../types/props/vsp-screen';
 import { THEME_COLORS } from '../../types/lib/theme';
-import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../../types/lib/size';
+import {
+	VSP_EDGE_PADDING,
+	HORIZONTAL_UNIT,
+	THEME_HEADER_FONTSIZE,
+} from '../../types/lib/size';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPHeader from '../../components/vsp-header';
-import VSPHeaderButton, {
-	VSPHeaderBack,
-} from '../../components/vsp-header-button';
+import { VSPHeaderBack } from '../../components/vsp-header-button';
 import VSPDivider from '../../components/vsp-divider';
+import VSPHeaderDropdown from '../../components/vsp-header-dropdown';
 
 const DEV_TRAVEL_LOG: TravelLog[] = [
 	{
@@ -106,9 +109,35 @@ export default class TravelLogsScreen extends React.Component<
 			header: (
 				<VSPHeader
 					headerTitle='로그'
-					headerLeft={VSPHeaderBack(navigation)}
+					headerLeft={<VSPHeaderBack navigation={navigation} />}
 					headerRight={
-						<VSPHeaderButton iconName='plus' onPress={() => {}} />
+						<VSPHeaderDropdown
+							iconName='plus'
+							titleText='새로운 로그'
+						>
+							<View
+								style={{
+									paddingHorizontal: VSP_EDGE_PADDING,
+									paddingBottom: HORIZONTAL_UNIT(4),
+								}}
+							>
+								<Input
+									placeholder='제목을 입력해주세요.'
+									inputStyle={{
+										fontSize: THEME_HEADER_FONTSIZE,
+									}}
+								/>
+								<Button
+									title='새로운 로그 만들기'
+									buttonStyle={{
+										backgroundColor: THEME_COLORS.brown,
+									}}
+									containerStyle={{
+										marginTop: HORIZONTAL_UNIT(4),
+									}}
+								/>
+							</View>
+						</VSPHeaderDropdown>
 					}
 				/>
 			),
