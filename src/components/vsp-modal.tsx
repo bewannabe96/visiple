@@ -66,37 +66,8 @@ export default class VSPModal extends React.Component<
 				alignItems: 'stretch',
 			},
 
-			headerView: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				height: HORIZONTAL_UNIT(12),
-				borderTopLeftRadius: HORIZONTAL_UNIT(2),
-				borderTopRightRadius: HORIZONTAL_UNIT(2),
-				backgroundColor: THEME_COLORS.white,
-				borderBottomWidth: 0.5,
-				borderColor: THEME_COLORS.brown,
-			},
-
-			headerTitleView: {
-				flex: 3,
-				alignItems: 'center',
-			},
-
-			headerLeftView: {
-				flex: 2,
-				alignItems: 'flex-start',
-				marginLeft: HORIZONTAL_UNIT(4),
-			},
-
-			headerRightView: {
-				flex: 2,
-				alignItems: 'flex-end',
-				marginRight: HORIZONTAL_UNIT(4),
-			},
-
 			bodyView: {
 				backgroundColor: THEME_COLORS.white,
-				height: '85%',
 				...decodeVSPPaddingProps(this.props),
 			},
 		});
