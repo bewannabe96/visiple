@@ -74,7 +74,7 @@ export default class ProfileView extends React.Component<IProfileViewProps> {
 						{ opacity: animatedTitleOpacity },
 					]}
 				>
-					<Text h2>홍길동</Text>
+					<Text h3>홍길동</Text>
 					<Text
 						h4
 						style={{
