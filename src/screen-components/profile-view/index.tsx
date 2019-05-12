@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import { FlatList, Header } from 'react-navigation';
+import { FlatList } from 'react-navigation';
 import { Avatar, Text, Image } from 'react-native-elements';
 
 import { THEME_COLORS } from '../../types/lib/theme';
@@ -12,12 +12,16 @@ import {
 } from '../../types/lib/size';
 import { TravelLog } from '../../types/data/travel-log';
 
+import {
+	VSP_PURE_HEADER_HEIGHT,
+	VSP_STATUS_BAR_HEIGHT,
+} from '../../components/vsp-header';
 import VSPText from '../../components/vsp-text';
 
 const PROFILE_VIEW_HEIGHT = HORIZONTAL_UNIT(35);
 const SUMMARY_VIEW_HEIGHT = HORIZONTAL_UNIT(15);
 
-const COLLAPSIBLE_HEADER_MIN_HEIGHT = Header.HEIGHT;
+const COLLAPSIBLE_HEADER_MIN_HEIGHT = VSP_PURE_HEADER_HEIGHT;
 const COLLAPSIBLE_HEADER_MAX_HEIGHT =
 	PROFILE_VIEW_HEIGHT + COLLAPSIBLE_HEADER_MIN_HEIGHT;
 
@@ -93,7 +97,7 @@ export default class ProfileView extends React.Component<IProfileViewProps> {
 						},
 					]}
 				>
-					<Avatar size={HORIZONTAL_UNIT(25)} />
+					<Avatar size={HORIZONTAL_UNIT(23)} />
 					<Text h2 style={{ marginTop: HORIZONTAL_UNIT(2) }}>
 						홍길동
 					</Text>
@@ -189,6 +193,7 @@ const style = StyleSheet.create({
 		height: COLLAPSIBLE_HEADER_MIN_HEIGHT,
 		justifyContent: 'center',
 		alignItems: 'center',
+		marginTop: VSP_STATUS_BAR_HEIGHT,
 	},
 
 	profileView: {

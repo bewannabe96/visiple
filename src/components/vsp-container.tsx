@@ -1,7 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
-
-import { THEME_COLORS } from '../types/lib/theme';
+import { View, StyleSheet, SafeAreaView } from 'react-native';
 
 interface IVSPContainerProps {
 	/**
@@ -51,23 +49,11 @@ export default class VSPContainer extends React.Component<IVSPContainerProps> {
 		if (this.props.wrapSafeAreaView) {
 			return (
 				<SafeAreaView style={style.safeAreaView}>
-					<StatusBar
-						backgroundColor={THEME_COLORS.white}
-						barStyle='dark-content'
-					/>
 					<View style={style.container}>{this.props.children}</View>
 				</SafeAreaView>
 			);
 		} else {
-			return (
-				<View style={style.container}>
-					<StatusBar
-						backgroundColor={THEME_COLORS.white}
-						barStyle='dark-content'
-					/>
-					{this.props.children}
-				</View>
-			);
+			return <View style={style.container}>{this.props.children}</View>;
 		}
 	}
 }

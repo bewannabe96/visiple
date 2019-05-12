@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View, SafeAreaView, StatusBar } from 'react-native';
 import { Header } from 'react-navigation';
 
 import { THEME_COLORS } from '../types/lib/theme';
@@ -7,8 +7,11 @@ import { VSP_EDGE_PADDING, HORIZONTAL_UNIT } from '../types/lib/size';
 
 import VSPText from './vsp-text';
 
-const VSP_HEADER_HEIGHT = Header.HEIGHT;
-const VSP_HEADER_TITLE_SIZE = VSP_HEADER_HEIGHT * 0.4;
+export const VSP_PURE_HEADER_HEIGHT = Header.HEIGHT;
+export const VSP_HEADER_TITLE_SIZE = VSP_PURE_HEADER_HEIGHT * 0.4;
+export const VSP_STATUS_BAR_HEIGHT = StatusBar.currentHeight
+	? StatusBar.currentHeight
+	: 0;
 
 interface IVSPHeaderProps {
 	/**
@@ -30,6 +33,11 @@ interface IVSPHeaderProps {
 	 * Transparent if true (by default ```false```)
 	 */
 	transparent?: boolean;
+
+	/**
+	 * Alter VSPHeader to a normal component removing all the header mechanisms if true
+	 */
+	asComponent?: boolean;
 }
 
 /**
@@ -40,10 +48,12 @@ interface IVSPHeaderProps {
  * - ```headerLeft```: Component to be diplayed in the left
  * - ```headerRight```: Component to be displayed in the right
  * - ```transparent```: Transparent if true (by default ```false```)
+ * - ```asComponent```: Alter VSPHeader to a normal component removing all the header mechanisms if true (by default ```false```)
  */
 export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 	public static defaultProps = {
 		transparent: false,
+		asComponent: false,
 	};
 
 	public render() {
@@ -58,12 +68,22 @@ export default class VSPHeader extends React.Component<IVSPHeaderProps> {
 					width: '100%',
 				}}
 			>
+				{!this.props.asComponent && (
+					<StatusBar
+						backgroundColor={THEME_COLORS.none}
+						barStyle='dark-content'
+						translucent
+					/>
+				)}
 				<View
 					style={{
-						height: VSP_HEADER_HEIGHT,
+						height: VSP_PURE_HEADER_HEIGHT,
 						flexDirection: 'row',
 						alignItems: 'stretch',
 						paddingHorizontal: VSP_EDGE_PADDING,
+						marginTop: this.props.asComponent
+							? 0
+							: VSP_STATUS_BAR_HEIGHT,
 					}}
 				>
 					{!!this.props.headerLeft && (

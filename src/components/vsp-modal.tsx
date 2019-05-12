@@ -112,6 +112,7 @@ export default class VSPModal extends React.Component<
 				onBackdropPress={this.props.closeAction}
 			>
 				<VSPHeader
+					asComponent
 					headerTitle={this.props.titleText}
 					headerRight={this.props.headerRight}
 				/>

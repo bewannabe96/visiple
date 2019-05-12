@@ -71,6 +71,7 @@ export default class VSPDropdownModal extends React.Component<
 				onBackdropPress={this.props.closeAction}
 			>
 				<VSPHeader
+					asComponent
 					headerLeft={
 						<VSPHeaderButton
 							iconName='left-arrow'

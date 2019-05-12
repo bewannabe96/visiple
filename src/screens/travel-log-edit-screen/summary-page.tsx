@@ -66,13 +66,13 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 		return {
 			header: (
 				<VSPHeader
-					transparent
 					headerLeft={
 						<VSPHeaderBack
 							navigation={navigation}
 							color={THEME_COLORS.white}
 						/>
 					}
+					transparent
 				/>
 			),
 		};
