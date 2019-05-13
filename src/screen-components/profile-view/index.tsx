@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import { FlatList } from 'react-navigation';
 import { Avatar, Text, Image } from 'react-native-elements';
+import { FlatList } from 'react-navigation';
 
 import { THEME_COLORS } from '../../types/lib/theme';
 import {
