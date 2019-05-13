@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView, Animated } from 'react-native';
 import {
 	NavigationScreenProp,
 	withNavigation,
@@ -11,7 +11,6 @@ import { DateTime } from 'luxon';
 import {
 	HORIZONTAL_UNIT,
 	VSP_EDGE_PADDING,
-	THEME_HEADER_FONTSIZE,
 	THEME_TITLE_FONTSIZE,
 } from '../../types/lib/size';
 import { THEME_COLORS } from '../../types/lib/theme';
@@ -20,7 +19,10 @@ import { TravelLog } from '../../types/data/travel-log';
 
 import VSPContainer from '../../components/vsp-container';
 import VSPDivider from '../../components/vsp-divider';
-import VSPHeader from '../../components/vsp-header';
+import VSPHeader, {
+	VSP_PURE_HEADER_HEIGHT,
+	VSP_STATUS_BAR_HEIGHT,
+} from '../../components/vsp-header';
 import { VSPHeaderBack } from '../../components/vsp-header-button';
 
 import FriendsSelector from '../../screen-components/friends-selector';
@@ -44,6 +46,16 @@ const DEV_TRAVEL_LOG: TravelLog = {
 	days: [],
 };
 
+const TITLE_IMAGE_HEIGHT = HORIZONTAL_UNIT(70);
+const TITLE_IMAGE_DISPLAY_HEIGHT = HORIZONTAL_UNIT(40);
+
+const COLLAPSIBLE_HEADER_MIN_HEIGHT =
+	VSP_PURE_HEADER_HEIGHT + VSP_STATUS_BAR_HEIGHT;
+const COLLAPSIBLE_HEADER_MAX_HEIGHT =
+	TITLE_IMAGE_DISPLAY_HEIGHT + COLLAPSIBLE_HEADER_MIN_HEIGHT;
+
+const HEADER_TRANSITION_POINT = 0.8;
+
 interface ISummaryPageProps {
 	/**
 	 * Title of the travel log
@@ -66,12 +78,7 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 		return {
 			header: (
 				<VSPHeader
-					headerLeft={
-						<VSPHeaderBack
-							navigation={navigation}
-							color={THEME_COLORS.white}
-						/>
-					}
+					headerLeft={<VSPHeaderBack navigation={navigation} />}
 					transparent
 				/>
 			),
@@ -83,32 +90,12 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 	};
 
 	public state = {
+		scrollY: new Animated.Value(0),
 		titleOnEdit: false,
 	};
 
-	public render() {
-		const style = StyleSheet.create({
-			titleImageView: {
-				height: HORIZONTAL_UNIT(55),
-			},
-
-			bodyView: {
-				paddingVertical: HORIZONTAL_UNIT(3),
-				paddingHorizontal: VSP_EDGE_PADDING,
-			},
-
-			titleView: {
-				flexDirection: 'row',
-				alignItems: 'center',
-				marginBottom: HORIZONTAL_UNIT(10),
-			},
-
-			headerText: {
-				marginBottom: HORIZONTAL_UNIT(2),
-			},
-		});
-
-		const titleElement = this.state.titleOnEdit ? (
+	private _renderTitleElement() {
+		return this.state.titleOnEdit ? (
 			<View style={style.titleView}>
 				<Input
 					value={this.props.title}
@@ -139,53 +126,171 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 				/>
 			</View>
 		);
+	}
+
+	public render() {
+		const animatedCollapsibleHeaderHeight = this.state.scrollY.interpolate({
+			inputRange: [0, TITLE_IMAGE_DISPLAY_HEIGHT],
+			outputRange: [
+				COLLAPSIBLE_HEADER_MAX_HEIGHT,
+				COLLAPSIBLE_HEADER_MIN_HEIGHT,
+			],
+			extrapolate: 'clamp',
+		});
+
+		const animatedTitleImageOpacity = this.state.scrollY.interpolate({
+			inputRange: [
+				TITLE_IMAGE_DISPLAY_HEIGHT * HEADER_TRANSITION_POINT,
+				TITLE_IMAGE_DISPLAY_HEIGHT,
+			],
+			outputRange: [1, 0],
+			extrapolate: 'clamp',
+		});
+
+		const animatedCollapsibleHeaderOpacity = this.state.scrollY.interpolate(
+			{
+				inputRange: [
+					TITLE_IMAGE_DISPLAY_HEIGHT * HEADER_TRANSITION_POINT,
+					TITLE_IMAGE_DISPLAY_HEIGHT,
+				],
+				outputRange: [0, 1],
+				extrapolate: 'clamp',
+			},
+		);
 
 		return (
 			<VSPContainer>
-				<View style={style.titleImageView}>
-					<Image
-						source={require('../../dev-sample-image/landscape_1.jpeg')}
-					/>
-					<View
-						style={{
-							position: 'absolute',
-							bottom: 0,
-							width: '100%',
-							alignItems: 'flex-end',
-							padding: HORIZONTAL_UNIT(2),
-						}}
+				<SafeAreaView style={style.titleImageView}>
+					<Animated.View
+						style={[
+							style.titleImage,
+							{ opacity: animatedTitleImageOpacity },
+						]}
 					>
-						<Icon
-							name='photo-camera'
-							type='vspicon'
-							size={THEME_HEADER_FONTSIZE}
-							reverse
-							raised
+						<Image
+							source={require('../../dev-sample-image/landscape_1.jpeg')}
 						/>
-					</View>
-				</View>
-				<ScrollView contentContainerStyle={style.bodyView}>
-					{titleElement}
+					</Animated.View>
+					<Animated.View
+						style={[
+							style.collapsibleHeader,
+							{
+								height: animatedCollapsibleHeaderHeight,
+								opacity: animatedCollapsibleHeaderOpacity,
+							},
+						]}
+					>
+						<Text h3>{this.props.title}</Text>
+					</Animated.View>
+					<View style={style.titleImageMask} />
+				</SafeAreaView>
 
-					<PeriodSelector />
+				<SafeAreaView>
+					<ScrollView
+						style={style.scrollView}
+						scrollEventThrottle={1}
+						onScroll={Animated.event([
+							{
+								nativeEvent: {
+									contentOffset: { y: this.state.scrollY },
+								},
+							},
+						])}
+						showsVerticalScrollIndicator={false}
+						overScrollMode='never'
+					>
+						<View style={style.bodyView}>
+							{this._renderTitleElement()}
 
-					<VSPDivider marginVertical={HORIZONTAL_UNIT(8)} />
+							<PeriodSelector />
 
-					<Text h2 style={style.headerText}>
-						여행 국가
-					</Text>
-					<CountrySelector />
+							<VSPDivider marginVertical={HORIZONTAL_UNIT(10)} />
 
-					<VSPDivider marginVertical={HORIZONTAL_UNIT(8)} />
+							<Text h2 style={style.headerText}>
+								여행 국가
+							</Text>
+							<CountrySelector />
 
-					<Text h2 style={style.headerText}>
-						함께하는 친구
-					</Text>
-					<FriendsSelector />
-				</ScrollView>
+							<VSPDivider marginVertical={HORIZONTAL_UNIT(10)} />
+
+							<Text h2 style={style.headerText}>
+								함께하는 친구
+							</Text>
+							<FriendsSelector />
+						</View>
+					</ScrollView>
+				</SafeAreaView>
+				{/* <Icon
+					name='photo-camera'
+					type='vspicon'
+					size={THEME_HEADER_FONTSIZE}
+					Component={TouchableOpacity}
+					reverse
+					raised
+				/> */}
 			</VSPContainer>
 		);
 	}
 }
+
+const style = StyleSheet.create({
+	titleImageView: {
+		position: 'absolute',
+		top: 0,
+		width: '100%',
+		height: '100%',
+	},
+
+	titleImage: {
+		position: 'absolute',
+		top: 0,
+		height: TITLE_IMAGE_HEIGHT,
+		width: '100%',
+	},
+
+	collapsibleHeader: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingTop: VSP_STATUS_BAR_HEIGHT,
+	},
+
+	titleImageMask: {
+		flex: 1,
+		backgroundColor: THEME_COLORS.white,
+	},
+
+	// collapsibleHeaderSafeAreaView: {
+	// 	position: 'absolute',
+	// 	top: 0,
+	// 	width: '100%',
+	// },
+
+	// titleImageButtonView: {
+	// 	position: 'absolute',
+	// 	bottom: HORIZONTAL_UNIT(2),
+	// 	right: HORIZONTAL_UNIT(2),
+	// },
+
+	scrollView: {
+		marginTop: COLLAPSIBLE_HEADER_MIN_HEIGHT,
+	},
+
+	bodyView: {
+		marginTop: TITLE_IMAGE_DISPLAY_HEIGHT,
+		paddingBottom: HORIZONTAL_UNIT(10),
+		paddingHorizontal: VSP_EDGE_PADDING,
+		backgroundColor: THEME_COLORS.white,
+	},
+
+	titleView: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginVertical: HORIZONTAL_UNIT(8),
+	},
+
+	headerText: {
+		marginBottom: HORIZONTAL_UNIT(2),
+	},
+});
 
 export default withNavigation(SummaryPage);
