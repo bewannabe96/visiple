@@ -48,6 +48,7 @@ const DEV_TRAVEL_LOG: TravelLog = {
 
 const TITLE_IMAGE_HEIGHT = HORIZONTAL_UNIT(70);
 const TITLE_IMAGE_DISPLAY_HEIGHT = HORIZONTAL_UNIT(40);
+const TITLE_TRANSITION_RANGE = HORIZONTAL_UNIT(10);
 
 const COLLAPSIBLE_HEADER_MIN_HEIGHT =
 	VSP_PURE_HEADER_HEIGHT + VSP_STATUS_BAR_HEIGHT;
@@ -95,8 +96,19 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 	};
 
 	private _renderTitleElement() {
+		const animatedTitleViewOpacity = this.state.scrollY.interpolate({
+			inputRange: [
+				TITLE_IMAGE_DISPLAY_HEIGHT,
+				TITLE_IMAGE_DISPLAY_HEIGHT + TITLE_TRANSITION_RANGE,
+			],
+			outputRange: [1, 0],
+			extrapolate: 'clamp',
+		});
+
 		return this.state.titleOnEdit ? (
-			<View style={style.titleView}>
+			<Animated.View
+				style={[style.titleView, { opacity: animatedTitleViewOpacity }]}
+			>
 				<Input
 					value={this.props.title}
 					inputStyle={{ fontSize: THEME_TITLE_FONTSIZE }}
@@ -111,9 +123,11 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 						this.setState({ ...this.state, titleOnEdit: false });
 					}}
 				/>
-			</View>
+			</Animated.View>
 		) : (
-			<View style={style.titleView}>
+			<Animated.View
+				style={[style.titleView, { opacity: animatedTitleViewOpacity }]}
+			>
 				<Text h1>{this.props.title}</Text>
 				<Icon
 					name='pencil'
@@ -124,7 +138,7 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 						this.setState({ ...this.state, titleOnEdit: true });
 					}}
 				/>
-			</View>
+			</Animated.View>
 		);
 	}
 
@@ -150,8 +164,8 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 		const animatedCollapsibleHeaderOpacity = this.state.scrollY.interpolate(
 			{
 				inputRange: [
-					TITLE_IMAGE_DISPLAY_HEIGHT * HEADER_TRANSITION_POINT,
 					TITLE_IMAGE_DISPLAY_HEIGHT,
+					TITLE_IMAGE_DISPLAY_HEIGHT + TITLE_TRANSITION_RANGE,
 				],
 				outputRange: [0, 1],
 				extrapolate: 'clamp',
@@ -177,6 +191,8 @@ class SummaryPage extends React.Component<IVSPScreenProps<ISummaryPageProps>> {
 							{
 								height: animatedCollapsibleHeaderHeight,
 								opacity: animatedCollapsibleHeaderOpacity,
+								borderBottomWidth: 0.4,
+								borderColor: THEME_COLORS.grey,
 							},
 						]}
 					>
@@ -259,18 +275,6 @@ const style = StyleSheet.create({
 		backgroundColor: THEME_COLORS.white,
 	},
 
-	// collapsibleHeaderSafeAreaView: {
-	// 	position: 'absolute',
-	// 	top: 0,
-	// 	width: '100%',
-	// },
-
-	// titleImageButtonView: {
-	// 	position: 'absolute',
-	// 	bottom: HORIZONTAL_UNIT(2),
-	// 	right: HORIZONTAL_UNIT(2),
-	// },
-
 	scrollView: {
 		marginTop: COLLAPSIBLE_HEADER_MIN_HEIGHT,
 	},
@@ -285,7 +289,7 @@ const style = StyleSheet.create({
 	titleView: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		marginVertical: HORIZONTAL_UNIT(8),
+		height: TITLE_TRANSITION_RANGE * 2,
 	},
 
 	headerText: {
